@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "50f327508c221037",
+        "id": "d2bf8e3145765b67",
         "type": "tabs",
         "children": [
           {
-            "id": "71d7303cb9d5d44a",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/TM-1_2C_full.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "TM-1_2C_full"
-            }
-          },
-          {
-            "id": "b6a961ab77373c45",
+            "id": "dcdd450ac517acef",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -34,31 +22,30 @@
             }
           },
           {
-            "id": "25da0c2972c1ef68",
+            "id": "4392926d06f2eef1",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Линейная алгебра/LecB_1_4_Fields_and_Matrix.pdf"
+                "file": "Линейная алгебра/LecB_1_3_Ring_polynom.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "LecB_1_4_Fields_and_Matrix"
+              "title": "LecB_1_3_Ring_polynom"
             }
           },
           {
-            "id": "426bb8390e10fdb8",
+            "id": "63c6ade5da1c437a",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Линейная алгебра/LecB_1_5_SLAE.pdf"
+                "file": "Линейная алгебра/LecB_1_1_Complex.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "LecB_1_5_SLAE"
+              "title": "LecB_1_1_Complex"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -197,7 +184,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 311.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,25 +197,25 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d4af0b377a74f811",
+  "active": "dcdd450ac517acef",
   "lastOpenFiles": [
-    "Линейная алгебра/LecB_1_5_SLAE.pdf",
+    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
     "Линейная алгебра/Тесты линал.md",
-    "{5375CEC1-3F25-4E16-858C-1393E17D70C7} 1.png",
-    "{5375CEC1-3F25-4E16-858C-1393E17D70C7}.png",
-    "{731D4260-BE05-44D6-A106-0E17C13214AF}.png",
-    "{80DA4DDB-DD77-44AD-8220-94BA750E6F86}.png",
-    "{0EFB66A0-FF14-4AAE-9B33-233E9848A08E}.png",
-    "{AC827851-DC29-4EBF-A234-151E405634F2}.png",
+    "Линейная алгебра/LecB_1_1_Complex.pdf",
+    "Images/{6F31CE61-844E-49E3-A8B1-3E9DBD415383}.png",
+    "Линейная алгебра/TM-1_2C_full.pdf",
+    "Линейная алгебра/LecB_1_4_Fields_and_Matrix.pdf",
+    "Images/{0EFB66A0-FF14-4AAE-9B33-233E9848A08E}.png",
+    "Линейная алгебра/LecB_1_5_SLAE.pdf",
+    "Images/{5375CEC1-3F25-4E16-858C-1393E17D70C7} 1.png",
+    "Images/{5375CEC1-3F25-4E16-858C-1393E17D70C7}.png",
+    "Images/{731D4260-BE05-44D6-A106-0E17C13214AF}.png",
+    "Images/{80DA4DDB-DD77-44AD-8220-94BA750E6F86}.png",
+    "Images/{AC827851-DC29-4EBF-A234-151E405634F2}.png",
     "Images/{EF5AE13F-DAF8-4154-9D8D-6C7AD754581E}.png",
     "Images/{79813040-BDA4-41EC-B783-F2464DCB4EAC}.png",
     "Images/{2BEED0E2-22B5-4662-A5D8-0885AFDC6D6A}.png",
-    "Images/{11E8EB1C-14F9-4433-ADDD-0135AAF43057}.png",
-    "Линейная алгебра/LecB_1_4_Fields_and_Matrix.pdf",
-    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
     "Линейная алгебра/LecB_1_2_Structures.pdf",
-    "Линейная алгебра/LecB_1_1_Complex.pdf",
-    "Линейная алгебра/TM-1_2C_full.pdf",
     "Java/Java.md",
     "Java/Cинтаксис.md",
     "Линейная алгебра/Линейная алгебра.md",
