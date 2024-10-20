@@ -20,7 +20,7 @@
             }
           },
           {
-            "id": "67b1e52a3a9d25bc",
+            "id": "b6a961ab77373c45",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -32,14 +32,7 @@
               "icon": "lucide-file",
               "title": "Тесты линал"
             }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "c728f43595a65262",
-        "type": "tabs",
-        "children": [
+          },
           {
             "id": "25da0c2972c1ef68",
             "type": "leaf",
@@ -51,8 +44,21 @@
               "icon": "lucide-file-text",
               "title": "LecB_1_4_Fields_and_Matrix"
             }
+          },
+          {
+            "id": "426bb8390e10fdb8",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_1_5_SLAE.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_1_5_SLAE"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -108,7 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 243.51103591918945
+    "width": 200
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -187,12 +193,11 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 311.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -205,13 +210,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "67b1e52a3a9d25bc",
+  "active": "d4af0b377a74f811",
   "lastOpenFiles": [
-    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
+    "Линейная алгебра/LecB_1_5_SLAE.pdf",
     "Линейная алгебра/Тесты линал.md",
+    "{5375CEC1-3F25-4E16-858C-1393E17D70C7} 1.png",
+    "{5375CEC1-3F25-4E16-858C-1393E17D70C7}.png",
+    "{731D4260-BE05-44D6-A106-0E17C13214AF}.png",
+    "{80DA4DDB-DD77-44AD-8220-94BA750E6F86}.png",
+    "{0EFB66A0-FF14-4AAE-9B33-233E9848A08E}.png",
+    "{AC827851-DC29-4EBF-A234-151E405634F2}.png",
+    "Images/{EF5AE13F-DAF8-4154-9D8D-6C7AD754581E}.png",
+    "Images/{79813040-BDA4-41EC-B783-F2464DCB4EAC}.png",
+    "Images/{2BEED0E2-22B5-4662-A5D8-0885AFDC6D6A}.png",
+    "Images/{11E8EB1C-14F9-4433-ADDD-0135AAF43057}.png",
+    "Линейная алгебра/LecB_1_4_Fields_and_Matrix.pdf",
+    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
     "Линейная алгебра/LecB_1_2_Structures.pdf",
     "Линейная алгебра/LecB_1_1_Complex.pdf",
-    "Линейная алгебра/LecB_1_4_Fields_and_Matrix.pdf",
     "Линейная алгебра/TM-1_2C_full.pdf",
     "Java/Java.md",
     "Java/Cинтаксис.md",
@@ -219,22 +235,11 @@
     "Математический анализ/Математический анализ.md",
     "Линейная алгебра/Lec_1_5_SLAE.pdf",
     "Линейная алгебра/LecB_2_1_Vector_space.pdf",
-    "Линейная алгебра/LecB_1_5_SLAE.pdf",
     "Линейная алгебра/Lec_2_1_Vector_space.pdf",
     "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Без названия.md",
-    "Images/Pasted image 20241012140425.png",
-    "Images/Pasted image 20241012132305.png",
     "Базовый синтаксис.md",
-    "Images/Pasted image 20241010175626.png",
-    "Images/Pasted image 20241010175007.png",
-    "Images/Pasted image 20241010161204.png",
     "Дискретная математика/К-р вопр 1.md",
-    "Images/{0C2248F8-D683-4C90-B187-961C4F480D16}.png",
-    "Images/{5F1A322D-73E5-4B2A-99D2-63BCF4FE60E5}.png",
-    "Images/{5946FDCD-A5BE-48A5-81D4-F18D239E7381}.png",
-    "Images/{D6EFC545-32A7-4C88-9AE6-2F2D440F0800}.png",
-    "Images/{340D77EF-1F66-46CC-B410-7A3A589FA0F9}.png",
     "Face book/23.09.2024 23.55.md",
     "Face book/Peoples/Леночка Луценко.md",
     "Сара-Мария Коркман.md",
