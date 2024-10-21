@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "82de2cf8cb063711",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_1_5_SLAE.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_1_5_SLAE"
+            }
+          },
+          {
             "id": "4392926d06f2eef1",
             "type": "leaf",
             "state": {
@@ -199,14 +211,19 @@
   },
   "active": "dcdd450ac517acef",
   "lastOpenFiles": [
-    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
+    "Линейная алгебра/LecB_1_5_SLAE.pdf",
     "Линейная алгебра/Тесты линал.md",
+    "OPD/Lab1/~WRL2380.tmp",
+    "OPD/Lab1/~WRD2352.tmp",
+    "OPD/Lab1/~WRL2907.tmp",
+    "OPD/Lab1/~WRD2880.tmp",
+    "OPD/Lab1/~WRL1321.tmp",
+    "OPD/Lab1/~WRD1289.tmp",
     "Линейная алгебра/LecB_1_1_Complex.pdf",
+    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
     "Images/{6F31CE61-844E-49E3-A8B1-3E9DBD415383}.png",
     "Линейная алгебра/TM-1_2C_full.pdf",
-    "Линейная алгебра/LecB_1_4_Fields_and_Matrix.pdf",
     "Images/{0EFB66A0-FF14-4AAE-9B33-233E9848A08E}.png",
-    "Линейная алгебра/LecB_1_5_SLAE.pdf",
     "Images/{5375CEC1-3F25-4E16-858C-1393E17D70C7} 1.png",
     "Images/{5375CEC1-3F25-4E16-858C-1393E17D70C7}.png",
     "Images/{731D4260-BE05-44D6-A106-0E17C13214AF}.png",
@@ -215,15 +232,10 @@
     "Images/{EF5AE13F-DAF8-4154-9D8D-6C7AD754581E}.png",
     "Images/{79813040-BDA4-41EC-B783-F2464DCB4EAC}.png",
     "Images/{2BEED0E2-22B5-4662-A5D8-0885AFDC6D6A}.png",
-    "Линейная алгебра/LecB_1_2_Structures.pdf",
     "Java/Java.md",
     "Java/Cинтаксис.md",
     "Линейная алгебра/Линейная алгебра.md",
     "Математический анализ/Математический анализ.md",
-    "Линейная алгебра/Lec_1_5_SLAE.pdf",
-    "Линейная алгебра/LecB_2_1_Vector_space.pdf",
-    "Линейная алгебра/Lec_2_1_Vector_space.pdf",
-    "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Без названия.md",
     "Базовый синтаксис.md",
     "Дискретная математика/К-р вопр 1.md",
