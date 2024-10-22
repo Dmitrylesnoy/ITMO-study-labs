@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Линейная алгебра/Тесты линал.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -95,6 +95,7 @@
         "state": {
           "type": "backlink",
           "state": {
+            "file": "Линейная алгебра/Тесты линал.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -113,6 +114,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
+            "file": "Линейная алгебра/Тесты линал.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           },
@@ -125,7 +127,9 @@
         "type": "leaf",
         "state": {
           "type": "outline",
-          "state": {},
+          "state": {
+            "file": "Линейная алгебра/Тесты линал.md"
+          },
           "icon": "lucide-list",
           "title": "Структура"
         }
