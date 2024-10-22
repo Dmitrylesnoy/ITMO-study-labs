@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "test.md",
+                "file": "Линейная алгебра/Тесты линал.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Тесты линал"
             }
           }
         ]
@@ -35,7 +37,9 @@
           "type": "file-explorer",
           "state": {
             "sortOrder": "alphabetical"
-          }
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Файловый менеджер"
         }
       },
       {
@@ -50,7 +54,9 @@
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical"
-          }
+          },
+          "icon": "lucide-search",
+          "title": "Поиск"
         }
       },
       {
@@ -61,7 +67,9 @@
           "state": {
             "sortOrder": "frequency",
             "useHierarchy": true
-          }
+          },
+          "icon": "lucide-tags",
+          "title": "Теги"
         }
       },
       {
@@ -69,7 +77,9 @@
         "type": "leaf",
         "state": {
           "type": "bookmarks",
-          "state": {}
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Закладки"
         }
       }
     ],
@@ -85,7 +95,6 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "test.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -93,7 +102,9 @@
             "searchQuery": "",
             "backlinkCollapsed": false,
             "unlinkedCollapsed": true
-          }
+          },
+          "icon": "links-coming-in",
+          "title": "Обратные ссылки"
         }
       },
       {
@@ -102,10 +113,11 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "test.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
-          }
+          },
+          "icon": "links-going-out",
+          "title": "Исходящие ссылки"
         }
       },
       {
@@ -113,9 +125,9 @@
         "type": "leaf",
         "state": {
           "type": "outline",
-          "state": {
-            "file": "test.md"
-          }
+          "state": {},
+          "icon": "lucide-list",
+          "title": "Структура"
         }
       },
       {
@@ -123,7 +135,9 @@
         "type": "leaf",
         "state": {
           "type": "git-view",
-          "state": {}
+          "state": {},
+          "icon": "git-pull-request",
+          "title": "Source Control"
         }
       }
     ],
@@ -142,6 +156,12 @@
   },
   "active": "c865f68b4c7ee560",
   "lastOpenFiles": [
+    "OPD/Lab1/345.sh",
+    "/Линейная алгебра/Тесты линал.md",
+    "/OPD/Lab1/ОПД_ЛР1_Вар_1506_P3115_Линейский_Аким_Евгеньевич.docx",
+    "/OPD/Lab1/345.sh",
+    "/Informatics/Lab3/lab3.ipynb",
+    "/Informatics/Lab3/Dop1.py",
     "Face book/Удобство.md",
     "test.md",
     "/test.md",
@@ -176,17 +196,11 @@
     "/Математический анализ.md",
     "/Математика.md",
     "/Линейная алгебра.md",
-    "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
-    "/Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Числовые множества.png",
     "Небесный замок Лапута.md",
     "НОК и НОД.png",
     "Задачи практических занятий.md",
     "/Небесный замок Лапута.md",
-    "/Задачи практических занятий.md",
-    "Бойцев А.А. Математический анализ (базовый уровень).pdf",
-    "Учебники",
-    "README.md",
-    "Untitled.md"
+    "/Задачи практических занятий.md"
   ]
 }
