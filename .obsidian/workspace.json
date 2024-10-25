@@ -4,57 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "d2bf8e3145765b67",
+        "id": "39af7bade0aa95c8",
         "type": "tabs",
         "children": [
           {
-            "id": "dcdd450ac517acef",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Линейная алгебра/Тесты линал.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Тесты линал"
-            }
-          },
-          {
-            "id": "82de2cf8cb063711",
+            "id": "280a9ca005b796fc",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Линейная алгебра/LecB_1_5_SLAE.pdf"
+                "file": "Математический анализ/Посмотрите, это хороший материал.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "LecB_1_5_SLAE"
-            }
-          },
-          {
-            "id": "4392926d06f2eef1",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_1_3_Ring_polynom.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_1_3_Ring_polynom"
-            }
-          },
-          {
-            "id": "63c6ade5da1c437a",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_1_1_Complex.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_1_1_Complex"
+              "title": "Посмотрите, это хороший материал"
             }
           }
         ]
@@ -175,10 +137,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Линейная алгебра/Тесты линал.md"
+                "file": "Математический анализ/Посмотрите, это хороший материал.pdf"
               },
               "icon": "lucide-list",
-              "title": "Структура Тесты линал"
+              "title": "Структура Посмотрите, это хороший материал"
             }
           },
           {
@@ -192,11 +154,12 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 329.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -209,18 +172,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "dcdd450ac517acef",
+  "active": "280a9ca005b796fc",
   "lastOpenFiles": [
+    "Линейная алгебра/LecB_1_1_Complex.pdf",
+    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
     "Линейная алгебра/LecB_1_5_SLAE.pdf",
     "Линейная алгебра/Тесты линал.md",
+    "Цтты.md",
     "OPD/Lab1/~WRL2380.tmp",
     "OPD/Lab1/~WRD2352.tmp",
     "OPD/Lab1/~WRL2907.tmp",
     "OPD/Lab1/~WRD2880.tmp",
     "OPD/Lab1/~WRL1321.tmp",
     "OPD/Lab1/~WRD1289.tmp",
-    "Линейная алгебра/LecB_1_1_Complex.pdf",
-    "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
     "Images/{6F31CE61-844E-49E3-A8B1-3E9DBD415383}.png",
     "Линейная алгебра/TM-1_2C_full.pdf",
     "Images/{0EFB66A0-FF14-4AAE-9B33-233E9848A08E}.png",
@@ -255,7 +219,6 @@
     "test.md",
     "Математический анализ/Дз мат. ан. 17.09.md",
     "Михайлов.pdf.md",
-    "Небесный замок Лапута.md",
-    "История/fro.md"
+    "Небесный замок Лапута.md"
   ]
 }
