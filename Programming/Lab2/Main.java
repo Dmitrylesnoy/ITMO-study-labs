@@ -2,6 +2,7 @@ import org.ITMO.Pokemon;
 
 public class Main {
     public static void main(String[] args) {
+// Jupyter theme dark
 
         Battle b = new Battle();
         Pokemon p1 = new Pokemon("Чужой", 1);
