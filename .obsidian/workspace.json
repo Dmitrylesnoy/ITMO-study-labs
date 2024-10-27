@@ -6,6 +6,7 @@
       {
         "id": "39af7bade0aa95c8",
         "type": "tabs",
+        "dimension": 34.54157782515991,
         "children": [
           {
             "id": "280a9ca005b796fc",
@@ -34,18 +35,6 @@
             }
           },
           {
-            "id": "78c9a7954666af31",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          },
-          {
             "id": "3ca4e1361eb29d99",
             "type": "leaf",
             "state": {
@@ -58,7 +47,26 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
+      },
+      {
+        "id": "44b24ced777f6a20",
+        "type": "tabs",
+        "dimension": 65.45842217484008,
+        "children": [
+          {
+            "id": "78c9a7954666af31",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -114,7 +122,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -211,10 +220,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "78c9a7954666af31",
+  "active": "21be17cf43018858",
   "lastOpenFiles": [
-    "Математический анализ/Теормин 1 сем.md",
     "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Математический анализ/Теормин 1 сем.md",
+    "{C22490F6-6495-4329-A88D-A80A2D7B800C}.png",
     "Математический анализ/Посмотрите, это хороший материал.pdf",
     "Линейная алгебра/LecB_1_1_Complex.pdf",
     "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
@@ -235,7 +245,6 @@
     "Images/{AC827851-DC29-4EBF-A234-151E405634F2}.png",
     "Images/{EF5AE13F-DAF8-4154-9D8D-6C7AD754581E}.png",
     "Images/{79813040-BDA4-41EC-B783-F2464DCB4EAC}.png",
-    "Images/{2BEED0E2-22B5-4662-A5D8-0885AFDC6D6A}.png",
     "Java/Java.md",
     "Java/Cинтаксис.md",
     "Линейная алгебра/Линейная алгебра.md",
