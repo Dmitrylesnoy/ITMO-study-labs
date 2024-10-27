@@ -122,8 +122,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -139,7 +138,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Линейная алгебра/Тесты линал.md",
+                "file": "Математический анализ/Теормин 1 сем.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +148,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для Тесты линал"
+              "title": "Обратные ссылки для Теормин 1 сем"
             }
           },
           {
@@ -202,12 +201,11 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 329.5,
-    "collapsed": true
+    "width": 353.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -222,10 +220,16 @@
   },
   "active": "21be17cf43018858",
   "lastOpenFiles": [
+    "Images/{FB8B8CF9-3EC6-411F-9894-E70D9A0F707A}.png",
     "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Математический анализ/Теормин 1 сем.md",
-    "{C22490F6-6495-4329-A88D-A80A2D7B800C}.png",
+    "Images/{5797BD87-51F0-4549-9F79-9F2EB6304CA6}.png",
     "Математический анализ/Посмотрите, это хороший материал.pdf",
+    "Images/{E68A9C4A-E5E6-4B80-886E-07FF5DA9B808}.png",
+    "Images/{C7B8EDCE-054E-444D-AA8B-C6B5FD44AB4C}.png",
+    "Images/{D8667935-A177-4FF9-95C8-0CEB9EBEF93C}.png",
+    "Images/{31357C4D-6683-414E-B96F-7DF0C9F29995}.png",
+    "Images/{C22490F6-6495-4329-A88D-A80A2D7B800C}.png",
     "Линейная алгебра/LecB_1_1_Complex.pdf",
     "Линейная алгебра/LecB_1_3_Ring_polynom.pdf",
     "Линейная алгебра/LecB_1_5_SLAE.pdf",
@@ -239,12 +243,6 @@
     "Images/{6F31CE61-844E-49E3-A8B1-3E9DBD415383}.png",
     "Images/{0EFB66A0-FF14-4AAE-9B33-233E9848A08E}.png",
     "Images/{5375CEC1-3F25-4E16-858C-1393E17D70C7} 1.png",
-    "Images/{5375CEC1-3F25-4E16-858C-1393E17D70C7}.png",
-    "Images/{731D4260-BE05-44D6-A106-0E17C13214AF}.png",
-    "Images/{80DA4DDB-DD77-44AD-8220-94BA750E6F86}.png",
-    "Images/{AC827851-DC29-4EBF-A234-151E405634F2}.png",
-    "Images/{EF5AE13F-DAF8-4154-9D8D-6C7AD754581E}.png",
-    "Images/{79813040-BDA4-41EC-B783-F2464DCB4EAC}.png",
     "Java/Java.md",
     "Java/Cинтаксис.md",
     "Линейная алгебра/Линейная алгебра.md",
