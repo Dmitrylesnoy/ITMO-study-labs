@@ -6,7 +6,6 @@
       {
         "id": "39af7bade0aa95c8",
         "type": "tabs",
-        "dimension": 45.5026455026455,
         "children": [
           {
             "id": "280a9ca005b796fc",
@@ -26,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Математический анализ/Теормин 1 сем.md",
+                "file": "Математический анализ/Математический анализ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Теормин 1 сем"
+              "title": "Математический анализ"
             }
           },
           {
@@ -48,25 +47,6 @@
           }
         ],
         "currentTab": 1
-      },
-      {
-        "id": "44b24ced777f6a20",
-        "type": "tabs",
-        "dimension": 54.4973544973545,
-        "children": [
-          {
-            "id": "78c9a7954666af31",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -205,8 +185,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5,
-    "collapsed": true
+    "width": 353.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -221,9 +200,9 @@
   },
   "active": "21be17cf43018858",
   "lastOpenFiles": [
-    "Images/{FB8B8CF9-3EC6-411F-9894-E70D9A0F707A}.png",
-    "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Математический анализ/Теормин 1 сем.md",
+    "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Images/{FB8B8CF9-3EC6-411F-9894-E70D9A0F707A}.png",
     "Images/{5797BD87-51F0-4549-9F79-9F2EB6304CA6}.png",
     "Математический анализ/Посмотрите, это хороший материал.pdf",
     "Images/{E68A9C4A-E5E6-4B80-886E-07FF5DA9B808}.png",
