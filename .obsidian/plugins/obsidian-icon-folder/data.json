@@ -41,11 +41,11 @@
   },
   "OPD": {
     "iconName": "SiArkecosystem",
-    "iconColor": "#2c791f"
+    "iconColor": "#00ffee"
   },
   "Programming": {
     "iconName": "OcCodespaces16",
-    "iconColor": "#0daece"
+    "iconColor": "#04ff00"
   },
   "Informatics": {
     "iconName": "FasInfo",
