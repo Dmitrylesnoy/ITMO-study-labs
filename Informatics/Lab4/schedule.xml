@@ -1,0 +1,57 @@
+<schedule>
+    <wednesday>
+        <lesson>
+            <td>
+                <time>8:20 - 9:50</time>
+                <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            </td>
+            <groups>Inform 1 (P3106, P3107, P3108, P3109, P3110, P3111, P3112, P3113, P3114, P3115, P3116, P3117, P3118, P3119) </groups>
+            <room>1216/0 aud. St. Lomonosova, b9, let. M</room>
+            <subject>Informatica (Lec): Action hall</subject>
+            <format>Place - distance</format>
+        </lesson>
+    </wednesday>
+
+    <saturday>
+        <lesson>
+            <td>
+                <time>13:30 - 15:00</time>
+                <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            </td>
+            <groups>Inform 1.2 (P3107)</groups>
+            <room>1415 aud. Kronverskiy st, b.49, let.A</room>
+            <subject>Informатика (Lab)</subject>
+            <format>Place - distance</format>
+        </lesson>
+        <lesson>
+            <td>
+                <time>13:30 - 15:00</time>
+                <week>1, 3, 5, 7, 9, 11, 13, 15</week>
+            </td>
+            <groups>Inform 1.1 (P3106)</groups>
+            <room>1415 aud. Kronverskiy st, b.49, let.A</room>
+            <subject>Informатика (Lab)</subject>
+            <format>Place - distance</format>
+        </lesson>
+        <lesson>
+            <td>
+                <time>15:20 - 16:50</time>
+                <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            </td>
+            <groups>Inform 1.2 (P3107)</groups>
+            <room>1415 aud. Kronverskiy st, b.49, let.A</room>
+            <subject>Informатика (Lab)</subject>
+            <format>Place - distance</format>
+        </lesson>
+        <lesson>
+            <td>
+                <time>15:20 - 16:50</time>
+                <week>1, 3, 5,  7, 9, 11, 13, 15</week>
+            </td>
+            <groups>Inform 1.1 (P3106)</groups>
+            <room>1415 aud. Kronverskiy st, b.49, let.A</room>
+            <subject>Informатика (Lab)</subject>
+            <format>Place - distance</format>
+        </lesson>
+    </saturday>
+</schedule>
