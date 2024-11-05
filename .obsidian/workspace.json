@@ -8,21 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b744c6bf2308418c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Математический анализ/Теормин 1 сем.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Теормин 1 сем"
-            }
-          },
-          {
-            "id": "49df56e31aca278c",
+            "id": "d369120ffb11224e",
             "type": "leaf",
             "state": {
               "type": "pdf",
@@ -34,29 +20,29 @@
             }
           },
           {
-            "id": "19a60402e195ac89",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Дискретная математика/ДЗ 1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ДЗ 1"
-            }
-          },
-          {
-            "id": "5bd466f476995f14",
+            "id": "61c8af797e5c01bd",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Учебники/Арифметические основы ЭВМ В.И.Поляков.pdf"
+                "file": "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Арифметические основы ЭВМ В.И.Поляков"
+              "title": "LecB_2_4_Sums_and_intersection"
+            }
+          },
+          {
+            "id": "b68fe7d7c136d281",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Математический анализ/Теормин 1 сем.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Теормин 1 сем"
             }
           }
         ],
@@ -199,8 +185,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5,
-    "collapsed": true
+    "width": 353.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,26 +195,30 @@
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
       "command-palette:Открыть палитру команд": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "49df56e31aca278c",
+  "active": "61c8af797e5c01bd",
   "lastOpenFiles": [
-    "Математический анализ/Теормин 1 сем.md",
-    "Линейная алгебра/Теормин линал.md",
+    "Без названия.canvas",
+    "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf",
+    "2024-11-03.md",
     "Линейная алгебра/Линейная алгебра.md",
-    "Математический анализ/Математический анализ.md",
-    "Учебники/Арифметические основы ЭВМ В.И.Поляков.pdf",
-    "Дискретная математика/~WRL1562.tmp",
-    "Дискретная математика/~WRD1526.tmp",
-    "Дискретная математика/~WRL3103.tmp",
-    "Дискретная математика/~WRD3072.tmp",
-    "Дискретная математика/~$скретнаяМатематика_ДЗ1_P3115_Линейский_Аким_Евгеньевич_.docx",
-    "Дискретная математика/~WRL1061.tmp",
-    "Дискретная математика/~WRD0975.tmp",
-    "Дискретная математика/ДискретнаяМатематика_ДЗ1_P3115_Линейский_Аким_Евгеньевич_.docx",
-    "OPD/Lab1/~$Д_ЛР1_Вар_1506_P3115_Линейский_Аким_Евгеньевич.docx",
+    "Линейная алгебра/LecB_2_3_SLAE.pdf",
+    "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf",
+    "Математический анализ/Теормин 1 сем.md",
+    "Математический анализ/Дз мат. ан. 17.09.md",
+    "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Математический анализ/КР 1 Предел (проект)_241017_151829.pdf",
+    "Линейная алгебра/Теормин линал.md",
+    "Учебники/Java 12th Herbert Schildt.pdf",
+    "Математический анализ/Посмотрите, это хороший материал.pdf",
+    "Programming/Lab2/app/build/classes/pokemons",
+    "Programming/Lab2/app/src/pokemons/Cobalion.java",
+    "Programming/Lab2/app/src/pokemons",
     "Дискретная математика/ДЗ 1.md",
+    "Математический анализ/Математический анализ.md",
     "Images/{FB8B8CF9-3EC6-411F-9894-E70D9A0F707A}.png",
     "Images/{5797BD87-51F0-4549-9F79-9F2EB6304CA6}.png",
     "Images/{E68A9C4A-E5E6-4B80-886E-07FF5DA9B808}.png",
@@ -255,11 +244,8 @@
     "Face book/Peoples/Стас Суворов.md",
     "Face book/Дорогой дневник 1.md",
     "Face book/Удобство.md",
-    "Без названия.canvas",
     "README.md",
     "Задачи практических занятий.md",
-    "test.md",
-    "Математический анализ/Дз мат. ан. 17.09.md",
-    "Михайлов.pdf.md"
+    "test.md"
   ]
 }
