@@ -13,22 +13,10 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf"
+                "file": "Литература/Совершенный код Steve McConnel.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          },
-          {
-            "id": "61c8af797e5c01bd",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_2_4_Sums_and_intersection"
+              "title": "Совершенный код Steve McConnel"
             }
           },
           {
@@ -45,8 +33,7 @@
               "title": "Теормин 1 сем"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -185,7 +172,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5
+    "width": 353.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,26 +187,27 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "61c8af797e5c01bd",
+  "active": "d369120ffb11224e",
   "lastOpenFiles": [
+    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Programming/Lab2/app/build/classes/moves/physical/Facade.class",
+    "Informatics/Lab4/~$нотация 4.doc",
+    "Programming/Lab2/app/src/moves/physical/Facade.java",
+    "Programming/Lab2/app/build/classes/moves/status/Confide.class",
+    "Математический анализ/Математический анализ.md",
+    "Литература/Совершенный код Steve McConnel.pdf",
+    "Литература/Java 12th Herbert Schildt.pdf",
+    "Литература/Мат индукция_повыш сложность задачник.pdf",
+    "Литература/Арифметические основы ЭВМ В.И.Поляков.pdf",
+    "Литература/Михайлов.pdf",
+    "Литература/presa polyakov.pdf",
+    "Математический анализ/Теормин 1 сем.md",
     "Без названия.canvas",
-    "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf",
     "2024-11-03.md",
     "Линейная алгебра/Линейная алгебра.md",
-    "Линейная алгебра/LecB_2_3_SLAE.pdf",
-    "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf",
-    "Математический анализ/Теормин 1 сем.md",
     "Математический анализ/Дз мат. ан. 17.09.md",
-    "Учебники/Бойцев А.А. Математический анализ (базовый уровень).pdf",
-    "Математический анализ/КР 1 Предел (проект)_241017_151829.pdf",
     "Линейная алгебра/Теормин линал.md",
-    "Учебники/Java 12th Herbert Schildt.pdf",
-    "Математический анализ/Посмотрите, это хороший материал.pdf",
-    "Programming/Lab2/app/build/classes/pokemons",
-    "Programming/Lab2/app/src/pokemons/Cobalion.java",
-    "Programming/Lab2/app/src/pokemons",
     "Дискретная математика/ДЗ 1.md",
-    "Математический анализ/Математический анализ.md",
     "Images/{FB8B8CF9-3EC6-411F-9894-E70D9A0F707A}.png",
     "Images/{5797BD87-51F0-4549-9F79-9F2EB6304CA6}.png",
     "Images/{E68A9C4A-E5E6-4B80-886E-07FF5DA9B808}.png",

@@ -1,15 +1,22 @@
 import ru.ifmo.se.pokemon.*;
-import pokemons.*;
+import mypokemons.*;
 
 public class Main {
     public static void main(String[] args) {
         Battle b = new Battle();
-        Pokemon p1 = new Pokemon("Чужой", 1);
-        Pokemon p2 = new Pokemon("Хищник", 1);
-        Pokemon p3 = new Cobalion("Перелошадь", 1);
+
+        // + Иерархия всех классов UML
+
+        // Программа должна быть размещена в пакетах по типу org.itmo.lab2 (доменное
+        // имя, название компании, название проекта)
+
+        // перепроверка
+
+        Pokemon p1 = new Cobalion("Голубой конь", 1);
+        Pokemon p2 = new Electrike("Бобик", 1);
+
         b.addAlly(p1);
         b.addFoe(p2);
-        b.addFoe(p3);
         b.go();
     }
 }

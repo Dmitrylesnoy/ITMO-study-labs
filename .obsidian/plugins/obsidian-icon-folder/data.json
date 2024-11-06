@@ -51,7 +51,6 @@
     "iconName": "FasInfo",
     "iconColor": "#0084ff"
   },
-  "Учебники": "TiBooks",
   "Математический анализ": "TiMathMin",
   "Линейная алгебра": "TiBrandMatrix",
   "История": "FasBuildingColumns",
@@ -59,5 +58,6 @@
   "Java": {
     "iconName": "RiJavaLine",
     "iconColor": "#ff9500"
-  }
+  },
+  "Литература": "TiBooks"
 }
