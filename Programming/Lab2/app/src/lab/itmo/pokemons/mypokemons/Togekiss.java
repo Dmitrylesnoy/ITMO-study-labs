@@ -1,8 +1,8 @@
-package mypokemons;
+package lab.itmo.pokemons.mypokemons;
 
 import ru.ifmo.se.pokemon.*;
-import mypokemons.Togetic;
-import moves.special.DazzlingGleam;
+import lab.itmo.pokemons.mypokemons.Togetic;
+import lab.itmo.pokemons.moves.special.DazzlingGleam;
 
 public final class Togekiss extends Togetic {
     private final int HP = 85;

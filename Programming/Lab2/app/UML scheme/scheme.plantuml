@@ -1,0 +1,54 @@
+@startuml
+object Pokemon
+Pokemon : From ru.ifmo.se.pokemon
+
+object Cobalion
+object Electrike
+object Manectric
+object Togepi
+object Togetic
+object Togekiss
+
+Cobalion --|> Pokemon
+Electrike --|> Pokemon
+Manectric --|>Electrike
+Togepi --|> Pokemon
+Togetic --|> Togepi
+Togekiss --|> Togetic
+
+object PhysicalMove
+PhysicalMove : From ru.ifmo.se.pokemon
+
+object Facade
+object PoisonJab
+object XScissors
+
+Facade --|> PhysicalMove
+PoisonJab --|> PhysicalMove
+XScissors --|> PhysicalMove
+
+object SpecialMove
+SpecialMove : From ru.ifmo.se.pokemon
+
+object DazzlingGleam
+object FireBlast
+object MagicalLeaf
+object Overheat
+object ShadowBall
+
+DazzlingGleam --|> SpecialMove
+FireBlast --|> SpecialMove
+MagicalLeaf --|> SpecialMove
+Overheat --|> SpecialMove
+ShadowBall --|> SpecialMove
+
+object StatusMove
+StatusMove : From ru.ifmo.se.pokemon
+
+object CalmMind
+object Confide
+object Rest
+
+CalmMind --|> StatusMove
+Confide --|> StatusMove
+Rest --|> StatusMove

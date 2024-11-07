@@ -1,8 +1,8 @@
-package mypokemons;
+package lab.itmo.pokemons.mypokemons;
 
 import ru.ifmo.se.pokemon.*;
-import moves.special.FireBlast;
-import moves.special.ShadowBall;
+import lab.itmo.pokemons.moves.special.FireBlast;
+import lab.itmo.pokemons.moves.special.ShadowBall;
 
 public class Togepi extends Pokemon {
     private final int HP = 35;

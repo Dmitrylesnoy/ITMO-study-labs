@@ -1,9 +1,9 @@
-package mypokemons;
+package lab.itmo.pokemons.mypokemons;
 
 import ru.ifmo.se.pokemon.*;
-import moves.status.Rest;
-import moves.status.Confide;
-import moves.physical.Facade;
+import lab.itmo.pokemons.moves.status.Rest;
+import lab.itmo.pokemons.moves.status.Confide;
+import lab.itmo.pokemons.moves.physical.Facade;
 
 public class Electrike extends Pokemon {
     private final int HP = 40;

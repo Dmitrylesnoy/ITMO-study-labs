@@ -1,8 +1,8 @@
-package mypokemons;
+package lab.itmo.pokemons.mypokemons;
 
 import ru.ifmo.se.pokemon.*;
-import mypokemons.Electrike;
-import moves.special.Overheat;
+import lab.itmo.pokemons.mypokemons.Electrike;
+import lab.itmo.pokemons.moves.special.Overheat;
 
 public final class Manectric extends Electrike {
     private final int HP = 70;

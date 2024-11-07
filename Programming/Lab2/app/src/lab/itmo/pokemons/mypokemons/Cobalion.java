@@ -1,10 +1,10 @@
-package mypokemons;
+package lab.itmo.pokemons.mypokemons;
 
 import ru.ifmo.se.pokemon.*;
-import moves.status.Rest;
-import moves.status.CalmMind;
-import moves.physical.XScissors;
-import moves.physical.PoisonJab;
+import lab.itmo.pokemons.moves.status.Rest;
+import lab.itmo.pokemons.moves.status.CalmMind;
+import lab.itmo.pokemons.moves.physical.XScissors;
+import lab.itmo.pokemons.moves.physical.PoisonJab;
 
 public final class Cobalion extends Pokemon {
     private final int HP = 91;

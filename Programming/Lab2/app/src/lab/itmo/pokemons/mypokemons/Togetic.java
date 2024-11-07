@@ -1,8 +1,8 @@
-package mypokemons;
+package lab.itmo.pokemons.mypokemons;
 
 import ru.ifmo.se.pokemon.*;
-import mypokemons.Togepi;
-import moves.special.MagicalLeaf;
+import lab.itmo.pokemons.mypokemons.Togepi;
+import lab.itmo.pokemons.moves.special.MagicalLeaf;
 
 public class Togetic extends Togepi {
     private final int HP = 55;
