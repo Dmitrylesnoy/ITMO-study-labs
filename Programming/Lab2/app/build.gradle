@@ -34,10 +34,12 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'lab2.App'
+    mainClass = 'src/Main.java'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+// sourceSets.main.java.srcDirs += ['app/src']

@@ -13,8 +13,9 @@ public class CalmMind extends StatusMove {
     }
 
     protected void applySelfEffects(Pokemon p) {
-        Effect e = new Effect().turns(-1).stat(Stat.SPECIAL_ATTACK, 1).stat(Stat.SPECIAL_DEFENSE, 1);
-        p.addEffect(e);
+        p.setMod(Stat.SPECIAL_ATTACK, 1);
+        p.setMod(Stat.SPECIAL_DEFENSE, 1);
+
     }
 
     protected String describe() {

@@ -16,7 +16,7 @@ public class Electrike extends Pokemon {
     public Electrike(String name, int level) {
         super(name, level);
         setStats(HP, ATTACK, DEFENSE, SPECIAL_ATTACK, SPECIAL_DEFENSE, SPEED);
-        addType(Type.ELECTRIC);
+        setType(Type.ELECTRIC);
         setMove(new Rest(), new Confide(), new Facade());
     }
 }
