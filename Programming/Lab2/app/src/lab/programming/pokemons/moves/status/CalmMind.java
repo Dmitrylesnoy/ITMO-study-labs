@@ -1,12 +1,12 @@
-package lab.itmo.pokemons.moves.status;
+package lab.programming.pokemons.moves.status;
 
 import ru.ifmo.se.pokemon.*;
 
 // Raises the user's Special Attack and Special Defense by one stage.
 
 public class CalmMind extends StatusMove {
-    private static final int POWER = 0;
-    private static final int ACCURACY = 100;
+    private static final double POWER = 0;
+    private static final double ACCURACY = 100;
 
     public CalmMind() {
         super(Type.PSYCHIC, POWER, ACCURACY);

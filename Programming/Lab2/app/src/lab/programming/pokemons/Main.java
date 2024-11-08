@@ -1,7 +1,7 @@
-package lab.itmo.pokemons;
+package lab.programming.pokemons;
 
 import ru.ifmo.se.pokemon.*;
-import lab.itmo.pokemons.mypokemons.*;
+import lab.programming.pokemons.mypokemons.*;
 
 public class Main {
     public static void main(String[] args) {

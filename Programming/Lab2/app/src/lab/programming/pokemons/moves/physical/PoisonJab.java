@@ -1,12 +1,12 @@
-package lab.itmo.pokemons.moves.physical;
+package lab.programming.pokemons.moves.physical;
 
 import ru.ifmo.se.pokemon.*;
 
 // Has a 30% chance to poison the target.
 
 public class PoisonJab extends PhysicalMove {
-    private static final int POWER = 80;
-    private static final int ACCURACY = 100;
+    private static final double POWER = 80;
+    private static final double ACCURACY = 100;
 
     public PoisonJab() {
         super(Type.POISON, POWER, ACCURACY);

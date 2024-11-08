@@ -1,4 +1,4 @@
-package lab.itmo.pokemons.moves.physical;
+package lab.programming.pokemons.moves.physical;
 
 import ru.ifmo.se.pokemon.*;
 
@@ -6,11 +6,11 @@ import ru.ifmo.se.pokemon.*;
 // if the user is burned, poisoned or paralyzed.
 
 public class Facade extends PhysicalMove {
-    private static final int POWER = 70;
-    private static final int ACCURACY = 100;
+    private static final double POWER = 70;
+    private static final double ACCURACY = 100;
 
     public Facade() {
-        super(Type.NORMAL, 70, 100);
+        super(Type.NORMAL, POWER, ACCURACY);
     }
 
     @Override

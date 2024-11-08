@@ -1,12 +1,12 @@
-package lab.itmo.pokemons.moves.special;
+package lab.programming.pokemons.moves.special;
 
 import ru.ifmo.se.pokemon.*;
 
 // Fire Blast deals damage and has a 10% chance of burning the target.
 
 public class FireBlast extends SpecialMove {
-    private static final int POWER = 110;
-    private static final int ACCURACY = 85;
+    private static final double POWER = 110;
+    private static final double ACCURACY = 85;
 
     public FireBlast() {
         super(Type.FIRE, POWER, ACCURACY);

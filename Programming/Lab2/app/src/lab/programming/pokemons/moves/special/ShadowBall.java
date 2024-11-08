@@ -1,4 +1,4 @@
-package lab.itmo.pokemons.moves.special;
+package lab.programming.pokemons.moves.special;
 
 import ru.ifmo.se.pokemon.*;
 
@@ -6,8 +6,8 @@ import ru.ifmo.se.pokemon.*;
 // of lowering the target's Special Defense by one stage.
 
 public class ShadowBall extends SpecialMove {
-    private static final int POWER = 80;
-    private static final int ACCURACY = 100;
+    private static final double POWER = 80;
+    private static final double ACCURACY = 100;
 
     public ShadowBall() {
         super(Type.FIRE, POWER, ACCURACY);

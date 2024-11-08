@@ -1,4 +1,4 @@
-package lab.itmo.pokemons.moves.special;
+package lab.programming.pokemons.moves.special;
 
 import ru.ifmo.se.pokemon.*;
 
@@ -6,8 +6,8 @@ import ru.ifmo.se.pokemon.*;
 //  in double/triple battles.
 
 public class DazzlingGleam extends SpecialMove {
-    private static final int POWER = 80;
-    private static final int ACCURACY = 100;
+    private static final double POWER = 80;
+    private static final double ACCURACY = 100;
     private static final int PRIORITY = 0;
     private static final int HITS = 3;
 

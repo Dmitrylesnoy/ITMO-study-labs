@@ -1,4 +1,4 @@
-package lab.itmo.pokemons.moves.special;
+package lab.programming.pokemons.moves.special;
 
 import ru.ifmo.se.pokemon.*;
 
@@ -6,8 +6,8 @@ import ru.ifmo.se.pokemon.*;
 // by two stages after attacking.
 
 public class Overheat extends SpecialMove {
-    private static final int POWER = 130;
-    private static final int ACCURACY = 90;
+    private static final double POWER = 130;
+    private static final double ACCURACY = 90;
 
     public Overheat() {
         super(Type.FIRE, POWER, ACCURACY);
