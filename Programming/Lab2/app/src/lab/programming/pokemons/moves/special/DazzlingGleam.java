@@ -16,6 +16,6 @@ public class DazzlingGleam extends SpecialMove {
     }
 
     protected String describe() {
-        return "Использует Dazzling Gleamf";
+        return "Использует Dazzling Gleam";
     }
 }
