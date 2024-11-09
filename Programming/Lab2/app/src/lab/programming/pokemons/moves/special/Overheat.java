@@ -13,6 +13,7 @@ public class Overheat extends SpecialMove {
         super(Type.FIRE, POWER, ACCURACY);
     }
 
+    @Override
     protected void applySelfEffects(Pokemon p) {
         p.setMod(Stat.SPECIAL_ATTACK, -2);
     }

@@ -1,13 +1,43 @@
 @startuml
+
 object Pokemon
 Pokemon : From ru.ifmo.se.pokemon
 
-object Cobalion
-object Electrike
-object Manectric
-object Togepi
-object Togetic
-object Togekiss
+class Cobalion {
+    name: String
+    level: int
+    +Cobalion()
+}
+
+class Electrike {
+    name: String
+    level: int
+    +Electrike()
+}
+
+class Manectric {
+    name: String
+    level: int
+    +Manectric()
+}
+
+class Togepi {
+    name: String
+    level: int
+    +Togepi()
+}
+
+class Togetic {
+    name: String
+    level: int
+    +Togetic()
+}
+
+class Togekiss {
+    name: String
+    level: int
+    +Togekiss()
+}
 
 Cobalion --|> Pokemon
 Electrike --|> Pokemon
@@ -16,25 +46,111 @@ Togepi --|> Pokemon
 Togetic --|> Togepi
 Togekiss --|> Togetic
 
-object PhysicalMove
-PhysicalMove : From ru.ifmo.se.pokemon
+class Rest {
+    type: Type
+    pow: double
+    acc: double
+    +Rest()
+    #applySelfEffects(): void
+    #describe(): String
+}
 
-object Facade
-object PoisonJab
-object XScissors
+class XScissors {
+    type: Type
+    pow: double
+    acc: double
+    +XScissors()
+    #describe(): String
+}
 
-Facade --|> PhysicalMove
-PoisonJab --|> PhysicalMove
-XScissors --|> PhysicalMove
+class PoisonJab {
+    type: Type
+    pow: double
+    acc: double
+    +PoisonJab()
+    #applyOppEffects(): void
+    #describe(): String
+}
+
+class CalmMind {
+    type: Type
+    pow: double
+    acc: double
+    +CalmMind()
+    #applySelfEffects(): void
+    #describe(): String
+}
+
+class Confide {
+    type: Type
+    pow: double
+    acc: double
+    +Confide()
+    #applyOppEffects(): void
+    #describe(): String
+}
+
+class Facade {
+    type: Type
+    pow: double
+    acc: double
+    +Facade()
+    #applyOppDamage(): void
+    #describe(): String
+}
+
+class Overheat {
+    type: Type
+    pow: double
+    acc: double
+    +Overheat()
+    #applySelfEffects(): void
+    #describe(): String
+}
+
+class FireBlast {
+    type: Type
+    pow: double
+    acc: double
+    +FireBlast()
+    #applyOppEffects(): void
+    #describe(): String
+}
+
+class ShadowBall {
+    type: Type
+    pow: double
+    acc: double
+    +ShadowBall()
+    #applyOppEffects(): void
+    #describe(): String
+}
+
+class MagicalLeaf {
+    type: Type
+    pow: double
+    acc: double
+    +MagicalLeaf()
+    #applyOppEffects(): void
+    #describe(): String
+}
+
+class DazzlingGleam {
+    type: Type
+    pow: double
+    acc: double
+    +DazzlingGleam()
+    #describe(): String
+}
+
 
 object SpecialMove
 SpecialMove : From ru.ifmo.se.pokemon
+object StatusMove
+StatusMove : From ru.ifmo.se.pokemon
+object PhysicalMove
+PhysicalMove : From ru.ifmo.se.pokemon
 
-object DazzlingGleam
-object FireBlast
-object MagicalLeaf
-object Overheat
-object ShadowBall
 
 DazzlingGleam --|> SpecialMove
 FireBlast --|> SpecialMove
@@ -42,13 +158,36 @@ MagicalLeaf --|> SpecialMove
 Overheat --|> SpecialMove
 ShadowBall --|> SpecialMove
 
-object StatusMove
-StatusMove : From ru.ifmo.se.pokemon
-
-object CalmMind
-object Confide
-object Rest
+Facade --|> PhysicalMove
+PoisonJab --|> PhysicalMove
+XScissors --|> PhysicalMove
 
 CalmMind --|> StatusMove
 Confide --|> StatusMove
 Rest --|> StatusMove
+
+Cobalion o-- Rest
+Cobalion o-- XScissors
+Cobalion o-- PoisonJab
+Cobalion o-- CalmMind
+
+Electrike o-- Rest
+Electrike o-- Confide
+Electrike o-- Facade
+
+Manectric o-- Rest
+Manectric o-- Confide
+Manectric o-- Facade
+Manectric o-- Overheat
+
+Togepi o-- FireBlast
+Togepi o-- ShadowBall
+
+Togetic o-- FireBlast
+Togetic o-- ShadowBall
+Togetic o-- MagicalLeaf
+
+Togekiss o-- FireBlast
+Togekiss o--  ShadowBall
+Togekiss o-- MagicalLeaf
+Togekiss o-- DazzlingGleam

@@ -12,6 +12,7 @@ public class CalmMind extends StatusMove {
         super(Type.PSYCHIC, POWER, ACCURACY);
     }
 
+    @Override
     protected void applySelfEffects(Pokemon p) {
         p.setMod(Stat.SPECIAL_ATTACK, 1);
         p.setMod(Stat.SPECIAL_DEFENSE, 1);
