@@ -8,29 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d369120ffb11224e",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Java 12th Herbert Schildt.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Java 12th Herbert Schildt"
-            }
-          },
-          {
             "id": "b68fe7d7c136d281",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Математический анализ/Теормин 1 сем.md",
+                "file": "Математический анализ/Коллоквиум 1 Матан..md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Теормин 1 сем"
+              "title": "Коллоквиум 1 Матан."
+            }
+          }
+        ]
+      },
+      {
+        "id": "159939b24bc584ea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d1fe74812334dc1d",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
             }
           }
         ]
@@ -89,7 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 359.5,
+    "width": 234.5,
     "collapsed": true
   },
   "right": {
@@ -173,8 +179,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5,
-    "collapsed": true
+    "width": 353.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -188,8 +193,16 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "d369120ffb11224e",
+  "active": "d1fe74812334dc1d",
   "lastOpenFiles": [
+    "Математический анализ/Коллоквиум 1 Матан..md",
+    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "{ADA5D047-80C2-4903-B3AF-23AB4CF465E1}.png",
+    "{EA8BC3BC-B8B8-4924-B3A7-A42C519882F1}.png",
+    "{95FDD001-ECDB-4FC0-BBE0-5C0B0E7C04E3}.png",
+    "Images/{6350F043-0ECC-4BD7-9306-9F41889DF235}.png",
+    "Математический анализ/Теормин 1 сем.md",
+    "Литература/Java 12th Herbert Schildt.pdf",
     "Programming/Lab2/~WRL2724.tmp",
     "Programming/Lab2/~WRD2705.tmp",
     "Programming/Lab2/~WRL1280.tmp",
@@ -199,11 +212,7 @@
     "Programming/Lab2/app/out/UML scheme",
     "Programming/Lab2/app/out",
     "Programming/Lab2/app/Отчет/mso57CF.tmp",
-    "Programming/Lab2/~WRL0005.tmp",
-    "Programming/Lab2/~WRD0004.tmp",
-    "Programming/Lab2/app/build/classes/moves/special/Overheat.class",
     "Математический анализ/Математический анализ.md",
-    "Математический анализ/Теормин 1 сем.md",
     "Без названия.canvas",
     "2024-11-03.md",
     "Линейная алгебра/Линейная алгебра.md",
@@ -215,11 +224,7 @@
     "Images/{E68A9C4A-E5E6-4B80-886E-07FF5DA9B808}.png",
     "Images/{C7B8EDCE-054E-444D-AA8B-C6B5FD44AB4C}.png",
     "Images/{D8667935-A177-4FF9-95C8-0CEB9EBEF93C}.png",
-    "Images/{31357C4D-6683-414E-B96F-7DF0C9F29995}.png",
-    "Images/{C22490F6-6495-4329-A88D-A80A2D7B800C}.png",
     "Цтты.md",
-    "Images/{6F31CE61-844E-49E3-A8B1-3E9DBD415383}.png",
-    "Images/{0EFB66A0-FF14-4AAE-9B33-233E9848A08E}.png",
     "Java/Java.md",
     "Java/Cинтаксис.md",
     "Базовый синтаксис.md",
@@ -235,7 +240,6 @@
     "Face book/Дорогой дневник 1.md",
     "Face book/Удобство.md",
     "README.md",
-    "Задачи практических занятий.md",
-    "test.md"
+    "Задачи практических занятий.md"
   ]
 }
