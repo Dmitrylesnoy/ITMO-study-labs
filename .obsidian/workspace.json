@@ -11,24 +11,22 @@
             "id": "b68fe7d7c136d281",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Математический анализ/Коллоквиум 1 Матан..md",
-                "mode": "source",
-                "source": false
+                "file": "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png"
               },
-              "icon": "lucide-file",
-              "title": "Коллоквиум 1 Матан."
+              "icon": "lucide-image",
+              "title": "{9D10DE04-D666-4537-81E0-423A651B3B7A}"
             }
           }
         ]
       },
       {
-        "id": "159939b24bc584ea",
+        "id": "3b4d9239aa59514c",
         "type": "tabs",
         "children": [
           {
-            "id": "d1fe74812334dc1d",
+            "id": "42a31e6801c1701d",
             "type": "leaf",
             "state": {
               "type": "pdf",
@@ -95,8 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -193,13 +190,18 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "d1fe74812334dc1d",
+  "active": "c60235da6ec88869",
   "lastOpenFiles": [
     "Математический анализ/Коллоквиум 1 Матан..md",
     "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
-    "{ADA5D047-80C2-4903-B3AF-23AB4CF465E1}.png",
-    "{EA8BC3BC-B8B8-4924-B3A7-A42C519882F1}.png",
-    "{95FDD001-ECDB-4FC0-BBE0-5C0B0E7C04E3}.png",
+    "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
+    "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png",
+    "Images/{B73F3AF8-0F7A-4AF7-A9DC-48FCDAEA72CA}.png",
+    "Images/{CCA65E0F-DB5F-47C8-A3DE-15EBE75741BB}.png",
+    "Images/{A145F939-E286-4F09-B801-B83EDF5082EB}.png",
+    "Images/{ADA5D047-80C2-4903-B3AF-23AB4CF465E1}.png",
+    "Images/{EA8BC3BC-B8B8-4924-B3A7-A42C519882F1}.png",
+    "Images/{95FDD001-ECDB-4FC0-BBE0-5C0B0E7C04E3}.png",
     "Images/{6350F043-0ECC-4BD7-9306-9F41889DF235}.png",
     "Математический анализ/Теормин 1 сем.md",
     "Литература/Java 12th Herbert Schildt.pdf",
@@ -219,11 +221,6 @@
     "Математический анализ/Дз мат. ан. 17.09.md",
     "Линейная алгебра/Теормин линал.md",
     "Дискретная математика/ДЗ 1.md",
-    "Images/{FB8B8CF9-3EC6-411F-9894-E70D9A0F707A}.png",
-    "Images/{5797BD87-51F0-4549-9F79-9F2EB6304CA6}.png",
-    "Images/{E68A9C4A-E5E6-4B80-886E-07FF5DA9B808}.png",
-    "Images/{C7B8EDCE-054E-444D-AA8B-C6B5FD44AB4C}.png",
-    "Images/{D8667935-A177-4FF9-95C8-0CEB9EBEF93C}.png",
     "Цтты.md",
     "Java/Java.md",
     "Java/Cинтаксис.md",
