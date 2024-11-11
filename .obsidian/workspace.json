@@ -8,25 +8,33 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b68fe7d7c136d281",
+            "id": "42a31e6801c1701d",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png"
+                "file": "Математический анализ/Коллоквиум 1 Матан..md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "{9D10DE04-D666-4537-81E0-423A651B3B7A}"
+              "icon": "lucide-file",
+              "title": "Коллоквиум 1 Матан."
             }
-          }
-        ]
-      },
-      {
-        "id": "3b4d9239aa59514c",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "42a31e6801c1701d",
+            "id": "bf5f2552d6578912",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
+            }
+          },
+          {
+            "id": "b9a637861b25f6a3",
             "type": "leaf",
             "state": {
               "type": "pdf",
@@ -93,7 +101,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 234.5,
+    "collapsed": true
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -190,12 +199,12 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "c60235da6ec88869",
+  "active": "d4af0b377a74f811",
   "lastOpenFiles": [
-    "Математический анализ/Коллоквиум 1 Матан..md",
     "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
-    "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
+    "Математический анализ/Коллоквиум 1 Матан..md",
     "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png",
+    "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
     "Images/{B73F3AF8-0F7A-4AF7-A9DC-48FCDAEA72CA}.png",
     "Images/{CCA65E0F-DB5F-47C8-A3DE-15EBE75741BB}.png",
     "Images/{A145F939-E286-4F09-B801-B83EDF5082EB}.png",
