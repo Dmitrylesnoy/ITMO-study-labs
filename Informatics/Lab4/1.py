@@ -1,3 +1,5 @@
+import time
+
 xml_str = open("schedule.xml").read().replace("\n", "")
 
 
@@ -61,16 +63,26 @@ def convertingXML2JSON(contain, tab_count=0):
     if not flag_depth:  # if object contains some more description
         conv, one_head = convertingXML2JSON(descrip, tab_count + 1)
 
-        if not one_head:    # if object has more than 1 charachteristics
-            obj_c = str("\n" + tab_count * "    " + '"' + obj + '": {' + conv[:-1] + "\n" + tab_count * "    " + "}")
-        else:               # if object has 1 characteristic
+        if not one_head:  # if object has more than 1 charachteristics
+            obj_c = str(
+                "\n"
+                + tab_count * "    "
+                + '"'
+                + obj
+                + '": {'
+                + conv[:-1]
+                + "\n"
+                + tab_count * "    "
+                + "}"
+            )
+        else:  # if object has 1 characteristic
             obj_c = str("\n" + tab_count * "    " + '"' + obj + '": ' + conv)
 
         other = contain[i2 + 2 + len(obje) :]
 
         # if text contain more than one object in one ierachiah level
         otherc, one_head = convertingXML2JSON(other, tab_count)
-        obj_c += ','+otherc
+        obj_c += "," + otherc
 
     else:  # if entered text is a final description text of object
         if not chechSpaceLine(descrip):
@@ -81,5 +93,8 @@ def convertingXML2JSON(contain, tab_count=0):
     return obj_c, flag_depth
 
 
+timer = time.time()
 with open("schedule.json", "w") as f:
-    f.write('{'+convertingXML2JSON(xml_str)[0][:-1]+'\n}')
+    f.write("{" + convertingXML2JSON(xml_str)[0][:-1] + "\n}")
+    timer_ = time.time()
+    print((timer_ - timer) * 1000)
