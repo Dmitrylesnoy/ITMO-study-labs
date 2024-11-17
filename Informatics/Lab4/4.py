@@ -41,4 +41,4 @@ timer = time.time()
 with open("schedule.json", "w") as file:
     json.dump(convertingXML2JSON(xml_str), file, indent=4)
     timer_ = time.time()
-    print((timer_ - timer) * 1000)
+    print((timer_ - timer) * 100)

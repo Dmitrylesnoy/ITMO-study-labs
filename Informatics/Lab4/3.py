@@ -41,6 +41,7 @@ def convertingXML2JSON(xml):
 
 timer = time.time()
 with open("schedule.json", "w", encoding="utf-8") as f:
-    json.dump(convertingXML2JSON(xml_str), f, ensure_ascii=False, indent=4)
+    # json.dump(convertingXML2JSON(xml_str), f, ensure_ascii=False, indent=4)
+    f.write(convertingXML2JSON(xml_str))
     timer_ = time.time()
     print((timer_ - timer) * 1000)
