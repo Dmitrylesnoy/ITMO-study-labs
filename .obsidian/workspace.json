@@ -13,25 +13,26 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Ekkels Filosofiya-Thining of Java.pdf"
+                "file": "Литература/Паттерны Банды четырех.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Ekkels Filosofiya-Thining of Java"
+              "title": "Паттерны Банды четырех"
             }
           },
           {
-            "id": "2235cc6ec59bd582",
+            "id": "eb3460d47e88c872",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "pdf",
               "state": {
-                "currentVersion": "1.7.7"
+                "file": "Литература/Java 12th Herbert Schildt.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.7"
+              "icon": "lucide-file-text",
+              "title": "Java 12th Herbert Schildt"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -185,21 +186,23 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "cd9188c47e9f4cdb",
+  "active": "eb3460d47e88c872",
   "lastOpenFiles": [
+    "Programming/Lab3/out/scheme/Alex/Alex.png",
+    "Programming/Lab3/out/scheme/Alex/Alex.svg",
+    "Programming/Lab3/out/scheme/Alex",
+    "Programming/Lab3/out/scheme",
+    "Programming/Lab3/out",
+    "Литература/Паттерны Банды четырех.pdf",
+    "Литература/Ekkels Filosofiya-Thining of Java.pdf",
     "Programming/Lab3/scheme/Scheme.dio",
     "Programming/Lab3/scheme/Scheme.png",
     "Programming/Lab3/scheme/Scheme.svg",
     "Литература/Java 12th Herbert Schildt.pdf",
-    "Литература/Ekkels Filosofiya-Thining of Java.pdf",
     "Литература/Joshua Bloch_- Effective Java 2nd Edition.pdf",
     "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Математический анализ/Коллоквиум 1 Матан..md",
     "Informatics/Lab5/B6B13110",
-    "Informatics/Lab5/~$Книга1.xlsx",
-    "Informatics/Lab5/Книга1.xlsx",
-    "Informatics/Lab5/C1BAD010",
-    "OPD/Lab1/~$Д_ЛР1_Вар_1506_P3115_Линейский_Аким_Евгеньевич.docx",
     "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png",
     "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
     "Images/{B73F3AF8-0F7A-4AF7-A9DC-48FCDAEA72CA}.png",
@@ -207,9 +210,7 @@
     "Images/{A145F939-E286-4F09-B801-B83EDF5082EB}.png",
     "Images/{ADA5D047-80C2-4903-B3AF-23AB4CF465E1}.png",
     "Images/{EA8BC3BC-B8B8-4924-B3A7-A42C519882F1}.png",
-    "Images/{95FDD001-ECDB-4FC0-BBE0-5C0B0E7C04E3}.png",
     "Математический анализ/Теормин 1 сем.md",
-    "Programming/Lab2/~WRL2724.tmp",
     "Математический анализ/Математический анализ.md",
     "Без названия.canvas",
     "2024-11-03.md",

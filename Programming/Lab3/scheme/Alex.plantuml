@@ -1,0 +1,208 @@
+@startuml
+skinparam Linetype ortho
+
+object Pokemon
+Pokemon : From ru.ifmo.se.pokemon
+
+package pokemons {
+    class Latios {
+        name: String
+        level: int
+        +Latios()
+    }
+
+    class Tirtouga {
+        name: String
+        level: int
+        +Tirtouga()
+    }
+
+    class Carracosta {
+        name: String
+        level: int
+        +Carracosta()
+    }
+
+    class Budew {
+        name: String
+        level: int
+        +Budew()
+    }
+
+    class Roselia {
+        name: String
+        level: int
+        +Roselia()
+    }
+
+    class Roserade {
+    name: String
+    level: int
+    +Roserade()
+	}
+}
+
+Latios --|> Pokemon
+Tirtouga --|> Pokemon
+Carracosta --|>Tirtouga
+Budew --|> Pokemon
+Roselia --|> Budew
+Roserade --|> Roselia
+
+package moves{
+        class DragonPulse{
+            type: Type
+            pow: double
+            acc: double
+            +DragonPulse()
+            #describe(): String
+        }
+        class DracoMeteor {
+            type: Type
+            pow: double
+            acc: double
+            +DracoMeteor()
+            #applySelfEffects(): void
+            #describe(): String
+        }
+        class Bulldoze {
+            type: Type
+            pow: double
+            acc: double
+            +Bulldoze()
+            #applyOppEffects(): void
+            #describe(): String
+        }
+        class CalmMind {
+            type: Type
+            pow: double
+            acc: double
+            +CalmMind()
+            #applySelfEffects(): void
+            #describe(): String
+        }
+        class AquaJet {
+            type: Type
+            pow: double
+            acc: double
+            +AquaJet()
+            #describe(): String
+        }
+        class RockTomb {
+            type: Type
+            pow: double
+            acc: double
+            +RockTomb()
+            #applyOppEffects(): void
+            #describe(): String
+        }
+        class RockSlide {
+            type: Type
+            pow: double
+            acc: double
+            +RockSlide()
+            #applyOppEffects(): void
+            #describe(): String
+        }
+        class FocusBlast {
+            type: Type
+            pow: double
+            acc: double
+            +FocusBlast()
+            #applyOppEffects(): void
+            #describe(): String
+        }
+        class FocusBlast {
+            type: Type
+            pow: double
+            acc: double
+            +FocusBlast()
+            #applyOppEffects(): void
+            #describe(): String
+        }
+
+        class MegaDrain {
+            type: Type
+            pow: double
+            acc: double
+            +MegaDrain()
+            #applySelfDamage(): void
+            #describe(): String
+        }
+        class ShadowBall {
+            type: Type
+            pow: double
+            acc: double
+            +ShadowBall()
+            #applyOppEffects(): void
+            #describe(): String
+        }
+        class LeafStorm {
+            type: Type
+            pow: double
+            acc: double
+            +LeafStorm()
+            #applySelfEffects(): void
+            #describe(): String
+        }
+        class EnergyBall {
+            type: Type
+            pow: double
+            acc: double
+            +EnergyBall()
+            #applyOppEffects(): void
+            #describe(): String
+        }
+
+
+}
+
+
+object SpecialMove
+SpecialMove : From ru.ifmo.se.pokemon
+object StatusMove
+StatusMove : From ru.ifmo.se.pokemon
+object PhysicalMove
+PhysicalMove : From ru.ifmo.se.pokemon
+
+
+DragonPulse --|> SpecialMove
+DracoMeteor --|> SpecialMove
+Bulldoze --|> PhysicalMove
+CalmMind --|> StatusMove
+
+AquaJet --|> PhysicalMove
+RockTomb --|> PhysicalMove
+RockSlide --|> PhysicalMove
+FocusBlast --|> StatusMove
+
+MegaDrain --|> SpecialMove
+ShadowBall --|> SpecialMove
+LeafStorm --|> SpecialMove
+EnergyBall --|> SpecialMove
+
+Latios o-- DragonPulse
+Latios o-- DracoMeteor
+Latios o-- Bulldoze
+Latios o-- CalmMind
+
+Tirtouga o-- AquaJet
+Tirtouga o-- RockTomb
+Tirtouga o-- RockSlide
+
+Carracosta o-- AquaJet
+Carracosta o-- RockTomb
+Carracosta o-- RockSlide
+Carracosta o-- FocusBlast
+
+Budew o-- MegaDrain
+Budew o-- ShadowBall
+
+Roselia o-- MegaDrain
+Roselia o-- ShadowBall
+Roselia o-- LeafStorm
+
+Roserade o-- MegaDrain
+Roserade o-- ShadowBall
+Roserade o-- LeafStorm
+Roserade o-- EnergyBall
