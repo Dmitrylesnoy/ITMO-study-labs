@@ -4,81 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "39af7bade0aa95c8",
+        "id": "1d26407941921db7",
         "type": "tabs",
         "children": [
           {
-            "id": "42a31e6801c1701d",
+            "id": "cd9188c47e9f4cdb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Математический анализ/Коллоквиум 1 Матан..md",
-                "mode": "source",
-                "source": false
+                "file": "Литература/Ekkels Filosofiya-Thining of Java.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Ekkels Filosofiya-Thining of Java"
+            }
+          },
+          {
+            "id": "2235cc6ec59bd582",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.7"
               },
               "icon": "lucide-file",
-              "title": "Коллоквиум 1 Матан."
-            }
-          },
-          {
-            "id": "c9a402f3eec3b5b6",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          },
-          {
-            "id": "398afba0839da823",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          },
-          {
-            "id": "6a45d83168c2ed3a",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          },
-          {
-            "id": "bf5f2552d6578912",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          },
-          {
-            "id": "b9a637861b25f6a3",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
+              "title": "Release Notes 1.7.7"
             }
           }
         ]
@@ -137,8 +87,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -236,10 +185,21 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "42a31e6801c1701d",
+  "active": "cd9188c47e9f4cdb",
   "lastOpenFiles": [
+    "Programming/Lab3/scheme/Scheme.dio",
+    "Programming/Lab3/scheme/Scheme.png",
+    "Programming/Lab3/scheme/Scheme.svg",
+    "Литература/Java 12th Herbert Schildt.pdf",
+    "Литература/Ekkels Filosofiya-Thining of Java.pdf",
+    "Литература/Joshua Bloch_- Effective Java 2nd Edition.pdf",
     "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Математический анализ/Коллоквиум 1 Матан..md",
+    "Informatics/Lab5/B6B13110",
+    "Informatics/Lab5/~$Книга1.xlsx",
+    "Informatics/Lab5/Книга1.xlsx",
+    "Informatics/Lab5/C1BAD010",
+    "OPD/Lab1/~$Д_ЛР1_Вар_1506_P3115_Линейский_Аким_Евгеньевич.docx",
     "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png",
     "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
     "Images/{B73F3AF8-0F7A-4AF7-A9DC-48FCDAEA72CA}.png",
@@ -248,18 +208,8 @@
     "Images/{ADA5D047-80C2-4903-B3AF-23AB4CF465E1}.png",
     "Images/{EA8BC3BC-B8B8-4924-B3A7-A42C519882F1}.png",
     "Images/{95FDD001-ECDB-4FC0-BBE0-5C0B0E7C04E3}.png",
-    "Images/{6350F043-0ECC-4BD7-9306-9F41889DF235}.png",
     "Математический анализ/Теормин 1 сем.md",
-    "Литература/Java 12th Herbert Schildt.pdf",
     "Programming/Lab2/~WRL2724.tmp",
-    "Programming/Lab2/~WRD2705.tmp",
-    "Programming/Lab2/~WRL1280.tmp",
-    "Programming/Lab2/~WRD1252.tmp",
-    "Programming/Lab2/app/out/UML scheme/scheme/scheme.png",
-    "Programming/Lab2/app/out/UML scheme/scheme",
-    "Programming/Lab2/app/out/UML scheme",
-    "Programming/Lab2/app/out",
-    "Programming/Lab2/app/Отчет/mso57CF.tmp",
     "Математический анализ/Математический анализ.md",
     "Без названия.canvas",
     "2024-11-03.md",
