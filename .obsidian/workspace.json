@@ -4,35 +4,109 @@
     "type": "split",
     "children": [
       {
-        "id": "1d26407941921db7",
+        "id": "a089b01aa8a47d58",
         "type": "tabs",
         "children": [
           {
-            "id": "cd9188c47e9f4cdb",
+            "id": "8af34cebeeb8cb2e",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Литература/Паттерны Банды четырех.pdf"
+                "file": "Линейная алгебра/Линейная алгебра.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "Паттерны Банды четырех"
+              "icon": "lucide-file",
+              "title": "Линейная алгебра"
             }
           },
           {
-            "id": "eb3460d47e88c872",
+            "id": "1d8f7e6cd02d4272",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Java 12th Herbert Schildt.pdf"
+                "file": "Линейная алгебра/TM-2_2C_full.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Java 12th Herbert Schildt"
+              "title": "TM-2_2C_full"
+            }
+          },
+          {
+            "id": "f85f883adcc054f0",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/TM_Linal_1_2_Tanya.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "TM_Linal_1_2_Tanya"
+            }
+          },
+          {
+            "id": "f4875d05f1221e7d",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_2_1_Vector_space.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_2_1_Vector_space"
+            }
+          },
+          {
+            "id": "9f795f4eabcf32cd",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_2_2_Subspaces_manifolds"
+            }
+          },
+          {
+            "id": "f149d0814c3cf0be",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_2_3_SLAE.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_2_3_SLAE"
+            }
+          },
+          {
+            "id": "2ff2333f5e4ba491",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_2_4_Sums_and_intersection"
+            }
+          },
+          {
+            "id": "249e021519a1f25a",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_2_5_Basis_transform.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_2_5_Basis_transform"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -88,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 234.5,
+    "collapsed": true
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -171,8 +246,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5,
-    "collapsed": true
+    "width": 353.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -186,37 +260,37 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "eb3460d47e88c872",
+  "active": "d4af0b377a74f811",
   "lastOpenFiles": [
+    "Линейная алгебра/TM_Linal_1_2_Tanya.pdf",
+    "Линейная алгебра/TM-2_2C_full.pdf",
+    "Линейная алгебра/LecB_2_5_Basis_transform.pdf",
+    "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf",
+    "Линейная алгебра/LecB_2_3_SLAE.pdf",
+    "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf",
+    "Линейная алгебра/LecB_2_1_Vector_space.pdf",
+    "Линейная алгебра/Линейная алгебра.md",
+    "Линейная алгебра/Теормин линал раздел 1.md",
+    "Линейная алгебра/TM-1_2C_full.pdf",
+    "Линейная алгебра/DEMO КР-1 2С.pdf",
+    "Линейная алгебра/DEMO КР-1 1С.pdf",
+    "Линейная алгебра/Новая папка",
     "Programming/Lab3/out/scheme/Alex/Alex.png",
     "Programming/Lab3/out/scheme/Alex/Alex.svg",
-    "Programming/Lab3/out/scheme/Alex",
-    "Programming/Lab3/out/scheme",
-    "Programming/Lab3/out",
-    "Литература/Паттерны Банды четырех.pdf",
-    "Литература/Ekkels Filosofiya-Thining of Java.pdf",
-    "Programming/Lab3/scheme/Scheme.dio",
     "Programming/Lab3/scheme/Scheme.png",
     "Programming/Lab3/scheme/Scheme.svg",
-    "Литература/Java 12th Herbert Schildt.pdf",
-    "Литература/Joshua Bloch_- Effective Java 2nd Edition.pdf",
-    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Математический анализ/Коллоквиум 1 Матан..md",
-    "Informatics/Lab5/B6B13110",
     "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png",
     "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
     "Images/{B73F3AF8-0F7A-4AF7-A9DC-48FCDAEA72CA}.png",
     "Images/{CCA65E0F-DB5F-47C8-A3DE-15EBE75741BB}.png",
     "Images/{A145F939-E286-4F09-B801-B83EDF5082EB}.png",
     "Images/{ADA5D047-80C2-4903-B3AF-23AB4CF465E1}.png",
-    "Images/{EA8BC3BC-B8B8-4924-B3A7-A42C519882F1}.png",
     "Математический анализ/Теормин 1 сем.md",
     "Математический анализ/Математический анализ.md",
     "Без названия.canvas",
     "2024-11-03.md",
-    "Линейная алгебра/Линейная алгебра.md",
     "Математический анализ/Дз мат. ан. 17.09.md",
-    "Линейная алгебра/Теормин линал.md",
     "Дискретная математика/ДЗ 1.md",
     "Цтты.md",
     "Java/Java.md",
