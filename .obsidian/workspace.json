@@ -8,6 +8,30 @@
         "type": "tabs",
         "children": [
           {
+            "id": "9f795f4eabcf32cd",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/TM_Linal_1_2_Tanya.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "TM_Linal_1_2_Tanya"
+            }
+          },
+          {
+            "id": "ffed8d8a4e278215",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/TM-2_2C_full.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "TM-2_2C_full"
+            }
+          },
+          {
             "id": "8af34cebeeb8cb2e",
             "type": "leaf",
             "state": {
@@ -34,18 +58,6 @@
             }
           },
           {
-            "id": "f85f883adcc054f0",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/TM_Linal_1_2_Tanya.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "TM_Linal_1_2_Tanya"
-            }
-          },
-          {
             "id": "f4875d05f1221e7d",
             "type": "leaf",
             "state": {
@@ -58,27 +70,15 @@
             }
           },
           {
-            "id": "9f795f4eabcf32cd",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_2_2_Subspaces_manifolds"
-            }
-          },
-          {
             "id": "f149d0814c3cf0be",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Линейная алгебра/LecB_2_3_SLAE.pdf"
+                "file": "Литература/Java 12th Herbert Schildt.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "LecB_2_3_SLAE"
+              "title": "Java 12th Herbert Schildt"
             }
           },
           {
@@ -106,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -246,7 +246,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5
+    "width": 353.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -260,21 +261,21 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "d4af0b377a74f811",
+  "active": "f149d0814c3cf0be",
   "lastOpenFiles": [
-    "Линейная алгебра/TM_Linal_1_2_Tanya.pdf",
-    "Линейная алгебра/TM-2_2C_full.pdf",
-    "Линейная алгебра/LecB_2_5_Basis_transform.pdf",
-    "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf",
-    "Линейная алгебра/LecB_2_3_SLAE.pdf",
-    "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf",
-    "Линейная алгебра/LecB_2_1_Vector_space.pdf",
+    "Programming/Lab3/bin/lab/programming/textCreator/words/Speed.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/words/SentenceMember.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/words/Predicate.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/words/MultipleMember.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/sentences/Sentence.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence$SentenceBuider.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/App.class",
+    "Programming/Lab3/src/lab/programming/textCreator/words/MultipleMember.java",
+    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence$Sentence.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence$sEN.class",
     "Линейная алгебра/Линейная алгебра.md",
     "Линейная алгебра/Теормин линал раздел 1.md",
-    "Линейная алгебра/TM-1_2C_full.pdf",
-    "Линейная алгебра/DEMO КР-1 2С.pdf",
-    "Линейная алгебра/DEMO КР-1 1С.pdf",
-    "Линейная алгебра/Новая папка",
     "Programming/Lab3/out/scheme/Alex/Alex.png",
     "Programming/Lab3/out/scheme/Alex/Alex.svg",
     "Programming/Lab3/scheme/Scheme.png",
