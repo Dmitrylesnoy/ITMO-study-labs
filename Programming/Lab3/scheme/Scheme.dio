@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="77RbhD9AB3qgGdtPII2Z" name="Страница 1">
-        <mxGraphModel dx="1503" dy="1298" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" background="#1A1A1A" math="0" shadow="0">
+        <mxGraphModel dx="744" dy="601" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" background="#1A1A1A" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -201,7 +201,7 @@
                 <mxCell id="64" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="62" vertex="1">
                     <mxGeometry y="70" width="265" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="65" value="+ SentenceMember(name: String)&#10;+ SentenceMember(name: String, defenition:String)&#10;+ addDefenition(defenition: String): void&#10;+ getName(): String&#10;+ getDefenition(): String&#10;+ toString(): String&#10;+ &lt;abstract&gt; addSubject(SentenceMember): void&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="62" vertex="1">
+                <mxCell id="65" value="+ SentenceMember(name: String)&#10;+ SentenceMember(name: String, defenition:String)&#10;+ setDefenition(defenition: String): void&#10;+ getName(): String&#10;+ getDefenition(): String&#10;+ toString(): String&#10;+ &lt;abstract&gt; addSubject(SentenceMember): void&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="62" vertex="1">
                     <mxGeometry y="78" width="265" height="102" as="geometry"/>
                 </mxCell>
                 <mxCell id="76" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#FFFFFF;startArrow=none;startFill=0;endArrow=open;endFill=0;strokeColor=#F0F0F0;endSize=14;" parent="1" source="67" target="75" edge="1">
@@ -225,16 +225,16 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="67" value="Class&#10;Predicate" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=35;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;strokeColor=#FFFFFF;fontSize=11;fontColor=#FFFFFF;fillColor=none;gradientColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="610" y="680" width="210" height="220" as="geometry"/>
+                    <mxGeometry x="590" y="680" width="230" height="230" as="geometry"/>
                 </mxCell>
-                <mxCell id="68" value="- velocity: Speed&#10;- place: Subject&#10;- subject: Subject" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="67" vertex="1">
-                    <mxGeometry y="35" width="210" height="55" as="geometry"/>
+                <mxCell id="68" value="- velocity: Speed&#10;- place: Subject&#10;- tug: String&#10;- subject: Subject" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="67" vertex="1">
+                    <mxGeometry y="35" width="230" height="65" as="geometry"/>
                 </mxCell>
                 <mxCell id="69" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="67" vertex="1">
-                    <mxGeometry y="90" width="210" height="8" as="geometry"/>
+                    <mxGeometry y="100" width="230" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="70" value="+ Predicate(name: String)&#10;+ Predicate(name:String, &#10;defenition:String, velocity:Speed)&#10;+ toString(): String&#10;+ addSubject(subject: SentencceMember)&#10;:void&#10;+ setVelovity(velocity: Speed): void&#10;+ setPlace(place: Subject): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="67" vertex="1">
-                    <mxGeometry y="98" width="210" height="122" as="geometry"/>
+                <mxCell id="70" value="+ Predicate(name: String)&#10;+ Predicate(name:String, &#10;defenition:String, velocity:Speed)&#10;+ toString(): String&#10;+ addSubject(subject: SentencceMember)&#10;:void&#10;+ setVelovity(velocity: Speed): void&#10;+ setPlace(place: Subject, tug: String): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="67" vertex="1">
+                    <mxGeometry y="108" width="230" height="122" as="geometry"/>
                 </mxCell>
                 <mxCell id="73" value="" style="html=1;verticalAlign=bottom;endArrow=none;strokeColor=#F0F0F0;fontSize=11;fontColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;endFill=0;startArrow=block;startFill=1;fillColor=#f5f5f5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=4;startSize=14;" parent="1" source="62" target="67" edge="1">
                     <mxGeometry width="80" relative="1" as="geometry">
@@ -243,10 +243,10 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="74" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;Speed" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fontSize=11;fillColor=none;fontColor=#FFFFFF;strokeColor=#F0F0F0;" parent="1" vertex="1">
-                    <mxGeometry x="940" y="800" width="140" height="120" as="geometry"/>
+                    <mxGeometry x="940" y="800" width="140" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="75" value="NOMOVE&lt;br style=&quot;font-size: 11px;&quot;&gt;SLOW&lt;br style=&quot;font-size: 11px;&quot;&gt;AVERAGE&lt;br style=&quot;font-size: 11px;&quot;&gt;HIGH&lt;br style=&quot;font-size: 11px;&quot;&gt;ALWAYS" style="text;html=1;strokeColor=#F0F0F0;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;fontColor=#FFFFFF;" parent="74" vertex="1">
-                    <mxGeometry y="40" width="140" height="80" as="geometry"/>
+                <mxCell id="75" value="NOMOVE&lt;br style=&quot;font-size: 11px;&quot;&gt;STAY&lt;br&gt;SLOW&lt;br style=&quot;font-size: 11px;&quot;&gt;AVERAGE&lt;br style=&quot;font-size: 11px;&quot;&gt;FAST&lt;br style=&quot;font-size: 11px;&quot;&gt;ALWAYS" style="text;html=1;strokeColor=#F0F0F0;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;fontColor=#FFFFFF;" parent="74" vertex="1">
+                    <mxGeometry y="40" width="140" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="98" value="" style="edgeStyle=elbowEdgeStyle;html=1;strokeColor=#F0F0F0;strokeWidth=1;fontSize=11;fontColor=#FFFFFF;startArrow=block;startFill=1;endArrow=none;endFill=0;endSize=14;startSize=14;" parent="1" source="85" target="94" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -355,7 +355,7 @@
                 <mxCell id="156" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="154" vertex="1">
                     <mxGeometry y="60" width="260" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="157" value="+ SubjectBuilder(name: String, defenition: String)&#10;+ setName(name: String): SubjectBuilder&#10;+ setDefenition(defenition: String): SubjectBuilder&#10;+ build(): SentenceMember&#10;+ toString(): String&#10;- addSubject(): void&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="154" vertex="1">
+                <mxCell id="157" value="+ SubjectBuilder(name: String, defenition: String)&#10;+ addName(name: String): SubjectBuilder&#10;+ addDefenition(defenition: String): SubjectBuilder&#10;+ build(): SentenceMember&#10;+ toString(): String&#10;- addSubject(): void&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="154" vertex="1">
                     <mxGeometry y="68" width="260" height="92" as="geometry"/>
                 </mxCell>
                 <mxCell id="166" style="edgeStyle=orthogonalEdgeStyle;jumpSize=6;html=1;strokeColor=#FFFFFF;fontColor=#FFFFFF;startArrow=none;startFill=0;endArrow=open;endFill=0;startSize=14;endSize=14;dashed=1;dashPattern=12 12;" parent="1" source="68" target="58" edge="1">
@@ -366,20 +366,11 @@
                         <mxPoint x="10" y="-16" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="169" value="toString()" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" vertex="1" parent="1">
-                    <mxGeometry x="810" y="185" width="110" height="40" as="geometry"/>
+                <mxCell id="172" value="Errors" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="805" y="230" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="170" value="equals()&lt;br&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" vertex="1" parent="1">
-                    <mxGeometry x="815" y="240" width="100" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="171" value="hashCode()" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" vertex="1" parent="1">
-                    <mxGeometry x="800" y="290" width="130" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="172" value="ERRORS" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" vertex="1" parent="1">
-                    <mxGeometry x="810" y="340" width="110" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="173" value="getMessage???" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" vertex="1" parent="1">
-                    <mxGeometry x="970" y="190" width="170" height="40" as="geometry"/>
+                <mxCell id="173" value="getMessage" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="290" width="130" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

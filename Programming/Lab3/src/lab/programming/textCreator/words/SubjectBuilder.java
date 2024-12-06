@@ -1,5 +1,7 @@
 package lab.programming.textCreator.words;
 
+import lab.programming.textCreator.exceptions.NonaviableMethod;
+
 public class SubjectBuilder extends SentenceMember {
     private Subject subject;
 
@@ -8,16 +10,16 @@ public class SubjectBuilder extends SentenceMember {
         super(subject.name(), subject.defenition());
     }
 
-    public void addSubject(SentenceMember m) {
-        throw new IllegalCallerException("Method is not aviable in this class");
+    public void addSubject(SentenceMember m) throws NonaviableMethod {
+        throw new NonaviableMethod("You can't use this method in class SubjectBuilder");
     }
 
-    public SubjectBuilder setName(String name) {
+    public SubjectBuilder addName(String name) {
         this.name = name;
         return this;
     }
 
-    public SubjectBuilder setDefenition(String defenition) {
+    public SubjectBuilder addDefenition(String defenition) {
         this.defenition = defenition;
         return this;
     }
@@ -28,7 +30,34 @@ public class SubjectBuilder extends SentenceMember {
 
     @Override
     public String toString() {
-        return subject.defenition() + " " + subject.name();
+        return subject.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        int code = defenition == null ? 0 : defenition.hashCode();
+        code = 31 * code + name.hashCode();
+        code = 31 * code + (subject == null ? 0 : subject.hashCode());
+        return code;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        SubjectBuilder objs = (SubjectBuilder) obj;
+
+        if (!name.equals(objs.name))
+            return false;
+        else if (!defenition.equals(objs.defenition))
+            return false;
+        else if (!subject.equals(objs.subject))
+            return false;
+
+        return true;
     }
 
 }

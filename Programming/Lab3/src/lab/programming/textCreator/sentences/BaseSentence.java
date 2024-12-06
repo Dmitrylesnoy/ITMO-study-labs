@@ -1,48 +1,78 @@
 package lab.programming.textCreator.sentences;
 
 import java.util.ArrayList;
-import lab.programming.textCreator.words.SentenceMember;
-import lab.programming.textCreator.words.Subject;
-import lab.programming.textCreator.words.SubjectBuilder;
-import lab.programming.textCreator.words.MultipleMember;
-import lab.programming.textCreator.words.Predicate;
+
+import lab.programming.textCreator.words.*;
 
 public class BaseSentence {
-    ArrayList<SentenceMember> members = new ArrayList<SentenceMember>();
-    
-    BaseSentence(){}
-    BaseSentence(SentenceBuider buider) {
+    private ArrayList<SentenceMember> members = new ArrayList<SentenceMember>();
+
+    public BaseSentence() {
+    }
+
+    public BaseSentence(SentenceBuider buider) {
         this.members = buider.members;
     }
 
-    void addMember(SentenceMember member) {
+    public void addMember(SentenceMember member) {
         members.add(member);
     }
-    
+
     @Override
     public String toString() {
-        return "";
+        String str = "";
+        for (int i = 0; i < members.size() - 1; i++) {
+            str += members.get(i).toString() + ", ";
+        }
+        str += members.get(members.size() - 1).toString() + ". ";
+        return str;
     }
 
-    private static class SentenceBuider {
-        ArrayList<SentenceMember> members = new ArrayList<SentenceMember>();
+    @Override
+    public int hashCode() {
+        int code = 0;
+        if (members != null) {
+            for (SentenceMember member : members) {
+                code = code * 31 + member.hashCode();
+            }
+        }
+        return code;
+    }
 
-        SentenceBuider addPredicate(Predicate pred) {
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        BaseSentence objs = (BaseSentence) obj;
+
+        if (!members.equals(objs.members))
+            return false;
+
+        return true;
+    }
+
+    public static class SentenceBuider {
+        private ArrayList<SentenceMember> members = new ArrayList<SentenceMember>();
+
+        public SentenceBuider addPredicate(Predicate pred) {
             members.add(pred);
             return this;
         }
-        
-        SentenceBuider addSBuider(Subject sub) {
+
+        public SentenceBuider addSBuider(Subject sub) {
             members.add(new SubjectBuilder(sub).build());
             return this;
         }
 
-        SentenceBuider addMultiple(MultipleMember mult){
+        public SentenceBuider addMultiple(MultipleMember mult) {
             members.add(mult);
             return this;
         }
 
-        BaseSentence build() {
+        public BaseSentence build() {
             BaseSentence sent = new BaseSentence(this);
             return sent;
         }

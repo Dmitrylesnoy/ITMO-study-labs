@@ -4,73 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a089b01aa8a47d58",
+        "id": "a0dfde68c991a2c3",
         "type": "tabs",
         "children": [
           {
-            "id": "9f795f4eabcf32cd",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/TM_Linal_1_2_Tanya.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "TM_Linal_1_2_Tanya"
-            }
-          },
-          {
-            "id": "ffed8d8a4e278215",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/TM-2_2C_full.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "TM-2_2C_full"
-            }
-          },
-          {
-            "id": "8af34cebeeb8cb2e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Линейная алгебра/Линейная алгебра.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Линейная алгебра"
-            }
-          },
-          {
-            "id": "1d8f7e6cd02d4272",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/TM-2_2C_full.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "TM-2_2C_full"
-            }
-          },
-          {
-            "id": "f4875d05f1221e7d",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_2_1_Vector_space.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_2_1_Vector_space"
-            }
-          },
-          {
-            "id": "f149d0814c3cf0be",
+            "id": "09ba22c537710d04",
             "type": "leaf",
             "state": {
               "type": "pdf",
@@ -80,33 +18,8 @@
               "icon": "lucide-file-text",
               "title": "Java 12th Herbert Schildt"
             }
-          },
-          {
-            "id": "2ff2333f5e4ba491",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_2_4_Sums_and_intersection"
-            }
-          },
-          {
-            "id": "249e021519a1f25a",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_2_5_Basis_transform.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_2_5_Basis_transform"
-            }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -162,8 +75,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -261,19 +173,19 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "f149d0814c3cf0be",
+  "active": "09ba22c537710d04",
   "lastOpenFiles": [
-    "Programming/Lab3/bin/lab/programming/textCreator/words/Speed.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/SentenceMember.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/Predicate.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/MultipleMember.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/sentences/Sentence.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence$SentenceBuider.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/App.class",
-    "Programming/Lab3/src/lab/programming/textCreator/words/MultipleMember.java",
-    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence$Sentence.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence$sEN.class",
+    "Programming/Lab3/bin/lab/programming/textCreator/exceptions/NonaviableMethod.class",
+    "Programming/Lab3/src/lab/programming/textCreator/exceptions/NonaviableMethod.java",
+    "Programming/Lab3/bin/lab/programming/textCreator/exceptions",
+    "Programming/Lab3/src/lab/programming/textCreator/exceptions",
+    "Programming/Lab3/bin/lab/programming/exceptions",
+    "Programming/Lab3/src/lab/programming/exceptions",
+    "Programming/Lab3/bin/lab/programming/errors",
+    "Programming/Lab3/src/lab/programming/errors",
+    "Литература/Joshua Bloch_- Effective Java 2nd Edition.pdf",
+    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
+    "Литература/Java 12th Herbert Schildt.pdf",
     "Линейная алгебра/Линейная алгебра.md",
     "Линейная алгебра/Теормин линал раздел 1.md",
     "Programming/Lab3/out/scheme/Alex/Alex.png",
