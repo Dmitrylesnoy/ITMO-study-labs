@@ -1,6 +1,6 @@
 package lab.programming.textCreator.words;
 
-import lab.programming.textCreator.exceptions.NonaviableMethod;
+import lab.programming.textCreator.exceptions.NonAviableMethod;
 
 public abstract class SentenceMember {
     String name;
@@ -38,7 +38,7 @@ public abstract class SentenceMember {
         }
     }
 
-    abstract void addSubject(SentenceMember member) throws NonaviableMethod;
+    abstract void addSubject(SentenceMember member) throws NonAviableMethod;
 
     @Override
     public int hashCode() {

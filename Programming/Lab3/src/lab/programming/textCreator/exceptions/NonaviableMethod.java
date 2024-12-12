@@ -1,13 +1,13 @@
 package lab.programming.textCreator.exceptions;
 
-public class NonaviableMethod extends Exception {
+public class NonAviableMethod extends Exception {
     private int errorCode;
 
-    public NonaviableMethod(String message){
+    public NonAviableMethod(String message){
         this(0, message);
     }
 
-    public NonaviableMethod(int errorCode, String message){
+    public NonAviableMethod(int errorCode, String message){
         super(message);
         this.errorCode = errorCode;
     }
@@ -18,6 +18,6 @@ public class NonaviableMethod extends Exception {
 
     @Override
     public String getMessage() {
-        return "This method not aviable in this class (Error code: {"+errorCode+"})";
+        return "This method is not aviable in this class (Error code: {"+errorCode+"})";
     }
 }

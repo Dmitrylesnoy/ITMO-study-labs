@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="77RbhD9AB3qgGdtPII2Z" name="Страница 1">
-        <mxGraphModel dx="744" dy="601" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" background="#1A1A1A" math="0" shadow="0">
+        <mxGraphModel dx="1142" dy="592" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" background="#1A1A1A" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -215,13 +215,14 @@
                 <mxCell id="131" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=diamondThin;endFill=0;jumpSize=10;endSize=14;strokeColor=#FFFFFF;" parent="1" source="67" target="126" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="152" style="jumpSize=10;html=1;endArrow=none;endFill=0;startSize=16;endSize=16;strokeColor=#FFFFFF;startArrow=diamondThin;startFill=1;exitX=-0.014;exitY=0.811;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="70" target="146" edge="1">
+                <mxCell id="152" style="jumpSize=10;html=1;endArrow=none;endFill=0;startSize=16;endSize=16;strokeColor=#FFFFFF;startArrow=diamondThin;startFill=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;exitX=-0.007;exitY=0.726;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="70" target="146" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="530" y="877"/>
                             <mxPoint x="530" y="919"/>
                         </Array>
                         <mxPoint x="270" y="940" as="targetPoint"/>
+                        <mxPoint x="570" y="900" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="67" value="Class&#10;Predicate" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=35;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;strokeColor=#FFFFFF;fontSize=11;fontColor=#FFFFFF;fillColor=none;gradientColor=none;" parent="1" vertex="1">
@@ -331,11 +332,12 @@
                         <mxPoint x="180" y="730" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="158" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.619;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;jumpSize=6;startSize=14;endSize=14;strokeColor=#FFFFFF;startArrow=diamondThin;startFill=1;entryPerimeter=0;" parent="1" source="157" target="67" edge="1">
+                <mxCell id="158" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;endFill=0;jumpSize=6;startSize=14;endSize=14;strokeColor=#FFFFFF;startArrow=diamondThin;startFill=1;entryX=0.649;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="157" target="67" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="740" y="554"/>
+                            <mxPoint x="739" y="554"/>
                         </Array>
+                        <mxPoint x="740" y="670" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="162" value="subject" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#FFFFFF;" parent="158" vertex="1" connectable="0">
@@ -347,7 +349,7 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="154" value="&lt;&lt;static Class&gt;&gt;&#10;SubjectBuilder" style="swimlane;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=35;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;strokeColor=#FFFFFF;fontSize=11;fontColor=#FFFFFF;fillColor=none;gradientColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="790" y="440" width="260" height="160" as="geometry"/>
+                    <mxGeometry x="790" y="440" width="260" height="190" as="geometry"/>
                 </mxCell>
                 <mxCell id="155" value="- subject: Subject&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="154" vertex="1">
                     <mxGeometry y="35" width="260" height="25" as="geometry"/>
@@ -355,8 +357,8 @@
                 <mxCell id="156" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="154" vertex="1">
                     <mxGeometry y="60" width="260" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="157" value="+ SubjectBuilder(name: String, defenition: String)&#10;+ addName(name: String): SubjectBuilder&#10;+ addDefenition(defenition: String): SubjectBuilder&#10;+ build(): SentenceMember&#10;+ toString(): String&#10;- addSubject(): void&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="154" vertex="1">
-                    <mxGeometry y="68" width="260" height="92" as="geometry"/>
+                <mxCell id="157" value="+ SubjectBuilder(subject:Subject)&#10;+ SubjectBuilder(name: String, defenition: String)&#10;+ addName(name: String): SubjectBuilder&#10;+ addDefenition(defenition: String): SubjectBuilder&#10;+ getSubject(): Subject&#10;+ build(): SentenceMember&#10;+ toString(): String&#10;- addSubject(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;fontSize=11;fontColor=#FFFFFF;" parent="154" vertex="1">
+                    <mxGeometry y="68" width="260" height="122" as="geometry"/>
                 </mxCell>
                 <mxCell id="166" style="edgeStyle=orthogonalEdgeStyle;jumpSize=6;html=1;strokeColor=#FFFFFF;fontColor=#FFFFFF;startArrow=none;startFill=0;endArrow=open;endFill=0;startSize=14;endSize=14;dashed=1;dashPattern=12 12;" parent="1" source="68" target="58" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -365,12 +367,6 @@
                     <mxGeometry x="0.322" y="-1" relative="1" as="geometry">
                         <mxPoint x="10" y="-16" as="offset"/>
                     </mxGeometry>
-                </mxCell>
-                <mxCell id="172" value="Errors" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="805" y="230" width="80" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="173" value="getMessage" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontSize=20;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="810" y="290" width="130" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

@@ -62,7 +62,7 @@ public class BaseSentence {
             return this;
         }
 
-        public SentenceBuider addSBuider(Subject sub) {
+        public SentenceBuider addSubject(Subject sub) {
             members.add(new SubjectBuilder(sub).build());
             return this;
         }

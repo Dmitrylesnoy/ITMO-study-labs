@@ -1,6 +1,6 @@
 package lab.programming.textCreator.words;
 
-import lab.programming.textCreator.exceptions.NonaviableMethod;
+import lab.programming.textCreator.exceptions.NonAviableMethod;
 
 public class SubjectBuilder extends SentenceMember {
     private Subject subject;
@@ -10,18 +10,21 @@ public class SubjectBuilder extends SentenceMember {
         super(subject.name(), subject.defenition());
     }
 
-    public void addSubject(SentenceMember m) throws NonaviableMethod {
-        throw new NonaviableMethod("You can't use this method in class SubjectBuilder");
+    public SubjectBuilder(String name, String defenition) {
+        super(name, defenition);
+        subject = new Subject(name, defenition);
     }
 
-    public SubjectBuilder addName(String name) {
-        this.name = name;
-        return this;
+    public void addSubject(SentenceMember m) throws NonAviableMethod {
+        try{
+            throw new NonAviableMethod("Input SentenceMember will defind like a Subject variable");
+        } catch (NonAviableMethod e) {
+            this.subject = new Subject(m.name, m.defenition);
+        }
     }
 
-    public SubjectBuilder addDefenition(String defenition) {
-        this.defenition = defenition;
-        return this;
+    public Subject getSubject() {
+        return this.subject;
     }
 
     public SentenceMember build() {

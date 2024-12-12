@@ -13,13 +13,28 @@ public class Predicate extends SentenceMember {
         super(name);
     }
 
+    public Predicate(String name, Subject subject) {
+        this.name = name;
+        this.subject = subject;
+    }
+
     public Predicate(String name, String defenition, Speed velocity) {
         super(name, defenition);
         this.velocity = velocity;
     }
 
-    public void addSubject(SentenceMember member) {
-        this.subject = new Subject(member.getName(), member.getDefenition());
+    public void addSubject(SentenceMember member) throws ArrayStoreException{
+        try {
+            if ((member instanceof SubjectBuilder)) {
+                // SubjectBuilder memberB = (SubjectBuilder)member;
+                this.subject=((SubjectBuilder)member).getSubject();
+
+            } else {
+                throw new ArrayStoreException();
+            }
+        } catch (ArrayStoreException e) {
+            this.subject = new Subject(member.getName(), member.getDefenition());
+        }
     }
 
     public void setVelocity(Speed velocity) {
@@ -36,9 +51,7 @@ public class Predicate extends SentenceMember {
         String str = "";
 
         if (subject != null) {
-            if (subject.toString() != "") {
-                str = subject.toString();
-            }
+            str = subject.toString();
         }
         if (velocity != null) {
             if (velocity != Speed.NOMOVE) {

@@ -2,6 +2,8 @@ package lab.programming.textCreator.words;
 
 import java.util.ArrayList;
 
+import lab.programming.textCreator.exceptions.NonAviableMethod;
+
 public class MultipleMember extends SentenceMember {
     private ArrayList<SentenceMember> members = new ArrayList<SentenceMember>();
     private String knot = "";
