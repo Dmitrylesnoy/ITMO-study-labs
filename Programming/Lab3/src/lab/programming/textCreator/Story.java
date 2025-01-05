@@ -2,6 +2,7 @@ package lab.programming.textCreator;
 
 import lab.programming.textCreator.sentences.BaseSentence;
 import lab.programming.textCreator.words.*;
+// import java.lang.Object;
 
 public class Story {
     public static void main(String[] args) {

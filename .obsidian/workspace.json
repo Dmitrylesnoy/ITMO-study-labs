@@ -8,15 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4a053ea729e60935",
+            "id": "dd6a83d7a31d9bed",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Images/{821E5373-EC3C-4B2A-9220-00EC0EBBFC24}.png"
+                "file": "Математический анализ/Теормин 2.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "{821E5373-EC3C-4B2A-9220-00EC0EBBFC24}"
+              "icon": "lucide-file",
+              "title": "Теормин 2"
             }
           },
           {
@@ -25,10 +27,22 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
+                "file": "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
+              "title": "Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_"
+            }
+          },
+          {
+            "id": "b5ce6216111f2ced",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Ekkels Filosofiya-Thining of Java.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Ekkels Filosofiya-Thining of Java"
             }
           }
         ]
@@ -170,7 +184,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5
+    "width": 353.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -184,39 +199,41 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "c60235da6ec88869",
+  "active": "dd6a83d7a31d9bed",
   "lastOpenFiles": [
-    "Математический анализ/Теормин 2.md",
     "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Математический анализ/Теормин 2.md",
+    "Дискретная математика/Курсовая_1_часть_Вар18_P3115_Линейский_А_Е.pdf",
+    "Дискретная математика/Курсовая_Вар18_P3115_Линейский_А_Е.pdf",
+    "Дискретная математика/Курсовая_Вар18_P3115_Линейский_А_Е",
+    "Дискретная математика/k18 — копия.pdf",
+    "Линейная алгебра/DEMO КР-1 1С.pdf",
+    "Линейная алгебра/DEMO КР-1 2С.pdf",
+    "Линейная алгебра/TM_Linal_1_2_Tanya.pdf",
+    "Линейная алгебра/TM-2_2C_full.pdf",
+    "Линейная алгебра/~$3 линал.docx",
+    "Линейная алгебра/TM-1_2C_full.pdf",
+    "Цтты.md",
+    "Математический анализ/Теормин 1 сем.md",
+    "Математический анализ/Математический анализ.md",
+    "Математический анализ/Коллоквиум 1 Матан..md",
+    "Математический анализ/Дз мат. ан. 17.09.md",
+    "Линейная алгебра/Теормин линал раздел 1.md",
+    "Линейная алгебра/Линейная алгебра.md",
+    "Математический анализ/Теормин 1.md",
+    "Images/{821E5373-EC3C-4B2A-9220-00EC0EBBFC24}.png",
     "Images/{4E469FC7-6CC3-491B-9B17-FE360D5412A6}.png",
     "Images/{3DE81996-25BF-41D2-B5F5-C6DDBD1FC6DB}.png",
     "Images/{4AD12A07-E684-4BA4-9DB3-D02CC6487BEC}.png",
-    "Images/{821E5373-EC3C-4B2A-9220-00EC0EBBFC24}.png",
-    "Литература/Арифметические основы ЭВМ В.И.Поляков.pdf",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/SubjectBuilder.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/Subject.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/Speed.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/SentenceMember.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/Predicate.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/words/MultipleMember.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/sentences/Sentence.class",
-    "Programming/Lab3/bin/lab/programming/textCreator/sentences/BaseSentence$SentenceBuider.class",
-    "Линейная алгебра/Линейная алгебра.md",
-    "Линейная алгебра/Теормин линал раздел 1.md",
     "Programming/Lab3/out/scheme/Alex/Alex.png",
     "Programming/Lab3/out/scheme/Alex/Alex.svg",
     "Programming/Lab3/scheme/Scheme.png",
     "Programming/Lab3/scheme/Scheme.svg",
-    "Математический анализ/Коллоквиум 1 Матан..md",
     "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png",
     "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
-    "Математический анализ/Теормин 1 сем.md",
-    "Математический анализ/Математический анализ.md",
     "Без названия.canvas",
     "2024-11-03.md",
-    "Математический анализ/Дз мат. ан. 17.09.md",
     "Дискретная математика/ДЗ 1.md",
-    "Цтты.md",
     "Java/Java.md",
     "Java/Cинтаксис.md",
     "Базовый синтаксис.md",
@@ -230,7 +247,6 @@
     "Стас.md",
     "Face book/Peoples/Стас Суворов.md",
     "Face book/Дорогой дневник 1.md",
-    "Face book/Удобство.md",
-    "README.md"
+    "Face book/Удобство.md"
   ]
 }
