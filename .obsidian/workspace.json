@@ -8,44 +8,117 @@
         "type": "tabs",
         "children": [
           {
+            "id": "d4ac2a9777815e9c",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_3_1_Geometry.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_3_1_Geometry"
+            }
+          },
+          {
+            "id": "95b8a487df46e84c",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_3_2_Vector_algebra.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_3_2_Vector_algebra"
+            }
+          },
+          {
+            "id": "74c29433834fb06e",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_3_3_Lines_and_planes.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_3_3_Lines_and_planes"
+            }
+          },
+          {
             "id": "dd6a83d7a31d9bed",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_3_4_Curves_on_plane.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_3_4_Curves_on_plane"
+            }
+          },
+          {
+            "id": "a376db3fa2565a75",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_3_5_General_equations.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_3_5_General_equations"
+            }
+          },
+          {
+            "id": "b0c95d08fb3fc265",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_3_6_Surface_2nd_order.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_3_6_Surface_2nd_order"
+            }
+          },
+          {
+            "id": "267c5634465ea98c",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Линейная алгебра/LecB_2_1_Vector_space.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LecB_2_1_Vector_space"
+            }
+          },
+          {
+            "id": "85f01ef66bfe9951",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Математический анализ/Теормин 2.md",
+                "file": "Линейная алгебра/Вопросы к экзамену 1 сем.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Теормин 2"
+              "title": "Вопросы к экзамену 1 сем"
             }
           },
           {
-            "id": "d785a4d3c08437db",
+            "id": "66c1588e993f3664",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf"
+                "file": "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_"
-            }
-          },
-          {
-            "id": "b5ce6216111f2ced",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Ekkels Filosofiya-Thining of Java.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Ekkels Filosofiya-Thining of Java"
+              "title": "LecB_2_2_Subspaces_manifolds"
             }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -184,8 +257,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5,
-    "collapsed": true
+    "width": 353.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,20 +271,20 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "dd6a83d7a31d9bed",
+  "active": "d4af0b377a74f811",
   "lastOpenFiles": [
-    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Линейная алгебра/Вопросы к экзамену 1 сем.md",
+    "Линейная алгебра/LecB_2_1_Vector_space.pdf",
+    "Линейная алгебра/LecB_1_A_Determinant.pdf",
+    "Линейная алгебра/LecB_1_2_Structures.pdf",
+    "Линейная алгебра/LecB_1_1_Complex.pdf",
+    "Линейная алгебра/DEMO Итоговый тест.pdf",
+    "Линейная алгебра/LecB_3_A_Coordinate_equations.pdf",
+    "Линейная алгебра/LecB_3_6_Surface_2nd_order.pdf",
+    "Линейная алгебра/LecB_3_5_General_equations.pdf",
+    "Линейная алгебра/LecB_3_4_Curves_on_plane.pdf",
+    "Линейная алгебра/LecB_3_3_Lines_and_planes.pdf",
     "Математический анализ/Теормин 2.md",
-    "Дискретная математика/Курсовая_1_часть_Вар18_P3115_Линейский_А_Е.pdf",
-    "Дискретная математика/Курсовая_Вар18_P3115_Линейский_А_Е.pdf",
-    "Дискретная математика/Курсовая_Вар18_P3115_Линейский_А_Е",
-    "Дискретная математика/k18 — копия.pdf",
-    "Линейная алгебра/DEMO КР-1 1С.pdf",
-    "Линейная алгебра/DEMO КР-1 2С.pdf",
-    "Линейная алгебра/TM_Linal_1_2_Tanya.pdf",
-    "Линейная алгебра/TM-2_2C_full.pdf",
-    "Линейная алгебра/~$3 линал.docx",
-    "Линейная алгебра/TM-1_2C_full.pdf",
     "Цтты.md",
     "Математический анализ/Теормин 1 сем.md",
     "Математический анализ/Математический анализ.md",
@@ -246,7 +318,6 @@
     "Face book/Peoples/Сара-Мария Коркман.md",
     "Стас.md",
     "Face book/Peoples/Стас Суворов.md",
-    "Face book/Дорогой дневник 1.md",
-    "Face book/Удобство.md"
+    "Face book/Дорогой дневник 1.md"
   ]
 }

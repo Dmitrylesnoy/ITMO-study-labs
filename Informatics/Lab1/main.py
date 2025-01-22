@@ -1,6 +1,6 @@
-inp = input().lower()
-pow1 = input().lower()
-pow2 = input().lower()
+inp = input("Put a target number: ").lower()
+pow1 = input("Put a 1st pow: ").lower()
+pow2 = input("Put a 2nd pow: ").lower()
 
 alph = "0123456789abcdefghijklmnopqrstuvwxyz"
 
