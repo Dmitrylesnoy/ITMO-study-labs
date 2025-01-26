@@ -11,14 +11,12 @@
             "id": "236e5ba0331d2780",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Математический анализ/Колок 2 - Экзамен 1 сем.md",
-                "mode": "source",
-                "source": false
+                "file": "Images/Pasted image 20250126215006.png"
               },
-              "icon": "lucide-file",
-              "title": "Колок 2 - Экзамен 1 сем"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250126215006"
             }
           },
           {
@@ -122,8 +120,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -139,7 +136,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Математический анализ/Колок 2 - Экзамен 1 сем.md",
+                "file": "Images/Pasted image 20250126215006.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +146,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для Колок 2 - Экзамен 1 сем"
+              "title": "Обратные ссылки для Pasted image 20250126215006"
             }
           },
           {
@@ -220,15 +217,15 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "d4af0b377a74f811",
+  "active": "c60235da6ec88869",
   "lastOpenFiles": [
-    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Математический анализ/Колок 2 - Экзамен 1 сем.md",
+    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
     "Математический анализ/Теормин 2.md",
-    "Pasted image 20250126215006.png",
-    "Pasted image 20250126213434.png",
-    "Pasted image 20250126213119.png",
-    "Pasted image 20250126211558.png",
+    "Images/Pasted image 20250126215006.png",
+    "Images/Pasted image 20250126213434.png",
+    "Images/Pasted image 20250126213119.png",
+    "Images/Pasted image 20250126211558.png",
     "Математический анализ/Теормин 1.md",
     "Линейная алгебра/LecB_3_6_Surface_2nd_order.pdf",
     "Линейная алгебра/LecB_3_5_General_equations.pdf",
