@@ -8,117 +8,65 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d4ac2a9777815e9c",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_3_1_Geometry.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_3_1_Geometry"
-            }
-          },
-          {
-            "id": "95b8a487df46e84c",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_3_2_Vector_algebra.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_3_2_Vector_algebra"
-            }
-          },
-          {
-            "id": "74c29433834fb06e",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_3_3_Lines_and_planes.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_3_3_Lines_and_planes"
-            }
-          },
-          {
-            "id": "dd6a83d7a31d9bed",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_3_4_Curves_on_plane.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_3_4_Curves_on_plane"
-            }
-          },
-          {
-            "id": "a376db3fa2565a75",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_3_5_General_equations.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_3_5_General_equations"
-            }
-          },
-          {
-            "id": "b0c95d08fb3fc265",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_3_6_Surface_2nd_order.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_3_6_Surface_2nd_order"
-            }
-          },
-          {
-            "id": "267c5634465ea98c",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Линейная алгебра/LecB_2_1_Vector_space.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "LecB_2_1_Vector_space"
-            }
-          },
-          {
-            "id": "85f01ef66bfe9951",
+            "id": "236e5ba0331d2780",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Линейная алгебра/Вопросы к экзамену 1 сем.md",
+                "file": "Математический анализ/Колок 2 - Экзамен 1 сем.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Вопросы к экзамену 1 сем"
+              "title": "Колок 2 - Экзамен 1 сем"
             }
           },
           {
-            "id": "66c1588e993f3664",
+            "id": "9ae1e3cba4f2b3f7",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Линейная алгебра/LecB_2_2_Subspaces_manifolds.pdf"
+                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
               },
               "icon": "lucide-file-text",
-              "title": "LecB_2_2_Subspaces_manifolds"
+              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "d3babaf77046e25f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7e0cff3f72a32f35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Математический анализ/Теормин 2.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Теормин 2"
+            }
+          },
+          {
+            "id": "14b0da3c25ce3c9b",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -174,7 +122,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 234.5,
+    "collapsed": true
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -190,7 +139,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Математический анализ/Теормин 1 сем.md",
+                "file": "Математический анализ/Колок 2 - Экзамен 1 сем.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -200,7 +149,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для Теормин 1 сем"
+              "title": "Обратные ссылки для Колок 2 - Экзамен 1 сем"
             }
           },
           {
@@ -273,36 +222,36 @@
   },
   "active": "d4af0b377a74f811",
   "lastOpenFiles": [
-    "Линейная алгебра/Вопросы к экзамену 1 сем.md",
-    "Линейная алгебра/LecB_2_1_Vector_space.pdf",
-    "Линейная алгебра/LecB_1_A_Determinant.pdf",
-    "Линейная алгебра/LecB_1_2_Structures.pdf",
-    "Линейная алгебра/LecB_1_1_Complex.pdf",
-    "Линейная алгебра/DEMO Итоговый тест.pdf",
-    "Линейная алгебра/LecB_3_A_Coordinate_equations.pdf",
+    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Математический анализ/Колок 2 - Экзамен 1 сем.md",
+    "Математический анализ/Теормин 2.md",
+    "Pasted image 20250126215006.png",
+    "Pasted image 20250126213434.png",
+    "Pasted image 20250126213119.png",
+    "Pasted image 20250126211558.png",
+    "Математический анализ/Теормин 1.md",
     "Линейная алгебра/LecB_3_6_Surface_2nd_order.pdf",
     "Линейная алгебра/LecB_3_5_General_equations.pdf",
     "Линейная алгебра/LecB_3_4_Curves_on_plane.pdf",
+    "Линейная алгебра/LecB_3_A_Coordinate_equations.pdf",
     "Линейная алгебра/LecB_3_3_Lines_and_planes.pdf",
-    "Математический анализ/Теормин 2.md",
+    "Линейная алгебра/LecB_3_2_Vector_algebra.pdf",
+    "Линейная алгебра/LecB_3_1_Geometry.pdf",
+    "Линейная алгебра/LecB_2_5_Basis_transform.pdf",
+    "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf",
+    "Линейная алгебра/Вопросы к экзамену 1 сем.md",
     "Цтты.md",
-    "Математический анализ/Теормин 1 сем.md",
     "Математический анализ/Математический анализ.md",
     "Математический анализ/Коллоквиум 1 Матан..md",
     "Математический анализ/Дз мат. ан. 17.09.md",
     "Линейная алгебра/Теормин линал раздел 1.md",
     "Линейная алгебра/Линейная алгебра.md",
-    "Математический анализ/Теормин 1.md",
     "Images/{821E5373-EC3C-4B2A-9220-00EC0EBBFC24}.png",
     "Images/{4E469FC7-6CC3-491B-9B17-FE360D5412A6}.png",
     "Images/{3DE81996-25BF-41D2-B5F5-C6DDBD1FC6DB}.png",
     "Images/{4AD12A07-E684-4BA4-9DB3-D02CC6487BEC}.png",
     "Programming/Lab3/out/scheme/Alex/Alex.png",
     "Programming/Lab3/out/scheme/Alex/Alex.svg",
-    "Programming/Lab3/scheme/Scheme.png",
-    "Programming/Lab3/scheme/Scheme.svg",
-    "Images/{9D10DE04-D666-4537-81E0-423A651B3B7A}.png",
-    "Images/{3862BF89-A922-43FA-A62B-945AA1FD59F5}.png",
     "Без названия.canvas",
     "2024-11-03.md",
     "Дискретная математика/ДЗ 1.md",
@@ -317,7 +266,6 @@
     "Face book/Peoples/Таня Не помню.md",
     "Face book/Peoples/Сара-Мария Коркман.md",
     "Стас.md",
-    "Face book/Peoples/Стас Суворов.md",
-    "Face book/Дорогой дневник 1.md"
+    "Face book/Peoples/Стас Суворов.md"
   ]
 }
