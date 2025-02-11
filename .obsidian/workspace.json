@@ -4,67 +4,58 @@
     "type": "split",
     "children": [
       {
-        "id": "f35cd3c65452a978",
+        "id": "330b9a2c3422c85c",
         "type": "tabs",
         "children": [
           {
-            "id": "236e5ba0331d2780",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Images/Pasted image 20250126215006.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250126215006"
-            }
-          },
-          {
-            "id": "9ae1e3cba4f2b3f7",
+            "id": "86607b8ef677a6db",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
+                "file": "Литература/Паттерны Банды четырех.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
+              "title": "Паттерны Банды четырех"
+            }
+          },
+          {
+            "id": "fc0973b0e2d3be0c",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Ekkels Filosofiya-Thining of Java.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Ekkels Filosofiya-Thining of Java"
+            }
+          },
+          {
+            "id": "98441b3a5cf384b2",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Horstmann Cay - Core Java. 1 (2021).pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Horstmann Cay - Core Java. 1 (2021)"
+            }
+          },
+          {
+            "id": "47a578db134cf685",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Java 12th Herbert Schildt.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Java 12th Herbert Schildt"
             }
           }
         ]
-      },
-      {
-        "id": "d3babaf77046e25f",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "7e0cff3f72a32f35",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Математический анализ/Теормин 2.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Теормин 2"
-            }
-          },
-          {
-            "id": "14b0da3c25ce3c9b",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Бойцев А.А. Математический анализ (базовый уровень)"
-            }
-          }
-        ],
-        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -83,7 +74,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Файловый менеджер"
@@ -120,7 +112,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 234.5,
+    "collapsed": true
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -203,7 +196,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5
+    "width": 353.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -217,25 +211,34 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "c60235da6ec88869",
+  "active": "86607b8ef677a6db",
   "lastOpenFiles": [
+    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
+    "Programming/Lab5/bin/asdc.class",
+    "Programming/Lab5/src/asdc.java",
+    "Programming/Lab5/bin/MeleeWeapon.class",
+    "Programming/Lab5/src/MeleeWeapon.java",
+    "Programming/Lab5/bin/Chapter.class",
+    "Programming/Lab5/src/Chapter.java",
+    "Programming/Lab5/bin/Coordinates.class",
+    "Programming/Lab5/src/Coordinates.java",
+    "Programming/Lab5/bin/SpaceMarine.class",
+    "Programming/Lab5/src/SpaceMarine.java",
+    "Programming/Lab5/README.md",
+    "Programming/Lab5/Lab5/README.md",
+    "Programming/Lab3-4/out/scheme/Alex/Alex.svg",
+    "Programming/Lab3-4/out/scheme/Alex/Alex.png",
+    "Programming/Lab3-4/scheme/Scheme.svg",
+    "Programming/Lab3-4/scheme/Scheme.png",
+    "Programming/Lab3-4/README.md",
     "Математический анализ/Колок 2 - Экзамен 1 сем.md",
-    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Математический анализ/Теормин 1.md",
     "Математический анализ/Теормин 2.md",
+    "Images/Pasted image 20250128120111.png",
     "Images/Pasted image 20250126215006.png",
     "Images/Pasted image 20250126213434.png",
     "Images/Pasted image 20250126213119.png",
     "Images/Pasted image 20250126211558.png",
-    "Математический анализ/Теормин 1.md",
-    "Линейная алгебра/LecB_3_6_Surface_2nd_order.pdf",
-    "Линейная алгебра/LecB_3_5_General_equations.pdf",
-    "Линейная алгебра/LecB_3_4_Curves_on_plane.pdf",
-    "Линейная алгебра/LecB_3_A_Coordinate_equations.pdf",
-    "Линейная алгебра/LecB_3_3_Lines_and_planes.pdf",
-    "Линейная алгебра/LecB_3_2_Vector_algebra.pdf",
-    "Линейная алгебра/LecB_3_1_Geometry.pdf",
-    "Линейная алгебра/LecB_2_5_Basis_transform.pdf",
-    "Линейная алгебра/LecB_2_4_Sums_and_intersection.pdf",
     "Линейная алгебра/Вопросы к экзамену 1 сем.md",
     "Цтты.md",
     "Математический анализ/Математический анализ.md",
@@ -244,11 +247,6 @@
     "Линейная алгебра/Теормин линал раздел 1.md",
     "Линейная алгебра/Линейная алгебра.md",
     "Images/{821E5373-EC3C-4B2A-9220-00EC0EBBFC24}.png",
-    "Images/{4E469FC7-6CC3-491B-9B17-FE360D5412A6}.png",
-    "Images/{3DE81996-25BF-41D2-B5F5-C6DDBD1FC6DB}.png",
-    "Images/{4AD12A07-E684-4BA4-9DB3-D02CC6487BEC}.png",
-    "Programming/Lab3/out/scheme/Alex/Alex.png",
-    "Programming/Lab3/out/scheme/Alex/Alex.svg",
     "Без названия.canvas",
     "2024-11-03.md",
     "Дискретная математика/ДЗ 1.md",
@@ -261,8 +259,6 @@
     "Сара-Мария Коркман.md",
     "Face book/Peoples/Екатерина Галак.md",
     "Face book/Peoples/Таня Не помню.md",
-    "Face book/Peoples/Сара-Мария Коркман.md",
-    "Стас.md",
-    "Face book/Peoples/Стас Суворов.md"
+    "Face book/Peoples/Сара-Мария Коркман.md"
   ]
 }
