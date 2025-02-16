@@ -13,10 +13,10 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Паттерны Банды четырех.pdf"
+                "file": "Дискретная математика/Арифметические основы ЭВМ В.И.Поляков.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Паттерны Банды четырех"
+              "title": "Арифметические основы ЭВМ В.И.Поляков"
             }
           },
           {
@@ -112,8 +112,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -213,17 +212,18 @@
   },
   "active": "86607b8ef677a6db",
   "lastOpenFiles": [
-    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
-    "Programming/Lab5/bin/asdc.class",
-    "Programming/Lab5/src/asdc.java",
-    "Programming/Lab5/bin/MeleeWeapon.class",
-    "Programming/Lab5/src/MeleeWeapon.java",
-    "Programming/Lab5/bin/Chapter.class",
-    "Programming/Lab5/src/Chapter.java",
-    "Programming/Lab5/bin/Coordinates.class",
-    "Programming/Lab5/src/Coordinates.java",
-    "Programming/Lab5/bin/SpaceMarine.class",
-    "Programming/Lab5/src/SpaceMarine.java",
+    "Дискретная математика/дз 1 сем/Димкретная математика ДЗ 2 P3115 Вар 66 Линейский А.Е..docx.docx",
+    "Дискретная математика/дз 1 сем/Курсовая_2_часть_Вар126_P3115_Линейский_А_Е.pdf",
+    "Дискретная математика/дз 1 сем/Курсовая_1_часть_Вар18_P3115_Линейский_А_Е.pdf",
+    "Дискретная математика/дз 1 сем/ДискретнаяМатематика_ДЗ1_P3115_Линейский_Аким_Евгеньевич_.docx",
+    "Дискретная математика/дз 1 сем/ДискретнаяМатематика ДЗ 8 Вар 66 P3115 ЛинейскийА.Е..docx",
+    "Дискретная математика/дз 1 сем/ДискретнаяМатематика ДЗ 7 Вар 67 P3115 ЛинейскийАЕ.docx",
+    "Дискретная математика/дз 1 сем/ДискретнаяМатематика ДЗ 6 Вар 68 P3115 Линейский А.Е..docx",
+    "Дискретная математика/дз 1 сем/ДискретнаяМатематика ДЗ 5 Вар 67 3115 Линейский А.Е..docx",
+    "Дискретная математика/дз 1 сем/Дискретная математика ДЗ 4 P3115 Вар 67 Линейский А.Е..docx",
+    "Дискретная математика/дз 1 сем/Димкретная математика ДЗ 3 P3115 Вар 67 Линейский А.Е..docx",
+    "Дискретная математика/дз 1 сем",
+    "Дискретная математика/К-р вопр 1.md",
     "Programming/Lab5/README.md",
     "Programming/Lab5/Lab5/README.md",
     "Programming/Lab3-4/out/scheme/Alex/Alex.svg",
@@ -253,7 +253,6 @@
     "Java/Java.md",
     "Java/Cинтаксис.md",
     "Базовый синтаксис.md",
-    "Дискретная математика/К-р вопр 1.md",
     "Face book/23.09.2024 23.55.md",
     "Face book/Peoples/Леночка Луценко.md",
     "Сара-Мария Коркман.md",
