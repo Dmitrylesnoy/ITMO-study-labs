@@ -9,9 +9,13 @@ public class Show implements Command {
         this.mystack = stack;
     }
 
-    public void execute(){
+    public void execute() {
         for (Object i : mystack) {
-            System.out.println(i);
+            System.out.println(i.toString());
         }
+    }
+    
+    public String describe() {
+        return "Return list of all elements in Collection";
     }
 }

@@ -1,5 +1,7 @@
 package lab5.commands;
 
 public interface Command {
-    void execute();
+    public void execute();
+
+    public String describe();
 }
