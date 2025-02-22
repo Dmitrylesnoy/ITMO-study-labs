@@ -1,7 +1,7 @@
 package lab5.spacemarines;
 
-// @XmlRootElement
-// @XmlType(propOrder = { "id", "name", "coordinates", "creationDate", "health", "loyal", "achievements", "meleeWeapon", "chapter" })
+@XmlRootElement
+@XmlType(propOrder = { "id", "name", "coordinates", "creationDate", "health", "loyal", "achievements", "meleeWeapon", "chapter" })
 public class SpaceMarine {
     private Long id; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого
                      // поля должно быть уникальным, Значение этого поля должно генерироваться

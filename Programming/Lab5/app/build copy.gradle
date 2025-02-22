@@ -8,7 +8,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
-    //     id 'com.intershop.gradle.jaxb' version '7.0.0'
+//     id 'com.intershop.gradle.jaxb' version '7.0.0'
     id("com.javagen.schema-gen") version "0.9.1"
 }
 
@@ -33,6 +33,7 @@ repositories {
     // }
     // maven { url 'http://repo1.maven.org/maven2' }
     jcenter()
+
 }
 
 dependencies {
@@ -44,9 +45,9 @@ dependencies {
     // This dependency is used by the application.
     implementation libs.guava
 
-    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.0' // Keeping only the Jakarta XML Binding API
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.0'
 
-    // Removed javax.xml.bind dependency to avoid conflicts with Jakarta
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
 
     implementation group: 'org.glassfish.jaxb', name: 'jaxb-xjc', version: '4.0.5'
 }
