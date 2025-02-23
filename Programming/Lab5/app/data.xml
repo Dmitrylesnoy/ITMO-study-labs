@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<spaceMarine>
+    <id>664740647</id>
+    <name>Marine 3</name>
+    <coordinates>
+        <x>30.0</x>
+        <y>-30.5</y>
+    </coordinates>
+    <creationDate>2025-02-23T04:04:38.843+03:00</creationDate>
+    <health>0.0</health>
+    <loyal>false</loyal>
+    <achievements>Get healthed</achievements>
+    <meleeWeapon>POWER_BLADE</meleeWeapon>
+    <chapter>
+        <name>World 3</name>
+        <world>Jupyter</world>
+    </chapter>
+</spaceMarine>

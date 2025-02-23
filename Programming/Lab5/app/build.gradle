@@ -8,47 +8,26 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
-    //     id 'com.intershop.gradle.jaxb' version '7.0.0'
     id("com.javagen.schema-gen") version "0.9.1"
-}
-
-// jaxb {
-//     javaGen {
-//         posConfig {
-//             packageName = ''
-//             schema = file('pos.xsd')
-//         }
-//     }
-// }
-
-configurations {
-   jaxb
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    // maven {
-    //     url "https://plugins.gradle.org/m2/"
-    // }
-    // maven { url 'http://repo1.maven.org/maven2' }
     jcenter()
 }
 
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
-
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // This dependency is used by the application.
     implementation libs.guava
 
-    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.0' // Keeping only the Jakarta XML Binding API
-
-    // Removed javax.xml.bind dependency to avoid conflicts with Jakarta
-
-    implementation group: 'org.glassfish.jaxb', name: 'jaxb-xjc', version: '4.0.5'
+    // JAXB dependencies
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
+    implementation 'org.glassfish.jaxb:jaxb-xjc:4.0.0'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

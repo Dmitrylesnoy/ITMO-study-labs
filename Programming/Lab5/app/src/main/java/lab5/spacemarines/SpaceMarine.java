@@ -1,7 +1,15 @@
 package lab5.spacemarines;
 
-// @XmlRootElement
-// @XmlType(propOrder = { "id", "name", "coordinates", "creationDate", "health", "loyal", "achievements", "meleeWeapon", "chapter" })
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import lab5.utils.MeleeWeaponAdapter;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "id", "name", "coordinates", "creationDate", "health", "loyal", "achievements", "meleeWeapon","chapter" })
 public class SpaceMarine {
     private Long id; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого
                      // поля должно быть уникальным, Значение этого поля должно генерироваться
@@ -13,9 +21,12 @@ public class SpaceMarine {
     private double health; // Значение поля должно быть больше 0
     private boolean loyal;
     private String achievements; // Поле не может быть null
+    @XmlJavaTypeAdapter(MeleeWeaponAdapter.class)
     private MeleeWeapon meleeWeapon; // Поле может быть null
     private Chapter chapter; // Поле может быть null
     
+    public SpaceMarine() {
+    }
 
     public SpaceMarine(String name, Coordinates coordinates, String achievements, MeleeWeapon meleeWeapon,
             Chapter chapter) {
@@ -68,16 +79,117 @@ public class SpaceMarine {
         return desctiption;
     }
 
+    // @Override
+    // public int hashCode() {
+    //     return hashCode(true);
+    // }
+
+    // public int hashCode(boolean abs) {
+    //     int result = 1;
+    //     result = 31 * result + ((id == null) ? 0 : id.hashCode());
+    //     result = 31 * result + ((name == null) ? 0 : name.hashCode());
+    //     result = 31 * result + ((coordinates == null) ? 0 : coordinates.hashCode());
+    //     result = 31 * result + ((creationDate == null) ? 0 : creationDate.hashCode());
+    //     long temp;
+    //     temp = Double.doubleToLongBits(health);
+    //     result = 31 * result + (int) (temp ^ (temp >>> 32));
+    //     result = 31 * result + (loyal ? 1231 : 1237);
+    //     result = 31 * result + ((achievements == null) ? 0 : achievements.hashCode());
+    //     result = 31 * result + ((meleeWeapon == null) ? 0 : meleeWeapon.hashCode());
+    //     result = 31 * result + ((chapter == null) ? 0 : chapter.hashCode());
+    //     if (abs == false) {
+    //         return result;
+    //     } else {
+    //         return result > 0 ? result : -result;
+    //     }
+    // }
+
     @Override
-    public int hashCode() {
-        int hash = name.hashCode();
-        hash = hash * 31 + coordinates.hashCode();
-        hash = hash * 31 + creationDate.hashCode();
-        hash = hash * 31 + achievements.hashCode();
-        hash = hash * 31 + meleeWeapon.hashCode();
-        hash = hash * 31 + chapter.hashCode();
-        hash = hash * 31 + (int)health;
-        hash = hash * 31 + (loyal==true ? 1 : 0);
-        return (hash>0? hash : -hash);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        SpaceMarine other = (SpaceMarine) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (id.equals(other.id))
+            return true;
+        return false;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public java.util.Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(java.util.Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public double getHealth() {
+        return health;
+    }
+
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
+    public boolean isLoyal() {
+        return loyal;
+    }
+
+    public void setLoyal(boolean loyal) {
+        this.loyal = loyal;
+    }
+
+    public String getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(String achievements) {
+        this.achievements = achievements;
+    }
+
+    public MeleeWeapon getMeleeWeapon() {
+        return meleeWeapon;
+    }
+
+    public void setMeleeWeapon(MeleeWeapon meleeWeapon) {
+        this.meleeWeapon = meleeWeapon;
+    }
+
+    public Chapter getChapter() {
+        return chapter;
+    }
+
+    public void setChapter(Chapter chapter) {
+        this.chapter = chapter;
     }
 }

@@ -56,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -211,22 +211,21 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "47a578db134cf685",
+  "active": "fc0973b0e2d3be0c",
   "lastOpenFiles": [
-    "Programming/Lab5/app/build/generated/jaxb/java/posConfig",
-    "Programming/Lab5/app/build/generated/jaxb/java",
-    "Programming/Lab5/app/build/generated/jaxb",
-    "Programming/Lab5/app/pos.xsd",
-    "Programming/Lab5/app/pox.xsd",
-    "Programming/Lab5/app/src/main/java/lab5/app/pox.xsd",
-    "Programming/Lab5/app/src/main/java/lab5/app",
-    "Programming/Lab5/gradle/gradle-daemon-jvm.properties",
-    "Programming/Lab5/app/build/generated/sources/annotationProcessor/java/main",
-    "Programming/Lab5/app/build/generated/sources/headers/java/main",
-    "Programming/Lab5/app/build/generated/sources/annotationProcessor/java",
+    "Линейная алгебра/2 сем/LecB2_1_1_linforms.pdf",
     "Линейная алгебра/1 сем/Линейная алгебра.md",
     "Линейная алгебра/1 сем/Вопросы к экзамену 1 сем.md",
+    "Линейная алгебра/1 сем/TM_Linal_1_2_Tanya.pdf",
+    "Дискретная математика/Синтез комбинационных схем.pdf",
+    "Линейная алгебра/2 сем",
+    "Линейная алгебра/Новая папка",
+    "Линейная алгебра/1 сем/ТМ3 линал.docx",
     "Линейная алгебра/1 сем/Теормин линал раздел 1.md",
+    "Линейная алгебра/1 сем/TM-2_2C_full.pdf",
+    "Линейная алгебра/1 сем/TM-1_2C_full.pdf",
+    "Линейная алгебра/1 сем/T2 shop2.docx",
+    "Линейная алгебра/1 сем/LecB_3_A_Coordinate_equations.pdf",
     "Дискретная математика/К-р вопр 1.md",
     "Programming/Lab5/README.md",
     "Programming/Lab5/Lab5/README.md",
