@@ -4,13 +4,12 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import lab5.utils.MeleeWeaponAdapter;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "id", "name", "coordinates", "creationDate", "health", "loyal", "achievements", "meleeWeapon","chapter" })
-public class SpaceMarine {
+public class SpaceMarine implements Comparable<SpaceMarine> {
+
     private Long id; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого
                      // поля должно быть уникальным, Значение этого поля должно генерироваться
                      // автоматически
@@ -21,13 +20,14 @@ public class SpaceMarine {
     private double health; // Значение поля должно быть больше 0
     private boolean loyal;
     private String achievements; // Поле не может быть null
-    @XmlJavaTypeAdapter(MeleeWeaponAdapter.class)
+    // @XmlJavaTypeAdapter(MeleeWeaponAdapter.class)
+    
     private MeleeWeapon meleeWeapon; // Поле может быть null
     private Chapter chapter; // Поле может быть null
     
     public SpaceMarine() {
     }
-
+    
     public SpaceMarine(String name, Coordinates coordinates, String achievements, MeleeWeapon meleeWeapon,
             Chapter chapter) {
         try {
@@ -129,7 +129,13 @@ public class SpaceMarine {
         this.id = id;
     }
 
+    @Override
+    public int compareTo(SpaceMarine other) {
+        return this.name.compareTo(other.name);
+    }
+
     public String getName() {
+
         return name;
     }
 

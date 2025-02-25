@@ -1,22 +1,16 @@
 package lab5;
 
-import java.util.Stack;
-
-import lab5.spacemarines.Chapter;
-import lab5.spacemarines.Coordinates;
-import lab5.spacemarines.MeleeWeapon;
 import lab5.spacemarines.SpaceMarine;
+import lab5.spacemarines.Coordinates;
+import lab5.spacemarines.Chapter;
+import lab5.spacemarines.MeleeWeapon;
+
+
 import lab5.utils.XMLhandler;
-import java.io.IOException;
+import lab5.commands.*;
+
 import java.util.Stack;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
-import lab5.commands.*;
-import lab5.spacemarines.*;
-import lab5.utils.*;
 
 public class App {
     public static void main(String[] args) {
@@ -30,14 +24,17 @@ public class App {
         stack_Marine.push(marine2);
         stack_Marine.push(marine3);
 
-        Stack<Chapter> stack_Chapter = new Stack<Chapter>();
-        stack_Chapter.push(new Chapter("TestChapter", "TestTest"));
-
         XMLhandler handler = new XMLhandler();
-        handler.writeStackToXML(marine3);
+        // Stack<Integer> stack_int = new Stack<Integer>();
+        // stack_int.push(Integer.valueOf(2));
+        // stack_int.push(Integer.valueOf(5));
+        // System.out.println(stack_int.toString());
 
+        handler.writeStackToXML(marine1);
+
+        // SpaceMarine un_marine = handler.readStackFromXML();
+        // System.out.print(un_marine.toString());
         // Command cmd = new Show(testStack);
         // cmd.execute();
-       
     }
 }

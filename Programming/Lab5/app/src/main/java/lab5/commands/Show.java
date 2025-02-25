@@ -2,15 +2,17 @@ package lab5.commands;
 
 import java.util.Stack;
 
-public class Show implements Command {
-    private Stack mystack;
+import lab5.utils.CollectionManager;
 
-    public Show(Stack stack) {
-        this.mystack = stack;
+public class Show implements Command {
+    private CollectionManager cm;
+
+    public Show(CollectionManager cm) {
+        this.cm = cm;
     }
 
     public void execute() {
-        for (Object i : mystack) {
+        for (Object i : cm.getCollection()) {
             System.out.println(i.toString());
         }
     }

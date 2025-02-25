@@ -1,1 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Stack><Object type="SpaceMarine"/><Object type="SpaceMarine"/><Object type="SpaceMarine"/></Stack>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<spaceMarine>
+    <id>664740647</id>
+    <name>Marine 1</name>
+    <coordinates>
+        <x>10.0</x>
+        <y>-10.5</y>
+    </coordinates>
+    <creationDate>2025-02-25T01:33:27.772+03:00</creationDate>
+    <health>50.0</health>
+    <loyal>true</loyal>
+    <achievements>Get alive</achievements>
+    <meleeWeapon>CHAIN_SWORD</meleeWeapon>
+    <chapter>
+        <name>World 1</name>
+        <world>Earth</world>
+    </chapter>
+</spaceMarine>

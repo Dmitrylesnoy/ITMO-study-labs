@@ -4,7 +4,7 @@ import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-@XmlEnum(String.class)
+@XmlEnum()
 public enum MeleeWeapon {
     CHAIN_SWORD,
     POWER_SWORD,

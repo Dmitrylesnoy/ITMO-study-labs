@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <spaceMarine>
-    <id>664740647</id>
-    <name>Marine 3</name>
+    <id>1392838282</id>
+    <name>Marine 1</name>
     <coordinates>
-        <x>30.0</x>
-        <y>-30.5</y>
+        <x>10.0</x>
+        <y>-10.5</y>
     </coordinates>
-    <creationDate>2025-02-23T04:04:38.843+03:00</creationDate>
-    <health>0.0</health>
-    <loyal>false</loyal>
-    <achievements>Get healthed</achievements>
-    <meleeWeapon>POWER_BLADE</meleeWeapon>
+    <creationDate>2025-02-25T00:27:46.710+03:00</creationDate>
+    <health>50.0</health>
+    <loyal>true</loyal>
+    <achievements>Get alive</achievements>
+    <meleeWeapon>CHAIN_SWORD</meleeWeapon>
     <chapter>
-        <name>World 3</name>
-        <world>Jupyter</world>
+        <name>World 1</name>
+        <world>Earth</world>
     </chapter>
 </spaceMarine>
