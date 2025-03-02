@@ -1,7 +1,9 @@
 package lab5.commands;
 
+import java.util.logging.Handler;
+
+import lab5.io.*;
 import lab5.utils.CollectionManager;
-import lab5.utils.XMLhandler;
 
 public class Load implements Command {
     private CollectionManager cm;
@@ -13,7 +15,8 @@ public class Load implements Command {
     @Override
     public void execute() {
         XMLhandler handler = new XMLhandler();
-        cm.setCollection(handler.readStackFromXML());    }
+        // cm.setCollection(handler.readCollection());    
+    }
 
     @Override
     public String describe() {

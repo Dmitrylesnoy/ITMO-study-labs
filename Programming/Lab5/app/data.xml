@@ -1,18 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<spaceMarine>
-    <id>1392838282</id>
-    <name>Marine 1</name>
-    <coordinates>
-        <x>10.0</x>
-        <y>-10.5</y>
-    </coordinates>
-    <creationDate>2025-02-25T00:27:46.710+03:00</creationDate>
-    <health>50.0</health>
-    <loyal>true</loyal>
-    <achievements>Get alive</achievements>
+<Stack>
+  <item>
+    <id>804564176</id>
+    <name>Marine1</name>
+    <coordinates/>
+    <creationDate>1740583122735</creationDate>
+    <health>0.0</health>
+    <loyal>false</loyal>
+    <achievements>Achievement1</achievements>
     <meleeWeapon>CHAIN_SWORD</meleeWeapon>
     <chapter>
-        <name>World 1</name>
-        <world>Earth</world>
+      <name>Chapter1</name>
+      <world>World1</world>
     </chapter>
-</spaceMarine>
+  </item>
+  <item>
+    <id>1421795058</id>
+    <name>Marine2</name>
+    <coordinates/>
+    <creationDate>1740583122735</creationDate>
+    <health>0.0</health>
+    <loyal>false</loyal>
+    <achievements>Achievement2</achievements>
+    <meleeWeapon>POWER_SWORD</meleeWeapon>
+    <chapter>
+      <name>Chapter2</name>
+      <world>World2</world>
+    </chapter>
+  </item>
+</Stack>

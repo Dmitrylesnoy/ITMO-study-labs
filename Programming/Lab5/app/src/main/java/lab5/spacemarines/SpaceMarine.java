@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "id", "name", "coordinates", "creationDate", "health", "loyal", "achievements", "meleeWeapon","chapter" })
+@XmlType(propOrder = { "id", "name", "coordinates", "creationDate", "health", "loyal", "achievements", "meleeWeapon", "chapter" })
 public class SpaceMarine implements Comparable<SpaceMarine> {
 
     private Long id; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого
@@ -20,14 +20,12 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     private double health; // Значение поля должно быть больше 0
     private boolean loyal;
     private String achievements; // Поле не может быть null
-    // @XmlJavaTypeAdapter(MeleeWeaponAdapter.class)
-    
     private MeleeWeapon meleeWeapon; // Поле может быть null
     private Chapter chapter; // Поле может быть null
-    
+
     public SpaceMarine() {
     }
-    
+
     public SpaceMarine(String name, Coordinates coordinates, String achievements, MeleeWeapon meleeWeapon,
             Chapter chapter) {
         try {
@@ -53,7 +51,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             MeleeWeapon meleeWeapon, Chapter chapter) {
         this(name, coordinates, achievements, meleeWeapon, chapter);
         try {
-            if (health > 0 && health > 0) {
+            if (health > 0 && (Boolean.TRUE.equals(loyal) || Boolean.FALSE.equals(loyal))) {
                 this.health = health;
                 this.loyal = loyal;
                 this.id = (long) hashCode();
@@ -81,28 +79,28 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
 
     // @Override
     // public int hashCode() {
-    //     return hashCode(true);
+    // return hashCode(true);
     // }
 
-    // public int hashCode(boolean abs) {
-    //     int result = 1;
-    //     result = 31 * result + ((id == null) ? 0 : id.hashCode());
-    //     result = 31 * result + ((name == null) ? 0 : name.hashCode());
-    //     result = 31 * result + ((coordinates == null) ? 0 : coordinates.hashCode());
-    //     result = 31 * result + ((creationDate == null) ? 0 : creationDate.hashCode());
-    //     long temp;
-    //     temp = Double.doubleToLongBits(health);
-    //     result = 31 * result + (int) (temp ^ (temp >>> 32));
-    //     result = 31 * result + (loyal ? 1231 : 1237);
-    //     result = 31 * result + ((achievements == null) ? 0 : achievements.hashCode());
-    //     result = 31 * result + ((meleeWeapon == null) ? 0 : meleeWeapon.hashCode());
-    //     result = 31 * result + ((chapter == null) ? 0 : chapter.hashCode());
-    //     if (abs == false) {
-    //         return result;
-    //     } else {
-    //         return result > 0 ? result : -result;
-    //     }
-    // }
+    public int hashCode(boolean abs) {
+        int result = 1;
+        result = 31 * result + ((id == null) ? 0 : id.hashCode());
+        result = 31 * result + ((name == null) ? 0 : name.hashCode());
+        result = 31 * result + ((coordinates == null) ? 0 : coordinates.hashCode());
+        result = 31 * result + ((creationDate == null) ? 0 : creationDate.hashCode());
+        long temp;
+        temp = Double.doubleToLongBits(health);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (loyal ? 1231 : 1237);
+        result = 31 * result + ((achievements == null) ? 0 : achievements.hashCode());
+        result = 31 * result + ((meleeWeapon == null) ? 0 : meleeWeapon.hashCode());
+        result = 31 * result + ((chapter == null) ? 0 : chapter.hashCode());
+        if (abs == false) {
+            return result;
+        } else {
+            return result > 0 ? result : -result;
+        }
+    }
 
     @Override
     public boolean equals(Object obj) {

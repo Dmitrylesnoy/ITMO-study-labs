@@ -15,6 +15,7 @@ public class FilterStartsWithAchievements implements Command {
 
     @Override
     public void execute() {
+        
         for (SpaceMarine marine : cm.getCollection()) {
             if (marine.getAchievements().startsWith(sub)) {
                 System.out.println(marine.toString());

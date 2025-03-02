@@ -1,7 +1,7 @@
 package lab5.commands;
 
+import lab5.io.XMLhandler;
 import lab5.utils.CollectionManager;
-import lab5.utils.XMLhandler;
 
 public class Save implements Command{
     private CollectionManager cm;
@@ -13,7 +13,7 @@ public class Save implements Command{
     @Override
     public void execute() {
         XMLhandler handler = new XMLhandler();
-        handler.writeStackToXML(cm.getCollection());
+        // handler.writeCollection(cm.getCollection());
     }
 
     @Override

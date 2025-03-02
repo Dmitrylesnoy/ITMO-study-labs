@@ -8,7 +8,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
-    id("com.javagen.schema-gen") version "0.9.1"
+    id("io.freefair.lombok") version "8.12"
 }
 
 repositories {
@@ -28,6 +28,10 @@ dependencies {
     // JAXB dependencies
     implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
     implementation 'org.glassfish.jaxb:jaxb-xjc:4.0.0'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.18.2'
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

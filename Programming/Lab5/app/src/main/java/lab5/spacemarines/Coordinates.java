@@ -8,11 +8,12 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "x", "y" })
-public class Coordinates {
+public class 
+Coordinates {
     private double x;
     private Float y; // Поле не может быть null
 
-    private Coordinates() {
+    public Coordinates() {
     }
 
     public Coordinates(double x) {

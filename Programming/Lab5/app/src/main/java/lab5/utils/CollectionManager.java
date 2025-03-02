@@ -5,7 +5,7 @@ import java.util.Stack;
 import lab5.spacemarines.SpaceMarine;
 
 public class CollectionManager {
-    private Stack<SpaceMarine> myStack;
+    private Stack<SpaceMarine> myStack = new Stack<>(); // Initialize the stack
 
     public Stack<SpaceMarine> getCollection() {
         return myStack;
@@ -13,10 +13,10 @@ public class CollectionManager {
 
     public void setCollection(Stack<SpaceMarine> newStack) {
         this.myStack = newStack;
+        
     }
 
     public void Add(SpaceMarine marine) {
         myStack.push(marine);
     }
 }
-

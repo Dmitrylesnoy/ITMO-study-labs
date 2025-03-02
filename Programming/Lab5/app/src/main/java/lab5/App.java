@@ -1,40 +1,40 @@
 package lab5;
 
-import lab5.spacemarines.SpaceMarine;
 import lab5.spacemarines.Coordinates;
-import lab5.spacemarines.Chapter;
+import lab5.spacemarines.SpaceMarine;
 import lab5.spacemarines.MeleeWeapon;
-
-
-import lab5.utils.XMLhandler;
-import lab5.commands.*;
+import lab5.io.JAXBhandler;
+import lab5.io.XMLhandler;
+import lab5.spacemarines.Chapter;
+import lab5.utils.*;
 
 import java.util.Stack;
 
-
 public class App {
+    
+    
     public static void main(String[] args) {
+        CollectionManager cm = new CollectionManager();
+ 
+        SpaceMarine marine1 = new SpaceMarine("Marine1", new Coordinates(10), "Achievement1", MeleeWeapon.CHAIN_SWORD, new Chapter("Chapter1", "World1"));
+        SpaceMarine marine2 = new SpaceMarine("Marine2", new Coordinates(30, (float) 9.5), "Achievement2", MeleeWeapon.POWER_SWORD, new Chapter("Chapter2", "World2"));
 
-        SpaceMarine marine1 = new SpaceMarine("Marine 1", new Coordinates(10, (float) -10.5), 50, true, "Get alive",MeleeWeapon.CHAIN_SWORD, new Chapter("World 1", "Earth"));
-        SpaceMarine marine2 = new SpaceMarine("Marine 2", new Coordinates(20,(float)-20.5), 100, true, "Get dead", MeleeWeapon.POWER_FIST, new Chapter("World2","Mars"));
-        SpaceMarine marine3 = new SpaceMarine("Marine 3", new Coordinates(30, (float)-30.5), "Get healthed", MeleeWeapon.POWER_BLADE, new Chapter("World 3","Jupyter"));
+        cm.Add(marine1);
+        cm.Add(marine2);
 
-        Stack<SpaceMarine> stack_Marine = new Stack<SpaceMarine>();
-        stack_Marine.push(marine1);
-        stack_Marine.push(marine2);
-        stack_Marine.push(marine3);
+        Stack<SpaceMarine> stackMarine = new Stack();
+        stackMarine.push(marine1);
+        stackMarine.push(marine2);
+        System.out.println("Colection pushed");
 
-        XMLhandler handler = new XMLhandler();
-        // Stack<Integer> stack_int = new Stack<Integer>();
-        // stack_int.push(Integer.valueOf(2));
-        // stack_int.push(Integer.valueOf(5));
-        // System.out.println(stack_int.toString());
+        XMLhandler xmLhandler = new XMLhandler();
+        xmLhandler.writeCollection(stackMarine);
 
-        handler.writeStackToXML(marine1);
-
-        // SpaceMarine un_marine = handler.readStackFromXML();
-        // System.out.print(un_marine.toString());
-        // Command cmd = new Show(testStack);
-        // cmd.execute();
+        Stack<SpaceMarine> readedStack = new Stack<>();
+        readedStack.addAll(xmLhandler.readCollection());
+        for (Object obj : readedStack) {
+            SpaceMarine mar = (SpaceMarine)obj;
+            System.out.println(mar.toString());
+        }
     }
 }

@@ -1,0 +1,69 @@
+BEGIN;
+
+CREATE TABLE Animal(
+	ID SERIAL PRIMARY KEY,
+	NAME VARCHAR(64),
+	TYPE VARCHAR(64) NOT NULL
+);
+
+CREATE TABLE People(
+	ID SERIAL PRIMARY KEY,
+	NAME varchar(64),
+	MALE Boolean NOT NULL
+);
+
+CREATE TABLE Animal_actor(
+	ANIMAL_ID integer REFERENCES Animal(ID),
+	ACTOR_ID integer REFERENCES People(ID),
+	PRIMARY KEY(ANIMAL_ID, ACTOR_ID)
+);
+
+CREATE TABLE Item(
+	NAME varchar(62) PRIMARY KEY,
+	WEIGHT integer
+);
+
+CREATE TABLE Action(
+	ID SERIAL PRIMARY KEY,
+	ACTOR_ID integer REFERENCES People(ID),
+	NAME varchar(64)
+);
+
+CREATE TABLE Attention(
+	ID SERIAL PRIMARY KEY,
+	PERSON_ID integer REFERENCES People(ID),
+	ACTION_ID integer,
+	TARGET varchar(64) REFERENCES Item(NAME)
+);
+
+CREATE TABLE Scene(
+	ID SERIAL PRIMARY KEY,
+	ACTION integer REFERENCES Action(ID),
+	PLACE place
+);
+
+CREATE TABLE History(
+	ID SERIAL PRIMARY KEY,
+	ACTION_1 integer REFERENCES Action(ID),
+	ACTION_2 integer REFERENCES Action(ID)
+);
+
+CREATE TABLE Feelings(
+	ID SERIAL PRIMARY KEY,
+	ACTION integer REFERENCES Action(ID),
+	EMOTION varchar(64) REFERENCES Emotion(NAME)
+);
+
+CREATE TYPE place AS ENUM(
+	'пол',
+	'темнота',
+	'помещение'
+);
+
+CREATE TABLE Emotion(
+	NAME varchar(64) PRIMARY KEY,
+	COLOR varchar(64),
+	INTENSIVITY integer
+);
+
+COMMIT;
