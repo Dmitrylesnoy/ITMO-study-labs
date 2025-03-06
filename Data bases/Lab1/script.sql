@@ -1,5 +1,11 @@
 BEGIN;
 
+CREATE TYPE place AS ENUM(
+	'Пол',
+	'Темнота',
+	'Помещение'
+);
+
 CREATE TABLE Animal(
 	ID SERIAL PRIMARY KEY,
 	NAME VARCHAR(64),
@@ -12,10 +18,10 @@ CREATE TABLE People(
 	MALE Boolean NOT NULL
 );
 
-CREATE TABLE Animal_actor(
+CREATE TABLE Actors(
+	ID SERIAL PRIMARY KEY,
 	ANIMAL_ID integer REFERENCES Animal(ID),
-	ACTOR_ID integer REFERENCES People(ID),
-	PRIMARY KEY(ANIMAL_ID, ACTOR_ID)
+	PEOPLE_ID integer REFERENCES People(ID)
 );
 
 CREATE TABLE Item(
@@ -25,7 +31,7 @@ CREATE TABLE Item(
 
 CREATE TABLE Action(
 	ID SERIAL PRIMARY KEY,
-	ACTOR_ID integer REFERENCES People(ID),
+	ACTOR_ID integer REFERENCES Actors(ID) ON DELETE CASCADE,
 	NAME varchar(64)
 );
 
@@ -38,8 +44,8 @@ CREATE TABLE Attention(
 
 CREATE TABLE Scene(
 	ID SERIAL PRIMARY KEY,
-	ACTION integer REFERENCES Action(ID),
-	PLACE place
+	ACTION integer REFERENCES Action(ID) ON DELETE CASCADE,
+	PLACE place NOT NULL
 );
 
 CREATE TABLE History(
@@ -48,22 +54,75 @@ CREATE TABLE History(
 	ACTION_2 integer REFERENCES Action(ID)
 );
 
-CREATE TABLE Feelings(
-	ID SERIAL PRIMARY KEY,
-	ACTION integer REFERENCES Action(ID),
-	EMOTION varchar(64) REFERENCES Emotion(NAME)
-);
-
-CREATE TYPE place AS ENUM(
-	'пол',
-	'темнота',
-	'помещение'
-);
-
 CREATE TABLE Emotion(
 	NAME varchar(64) PRIMARY KEY,
 	COLOR varchar(64),
 	INTENSIVITY integer
 );
+
+CREATE TABLE Feelings(
+	ID SERIAL PRIMARY KEY,
+	ACTION integer REFERENCES Action(ID),
+	EMOTION varchar(64) REFERENCES Emotion(NAME) ON DELETE CASCADE
+);
+
+
+INSERT INTO People (NAME, MALE) VALUES ('Дженнаро', TRUE);
+INSERT INTO Animal (NAME, TYPE) VALUES ('Раптов', 'Хищник');
+INSERT INTO Actors (ANIMAL_ID) VALUES (1);
+INSERT INTO Actors (PEOPLE_ID) VALUES (1);
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Откинул');
+INSERT INTO Item (NAME, WEIGHT) VALUES ('Хищник', 5);
+INSERT INTO Attention (PERSON_ID, ACTION_ID, TARGET) VALUES (1, 1, 'Хищник');
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Покатился');
+INSERT INTO Scene (ACTION, PLACE) VALUES (2, 'Пол');
+INSERT INTO History (ACTION_1, ACTION_2) VALUES (1, 2);
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Обернувшись');
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Увидел');
+INSERT INTO History (ACTION_1,ACTION_2) VALUES (3,4);
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (1, 'Лежит');
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (1, 'Дышит');
+INSERT INTO History (ACTION_1,ACTION_2) VALUES (5,6);
+
+INSERT INTO Emotion (NAME, COLOR, INTENSIVITY) VALUES ('Истощение', 'Серый', 4);
+INSERT INTO Feelings (ACTION, EMOTION) VALUES (6, 'Истощение');
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Вскочил');
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Оглядеся');
+INSERT INTO History (ACTION_1,ACTION_2) VALUES (7,8);
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Искал');
+INSERT INTO Item (NAME, WEIGHT) VALUES ('Замена оружию', 1);
+INSERT INTO Attention (PERSON_ID, ACTION_ID, TARGET) VALUES (1, 9, 'Замена оружию');
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Повернулся');
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (1, 'Исчез');
+INSERT INTO History (ACTION_1,ACTION_2) VALUES (10,11);
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Обошел');
+INSERT INTO Scene (ACTION, PLACE) VALUES (12, 'Помещение');
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Вытянув');
+INSERT INTO Item (NAME, WEIGHT) VALUES ('Руки', 3);
+INSERT INTO Attention (PERSON_ID, ACTION_ID, TARGET) VALUES (1, 13, 'Руки');
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Почувствовал');
+INSERT INTO Emotion (NAME, COLOR, INTENSIVITY) VALUES ('Боль', 'Красный', 13);
+INSERT INTO Feelings (ACTION, EMOTION) VALUES (14, 'Боль');
+INSERT INTO Item (NAME, WEIGHT) VALUES ('Правая ладонь', 1);
+INSERT INTO Attention (PERSON_ID, ACTION_ID, TARGET) VALUES (1, 14, 'Правая ладонь');
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (1, 'Укусил');
+INSERT INTO History (ACTION_1,ACTION_2) VALUES (15,14);
+
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (1, 'Мотнул');
+INSERT INTO Action (ACTOR_ID, NAME) VALUES (2, 'Упал');
+INSERT INTO Item (NAME, WEIGHT) VALUES ('Рывок', 8);
+INSERT INTO Attention (PERSON_ID, ACTION_ID, TARGET) VALUES (1, 16, 'Рывок');
+INSERT INTO History (ACTION_1,ACTION_2) VALUES (16,17);
+
+INSERT INTO Emotion (NAME, COLOR, INTENSIVITY) VALUES ('Испуг', 'черный', 7);
+INSERT INTO Feelings (ACTION, EMOTION) VALUES (17, 'Испуг');
 
 COMMIT;
