@@ -4,7 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import lab5.system.exceptions.NullArgumetnException;
-import lab5.system.io.Console.StdConsole;
+import lab5.system.io.console.StdConsole;
 
 @JacksonXmlRootElement(localName = "Chapter")
 public class Chapter {

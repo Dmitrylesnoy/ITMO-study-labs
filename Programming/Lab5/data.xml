@@ -1,12 +1,12 @@
 <Stack>
   <SpaceMarine>
-    <id>1060823803</id>
+    <id>1432413876</id>
     <name>Marine1</name>
     <coordinates>
       <x>10.0</x>
       <y/>
     </coordinates>
-    <creationDate>1741212071794</creationDate>
+    <creationDate>1741306021922</creationDate>
     <health/>
     <loyal/>
     <achievements>Achievement1</achievements>
@@ -17,13 +17,13 @@
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
-    <id>506048265</id>
+    <id>-1037087717</id>
     <name>Marine2</name>
     <coordinates>
       <x>30.0</x>
       <y>9.5</y>
     </coordinates>
-    <creationDate>1741212071794</creationDate>
+    <creationDate>1741306021922</creationDate>
     <health>156.0</health>
     <loyal>true</loyal>
     <achievements>Achievement2</achievements>
@@ -31,6 +31,40 @@
     <chapter>
       <name>Chapter2</name>
       <world>World2</world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
+    <id>-1566490869</id>
+    <name>test Marine 123</name>
+    <coordinates>
+      <x>9.843573246723673E47</x>
+      <y>-1239123.0</y>
+    </coordinates>
+    <creationDate>1741306139986</creationDate>
+    <health>2.0</health>
+    <loyal/>
+    <achievements>Get started</achievements>
+    <meleeWeapon>POWER_SWORD</meleeWeapon>
+    <chapter>
+      <name>pypypyp asdumc9 476q 9,!></name>
+      <world>&lt;world>abc&lt;/world></world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
+    <id>2004399952</id>
+    <name>test with unique false</name>
+    <coordinates>
+      <x>1.234567936E9</x>
+      <y/>
+    </coordinates>
+    <creationDate>1741307398061</creationDate>
+    <health>35.0</health>
+    <loyal>false</loyal>
+    <achievements>kjfd</achievements>
+    <meleeWeapon>POWER_BLADE</meleeWeapon>
+    <chapter>
+      <name>naboba</name>
+      <world>jupyter</world>
     </chapter>
   </SpaceMarine>
 </Stack>

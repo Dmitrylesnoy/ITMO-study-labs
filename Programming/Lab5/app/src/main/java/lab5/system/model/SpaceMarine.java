@@ -1,10 +1,11 @@
 package lab5.system.model;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
-import lab5.system.io.Console.StdConsole;
 import lombok.Getter;
 import lombok.Setter;
+
+import lab5.system.io.console.StdConsole;
+import lab5.system.io.console.*;
 
 @Getter
 @Setter
@@ -22,6 +23,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     private String achievements; // Поле не может быть null
     private MeleeWeapon meleeWeapon; // Поле может быть null
     private Chapter chapter; // Поле может быть null
+    private StdConsole console = new StdConsole();
 
     public SpaceMarine() {
     }
@@ -43,7 +45,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             } else
                 throw new IllegalArgumentException("Argument mustn't be null");
         } catch (Exception e) {
-            StdConsole.writeln(e.toString());
+            console.writeln(e.toString());
         }
     }
 
@@ -60,7 +62,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             } else
                 throw new IllegalArgumentException("Health must be above 0");
         } catch (Exception e) {
-            StdConsole.writeln(e.toString());
+            console.writeln(e.toString());
         }
     }
 

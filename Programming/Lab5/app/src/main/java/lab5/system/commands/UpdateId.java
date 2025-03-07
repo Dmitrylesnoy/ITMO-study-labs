@@ -1,30 +1,31 @@
 package lab5.system.commands;
 
 import lab5.system.model.SpaceMarine;
+import lab5.system.model.builders.SpaceMarineBuilder;
 import lab5.system.utils.CollectionManager;
 
-public class UpdateId implements Command{
+public class UpdateId implements Command {
     private SpaceMarine obj;
-    private CollectionManager cm;
 
-    
-    public UpdateId(CollectionManager cm, SpaceMarine obj) {
-        this.cm = cm;
+    public UpdateId(){}
+    public UpdateId(SpaceMarine obj) {
         this.obj = obj;
     }
 
     @Override
     public void execute() {
-        for (SpaceMarine marine : cm.getCollection()) {
+        if (obj == null) {
+            obj = new SpaceMarineBuilder().build();
+        }
+        for (SpaceMarine marine : CollectionManager.getInstance().getCollection()) {
             if (marine.getId() == obj.getId()) {
                 marine = obj;
             }
         }
     }
 
-    @Override
     public String describe() {
         return "This command updates object in Collection, which ID equal to given object ID.";
     }
-    
+
 }

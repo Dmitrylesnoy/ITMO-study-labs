@@ -1,4 +1,4 @@
-package lab5.system.io.file;
+package lab5.system.io.xml;
 
 import java.util.Stack;
 

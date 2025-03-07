@@ -1,21 +1,19 @@
 package lab5.system.commands;
 
+import java.util.Stack;
+
 import lab5.system.model.SpaceMarine;
 import lab5.system.utils.CollectionManager;
 
-import java.util.Stack;
-
 public class MinByMeleeWeapon implements Command {
-    private CollectionManager cm;
-    private StringBuilder output=new StringBuilder();
+    private StringBuilder output = new StringBuilder();
 
-    public MinByMeleeWeapon(CollectionManager cm) {
-        this.cm = cm;
+    public MinByMeleeWeapon() {
     }
 
     @Override
     public void execute() {
-        Stack<SpaceMarine> collection = cm.getCollection();
+        Stack<SpaceMarine> collection = CollectionManager.getInstance().getCollection();
         if (collection.isEmpty()) {
             output.append("Collection is empty").append("\n");
             return;
@@ -34,7 +32,6 @@ public class MinByMeleeWeapon implements Command {
         return output.toString();
     }
 
-    @Override
     public String describe() {
         return "Returns any object with the minimum MeleeWeapon value";
     }

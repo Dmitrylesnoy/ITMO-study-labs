@@ -8,16 +8,14 @@ import lab5.system.model.SpaceMarine;
 import lab5.system.utils.CollectionManager;
 
 public class PrintUniqueLoyal implements Command {
-    private CollectionManager cm;
     private StringBuilder output = new StringBuilder();
 
-    public PrintUniqueLoyal(CollectionManager cm) {
-        this.cm = cm;
+    public PrintUniqueLoyal() {
     }
 
     @Override
     public void execute() {
-        Stack<SpaceMarine> collection = cm.getCollection();
+        Stack<SpaceMarine> collection = CollectionManager.getInstance().getCollection();
         Map<Boolean, Integer> loyalCount = new HashMap<>();
 
         for (SpaceMarine marine : collection) {
@@ -27,7 +25,7 @@ public class PrintUniqueLoyal implements Command {
         }
 
         for (SpaceMarine marine : collection) {
-            if (loyalCount.get(marine.getLoyal()) == 1) {
+            if (loyalCount.get(marine.getLoyal())!=null && loyalCount.get(marine.getLoyal()) == 1) {
                 output.append(marine.toString()).append("\n");
             }
         }
@@ -37,7 +35,6 @@ public class PrintUniqueLoyal implements Command {
         return output.toString();
     }
 
-    @Override
     public String describe() {
         return "Prints objects with unique Loyal fields for all elements";
     }

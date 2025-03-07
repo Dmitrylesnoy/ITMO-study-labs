@@ -9,8 +9,12 @@ public class Request {
     private String command;
     private String[] args;
 
+    public Request(String name) {
+        this.command = name.toLowerCase();
+    }
+
     public Request(String command, String[] args) {
-        this.command = command;
+        this.command = command.toLowerCase();
         this.args = args;
     }
 }

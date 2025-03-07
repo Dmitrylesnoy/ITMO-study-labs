@@ -1,15 +1,12 @@
 package lab5.system.model.builders;
 
-import lab5.system.io.Console.StdConsole;
+import lab5.system.io.console.StdConsole;
 import lab5.system.model.Chapter;
 import lab5.system.model.Coordinates;
 import lab5.system.model.MeleeWeapon;
 import lab5.system.model.SpaceMarine;
 
 public class SpaceMarineBuilder {
-
-    ;
-
     private Long id; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого
                      // поля должно быть уникальным, Значение этого поля должно генерироваться
                      // автоматически
@@ -24,7 +21,6 @@ public class SpaceMarineBuilder {
     private Chapter chapter; // Поле может быть null
 
     public SpaceMarineBuilder() {
-
         setName();
         setCoordinates();
         setHealth();
@@ -35,19 +31,21 @@ public class SpaceMarineBuilder {
     }
 
     public SpaceMarine build() {
-        if (health > 0 && (Boolean.TRUE.equals(loyal) || Boolean.FALSE.equals(loyal))) {
-            return new SpaceMarine(name, coordinates, health, loyal, achievements, meleeWeapon, chapter);
-        } else {
-            return new SpaceMarine(name, coordinates, achievements, meleeWeapon, chapter);
-        }
+        SpaceMarine buildMarine = new SpaceMarine(name, coordinates, achievements, meleeWeapon, chapter);
+        if (health != null && health > 0)
+            buildMarine.setHealth(health);
+        if (Boolean.TRUE.equals(loyal) || Boolean.FALSE.equals(loyal))
+            buildMarine.setLoyal(loyal);
+        return buildMarine;
     }
 
-    public String setName() {
+    public void setName() {
         String name;
         while (true) {
             name = StdConsole.read("Enter the name of the SpaceMarine: ");
             if (name != null && !name.isEmpty()) {
                 this.name = name;
+                break;
             } else {
                 StdConsole.writeln("Invalid input: Name cannot be null or empty. Please try again.");
             }
@@ -61,12 +59,10 @@ public class SpaceMarineBuilder {
     public void setHealth() {
         Double health;
         String ans = "";
-        while (ans != "Y") {
+        while (ans.equals("Y") == false) {
             ans = StdConsole.read("Would you set the health of the SpaceMarine? (Y/N)");
-            if (ans == "N") {
+            if (ans.equals("N")) {
                 return;
-            } else {
-                StdConsole.writeln("Incorrect answer option, try again");
             }
         }
         while (true) {
@@ -74,33 +70,31 @@ public class SpaceMarineBuilder {
                 health = Double.parseDouble(StdConsole.read("Enter the health of the SpaceMarine: "));
                 if (health > 0) {
                     this.health = health;
-                    break;
+                    return;
+
                 } else {
                     StdConsole.writeln("Invalid input: Health must be greater than 0. Please try again.");
                 }
             } catch (NumberFormatException e) {
                 StdConsole.writeln("Invalid input: Please enter a valid number for health.");
+            } catch (Exception e) {
+                StdConsole.writeln(e.toString());
             }
         }
     }
 
     public void setLoyalty() {
-        String input;
         String ans = "";
-        while (ans != "Y") {
+        while (ans.equals("Y") == false) {
             ans = StdConsole.read("Would you set the loyalty of the SpaceMarine? (Y/N)");
-            if (ans == "N") {
-                return;
-            } else {
-                StdConsole.writeln("Incorrect answer option, try again");
-            }
+            if (ans.equals("N")) return;
         }
         while (true) {
-            input = StdConsole.read("Is the SpaceMarine loyal? (true/false): ");
-            if (input.equalsIgnoreCase("true")) {
+            ans = StdConsole.read("Is the SpaceMarine loyal? (true/false): ");
+            if (ans.equalsIgnoreCase("true")) {
                 this.loyal = true;
-                break;
-            } else if (input.equalsIgnoreCase("false")) {
+                return;
+            } else if (ans.equalsIgnoreCase("false")) {
                 this.loyal = false;
                 break;
             } else {
@@ -123,16 +117,16 @@ public class SpaceMarineBuilder {
     }
 
     public void setMeleeWeapon() {
-        String meleeWeapon;
+        String ans;
         while (true) {
             StdConsole.writeln("Enter the MeleeWeapon of the SpaceMarine: ");
-            StdConsole.write("MeleeWeapon variables:     CHAIN_SWORD,\r\n" + //
+            StdConsole.write("MeleeWeapon variables: \n    CHAIN_SWORD,\r\n" + //
                     "    POWER_SWORD,\r\n" + //
                     "    POWER_BLADE,\r\n" + //
-                    "    POWER_FIST; ");
-            meleeWeapon = StdConsole.read();
+                    "    POWER_FIST; \r\n");
+            ans = StdConsole.read();
             try {
-                this.meleeWeapon = MeleeWeapon.valueOf(meleeWeapon);
+                this.meleeWeapon = MeleeWeapon.valueOf(ans.toUpperCase());
                 break;
             } catch (Exception e) {
                 StdConsole.write("Invalid input: MeleeWeapon have not this value. Please try again.");

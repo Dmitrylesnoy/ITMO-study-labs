@@ -25,10 +25,22 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Ekkels Filosofiya-Thining of Java.pdf"
+                "file": "Литература/Horstmann Cay - Core Java. 1 (2021).pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Ekkels Filosofiya-Thining of Java"
+              "title": "Horstmann Cay - Core Java. 1 (2021)"
+            }
+          },
+          {
+            "id": "ceca7fca7bc4064a",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Литература/Java 12th Herbert Schildt.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Java 12th Herbert Schildt"
             }
           },
           {
@@ -56,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -211,19 +223,19 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "fc0973b0e2d3be0c",
+  "active": "ceca7fca7bc4064a",
   "lastOpenFiles": [
+    "Литература/Horstmann Cay - Core Java. 1 (2021).pdf",
+    "Литература/Ekkels Filosofiya-Thining of Java.pdf",
+    "Литература/Java 12th Herbert Schildt.pdf",
+    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
+    "Литература/Совершенный код Steve McConnel.pdf",
+    "Литература/Паттерны Банды четырех.pdf",
+    "Литература/Мат индукция_повыш сложность задачник.pdf",
+    "Литература/Кириллов_В.В_Громов_Г.Ю._-_Введение_в_реляционные_базы_данных_-_2008.pdf",
     "Programming/Lab5/app/src/main/java/lab5/system/io/file/XMLhandler.java",
     "Programming/Lab5/app/src/main/java/lab5/system/io/file/StackMarine.java",
     "Programming/Lab5/app/src/main/java/lab5/system/io/file/JAXBhandler.java",
-    "Programming/Lab5/app/src/main/java/lab5/system/io/Console/StdConsole.java",
-    "Programming/Lab5/app/src/main/java/lab5/system/io/file",
-    "Programming/Lab5/app/src/main/java/lab5/system/io/Console",
-    "Programming/Lab5/app/src/main/java/lab5/system/io",
-    "Programming/Lab5/app/bin/main/lab5/system/commands/UpdateId.class",
-    "Programming/Lab5/app/bin/main/lab5/system/commands/Sort.class",
-    "Programming/Lab5/app/bin/main/lab5/system/commands/Show.class",
-    "Programming/Lab5/app/bin/main/lab5/system/commands/Save.class",
     "Programming/Lab5/scheme/IMG_20250306_141520_381.jpg",
     "Линейная алгебра/1 сем/Линейная алгебра.md",
     "Линейная алгебра/1 сем/Вопросы к экзамену 1 сем.md",

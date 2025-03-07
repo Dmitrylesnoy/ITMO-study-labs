@@ -1,18 +1,17 @@
 package lab5.system.commands;
 
+import lab5.system.model.SpaceMarine;
 import lab5.system.utils.CollectionManager;
 
 public class Show implements Command {
-    private CollectionManager cm;
     private StringBuilder output = new StringBuilder();
 
-    public Show(CollectionManager cm) {
-        this.cm = cm;
+    public Show() {
     }
 
     public void execute() {
-        for (Object i : cm.getCollection()) {
-            output.append(i.toString()).append("\n");
+        for (SpaceMarine i : CollectionManager.getInstance().getCollection()) {
+            output.append(i.toString() + "\n");
         }
     }
 

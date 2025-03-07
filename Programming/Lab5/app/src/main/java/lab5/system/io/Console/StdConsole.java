@@ -1,4 +1,4 @@
-package lab5.system.io.Console;
+package lab5.system.io.console;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,16 +6,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-/**
- * Class which defines console which user will use to communicate with program.
- */
 public class StdConsole {
     private static final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+    private static StdConsole instance;
 
-    public static String read(String prompt) {
-        writeln(prompt);
-        return read();
+    public StdConsole() {
+        this.instance = this;
     }
 
     public static String read() {
@@ -26,11 +23,11 @@ public class StdConsole {
         }
     }
 
-    /**
-     * Prompts to console without placing \n at the end of prompt.
-     * 
-     * @param text to prompt to user
-     */
+    public static String read(String prompt) {
+        writeln(prompt);
+        return read();
+    }
+
     public static void write(String text) {
         try {
             consoleWriter.append(text).flush();
@@ -45,8 +42,12 @@ public class StdConsole {
         }
     }
 
-    public static void close() throws Exception {
+    public void close() throws Exception {
         consoleReader.close();
         consoleWriter.close();
+    }
+
+    public static StdConsole getInstance() {
+        return instance!=null? instance :new StdConsole();
     }
 }

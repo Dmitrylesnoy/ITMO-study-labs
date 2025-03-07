@@ -1,4 +1,4 @@
-package lab5.system.io.file;
+package lab5.system.io.xml;
 
 import java.io.File;
 import java.util.Collection;
@@ -8,7 +8,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import lab5.system.io.Console.StdConsole;
+import lab5.system.io.console.StdConsole;
 import lab5.system.model.Chapter;
 import lab5.system.model.Coordinates;
 import lab5.system.model.MeleeWeapon;

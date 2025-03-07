@@ -1,12 +1,12 @@
 package lab5.system.model.builders;
 
-import lab5.system.io.Console.StdConsole;
+import lab5.system.io.console.StdConsole;
 import lab5.system.model.Chapter;
 
 public class ChapterBuilder {
-    ;
     private String name; // Поле не может быть null, Строка не может быть пустой
     private String world; // Поле может быть null
+    
 
     public ChapterBuilder() {
         setName();
@@ -19,7 +19,7 @@ public class ChapterBuilder {
 
     public void setName() {
         while (true) {
-            StdConsole.write("Enter the Name of the Chapter: ");
+            StdConsole.writeln("Enter the Name of the Chapter: ");
             name = StdConsole.read();
             if (name != null && !name.isEmpty()) {
                 this.name = name;
@@ -32,9 +32,8 @@ public class ChapterBuilder {
 
     public void setWorld() {
         while (true) {
-            StdConsole.write("Enter the World of the Chapter: ");
-            world = StdConsole.read();
-            if (world != null) {
+            world = StdConsole.read("Enter the World of the Chapter: ");
+            if (world != null && !world.isEmpty()) {
                 this.world = world;
                 break;
             } else {

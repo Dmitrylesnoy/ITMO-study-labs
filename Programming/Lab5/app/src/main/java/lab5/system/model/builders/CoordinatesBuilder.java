@@ -1,49 +1,47 @@
 package lab5.system.model.builders;
 
-import lab5.system.io.Console.StdConsole;
+import lab5.system.io.console.StdConsole;
 import lab5.system.model.Coordinates;
 
 public class CoordinatesBuilder {
-    ;
     private Double x;
-    private Float y;
+    private Float y; // not null
 
     public CoordinatesBuilder() {
-
-        if (StdConsole.read("Would you enter the X coordinate? Y/N: ") == "Y") {
-            this.x = setX();
-            this.y = setY();
-
-        } else {
-            this.y = setY();
+        this.y = setY();
+        while (true) {
+            String ans = StdConsole.read("Would you enter the X coordinate? Y/N:");
+            if (ans.equals("Y")) {
+                this.x = setX();
+                break;
+            } else if (ans.equals("N")) {
+                break;
+            }
         }
     }
 
     public Coordinates build() {
-        return new Coordinates(x, y);
+        if (x == null)
+            return new Coordinates(y);
+        else
+            return new Coordinates(x, y);
     }
 
-    public double setX() {
-        double x;
+    public Double setX() {
         while (true) {
-            StdConsole.write("Enter the x coordinate: ");
             try {
-                x = Double.parseDouble(StdConsole.read());
-                return x;
-            } catch (NumberFormatException e) {
+                return Double.parseDouble(StdConsole.read("Enter the x coordinate (double): "));
+            } catch (Exception e) {
                 StdConsole.writeln("Invalid input: Please enter a valid number for x.");
             }
         }
     }
 
     public Float setY() {
-        Float y;
         while (true) {
-            StdConsole.write("Enter the y coordinate: ");
             try {
-                y = Float.parseFloat(StdConsole.read());
-                return y;
-            } catch (NumberFormatException e) {
+                return Float.parseFloat(StdConsole.read("Enter the y coordinate (float): "));
+            } catch (Exception e) {
                 StdConsole.writeln("Invalid input: Please enter a valid number for y.");
             }
         }

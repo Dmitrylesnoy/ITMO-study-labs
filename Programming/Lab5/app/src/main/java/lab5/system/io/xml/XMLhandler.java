@@ -1,4 +1,4 @@
-package lab5.system.io.file;
+package lab5.system.io.xml;
 
 import java.io.File;
 import java.util.Stack;
@@ -6,7 +6,7 @@ import java.util.Stack;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-import lab5.system.io.Console.StdConsole;
+import lab5.system.io.console.StdConsole;
 import lab5.system.model.SpaceMarine;
 
 public class XMLhandler {
