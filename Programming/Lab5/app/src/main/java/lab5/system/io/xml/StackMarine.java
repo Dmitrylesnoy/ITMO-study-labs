@@ -9,20 +9,36 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import lab5.system.model.SpaceMarine;
 
+/**
+ * StackMarine is a wrapper class for a stack of SpaceMarine objects.
+ * This class is designed for XML serialization and deserialization using Jackson annotations.
+ */
 @JacksonXmlRootElement(localName = "Stack")
 public class StackMarine {
     @JacksonXmlProperty(localName = "SpaceMarine")
-    // @JacksonXmlCData
     @JacksonXmlElementWrapper(useWrapping = false)
     private Stack<SpaceMarine> stack;
 
-    public StackMarine(){}
+    /**
+     * Default constructor for the StackMarine class, initializing an empty stack.
+     */
+    public StackMarine() {}
 
+    /**
+     * Constructor that initializes the StackMarine with a specific stack of SpaceMarine objects.
+     *
+     * @param stack the stack of SpaceMarine objects to wrap
+     */
     public StackMarine(Stack<SpaceMarine> stack) {
         this.stack = stack;
     }
 
-    public Stack getStack(){
+    /**
+     * Retrieves the stack of SpaceMarine objects.
+     *
+     * @return the stack of SpaceMarine objects
+     */
+    public Stack<SpaceMarine> getStack() {
         return stack;
     }
 }

@@ -7,21 +7,41 @@ import lab5.system.commands.*;
 import lab5.system.messages.*;
 import lab5.system.utils.CollectionManager;
 
+/**
+ * The Router class is responsible for routing commands to their corresponding command handlers.
+ * It maintains a collection of commands and executes them based on user requests.
+ * This class implements the Singleton pattern to ensure that only one instance of Router exists.
+ */
 public class Router {
     private Response response;
     private static Router instance;
     private CollectionManager cm;
 
+    /**
+     * Default constructor for the Router class.
+     * Initializes the Router instance and loads the collection manager.
+     */
     public Router() {
         Router.instance = this;
         cm = CollectionManager.getInstance();
         cm.load();
     }
 
+    /**
+     * Returns the singleton instance of the Router.
+     *
+     * @return the instance of Router
+     */
     public static Router getInstance() {
         return instance == null ? new Router() : instance;
     }
 
+    /**
+     * Executes the command based on the provided request.
+     *
+     * @param request the request containing the command and its arguments
+     * @return the response after executing the command
+     */
     public Response runCommand(Request request) {
         String output = "";
         Command cmd;
@@ -33,14 +53,14 @@ public class Router {
         cmds.put("save", new Save());
         cmds.put("show", new Show());
         cmds.put("sort", new Sort());
-        cmds.put("filterftartswithachievements", new FilterStartsWithAchievements());
-        cmds.put("minbymeleeweapon", new MinByMeleeWeapon());
-        cmds.put("removebyid", new RemoveByID());
-        cmds.put("removegreater", new RemoveGreater());
-        cmds.put("removelower", new RemoveLower());
-        cmds.put("updateid", new UpdateId());
-        cmds.put("prinuniqueloyal", new PrintUniqueLoyal());
-        cmds.put("executescript", new ExecuteScript());
+        cmds.put("filter_starts_with_achievements", new FilterStartsWithAchievements());
+        cmds.put("min_by_meleeweapon", new MinByMeleeWeapon());
+        cmds.put("removeby_id", new RemoveByID());
+        cmds.put("remove_greater", new RemoveGreater());
+        cmds.put("remove_lower", new RemoveLower());
+        cmds.put("update_id", new UpdateId());
+        cmds.put("print_unique_loyal", new PrintUniqueLoyal());
+        cmds.put("execute_script", new ExecuteScript());
         cmds.put("help", new Help(cmds));
 
         String name = request.getCommand().toLowerCase();

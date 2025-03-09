@@ -3,20 +3,35 @@ package lab5.system.model.builders;
 import lab5.system.io.console.StdConsole;
 import lab5.system.model.Chapter;
 
+/**
+ * ChapterBuilder is responsible for constructing Chapter objects.
+ * This class provides methods for setting the chapter's name and world,
+ * ensuring that the name is not null or empty, while the world can be null.
+ */
 public class ChapterBuilder {
-    private String name; // Поле не может быть null, Строка не может быть пустой
-    private String world; // Поле может быть null
-    
+    private String name; // Field cannot be null, String cannot be empty
+    private String world; // Field can be null
 
+    /**
+     * Default constructor for the ChapterBuilder class, initializing the name and world.
+     */
     public ChapterBuilder() {
         setName();
         setWorld();
     }
 
+    /**
+     * Builds and returns a Chapter object with the specified name and world.
+     *
+     * @return a new Chapter object
+     */
     public Chapter build() {
         return new Chapter(name, world);
     }
 
+    /**
+     * Prompts the user to enter the name of the chapter and validates the input.
+     */
     public void setName() {
         while (true) {
             StdConsole.writeln("Enter the Name of the Chapter: ");
@@ -30,6 +45,9 @@ public class ChapterBuilder {
         }
     }
 
+    /**
+     * Prompts the user to enter the world of the chapter and validates the input.
+     */
     public void setWorld() {
         while (true) {
             world = StdConsole.read("Enter the World of the Chapter: ");

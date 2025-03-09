@@ -6,20 +6,26 @@ import lab5.system.model.Coordinates;
 import lab5.system.model.MeleeWeapon;
 import lab5.system.model.SpaceMarine;
 
+/**
+ * SpaceMarineBuilder is responsible for constructing SpaceMarine objects.
+ * This class prompts the user for various attributes of the SpaceMarine,
+ * ensuring valid input for each attribute.
+ */
 public class SpaceMarineBuilder {
-    private Long id; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого
-                     // поля должно быть уникальным, Значение этого поля должно генерироваться
-                     // автоматически
-    private String name; // Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; // Поле не может быть null
-    private java.util.Date creationDate; // Поле не может быть null, Значение этого поля должно генерироваться
-                                         // автоматически
-    private Double health; // Значение поля должно быть больше 0
+    private Long id; // Field cannot be null, must be greater than 0, unique, and generated automatically
+    private String name; // Field cannot be null, cannot be empty
+    private Coordinates coordinates; // Field cannot be null
+    private java.util.Date creationDate; // Field cannot be null, generated automatically
+    private Double health; // Must be greater than 0
     private Boolean loyal;
-    private String achievements; // Поле не может быть null
-    private MeleeWeapon meleeWeapon; // Поле может быть null
-    private Chapter chapter; // Поле может быть null
+    private String achievements; // Field cannot be null
+    private MeleeWeapon meleeWeapon; // Field can be null
+    private Chapter chapter; // Field can be null
 
+    /**
+     * Default constructor for the SpaceMarineBuilder class, initializing the attributes
+     * of the SpaceMarine based on user input.
+     */
     public SpaceMarineBuilder() {
         setName();
         setCoordinates();
@@ -30,6 +36,11 @@ public class SpaceMarineBuilder {
         setChapter();
     }
 
+    /**
+     * Builds and returns a SpaceMarine object with the specified attributes.
+     *
+     * @return a new SpaceMarine object
+     */
     public SpaceMarine build() {
         SpaceMarine buildMarine = new SpaceMarine(name, coordinates, achievements, meleeWeapon, chapter);
         if (health != null && health > 0)
@@ -39,6 +50,9 @@ public class SpaceMarineBuilder {
         return buildMarine;
     }
 
+    /**
+     * Prompts the user to enter the name of the SpaceMarine and validates the input.
+     */
     public void setName() {
         String name;
         while (true) {
@@ -52,10 +66,16 @@ public class SpaceMarineBuilder {
         }
     }
 
+    /**
+     * Prompts the user to enter the coordinates of the SpaceMarine.
+     */
     public void setCoordinates() {
         this.coordinates = new CoordinatesBuilder().build();
     }
 
+    /**
+     * Prompts the user to enter the health of the SpaceMarine and validates the input.
+     */
     public void setHealth() {
         Double health;
         String ans = "";
@@ -71,7 +91,6 @@ public class SpaceMarineBuilder {
                 if (health > 0) {
                     this.health = health;
                     return;
-
                 } else {
                     StdConsole.writeln("Invalid input: Health must be greater than 0. Please try again.");
                 }
@@ -83,6 +102,9 @@ public class SpaceMarineBuilder {
         }
     }
 
+    /**
+     * Prompts the user to enter the loyalty status of the SpaceMarine.
+     */
     public void setLoyalty() {
         String ans = "";
         while (ans.equals("Y") == false) {
@@ -103,6 +125,9 @@ public class SpaceMarineBuilder {
         }
     }
 
+    /**
+     * Prompts the user to enter the achievements of the SpaceMarine and validates the input.
+     */
     public void setAchievements() {
         String achievements;
         while (true) {
@@ -116,6 +141,9 @@ public class SpaceMarineBuilder {
         }
     }
 
+    /**
+     * Prompts the user to enter the melee weapon of the SpaceMarine and validates the input.
+     */
     public void setMeleeWeapon() {
         String ans;
         while (true) {
@@ -129,11 +157,14 @@ public class SpaceMarineBuilder {
                 this.meleeWeapon = MeleeWeapon.valueOf(ans.toUpperCase());
                 break;
             } catch (Exception e) {
-                StdConsole.write("Invalid input: MeleeWeapon have not this value. Please try again.");
+                StdConsole.write("Invalid input: MeleeWeapon does not have this value. Please try again.");
             }
         }
     }
 
+    /**
+     * Prompts the user to enter the chapter of the SpaceMarine.
+     */
     public void setChapter() {
         this.chapter = new ChapterBuilder().build();
     }

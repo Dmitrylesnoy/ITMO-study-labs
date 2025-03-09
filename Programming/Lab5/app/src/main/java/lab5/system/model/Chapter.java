@@ -6,16 +6,30 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lab5.system.exceptions.NullArgumetnException;
 import lab5.system.io.console.StdConsole;
 
+/**
+ * Represents a chapter entity with attributes for its name and world.
+ * This class provides methods for setting and getting the values of these attributes,
+ * as well as methods for generating hash codes and equality checks.
+ */
 @JacksonXmlRootElement(localName = "Chapter")
 public class Chapter {
     @JacksonXmlElementWrapper(localName = "name")
-    private String name; // Поле не может быть null, Строка не может быть пустой
+    private String name; // Field cannot be null, cannot be empty
     @JacksonXmlElementWrapper(localName = "world")
-    private String world; // Поле может быть null
+    private String world; // Field can be null
 
+    /**
+     * Default constructor for the Chapter class.
+     */
     private Chapter() {
     }
 
+    /**
+     * Constructs a Chapter with the specified name and world.
+     *
+     * @param name the name of the chapter
+     * @param world the world of the chapter
+     */
     public Chapter(String name, String world) {
         try {
             if (name == "")
@@ -29,10 +43,20 @@ public class Chapter {
         }
     }
 
+    /**
+     * Returns the name of the chapter.
+     *
+     * @return the name of the chapter
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the chapter.
+     *
+     * @param name the new name of the chapter
+     */
     public void setName(String name) {
         try {
             if (name != null && name != "") {
@@ -44,10 +68,20 @@ public class Chapter {
         }
     }
 
+    /**
+     * Returns the world of the chapter.
+     *
+     * @return the world of the chapter
+     */
     public String getWorld() {
         return world;
     }
 
+    /**
+     * Sets the world of the chapter.
+     *
+     * @param world the new world of the chapter
+     */
     public void setWorld(String world) {
         try {
             if (world != null) {
@@ -59,6 +93,11 @@ public class Chapter {
         }
     }
 
+    /**
+     * Returns the hash code for the Chapter object.
+     *
+     * @return the hash code
+     */
     @Override
     public int hashCode() {
         int result = 1;
@@ -67,6 +106,12 @@ public class Chapter {
         return result;
     }
 
+    /**
+     * Checks if this Chapter object is equal to another object.
+     *
+     * @param obj the object to compare
+     * @return true if equal, false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -89,6 +134,11 @@ public class Chapter {
         return true;
     }
 
+    /**
+     * Returns a string representation of the Chapter object.
+     *
+     * @return a string description of the Chapter
+     */
     @Override
     public String toString() {
         return this.getClass().toString() + ", " + name + ", " + world;

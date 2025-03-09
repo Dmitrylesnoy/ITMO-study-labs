@@ -5,29 +5,43 @@ import lombok.Getter;
 import lombok.Setter;
 
 import lab5.system.io.console.StdConsole;
-import lab5.system.io.console.*;
 
+/**
+ * Represents a SpaceMarine entity with various attributes such as id, name,
+ * coordinates, health, loyalty, achievements, melee weapon, and chapter.
+ * This class provides constructors for initializing these attributes and
+ * methods for generating hash codes, equality checks, and string representation.
+ */
 @Getter
 @Setter
 @JacksonXmlRootElement(localName = "SpaceMarine")
 public class SpaceMarine implements Comparable<SpaceMarine> {
-    private Long id; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого
-                     // поля должно быть уникальным, Значение этого поля должно генерироваться
-                     // автоматически
-    private String name; // Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; // Поле не может быть null
-    private java.util.Date creationDate; // Поле не может быть null, Значение этого поля должно генерироваться
-                                         // автоматически
-    private Double health; // Значение поля должно быть больше 0
+    private Long id; // Field cannot be null, must be greater than 0, unique, and generated automatically
+    private String name; // Field cannot be null, cannot be empty
+    private Coordinates coordinates; // Field cannot be null
+    private java.util.Date creationDate; // Field cannot be null, generated automatically
+    private Double health; // Must be greater than 0
     private Boolean loyal;
-    private String achievements; // Поле не может быть null
-    private MeleeWeapon meleeWeapon; // Поле может быть null
-    private Chapter chapter; // Поле может быть null
+    private String achievements; // Field cannot be null
+    private MeleeWeapon meleeWeapon; // Field can be null
+    private Chapter chapter; // Field can be null
     private StdConsole console = new StdConsole();
 
+    /**
+     * Default constructor for the SpaceMarine class.
+     */
     public SpaceMarine() {
     }
 
+    /**
+     * Constructs a SpaceMarine with the specified attributes.
+     *
+     * @param name the name of the SpaceMarine
+     * @param coordinates the coordinates of the SpaceMarine
+     * @param achievements the achievements of the SpaceMarine
+     * @param meleeWeapon the melee weapon of the SpaceMarine
+     * @param chapter the chapter of the SpaceMarine
+     */
     public SpaceMarine(String name, Coordinates coordinates, String achievements, MeleeWeapon meleeWeapon,
             Chapter chapter) {
         try {
@@ -49,13 +63,22 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         }
     }
 
+    /**
+     * Constructs a SpaceMarine with the specified attributes, including health and loyalty.
+     *
+     * @param name the name of the SpaceMarine
+     * @param coordinates the coordinates of the SpaceMarine
+     * @param health the health of the SpaceMarine
+     * @param loyal the loyalty status of the SpaceMarine
+     * @param achievements the achievements of the SpaceMarine
+     * @param meleeWeapon the melee weapon of the SpaceMarine
+     * @param chapter the chapter of the SpaceMarine
+     */
     public SpaceMarine(String name, Coordinates coordinates, Double health, Boolean loyal, String achievements,
-
             MeleeWeapon meleeWeapon, Chapter chapter) {
         this(name, coordinates, achievements, meleeWeapon, chapter);
         try {
             if (health != null && health > 0 && (Boolean.TRUE.equals(loyal) || Boolean.FALSE.equals(loyal))) {
-
                 this.health = health;
                 this.loyal = loyal;
                 this.id = (long) hashCode(false);
@@ -66,29 +89,44 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         }
     }
 
+    /**
+     * Returns a string representation of the SpaceMarine object.
+     *
+     * @return a string description of the SpaceMarine
+     */
     @Override
     public String toString() {
-        String desctiption = this.getClass().toString() + ": " + name.toString();
-        desctiption += "\n  id: " + id.toString();
-        desctiption += "\n  coordinates: " + coordinates.toString();
-        desctiption += "\n  creationDate: " + creationDate.toString();
-        desctiption += "\n  achievements: " + achievements;
-        desctiption += "\n  meleeWeapon: " + meleeWeapon.toString();
-        desctiption += "\n  chapter: " + chapter.toString();
-        desctiption += "\n  health: " + (health == null ? "null" : health);
-        desctiption += "\n  loyal: " + (loyal == null ? "null" : loyal);
+        String description = this.getClass().toString() + ": " + name.toString();
+        description += "\n  id: " + id.toString();
+        description += "\n  coordinates: " + coordinates.toString();
+        description += "\n  creationDate: " + creationDate.toString();
+        description += "\n  achievements: " + achievements;
+        description += "\n  meleeWeapon: " + meleeWeapon.toString();
+        description += "\n  chapter: " + chapter.toString();
+        description += "\n  health: " + (health == null ? "null" : health);
+        description += "\n  loyal: " + (loyal == null ? "null" : loyal);
 
-        return desctiption;
+        return description;
     }
 
+    /**
+     * Returns the hash code for the SpaceMarine object.
+     *
+     * @return the hash code
+     */
     @Override
     public int hashCode() {
         return hashCode(true);
     }
 
+    /**
+     * Returns the hash code for the SpaceMarine object, with an option for absolute value.
+     *
+     * @param abs whether to return the absolute value of the hash code
+     * @return the hash code
+     */
     public int hashCode(boolean abs) {
         int result = 1;
-        // result = 31 * result + ((id == null) ? 0 : id.hashCode());
         result = 31 * result + ((name == null) ? 0 : name.hashCode());
         result = 31 * result + ((coordinates == null) ? 0 : coordinates.hashCode());
         result = 31 * result + ((creationDate == null) ? 0 : creationDate.hashCode());
@@ -97,13 +135,15 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         result = 31 * result + ((achievements == null) ? 0 : achievements.hashCode());
         result = 31 * result + ((meleeWeapon == null) ? 0 : meleeWeapon.hashCode());
         result = 31 * result + ((chapter == null) ? 0 : chapter.hashCode());
-        if (abs == false) {
-            return result;
-        } else {
-            return result > 0 ? result : -result;
-        }
+        return abs ? (result > 0 ? result : -result) : result;
     }
 
+    /**
+     * Checks if this SpaceMarine is equal to another object.
+     *
+     * @param obj the object to compare
+     * @return true if equal, false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -114,13 +154,19 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             return false;
         SpaceMarine other = (SpaceMarine) obj;
         if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (id.equals(other.id))
-            return true;
-        return false;
+            return other.id == null;
+        } else {
+            return id.equals(other.id);
+        }
     }
 
+    /**
+     * Compares this SpaceMarine to another SpaceMarine based on their names.
+     *
+     * @param other the other SpaceMarine to compare
+     * @return a negative integer, zero, or a positive integer as this SpaceMarine
+     *         is less than, equal to, or greater than the specified SpaceMarine
+     */
     @Override
     public int compareTo(SpaceMarine other) {
         return this.name.compareTo(other.name);

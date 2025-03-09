@@ -1,30 +1,49 @@
 package lab5.system;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import lab5.system.messages.*;
 import lab5.system.io.console.*;
 
+/**
+ * The Handler class is responsible for processing user input commands.
+ * It utilizes a Router to execute commands based on requests created from user input.
+ * This class provides methods for running commands, making requests, and managing the console interface.
+ */
 public class Handler {
     private Router router = Router.getInstance();
     private static StdConsole console;
     private static Handler instance;
 
+    /**
+     * Default constructor for the Handler class.
+     */
     public Handler() {
         instance = this;
     }
 
+    /**
+     * Constructs a Handler with a specified console for input/output.
+     *
+     * @param console the console to be used for input/output
+     */
     public Handler(StdConsole console) {
         this.console = console;
         instance = this;
     }
 
+    /**
+     * Returns the singleton instance of the Handler.
+     *
+     * @return the instance of Handler
+     */
     public static Handler getInstance() {
         return instance == null ? new Handler() : instance;
     }
 
+    /**
+     * Runs the command based on user input read from the console.
+     */
     public void Run() {
         String input = console.read();
         Request request = makeRequest(input);
@@ -32,11 +51,22 @@ public class Handler {
         console.write(response.toString());
     }
 
+    /**
+     * Runs the command based on the provided request.
+     *
+     * @param request the request to be processed
+     */
     public void Run(Request request) {
         Response response = router.runCommand(request);
         console.write(response.toString());
     }
 
+    /**
+     * Creates a Request object from the user input string.
+     *
+     * @param input the user input string
+     * @return the created Request object
+     */
     public Request makeRequest(String input) {
         String[] inp_split = input.split(" ");
         Request request;
@@ -46,12 +76,16 @@ public class Handler {
             } else {
                 request = new Request(inp_split[0]);
             }
-            
             return request;
         }
         return null;
     }
 
+    /**
+     * Returns the router associated with this Handler.
+     *
+     * @return the Router instance
+     */
     public Router getRouter() {
         return this.router;
     }

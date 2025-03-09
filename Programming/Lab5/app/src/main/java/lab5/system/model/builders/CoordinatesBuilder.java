@@ -3,10 +3,19 @@ package lab5.system.model.builders;
 import lab5.system.io.console.StdConsole;
 import lab5.system.model.Coordinates;
 
+/**
+ * CoordinatesBuilder is responsible for constructing Coordinates objects.
+ * This class prompts the user for the Y coordinate (which cannot be null)
+ * and optionally for the X coordinate, ensuring valid input.
+ */
 public class CoordinatesBuilder {
     private Double x;
     private Float y; // not null
 
+    /**
+     * Default constructor for the CoordinatesBuilder class, initializing the Y coordinate
+     * and optionally the X coordinate based on user input.
+     */
     public CoordinatesBuilder() {
         this.y = setY();
         while (true) {
@@ -20,6 +29,11 @@ public class CoordinatesBuilder {
         }
     }
 
+    /**
+     * Builds and returns a Coordinates object with the specified X and Y coordinates.
+     *
+     * @return a new Coordinates object
+     */
     public Coordinates build() {
         if (x == null)
             return new Coordinates(y);
@@ -27,6 +41,11 @@ public class CoordinatesBuilder {
             return new Coordinates(x, y);
     }
 
+    /**
+     * Prompts the user to enter the X coordinate and validates the input.
+     *
+     * @return the X coordinate as a Double
+     */
     public Double setX() {
         while (true) {
             try {
@@ -37,6 +56,11 @@ public class CoordinatesBuilder {
         }
     }
 
+    /**
+     * Prompts the user to enter the Y coordinate and validates the input.
+     *
+     * @return the Y coordinate as a Float
+     */
     public Float setY() {
         while (true) {
             try {
