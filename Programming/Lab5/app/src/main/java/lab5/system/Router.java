@@ -7,6 +7,7 @@ import lab5.system.commands.*;
 import lab5.system.io.console.StdConsole;
 import lab5.system.messages.*;
 import lab5.system.utils.CollectionManager;
+import lab5.system.utils.ScriptController;
 
 /**
  * The Router class is responsible for routing commands to their corresponding command handlers.
@@ -17,6 +18,7 @@ public class Router {
     private static long indexer=0;
     private Response response;
     private CollectionManager cm;
+    private ScriptController scriptController;
 
     /**
      * Default constructor for the Router class.
@@ -25,6 +27,7 @@ public class Router {
     public Router() {
         cm = CollectionManager.getInstance();
         cm.load();
+        scriptController = new ScriptController();
     }
 
     /**
@@ -42,6 +45,7 @@ public class Router {
         cmds.put("exit", new Exit());
         cmds.put("load", new Load());
         cmds.put("save", new Save());
+        cmds.put("info", new Info());
         cmds.put("show", new Show());
         cmds.put("sort", new Sort());
         cmds.put("filter_starts_with_achievements", new FilterStartsWithAchievements());
@@ -63,10 +67,18 @@ public class Router {
                             .setArgs(request.getArgs() != null ? request.getArgs()[0] : null);
                 if (cmd.getClass() == RemoveByID.class)
                     ((RemoveByID) cmd).setArgs(request.getArgs() != null ? Long.parseLong(request.getArgs()[0]) : null);
-                if (cmd.getClass() == ExecuteScript.class)
+                if (cmd.getClass() == ExecuteScript.class){
                     ((ExecuteScript) cmd).setArgs(request.getArgs()[0]);
+                    scriptController.addScript(request.getArgs()[0]);
+                    scriptController.checkExecuting(request.getArgs()[0]);
+
+                }
                 // StdConsole.writeln(request.getArgs()[0]);
                 cmd.execute();
+
+                if (cmd.getClass() == ExecuteScript.class)
+                    scriptController.endScript();
+                
                 output = cmd.getOutput();
                 response = new Response(name, Status.COMPLETE, output);
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -78,6 +90,9 @@ public class Router {
             } catch (NullPointerException e) {
                 response = new Response(name, Status.FAILED,
                         new NullPointerException("Empty arguments for command"));
+            } catch (RuntimeException e) {
+                response = new Response(name, Status.FAILED,
+                        new RuntimeException("Script already exevcuting"));
             } catch (Exception e) {
                 response = new Response(name, Status.FAILED, e);
             }

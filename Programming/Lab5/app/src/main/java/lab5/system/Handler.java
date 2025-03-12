@@ -31,10 +31,8 @@ public class Handler {
     public void Run() {
         try {
             String input;
-            // if (console.isEmpty() == false) {
-            //     input = console.poll();
-            // } else
-                input = console.read();
+
+            input = console.read();
 
             Request request = makeRequest(input);
             Response response = router.runCommand(request);
@@ -70,7 +68,7 @@ public class Handler {
     public Request makeRequest(String input) {
         String[] inp_split;
         try {
-            inp_split = input.strip().split(" ");
+            inp_split = input.strip().split("\\s+");
         } catch (Exception e) {
             inp_split = new String[] {};
         }

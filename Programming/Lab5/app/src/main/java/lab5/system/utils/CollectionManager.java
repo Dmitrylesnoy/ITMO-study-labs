@@ -1,5 +1,9 @@
 package lab5.system.utils;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Stack;
 
 import lab5.system.Router;
@@ -69,6 +73,21 @@ public class CollectionManager {
                 id = marine.getId();
         }
         Router.setIndexer(id);
+    }
+
+    /**
+     * Retrieves the creation date of the XML file.
+     *
+     * @return the creation date as a string
+     */
+    public String getTime() {
+        try {
+            Path file = Paths.get(XMLhandler.getName());
+            BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
+            return "Creation time: " + attr.creationTime();
+        } catch (Exception e) {
+            return "Error retrieving creation time: " + e.getMessage();
+        }
     }
 
     /**

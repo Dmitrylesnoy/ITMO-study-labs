@@ -1,11 +1,1 @@
-add
-name script
-321
-N
-N
-N
-achive script
-power_fist
-chapter script
-word script
-help
+execute_script test2.script

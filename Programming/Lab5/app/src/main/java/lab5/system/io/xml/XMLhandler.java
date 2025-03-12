@@ -1,6 +1,7 @@
 package lab5.system.io.xml;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Stack;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -54,6 +55,9 @@ public class XMLhandler {
         }
     }
 
+    public static String getName() {
+        return filename;
+    }
     /**
      * Reads a collection of SpaceMarine objects from an XML file.
      *
