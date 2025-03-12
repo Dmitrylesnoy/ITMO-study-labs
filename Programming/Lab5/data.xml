@@ -1,6 +1,6 @@
 <Stack>
   <SpaceMarine>
-    <id>1432413876</id>
+    <id>1</id>
     <name>Marine1</name>
     <coordinates>
       <x>10.0</x>
@@ -17,7 +17,7 @@
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
-    <id>-1037087717</id>
+    <id>2</id>
     <name>Marine2</name>
     <coordinates>
       <x>30.0</x>
@@ -34,7 +34,7 @@
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
-    <id>-1566490869</id>
+    <id>3</id>
     <name>test Marine 123</name>
     <coordinates>
       <x>9.843573246723673E47</x>
@@ -51,7 +51,7 @@
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
-    <id>2004399952</id>
+    <id>6</id>
     <name>test with unique false</name>
     <coordinates>
       <x>1.234567936E9</x>

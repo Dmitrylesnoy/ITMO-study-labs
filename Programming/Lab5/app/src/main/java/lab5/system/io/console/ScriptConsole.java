@@ -29,21 +29,26 @@ public class ScriptConsole extends StdConsole {
         return data.poll();
     }
     
-    /**
+    /*
      * Writes a line of output to the queue.
      *
      * @param line the line to write
      */
-    public static void write(String line) {
-        data.add(line);
-    }
+    // public static void write(String line) {
+        // data.add(line);
+    // }
     
-    /**
+    /*
      * Writes a line of output to the queue followed by a newline.
      *
      * @param line the line to write
      */
-    public static void writeln(String line) {
+    // public static void writeln(String line) {
+        // data.add(line);
+    // }
+
+    public void add(String line) {
+        // ScriptConsole.getInstance().add(line);
         data.add(line);
     }
 

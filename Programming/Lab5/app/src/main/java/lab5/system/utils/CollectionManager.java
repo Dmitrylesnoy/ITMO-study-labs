@@ -2,6 +2,7 @@ package lab5.system.utils;
 
 import java.util.Stack;
 
+import lab5.system.Router;
 import lab5.system.io.xml.XMLhandler;
 import lab5.system.model.SpaceMarine;
 
@@ -62,6 +63,12 @@ public class CollectionManager {
      */
     public void load() {
         this.myStack = (Stack) XMLhandler.readCollection();
+        long id =0;
+        for (SpaceMarine marine : myStack) {
+            if (marine.getId() > id)
+                id = marine.getId();
+        }
+        Router.setIndexer(id);
     }
 
     /**

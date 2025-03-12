@@ -3,7 +3,7 @@ package lab5.system.model;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Getter;
 import lombok.Setter;
-
+import lab5.system.Router;
 import lab5.system.io.console.StdConsole;
 
 /**
@@ -55,7 +55,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
                 this.achievements = achievements;
                 this.meleeWeapon = meleeWeapon;
                 this.chapter = chapter;
-                this.id = (long) hashCode(false);
+                this.id = Router.getNextId();
             } else
                 throw new IllegalArgumentException("Argument mustn't be null");
         } catch (Exception e) {
@@ -81,7 +81,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             if (health != null && health > 0 && (Boolean.TRUE.equals(loyal) || Boolean.FALSE.equals(loyal))) {
                 this.health = health;
                 this.loyal = loyal;
-                this.id = (long) hashCode(false);
+                this.id = Router.getNextId();
             } else
                 throw new IllegalArgumentException("Health must be above 0");
         } catch (Exception e) {
@@ -114,18 +114,8 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
      *
      * @return the hash code
      */
-    @Override
-    public int hashCode() {
-        return hashCode(true);
-    }
 
-    /**
-     * Returns the hash code for the SpaceMarine object, with an option for absolute value.
-     *
-     * @param abs whether to return the absolute value of the hash code
-     * @return the hash code
-     */
-    public int hashCode(boolean abs) {
+    public int hashCode() {
         int result = 1;
         result = 31 * result + ((name == null) ? 0 : name.hashCode());
         result = 31 * result + ((coordinates == null) ? 0 : coordinates.hashCode());
@@ -135,7 +125,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         result = 31 * result + ((achievements == null) ? 0 : achievements.hashCode());
         result = 31 * result + ((meleeWeapon == null) ? 0 : meleeWeapon.hashCode());
         result = 31 * result + ((chapter == null) ? 0 : chapter.hashCode());
-        return abs ? (result > 0 ? result : -result) : result;
+        return result;
     }
 
     /**

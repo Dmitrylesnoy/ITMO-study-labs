@@ -2,18 +2,21 @@ package lab5.system;
 
 import java.util.Arrays;
 
-import lab5.system.messages.*;
-import lab5.system.io.console.*;
+import lab5.system.io.console.StdConsole;
+import lab5.system.messages.Request;
+import lab5.system.messages.Response;
 
 /**
  * The Handler class is responsible for processing user input commands.
- * It utilizes a Router to execute commands based on requests created from user input.
- * This class provides methods for running commands, making requests, and managing the console interface.
+ * It utilizes a Router to execute commands based on requests created from user
+ * input.
+ * This class provides methods for running commands, making requests, and
+ * managing the console interface.
  */
 public class Handler {
-    private Router router = Router.getInstance();
-    private static StdConsole console;
+    private Router router = new Router();
     private static Handler instance;
+    private StdConsole console = new StdConsole();
 
     /**
      * Default constructor for the Handler class.
@@ -23,32 +26,24 @@ public class Handler {
     }
 
     /**
-     * Constructs a Handler with a specified console for input/output.
-     *
-     * @param console the console to be used for input/output
-     */
-    public Handler(StdConsole console) {
-        this.console = console;
-        instance = this;
-    }
-
-    /**
-     * Returns the singleton instance of the Handler.
-     *
-     * @return the instance of Handler
-     */
-    public static Handler getInstance() {
-        return instance == null ? new Handler() : instance;
-    }
-
-    /**
      * Runs the command based on user input read from the console.
      */
     public void Run() {
-        String input = console.read();
-        Request request = makeRequest(input);
-        Response response = router.runCommand(request);
-        console.write(response.toString());
+        try {
+            String input;
+            // if (console.isEmpty() == false) {
+            //     input = console.poll();
+            // } else
+                input = console.read();
+
+            Request request = makeRequest(input);
+            Response response = router.runCommand(request);
+            console.write(response.toString());
+        } catch (NullPointerException e) {
+            console.write("");
+        } catch (Exception e) {
+            console.write(e.toString());
+        }
     }
 
     /**
@@ -57,8 +52,13 @@ public class Handler {
      * @param request the request to be processed
      */
     public void Run(Request request) {
-        Response response = router.runCommand(request);
-        console.write(response.toString());
+        try {
+            Response response = router.runCommand(request);
+            StdConsole.write(response.toString());
+        } catch (Exception e) {
+            StdConsole.writeln(e.toString());
+        }
+
     }
 
     /**
@@ -68,7 +68,12 @@ public class Handler {
      * @return the created Request object
      */
     public Request makeRequest(String input) {
-        String[] inp_split = input.split(" ");
+        String[] inp_split;
+        try {
+            inp_split = input.strip().split(" ");
+        } catch (Exception e) {
+            inp_split = new String[] {};
+        }
         Request request;
         if (inp_split.length > 0) {
             if (inp_split.length > 1) {
@@ -88,5 +93,22 @@ public class Handler {
      */
     public Router getRouter() {
         return this.router;
+    }
+
+    /**
+     * Returns the singleton instance of the Handler.
+     *
+     * @return the instance of Handler
+     */
+    public static Handler getInstance() {
+        return instance == null ? new Handler() : instance;
+    }
+
+    public StdConsole getConsole() {
+        return console;
+    }
+
+    public void setConsole(StdConsole console) {
+        this.console = console;
     }
 }

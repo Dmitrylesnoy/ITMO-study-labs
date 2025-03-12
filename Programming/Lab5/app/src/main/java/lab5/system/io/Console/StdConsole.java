@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * StdConsole provides standard input and output functionality for console applications.
@@ -14,6 +16,8 @@ import java.io.OutputStreamWriter;
 public class StdConsole {
     private static final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+    private  Queue<String> data = new LinkedList<String>();
+
     private static StdConsole instance;
 
     /**
@@ -30,6 +34,8 @@ public class StdConsole {
      */
     public static String read() {
         try {
+            if (StdConsole.Instance().isEmpty() == false)
+                return StdConsole.Instance().poll();
             return consoleReader.readLine();
         } catch (IOException e) {
             return null;
@@ -43,6 +49,8 @@ public class StdConsole {
      * @return the input line, or null if an I/O error occurs
      */
     public static String read(String prompt) {
+        if (StdConsole.Instance().isEmpty() == false)
+            return StdConsole.Instance().poll();
         writeln(prompt);
         return read();
     }
@@ -73,6 +81,20 @@ public class StdConsole {
         }
     }
 
+    public void add(String line) {
+        data.add(line);
+    }
+
+    public String poll() {
+        if (isEmpty() == false)
+            return data.poll();
+        else
+            return "";
+    }
+
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
     /**
      * Closes the console reader and writer.
      *
@@ -88,7 +110,7 @@ public class StdConsole {
      *
      * @return the instance of StdConsole
      */
-    public static StdConsole getInstance() {
+    public static StdConsole Instance() {
         return instance != null ? instance : new StdConsole();
     }
 }

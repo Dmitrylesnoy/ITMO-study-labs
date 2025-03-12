@@ -13,7 +13,8 @@ public class ChapterBuilder {
     private String world; // Field can be null
 
     /**
-     * Default constructor for the ChapterBuilder class, initializing the name and world.
+     * Default constructor for the ChapterBuilder class, initializing the name and
+     * world.
      */
     public ChapterBuilder() {
         setName();
@@ -35,7 +36,7 @@ public class ChapterBuilder {
     public void setName() {
         while (true) {
             StdConsole.writeln("Enter the Name of the Chapter: ");
-            name = StdConsole.read();
+            name = StdConsole.Instance().read();
             if (name != null && !name.isEmpty()) {
                 this.name = name;
                 break;
@@ -50,7 +51,7 @@ public class ChapterBuilder {
      */
     public void setWorld() {
         while (true) {
-            world = StdConsole.read("Enter the World of the Chapter: ");
+            world = StdConsole.Instance().read("Enter the World of the Chapter: ");
             if (world != null && !world.isEmpty()) {
                 this.world = world;
                 break;

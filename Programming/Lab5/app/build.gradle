@@ -37,7 +37,7 @@ dependencies {
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -46,7 +46,35 @@ application {
     mainClass = 'lab5.App'
 }
 
+tasks.register('fatJar', Jar) {
+    archiveBaseName = 'AppFat'
+    // archiveVersion = '1.0.0'
+    manifest {
+        attributes 'Main-Class': 'lab5.App'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // or DuplicatesStrategy.INCLUDE
+
+}
+
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+tasks.build {
+    dependsOn fatJar
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'lab5.App' // Указываем главный класс в манифесте
+    }
+    archiveBaseName = 'App' // Имя JAR-файла
+    // archiveVersion = '1.0.0'   // Версия JAR-файла
+}
+

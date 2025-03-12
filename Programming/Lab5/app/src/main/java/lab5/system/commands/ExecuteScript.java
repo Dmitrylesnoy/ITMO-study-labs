@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import lab5.system.Handler;
+import lab5.system.io.console.ScriptConsole;
+import lab5.system.io.console.StdConsole;
 
 /**
  * The ExecuteScript class implements the Command interface and is responsible for executing
@@ -31,6 +33,9 @@ public class ExecuteScript implements Command {
         this.scriptFilePath = scriptFilePath;
     }
 
+    public void setArgs(String scriptFilePath) {
+        this.scriptFilePath = scriptFilePath;
+    }
     /**
      * Executes the script by reading commands from the specified script file.
      * Each line in the script file is treated as a command and is processed
@@ -42,11 +47,14 @@ public class ExecuteScript implements Command {
     @Override
     public void execute() throws IOException {
         try {
+            StdConsole console = Handler.getInstance().getConsole();
             File scriptFile = new File(scriptFilePath);
+            // console.writeln(scriptFilePath);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                Handler.getInstance().Run(Handler.getInstance().makeRequest(line));
+                console.add(line);
+                console.writeln("added  "+line);
             }
             bufferedReader.close();
         } catch (FileNotFoundException e) {

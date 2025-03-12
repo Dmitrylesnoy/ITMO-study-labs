@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lab5.system.commands.*;
+import lab5.system.io.console.StdConsole;
 import lab5.system.messages.*;
 import lab5.system.utils.CollectionManager;
 
@@ -13,8 +14,8 @@ import lab5.system.utils.CollectionManager;
  * This class implements the Singleton pattern to ensure that only one instance of Router exists.
  */
 public class Router {
+    private static long indexer=0;
     private Response response;
-    private static Router instance;
     private CollectionManager cm;
 
     /**
@@ -22,18 +23,8 @@ public class Router {
      * Initializes the Router instance and loads the collection manager.
      */
     public Router() {
-        Router.instance = this;
         cm = CollectionManager.getInstance();
         cm.load();
-    }
-
-    /**
-     * Returns the singleton instance of the Router.
-     *
-     * @return the instance of Router
-     */
-    public static Router getInstance() {
-        return instance == null ? new Router() : instance;
     }
 
     /**
@@ -67,19 +58,14 @@ public class Router {
         if (cmds.containsKey(name)) {
             cmd = cmds.get(name.toLowerCase());
             try {
-                switch (name) {
-                    case "filterftartswithachievements":
-                        cmd = new FilterStartsWithAchievements(request.getArgs() != null ? request.getArgs()[0] : null);
-                        break;
-                    case "removebyid":
-                        cmd = new RemoveByID(request.getArgs() != null ? Long.parseLong(request.getArgs()[0]) : null);
-                        break;
-                    case "executescript":
-                        cmd = new ExecuteScript(request.getArgs()[0]);
-                        break;
-                    default:
-                        break;
-                }
+                if (cmd.getClass() == FilterStartsWithAchievements.class)
+                    ((FilterStartsWithAchievements) cmd)
+                            .setArgs(request.getArgs() != null ? request.getArgs()[0] : null);
+                if (cmd.getClass() == RemoveByID.class)
+                    ((RemoveByID) cmd).setArgs(request.getArgs() != null ? Long.parseLong(request.getArgs()[0]) : null);
+                if (cmd.getClass() == ExecuteScript.class)
+                    ((ExecuteScript) cmd).setArgs(request.getArgs()[0]);
+                // StdConsole.writeln(request.getArgs()[0]);
                 cmd.execute();
                 output = cmd.getOutput();
                 response = new Response(name, Status.COMPLETE, output);
@@ -101,5 +87,14 @@ public class Router {
         }
 
         return response;
+    }
+    
+    public static long getNextId(){
+        indexer = indexer + 1;
+        return indexer;
+    }
+
+    public static void setIndexer(long id) {
+        indexer = id;
     }
 }

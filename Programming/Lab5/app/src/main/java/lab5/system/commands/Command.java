@@ -20,7 +20,6 @@ public interface Command {
      * @return a string describing the command
      */
     public String describe();
-
     /**
      * Returns the output of the command.
      *
