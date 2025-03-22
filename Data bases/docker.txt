@@ -1,0 +1,4 @@
+psql -U s466513 studs_dump
+\dt
+psql -U imya -f schema_name
+psql -U imya -f data_dump_namez3f 

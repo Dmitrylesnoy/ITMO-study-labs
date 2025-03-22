@@ -8,55 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "86607b8ef677a6db",
+            "id": "68a06e0d493d7654",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Линейная алгебра/2 сем/LecB2_1_1_linforms.pdf"
+                "file": "Математический анализ/2 сем/ТМ 1.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "LecB2_1_1_linforms"
-            }
-          },
-          {
-            "id": "fc0973b0e2d3be0c",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Horstmann Cay - Core Java. 1 (2021).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Horstmann Cay - Core Java. 1 (2021)"
-            }
-          },
-          {
-            "id": "98441b3a5cf384b2",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Horstmann Cay - Core Java. 1 (2021).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Horstmann Cay - Core Java. 1 (2021)"
-            }
-          },
-          {
-            "id": "47a578db134cf685",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Java 12th Herbert Schildt.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Java 12th Herbert Schildt"
+              "icon": "lucide-file",
+              "title": "ТМ 1"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -211,19 +176,26 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "fc0973b0e2d3be0c",
+  "active": "68a06e0d493d7654",
   "lastOpenFiles": [
-    "Programming/Lab5/app/build/libs/App.jar",
-    "Programming/Lab5/app/build/classes/java/main/lab5/system/Handler.class",
-    "Programming/Lab5/app/build/classes/java/main/lab5/system/commands/ExecuteScript.class",
-    "Programming/Lab5/app/build/classes/java/main/lab5/App.class",
-    "Programming/Lab5/app/build/tmp/compileJava/compileTransaction/stash-dir/ExecuteScript.class.uniqueId2",
-    "Programming/Lab5/app/build/tmp/compileJava/compileTransaction/stash-dir/App.class.uniqueId1",
-    "Programming/Lab5/app/build/tmp/compileJava/compileTransaction/stash-dir/Handler.class.uniqueId0",
-    "Programming/Lab5/app/build/libs/AppFat.jar",
-    "Programming/Lab5/app/build/classes/java/main/lab5/system/Router.class",
-    "Programming/Lab5/app/build/classes/java/main/lab5/system/commands/Info.class",
-    "Programming/Lab5/app/build/tmp/compileJava/compileTransaction/stash-dir/Router.class.uniqueId1",
+    "Линейная алгебра/2 сем/~$ТМ 1.docx",
+    "Линейная алгебра/2 сем/~WRL0003.tmp",
+    "Линейная алгебра/2 сем/~WRD0002.tmp",
+    "Линейная алгебра/2 сем/ТМ 1.docx",
+    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
+    "Математический анализ/2 сем/ТМ 1.md",
+    "Литература/Бойцев А.А. Математический анализ (базовый уровень).pdf",
+    "Математический анализ/2 сем/Практика 5 Интегр триг функ.pdf",
+    "Математический анализ/2 сем/Практика 1 Таблица интегралов.pdf",
+    "Математический анализ/2 сем/Практика 2 Внесение под знак дифференциала.pdf",
+    "Математический анализ/2 сем/Практика 3 Интегрирование по частям.pdf",
+    "Математический анализ/2 сем/Практика 4 Пример.pdf",
+    "Математический анализ/1 сем/Теормин 2.md",
+    "Математический анализ/1 сем/Теормин 1.md",
+    "Математический анализ/1 сем/Математический анализ.md",
+    "Математический анализ/1 сем/Колок 2 - Экзамен 1 сем.md",
+    "Математический анализ/1 сем/Коллоквиум 1 Матан..md",
+    "Математический анализ/1 сем/Дз мат. ан. 17.09.md",
     "Цтты.md",
     "Тень Аненербе.md",
     "Programming/Lab5/scheme/IMG_20250306_141520_381.jpg",
@@ -252,13 +224,6 @@
     "Математический анализ/Дз мат. ан. 17.09.md",
     "Линейная алгебра/Теормин линал раздел 1.md",
     "Линейная алгебра/Линейная алгебра.md",
-    "Без названия.canvas",
-    "2024-11-03.md",
-    "Дискретная математика/ДЗ 1.md",
-    "Java/Java.md",
-    "Java/Cинтаксис.md",
-    "Базовый синтаксис.md",
-    "Face book/23.09.2024 23.55.md",
-    "Face book/Peoples/Леночка Луценко.md"
+    "Без названия.canvas"
   ]
 }
