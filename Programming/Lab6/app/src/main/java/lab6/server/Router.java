@@ -1,17 +1,23 @@
 package lab6.server;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 
-import lab6.server.utils.CollectionManager;
-import lab6.server.utils.ScriptController;
+import com.fasterxml.jackson.core.format.InputAccessor.Std;
+
+import lab6.system.collection.CollectionManager;
 import lab6.system.commands.Command;
-import lab6.system.commands.ExecuteScript;
-import lab6.system.commands.Help;
+import lab6.system.io.console.StdConsole;
 import lab6.system.messages.Request;
 import lab6.system.messages.Response;
-import lab6.system.messages.Status;
 
 /**
  * The Router class is responsible for routing commands to their corresponding
@@ -24,7 +30,9 @@ import lab6.system.messages.Status;
 public class Router {
     private CollectionManager cm;
     private static Router instance;
-    private Deque<Command> cmdsQueue;
+    private Deque<Request> cmdsQueue;
+    private Worker worker1;
+    private final int PORT = 5000;
 
     /**
      * Default constructor for the Router class.
@@ -33,7 +41,43 @@ public class Router {
     public Router() {
         cm = CollectionManager.getInstance();
         cm.load();
-        cmdsQueue = new ArrayDeque<Command>(1);
+        cmdsQueue = new ArrayDeque<Request>(1);
+        StdConsole.writeln("server started");
+        worker1 = new Worker();
+    }
+
+    public void run() {
+        try (DatagramSocket socket = new DatagramSocket(PORT)) {
+            StdConsole.writeln("    Waiting packet");
+            byte[] buffer = new byte[65535];
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+            socket.receive(packet);
+
+            StdConsole.writeln("    Deseralization message");
+            ByteArrayInputStream byteInput = new ByteArrayInputStream(packet.getData(), 0, packet.getLength());
+            ObjectInputStream objectInputStream = new ObjectInputStream(byteInput);
+            Request request = (Request) objectInputStream.readObject();
+
+            StdConsole.writeln("    processing request");
+            cmdsQueue.add(request);
+            Response response = worker1.processCommand(cmdsQueue.pop().command());
+
+            StdConsole.writeln("    Serialize responce ");
+            ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteOutput);
+            objectOutputStream.writeObject(response);
+            byte[] responseData = byteOutput.toByteArray();
+
+            StdConsole.writeln("    Sending answer packet");
+            DatagramPacket responcePacket = new DatagramPacket(responseData, 0, responseData.length,
+                    packet.getAddress(), packet.getPort());
+            socket.send(responcePacket);StdConsole.writeln("Response sent to " + packet.getAddress() + ":" + packet.getPort());
+            StdConsole.writeln("Response sent to " + packet.getAddress() + ":" + packet.getPort());
+        } catch (NullPointerException e){
+            StdConsole.writeln("Client disconnected");
+        } catch (Exception e) {
+            StdConsole.writeln(e.toString());
+        }
     }
 
     /**
@@ -41,14 +85,17 @@ public class Router {
      *
      * @param request the request containing the command and its arguments
      * @return the response after executing the command
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws ClassNotFoundException
      */
-    public Response runCommand(Request reaquest) {
-        cmdsQueue.add(reaquest.command());
-        Worker worker1 = new Worker();
-        return worker1.processCommand(cmdsQueue.pop());
+    public Response runCommand(Request request) {
+        cmdsQueue.add(request);
+        Response response = worker1.processCommand(cmdsQueue.pop().command());
+        return response;
     }
-    
-    public Router getInstance(){
-        return instance==null? new Router(): instance;
+
+    public Router getInstance() {
+        return instance == null ? new Router() : instance;
     }
 }

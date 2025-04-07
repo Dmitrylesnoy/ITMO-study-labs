@@ -1,9 +1,5 @@
 package lab6.system.messages;
 
-import lab6.system.commands.Command;
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Represents a command request containing a command name and its associated arguments.
  * This class provides constructors for initializing the command and its arguments,
@@ -11,10 +7,14 @@ import lombok.Setter;
  */
 // @Getter
 // @Setter
-public record Request(Command command, String[] args) {
-// public class Request {
-//     private String command;
-//     private String[] args;
+import java.io.Serializable;
+
+import lab6.system.commands.Command;
+
+public record Request(Command command, String[] args) implements Serializable {
+    // public class Request {
+    // private String command;
+    // private String[] args;
 
     /**
      * Constructs a Request with the specified command name.
@@ -22,17 +22,17 @@ public record Request(Command command, String[] args) {
      * @param name the name of the command
      */
     // public Request(String name) {
-    //     this.command = name.toLowerCase();
+    // this.command = name.toLowerCase();
     // }
 
     /**
      * Constructs a Request with the specified command name and arguments.
      *
      * @param command the name of the command
-     * @param args the arguments associated with the command
+     * @param args    the arguments associated with the command
      */
     // public Request(String command, String[] args) {
-    //     this.command = command.toLowerCase();
-    //     this.args = args;
+    // this.command = command.toLowerCase();
+    // this.args = args;
     // }
 }

@@ -2,7 +2,7 @@ package lab6.system.commands;
 
 import java.util.Stack;
 
-import lab6.server.utils.CollectionManager;
+import lab6.system.collection.CollectionManager;
 import lab6.system.model.SpaceMarine;
 import lab6.system.model.builders.SpaceMarineBuilder;
 
@@ -38,9 +38,6 @@ public class UpdateId implements Command {
      */
     @Override
     public void execute() {
-        if (obj == null) {
-            obj = new SpaceMarineBuilder().build();
-        }
         Stack<SpaceMarine> updateStack = CollectionManager.getInstance().getCollection();
         updateStack.stream()
                 .filter(marine -> marine.getId() == obj.getId())
@@ -59,5 +56,9 @@ public class UpdateId implements Command {
 
     public String getName() {
         return "Update ID";
+    }
+
+    public void setArgs(SpaceMarine marine) {
+        obj = marine;
     }
 }

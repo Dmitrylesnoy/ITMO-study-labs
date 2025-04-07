@@ -1,4 +1,4 @@
-package lab6.server.utils;
+package lab6.system.collection;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,7 +8,6 @@ import java.util.Stack;
 
 import lab6.server.Router;
 import lab6.server.io.xml.XMLhandler;
-import lab6.system.model.IDgenerator;
 import lab6.system.model.SpaceMarine;
 
 /**
@@ -22,6 +21,7 @@ import lab6.system.model.SpaceMarine;
 public class CollectionManager {
     private Stack<SpaceMarine> myStack = new Stack<SpaceMarine>();
     private static CollectionManager instance;
+    private IDgenerator idgenerator = new IDgenerator();
 
     /**
      * Default constructor for the CollectionManager class.
@@ -56,6 +56,7 @@ public class CollectionManager {
      */
     public void setCollection(Stack<SpaceMarine> newStack) {
         this.myStack = newStack;
+        idgenerator.updateIndexer(myStack);
     }
 
     /**
@@ -70,14 +71,7 @@ public class CollectionManager {
      */
     public void load() {
         this.myStack = (Stack<SpaceMarine>) XMLhandler.readCollection() == null ? new Stack<SpaceMarine>(): (Stack<SpaceMarine>) XMLhandler.readCollection();
-        long id = 0;
-        for (SpaceMarine marine : myStack) {
-            if (marine.getId() != null) {
-                if (marine.getId() > id)
-                    id = marine.getId();
-            }
-        }
-        IDgenerator.setIndexer(id);
+        idgenerator.updateIndexer(myStack);
     }
 
     /**
@@ -101,6 +95,8 @@ public class CollectionManager {
      * @param marine the SpaceMarine object to add
      */
     public void Add(SpaceMarine marine) {
+        marine.setCreationDate(new java.util.Date());
+        marine.setId(idgenerator.getNextId());
         this.myStack.add(marine);
     }
 }

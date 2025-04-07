@@ -59,7 +59,7 @@ public class SpaceMarineBuilder {
     public void setName() {
         String name;
         while (true) {
-            name = StdConsole.Instance().read("Enter the name of the SpaceMarine: ");
+            name = StdConsole.getInstance().read("Enter the name of the SpaceMarine: ");
             if (name != null && !name.isEmpty()) {
                 this.name = name;
                 break;
@@ -84,14 +84,14 @@ public class SpaceMarineBuilder {
         Double health;
         String ans = "";
         while (ans.equals("Y") == false) {
-            ans = StdConsole.Instance().read("Would you set the health of the SpaceMarine? (Y/N)");
+            ans = StdConsole.getInstance().read("Would you set the health of the SpaceMarine? (Y/N)");
             if (ans.equals("N")) {
                 return;
             }
         }
         while (true) {
             try {
-                health = Double.parseDouble(StdConsole.Instance().read("Enter the health of the SpaceMarine: "));
+                health = Double.parseDouble(StdConsole.getInstance().read("Enter the health of the SpaceMarine: "));
                 if (health > 0) {
                     this.health = health;
                     return;
@@ -112,12 +112,12 @@ public class SpaceMarineBuilder {
     public void setLoyalty() {
         String ans = "";
         while (ans.equals("Y") == false) {
-            ans = StdConsole.Instance().read("Would you set the loyalty of the SpaceMarine? (Y/N)");
+            ans = StdConsole.getInstance().read("Would you set the loyalty of the SpaceMarine? (Y/N)");
             if (ans.equals("N"))
                 return;
         }
         while (true) {
-            ans = StdConsole.Instance().read("Is the SpaceMarine loyal? (true/false): ");
+            ans = StdConsole.getInstance().read("Is the SpaceMarine loyal? (true/false): ");
             if (ans.equalsIgnoreCase("true")) {
                 this.loyal = true;
                 return;
@@ -137,7 +137,7 @@ public class SpaceMarineBuilder {
     public void setAchievements() {
         String achievements;
         while (true) {
-            achievements = StdConsole.Instance().read("Enter the achievements of the SpaceMarine: ");
+            achievements = StdConsole.getInstance().read("Enter the achievements of the SpaceMarine: ");
             if (achievements != null && !achievements.isEmpty()) {
                 this.achievements = achievements;
                 break;
@@ -159,7 +159,7 @@ public class SpaceMarineBuilder {
                     "    POWER_SWORD,\r\n" + //
                     "    POWER_BLADE,\r\n" + //
                     "    POWER_FIST; \r\n");
-            ans = StdConsole.Instance().read();
+            ans = StdConsole.getInstance().read();
             try {
                 this.meleeWeapon = MeleeWeapon.valueOf(ans.toUpperCase());
                 break;

@@ -18,13 +18,13 @@ public class StdConsole {
     private static final BufferedWriter consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
     private  Queue<String> data = new LinkedList<String>();
 
-    private static StdConsole instance;
+    private static StdConsole getinstance;
 
     /**
-     * Default constructor for the StdConsole class, initializing an instance.
+     * Default constructor for the StdConsole class, initializing an getinstance.
      */
     public StdConsole() {
-        this.instance = this;
+        this.getinstance = this;
     }
 
     /**
@@ -34,8 +34,8 @@ public class StdConsole {
      */
     public static String read() {
         try {
-            if (StdConsole.Instance().isEmpty() == false)
-                return StdConsole.Instance().poll();
+            if (StdConsole.getInstance().isEmpty() == false)
+                return StdConsole.getInstance().poll();
             return consoleReader.readLine();
         } catch (IOException e) {
             return null;
@@ -49,8 +49,8 @@ public class StdConsole {
      * @return the input line, or null if an I/O error occurs
      */
     public static String read(String prompt) {
-        if (StdConsole.Instance().isEmpty() == false)
-            return StdConsole.Instance().poll();
+        if (StdConsole.getInstance().isEmpty() == false)
+            return StdConsole.getInstance().poll();
         writeln(prompt);
         return read();
     }
@@ -106,11 +106,11 @@ public class StdConsole {
     }
 
     /**
-     * Retrieves the singleton instance of the StdConsole.
+     * Retrieves the singleton getinstance of the StdConsole.
      *
-     * @return the instance of StdConsole
+     * @return the getinstance of StdConsole
      */
-    public static StdConsole Instance() {
-        return instance != null ? instance : new StdConsole();
+    public static StdConsole getInstance() {
+        return getinstance != null ? getinstance : new StdConsole();
     }
 }

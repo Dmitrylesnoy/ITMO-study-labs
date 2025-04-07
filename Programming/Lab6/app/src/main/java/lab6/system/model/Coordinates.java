@@ -1,5 +1,7 @@
 package lab6.system.model;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
@@ -9,7 +11,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
  * methods for generating hash codes, equality checks, and string representation.
  */
 @JacksonXmlRootElement(localName = "Coordinates")
-public class Coordinates {
+public class Coordinates implements Serializable{
     @JacksonXmlElementWrapper(localName = "x")
     private double x;
     @JacksonXmlElementWrapper(localName = "y")

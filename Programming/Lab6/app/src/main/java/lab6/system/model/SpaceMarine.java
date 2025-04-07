@@ -1,12 +1,14 @@
 package lab6.system.model;
 
+import java.beans.Transient;
 import java.io.Serial;
+import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Getter;
 import lombok.Setter;
-import lab6.server.Router;
+import lab6.system.collection.IDgenerator;
 import lab6.system.io.console.StdConsole;
 
 /**
@@ -18,7 +20,7 @@ import lab6.system.io.console.StdConsole;
 @Getter
 @Setter
 @JacksonXmlRootElement(localName = "SpaceMarine")
-public class SpaceMarine implements Comparable<SpaceMarine> {
+public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     private Long id; // Field cannot be null, must be greater than 0, unique, and generated automatically
     private String name; // Field cannot be null, cannot be empty
     private Coordinates coordinates; // Field cannot be null
@@ -29,7 +31,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     private MeleeWeapon meleeWeapon; // Field can be null
     private Chapter chapter; // Field can be null
     @JsonIgnore
-    private StdConsole console = new StdConsole();
+    private transient StdConsole console = new StdConsole();
 
     /**
      * Default constructor for the SpaceMarine class.
@@ -55,11 +57,11 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
                     && chapter != null) {
                 this.name = name;
                 this.coordinates = coordinates;
-                this.creationDate = new java.util.Date();
+                // this.creationDate = new java.util.Date();
                 this.achievements = achievements;
                 this.meleeWeapon = meleeWeapon;
                 this.chapter = chapter;
-                this.id = IDgenerator.getNextId();
+                // this.id = IDgenerator.getNextId();
             } else
                 throw new IllegalArgumentException("Argument mustn't be null");
         } catch (Exception e) {
@@ -85,7 +87,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             if (health != null && health > 0 && (Boolean.TRUE.equals(loyal) || Boolean.FALSE.equals(loyal))) {
                 this.health = health;
                 this.loyal = loyal;
-                this.id = IDgenerator.getNextId();
+                // this.id = IDgenerator.getNextId();
             } else
                 throw new IllegalArgumentException("Health must be above 0");
         } catch (Exception e) {

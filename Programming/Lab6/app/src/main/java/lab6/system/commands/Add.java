@@ -3,9 +3,9 @@ package lab6.system.commands;
 import java.util.Collection;
 import java.util.Stack;
 
-import lab6.server.utils.CollectionManager;
+import lab6.system.collection.CollectionManager;
+import lab6.system.collection.IDgenerator;
 import lab6.system.model.SpaceMarine;
-import lab6.system.model.builders.SpaceMarineBuilder;
 
 /**
  * The Add class implements the Command interface and is responsible for adding
@@ -39,11 +39,7 @@ public class Add implements Command {
         // if (obj == null) {
         //     obj = new SpaceMarineBuilder().build();
         // }
-        Collection<SpaceMarine> oldStack = CollectionManager.getInstance().getCollection();
-        oldStack.add(obj);
-        Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
-        oldStack.stream().forEach(newStack::push);
-        CollectionManager.getInstance().setCollection(newStack);
+        CollectionManager.getInstance().getCollection().add(obj);
     }
 
     /**

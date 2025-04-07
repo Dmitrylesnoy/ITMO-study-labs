@@ -1,6 +1,6 @@
 package lab6.client;
 
-public class App {
+public class ClientMain {
     /**
      * The main function creates two SpaceMarine objects and initializes a Handler to run a console-based program indefinitely.
      */

@@ -3,7 +3,7 @@ package lab6.system.commands;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-import lab6.server.utils.CollectionManager;
+import lab6.system.collection.CollectionManager;
 import lab6.system.model.SpaceMarine;
 import lab6.system.model.builders.SpaceMarineBuilder;
 
@@ -57,5 +57,9 @@ public class RemoveLower implements Command {
     
     public String getName() {
         return "Remove lower";
+    }
+    
+    public void setArgs(SpaceMarine marine) {
+        obj = marine;
     }
 }

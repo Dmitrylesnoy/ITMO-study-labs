@@ -1,6 +1,6 @@
 package lab6.system.commands;
 
-import lab6.system.model.SpaceMarineGenerator;
+import lab6.system.model.builders.SpaceMarineGenerator;
 
 /**
  * The Add class implements the Command interface and is responsible for adding

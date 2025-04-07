@@ -1,8 +1,12 @@
 package lab6.server;
 
+import java.util.Collection;
+
 import lab6.server.utils.ScriptController;
+import lab6.system.collection.CollectionManager;
 import lab6.system.commands.Command;
 import lab6.system.commands.ExecuteScript;
+import lab6.system.commands.Exit;
 import lab6.system.messages.Response;
 import lab6.system.messages.Status;
 
@@ -17,11 +21,14 @@ public class Worker {
         Response response = null;
         try {
             cmd.execute();
-
             if (cmd.getClass() == ExecuteScript.class)
                 scriptCtrl.endScript();
 
-            response = new Response(cmd.getName(), Status.COMPLETE, cmd.getOutput(), null);
+            if (cmd.getClass() == Exit.class){
+                response = new Response(cmd.getName(), Status.CLOSE, null, null);
+                CollectionManager.getInstance().save();}
+            else
+                response = new Response(cmd.getName(), Status.COMPLETE, cmd.getOutput(), null);
         } catch (ArrayIndexOutOfBoundsException e) {
             response = new Response(cmd.getName(), Status.FAILED, null,
                     new ArrayIndexOutOfBoundsException("Missing giving arguments for command"));
@@ -30,11 +37,9 @@ public class Worker {
                     new IllegalArgumentException("Wrong types for giving arguments"));
         } catch (NullPointerException e) {
             response = new Response(cmd.getName(), Status.FAILED, null,
-                    new NullPointerException("Empty arguments for command"));
+                    e);
+                    // new NullPointerException("Empty arguments for command"));
         } catch (RuntimeException e) {
-            if (e.getMessage() == "close")
-                response = new Response(cmd.getName(), Status.CLOSE, null, null);
-            else
                 response = new Response(cmd.getName(), Status.FAILED, null, e);
         } catch (Exception e) {
             response = new Response(cmd.getName(), Status.FAILED, null, e);

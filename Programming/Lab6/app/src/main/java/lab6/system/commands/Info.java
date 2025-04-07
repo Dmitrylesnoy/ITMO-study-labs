@@ -1,6 +1,6 @@
 package lab6.system.commands;
 
-import lab6.server.utils.CollectionManager;
+import lab6.system.collection.CollectionManager;
 
 public class Info implements Command {
     private StringBuilder output = new StringBuilder();

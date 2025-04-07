@@ -1,6 +1,16 @@
 package lab6.client;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,15 +29,17 @@ import lab6.system.model.builders.SpaceMarineBuilder;
  * managing the console interface.
  */
 public class Handler {
-    private Router router;
     private StdConsole console;
     Map<String, Command> cmds = new HashMap<>();
+    private NetworkClient network = new NetworkClient();
+    private final String SERVER_IP = "127.0.0.1";
+    private final int SERVER_PORT = 5000;
 
     /**
      * Default constructor for the Handler class.
      */
     public Handler() {
-        router = new Router();
+        // router = new Router();
         console = new StdConsole();
         console.write("=>");
         console.add("help");
@@ -59,10 +71,12 @@ public class Handler {
         // Request request = makeRequest(console.read());
         try {
             Request request = makeRequest(console.read());
-            Response response = router.runCommand(request);
+
+            Response response = network.sendRequest(request);
             console.write(response.toString());
             if (response.status() == Status.CLOSE) {
                 request.command().execute();
+                System.exit(0);
             }
         } catch (NullPointerException e) {
             console.write("=>");
@@ -103,20 +117,29 @@ public class Handler {
             return null;
     }
 
-    public Command setCommand(String name, String[] args) {
+    public Command setCommand(String name, String[] args) throws IOException {
         if (cmds.containsKey(name)) {
             Command cmd = cmds.get(name);
 
             if (cmd.getClass().equals(Add.class))
                 ((Add) cmd).setArgs(new SpaceMarineBuilder().build());
+            if (cmd.getClass().equals(RemoveGreater.class))
+                ((RemoveGreater) cmd).setArgs(new SpaceMarineBuilder().build());
+            if (cmd.getClass().equals(RemoveLower.class))
+                ((RemoveLower) cmd).setArgs(new SpaceMarineBuilder().build());
+            if (cmd.getClass().equals(UpdateId.class))
+                ((UpdateId) cmd).setArgs(new SpaceMarineBuilder().build());
+
             if (cmd.getClass().equals(AddRandom.class))
                 ((AddRandom) cmd).setArgs(args != null ? Integer.parseInt(args[0]) : 1);
             if (cmd.getClass().equals(FilterStartsWithAchievements.class))
                 ((FilterStartsWithAchievements) cmd).setArgs(args != null ? args[0] : null);
             if (cmd.getClass().equals(RemoveByID.class))
                 ((RemoveByID) cmd).setArgs(args != null ? Long.parseLong(args[0]) : null);
-            if (cmd.getClass().equals(ExecuteScript.class))
+            if (cmd.getClass().equals(ExecuteScript.class)){
                 ((ExecuteScript) cmd).setArgs(args != null ? args[0] : null);
+                cmd.execute();
+            }
 
             return cmd;
         

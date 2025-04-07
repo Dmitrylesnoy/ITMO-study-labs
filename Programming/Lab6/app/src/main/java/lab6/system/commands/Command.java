@@ -6,7 +6,9 @@ import java.io.IOException;
  * The Command interface defines the structure for command classes in the application.
  * It requires implementing classes to provide an execution method and a description.
  */
-public interface Command {
+import java.io.Serializable;
+
+public interface Command extends Serializable {
     /**
      * Executes the command.
      *
@@ -33,4 +35,8 @@ public interface Command {
     }
 
     public String getName();
+
+    public default void setArgs(Object obj){
+        return;
+    }
 }

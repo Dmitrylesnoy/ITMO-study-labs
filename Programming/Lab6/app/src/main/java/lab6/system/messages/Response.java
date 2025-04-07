@@ -1,12 +1,14 @@
 package lab6.system.messages;
 
+import java.io.Serializable;
+
 /**
  * Represents a response to a command, containing the command name, status,
  * output, and any exceptions that may have occurred. This class provides
  * constructors for initializing the response and formats the output based
  * on the command's status.
  */
-public record Response(String name, Status status, String output, Exception e) {
+public record Response(String name, Status status, String output, Exception e) implements Serializable{
 // }class Response {
     // private String name;
     // private Status status;

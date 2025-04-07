@@ -1,6 +1,11 @@
-package lab6.system.model;
+package lab6.system.model.builders;
 
 import java.util.Random;
+
+import lab6.system.model.Chapter;
+import lab6.system.model.Coordinates;
+import lab6.system.model.MeleeWeapon;
+import lab6.system.model.SpaceMarine;
 
 /**
  * Generates SpaceMarine objects with random characteristics using constructors

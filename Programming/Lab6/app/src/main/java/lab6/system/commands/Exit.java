@@ -12,7 +12,7 @@ public class Exit implements Command {
     @Override
     public void execute() {
         // new Save().execute();
-        System.exit(0);
+        // System.exit(0);
     }
 
     /**
