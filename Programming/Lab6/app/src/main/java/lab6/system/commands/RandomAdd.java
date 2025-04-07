@@ -49,4 +49,10 @@ public class RandomAdd implements Command {
     public String describe() {
         return "Adds a SpaceMarine to the collection.";
     }
+
+    @Override
+    public String getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+    }
 }

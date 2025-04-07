@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import lab6.server.Collection.CollectionManager;
+import lab6.server.utils.CollectionManager;
 import lab6.system.model.SpaceMarine;
 import lab6.system.model.builders.SpaceMarineBuilder;
 

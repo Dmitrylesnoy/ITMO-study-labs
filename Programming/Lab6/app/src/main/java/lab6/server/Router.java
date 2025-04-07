@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 
-import lab6.server.Collection.CollectionManager;
+import lab6.server.utils.CollectionManager;
 import lab6.server.utils.ScriptController;
 import lab6.system.commands.Command;
 import lab6.system.commands.ExecuteScript;
@@ -34,7 +34,6 @@ public class Router {
         cm = CollectionManager.getInstance();
         cm.load();
         cmdsQueue = new ArrayDeque<Command>(1);
-        cmdsQueue.add(new Help());
     }
 
     /**

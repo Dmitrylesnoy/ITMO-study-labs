@@ -3,7 +3,7 @@ package lab6.system.commands;
 import java.util.Collection;
 import java.util.Stack;
 
-import lab6.server.Collection.CollectionManager;
+import lab6.server.utils.CollectionManager;
 import lab6.system.model.SpaceMarine;
 import lab6.system.model.builders.SpaceMarineBuilder;
 

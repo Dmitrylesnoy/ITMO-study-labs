@@ -5,28 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eb1a936-ab26-40c7-861f-7be1ff1f49b3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/client/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/client/Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/client/Router.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/client/Router.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/server/Collection/CollectionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/server/Collection/IDgenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/server/Router.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/server/Router.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/Handler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/Router.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Add.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Add.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Clear.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Clear.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/ExecuteScript.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/ExecuteScript.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Exit.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Exit.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/FilterStartsWithAchievements.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/FilterStartsWithAchievements.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Help.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Help.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Info.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Load.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Load.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/MinByMeleeWeapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/MinByMeleeWeapon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/PrintUniqueLoyal.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/PrintUniqueLoyal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RandomAdd.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RandomAdd.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RandomAdd.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveByID.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveByID.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveGreater.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveGreater.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveLower.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveLower.class" afterDir="false" />
@@ -34,25 +36,200 @@
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Show.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Sort.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Sort.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/UpdateId.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/UpdateId.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/test/lab6/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/test/lab6/AppTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/client/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/client/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/client/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/client/Router.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/io/xml/JAXBhandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/io/xml/StackMarine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/io/xml/XMLhandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/model/SpaceMarine.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/model/SpaceMarine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/utils/CollectionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/utils/ScriptController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/client/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/client/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Add.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Clear.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/ExecuteScript.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Exit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/FilterStartsWithAchievements.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Help.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Load.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/MinByMeleeWeapon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/PrintUniqueLoyal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/RandomAdd.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/RemoveByID.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/RemoveGreater.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/RemoveLower.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Save.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Show.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/Sort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/commands/UpdateId.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/utils/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/server/utils/CollectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Response$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Response$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Response.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/test/lab6/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/distributions/app.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/distributions/app.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/App.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/Handler.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/Router.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Clear.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Command.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/ExecuteScript.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Exit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/FilterStartsWithAchievements.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Help.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Load.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/MinByMeleeWeapon.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/PrintUniqueLoyal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/RemoveByID.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/RemoveGreater.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/RemoveLower.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Save.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Show.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/Sort.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/UpdateId.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/commands/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/exceptions/NullArgumetnException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/exceptions/UnknownOpetationException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/exceptions/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/exceptions/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/console/ScriptConsole.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/console/StdConsole.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/console/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/console/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/xml/JAXBhandler.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/xml/StackMarine.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/xml/XMLhandler.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/xml/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/io/xml/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/messages/Request.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/messages/Response.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/messages/Status.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/messages/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/messages/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/Chapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/Coordinates.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/MeleeWeapon.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/SpaceMarine.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/builders/ChapterBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/builders/CoordinatesBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/builders/SpaceMarineBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/builders/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/builders/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/model/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/utils/CollectionManager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/utils/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/lab5/system/utils/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/script-dir/jquery-3.7.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/search-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/docs/javadoc/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/Handler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/Router.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Add.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Clear.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/ExecuteScript.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Exit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/FilterStartsWithAchievements.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Help.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Load.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/MinByMeleeWeapon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/PrintUniqueLoyal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/RemoveByID.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/RemoveGreater.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/RemoveLower.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Save.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Show.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/Sort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/commands/UpdateId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/exceptions/NullArgumetnException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/exceptions/UnknownOpetationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/io/console/ScriptConsole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/io/console/StdConsole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/io/xml/JAXBhandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/io/xml/StackMarine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/io/xml/XMLhandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/messages/Request.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/messages/Response.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/messages/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/model/Chapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/model/Coordinates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/model/MeleeWeapon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/model/SpaceMarine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/model/builders/ChapterBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/model/builders/CoordinatesBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/model/builders/SpaceMarineBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/sources/delombok/java/main/lab5/system/utils/CollectionManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/libs/App.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/libs/AppFat.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/lombok/effective-config/lombok-test.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/scripts/app" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/scripts/app.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/delombok/delombok.options" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/fatJar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/javadoc/javadoc.options" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/server/Collection/CollectionManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/server/Collection/IDgenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/server/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/server/Router.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/Handler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/Router.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Add.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/ExecuteScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Exit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/FilterStartsWithAchievements.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/FilterStartsWithAchievements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Help.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Load.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/MinByMeleeWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/MinByMeleeWeapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/PrintUniqueLoyal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/PrintUniqueLoyal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RandomAdd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RandomAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RandomAdd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveByID.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveGreater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveLower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveLower.java" afterDir="false" />
@@ -60,11 +237,12 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Show.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Sort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/UpdateId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/lab6/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/lab6/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/io/xml/JAXBhandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/io/xml/StackMarine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/io/xml/XMLhandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/model/SpaceMarine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/model/SpaceMarine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/utils/CollectionManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/utils/ScriptController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,6 +410,7 @@
       <workItem from="1744025586308" duration="214000" />
       <workItem from="1744025968502" duration="143000" />
       <workItem from="1744026124063" duration="1354000" />
+      <workItem from="1744043477535" duration="1438000" />
     </task>
     <servers />
   </component>
