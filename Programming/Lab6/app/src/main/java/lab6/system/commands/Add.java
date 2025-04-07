@@ -18,7 +18,8 @@ public class Add implements Command {
     /**
      * Default constructor.
      */
-    public Add(){}
+    public Add() {
+    }
 
     /**
      * Constructor with a SpaceMarine object.
@@ -35,9 +36,9 @@ public class Add implements Command {
      */
     @Override
     public void execute() {
-        if (obj == null) {
-            obj = new SpaceMarineBuilder().build();
-        }
+        // if (obj == null) {
+        //     obj = new SpaceMarineBuilder().build();
+        // }
         Collection<SpaceMarine> oldStack = CollectionManager.getInstance().getCollection();
         oldStack.add(obj);
         Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
@@ -52,5 +53,13 @@ public class Add implements Command {
      */
     public String describe() {
         return "Adds a SpaceMarine to the collection.";
+    }
+
+    public String getName() {
+        return "Add";
+    }
+
+    public void setArgs(SpaceMarine spacemarine){
+        obj = spacemarine;
     }
 }

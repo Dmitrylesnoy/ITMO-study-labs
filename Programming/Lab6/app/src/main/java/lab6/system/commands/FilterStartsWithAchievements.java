@@ -66,4 +66,8 @@ public class FilterStartsWithAchievements implements Command {
     public String describe() {
         return "Return all elements, which fields Achievements start with custom string";
     }
+    
+    public String getName() {
+        return "Filter starts with achievements";
+    }
 }

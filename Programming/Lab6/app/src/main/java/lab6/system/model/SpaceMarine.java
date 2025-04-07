@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Getter;
 import lombok.Setter;
-import lab6.client.Router;
+import lab6.server.Router;
 import lab6.server.Collection.IDgenerator;
 import lab6.system.io.console.StdConsole;
 

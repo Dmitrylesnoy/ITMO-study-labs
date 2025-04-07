@@ -67,4 +67,8 @@ public class RemoveByID implements Command {
     public String describe() {
         return "This command removes an element from the collection by its id";
     }
+    
+    public String getName() {
+        return "Remove by ID";
+    }
 }

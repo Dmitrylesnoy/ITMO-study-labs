@@ -20,6 +20,9 @@ public interface Command {
      * @return a string describing the command
      */
     public String describe();
+
+    // public void setArgs(String[] args);
+
     /**
      * Returns the output of the command.
      *
@@ -28,4 +31,6 @@ public interface Command {
     public default String getOutput() {
         return "";
     }
+
+    public String getName();
 }

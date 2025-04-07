@@ -31,4 +31,8 @@ public class Save implements Command {
     public String describe() {
         return "This command saves the collection to a file";
     }
+    
+    public String getName() {
+        return "Save";
+    }
 }

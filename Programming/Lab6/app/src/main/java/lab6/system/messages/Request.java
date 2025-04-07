@@ -9,21 +9,21 @@ import lombok.Setter;
  * This class provides constructors for initializing the command and its arguments,
  * and uses Lombok annotations to generate getter and setter methods.
  */
-@Getter
-@Setter
-// public record Request(Command command) {
-public class Request {
-    private String command;
-    private String[] args;
+// @Getter
+// @Setter
+public record Request(Command command, String[] args) {
+// public class Request {
+//     private String command;
+//     private String[] args;
 
     /**
      * Constructs a Request with the specified command name.
      *
      * @param name the name of the command
      */
-    public Request(String name) {
-        this.command = name.toLowerCase();
-    }
+    // public Request(String name) {
+    //     this.command = name.toLowerCase();
+    // }
 
     /**
      * Constructs a Request with the specified command name and arguments.
@@ -31,8 +31,8 @@ public class Request {
      * @param command the name of the command
      * @param args the arguments associated with the command
      */
-    public Request(String command, String[] args) {
-        this.command = command.toLowerCase();
-        this.args = args;
-    }
+    // public Request(String command, String[] args) {
+    //     this.command = command.toLowerCase();
+    //     this.args = args;
+    // }
 }

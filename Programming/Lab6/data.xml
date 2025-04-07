@@ -1,5 +1,22 @@
 <Stack>
   <SpaceMarine>
+    <id>59</id>
+    <name>123</name>
+    <coordinates>
+      <x>123.0</x>
+      <y/>
+    </coordinates>
+    <creationDate>1743978160897</creationDate>
+    <health/>
+    <loyal/>
+    <achievements>123</achievements>
+    <meleeWeapon>POWER_FIST</meleeWeapon>
+    <chapter>
+      <name>123</name>
+      <world>123</world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
     <id>23</id>
     <name>XUXTTVAjotp9g</name>
     <coordinates>
@@ -85,6 +102,23 @@
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
+    <id>58</id>
+    <name>dkP5jOqD6uZ</name>
+    <coordinates>
+      <x>1.1901443109837428</x>
+      <y>338.88455</y>
+    </coordinates>
+    <creationDate>1743966305388</creationDate>
+    <health/>
+    <loyal/>
+    <achievements>Sl8t74d9rdT3cRpFrTla7Jo5nVMqwNctLeT7G08whp</achievements>
+    <meleeWeapon>POWER_FIST</meleeWeapon>
+    <chapter>
+      <name>FysZ09kJ8O2x</name>
+      <world></world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
     <id>21</id>
     <name>dv9bDyvq2</name>
     <coordinates>
@@ -116,6 +150,23 @@
     <chapter>
       <name>5kl3oKyOVSCZVUk</name>
       <world></world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
+    <id>60</id>
+    <name>hIVm7AJ</name>
+    <coordinates>
+      <x>768.8088243735187</x>
+      <y>871.9538</y>
+    </coordinates>
+    <creationDate>1744023938239</creationDate>
+    <health/>
+    <loyal/>
+    <achievements>pgLspso8zW28Wj2HXtEL7U6kDWPPLvZAFBxYCdxPAKp</achievements>
+    <meleeWeapon>POWER_BLADE</meleeWeapon>
+    <chapter>
+      <name>RIoxcDAgHwm2Qm</name>
+      <world>bcdE4</world>
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
@@ -252,40 +303,6 @@
     <chapter>
       <name>u3URyYm8H1GS</name>
       <world>Rws4D26</world>
-    </chapter>
-  </SpaceMarine>
-  <SpaceMarine>
-    <id>58</id>
-    <name>dkP5jOqD6uZ</name>
-    <coordinates>
-      <x>1.1901443109837428</x>
-      <y>338.88455</y>
-    </coordinates>
-    <creationDate>1743966305388</creationDate>
-    <health/>
-    <loyal/>
-    <achievements>Sl8t74d9rdT3cRpFrTla7Jo5nVMqwNctLeT7G08whp</achievements>
-    <meleeWeapon>POWER_FIST</meleeWeapon>
-    <chapter>
-      <name>FysZ09kJ8O2x</name>
-      <world></world>
-    </chapter>
-  </SpaceMarine>
-  <SpaceMarine>
-    <id>59</id>
-    <name>123</name>
-    <coordinates>
-      <x>123.0</x>
-      <y/>
-    </coordinates>
-    <creationDate>1743978160897</creationDate>
-    <health/>
-    <loyal/>
-    <achievements>123</achievements>
-    <meleeWeapon>POWER_FIST</meleeWeapon>
-    <chapter>
-      <name>123</name>
-      <world>123</world>
     </chapter>
   </SpaceMarine>
 </Stack>

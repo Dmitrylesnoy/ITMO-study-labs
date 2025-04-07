@@ -9,8 +9,9 @@ public enum Status {
     WARNING("Completed with warnings"),
     FAILED("Execution failed"),
     INPUT("Input message"),
-    OUTPUT("Output message");
-    
+    OUTPUT("Output message"),
+    CLOSE("Clocing session");
+
     private Status(String string) {
         // Constructor for the enumeration
     }

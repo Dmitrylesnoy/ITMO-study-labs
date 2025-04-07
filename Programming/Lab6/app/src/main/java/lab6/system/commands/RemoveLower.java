@@ -54,4 +54,8 @@ public class RemoveLower implements Command {
     public String describe() {
         return "Delete all elements from the collection that are lower than a given one";
     }
+    
+    public String getName() {
+        return "Remove lower";
+    }
 }

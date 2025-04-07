@@ -52,4 +52,8 @@ public class PrintUniqueLoyal implements Command {
     public String describe() {
         return "Prints objects with unique Loyal fields for all elements";
     }
+    
+    public String getName() {
+        return "Print unique loyal";
+    }
 }

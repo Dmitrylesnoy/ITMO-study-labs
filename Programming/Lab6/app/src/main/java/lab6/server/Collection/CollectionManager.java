@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Stack;
 
-import lab6.client.Router;
+import lab6.server.Router;
 import lab6.server.io.xml.XMLhandler;
 import lab6.system.model.SpaceMarine;
 

@@ -7,13 +7,13 @@ import lab6.system.model.SpaceMarineGenerator;
  * a SpaceMarine object to a collection. It can create a new SpaceMarine using
  * a builder with using user params.
  */
-public class RandomAdd implements Command {
+public class AddRandom implements Command {
     private int cnt = 1;
 
     /**
      * Default constructor.
      */
-    public RandomAdd() {
+    public AddRandom() {
     }
 
     /**
@@ -21,7 +21,7 @@ public class RandomAdd implements Command {
      *
      * @param addMarine SpaceMarine to add
      */
-    public RandomAdd(int cnt) {
+    public AddRandom(int cnt) {
         this.cnt = cnt;
     }
 
@@ -48,5 +48,9 @@ public class RandomAdd implements Command {
      */
     public String describe() {
         return "Adds a SpaceMarine to the collection.";
+    }
+    
+    public String getName() {
+        return "Add random";
     }
 }

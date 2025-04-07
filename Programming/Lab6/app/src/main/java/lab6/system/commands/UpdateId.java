@@ -56,4 +56,8 @@ public class UpdateId implements Command {
     public String describe() {
         return "This command updates object in Collection, which ID equal to given object ID.";
     }
+
+    public String getName() {
+        return "Update ID";
+    }
 }

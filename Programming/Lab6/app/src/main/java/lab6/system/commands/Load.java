@@ -29,4 +29,8 @@ public class Load implements Command {
     public String describe() {
         return "This command loads the collection from a file";
     }
+    
+    public String getName() {
+        return "Load";
+    }
 }

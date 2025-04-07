@@ -53,4 +53,8 @@ public class Help implements Command {
     public String describe() {
         return "Return list of all commands with description";
     }
+    
+    public String getName() {
+        return "Help";
+    }
 }

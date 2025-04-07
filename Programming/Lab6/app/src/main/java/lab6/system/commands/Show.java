@@ -42,4 +42,8 @@ public class Show implements Command {
     public String describe() {
         return "Return list of all elements in Collection";
     }
+    
+    public String getName() {
+        return "Show";
+    }
 }

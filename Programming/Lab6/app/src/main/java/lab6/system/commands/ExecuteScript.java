@@ -44,16 +44,17 @@ public class ExecuteScript implements Command {
      */
     @Override
     public void execute() throws IOException {
-        try {
-            StdConsole console = Handler.getInstance().getConsole();
-            File scriptFile = new File(scriptFilePath);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile));
-            bufferedReader.lines().peek(l -> console.writeln("added  " + l))
-                .forEach(l -> console.add(l));
-            bufferedReader.close();
-        } catch (FileNotFoundException e) {
-            throw new FileNotFoundException("Script file not found: " + scriptFilePath);
-        }
+        // try {
+        //     StdConsole console = Handler.getInstance().getConsole();
+        //     File scriptFile = new File(scriptFilePath);
+        //     BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile));
+        //     bufferedReader.lines().peek(l -> console.writeln("added  " + l))
+        //         .forEach(l -> console.add(l));
+        //     bufferedReader.close();
+        // } catch (FileNotFoundException e) {
+        //     throw new FileNotFoundException("Script file not found: " + scriptFilePath);
+        // }
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -64,5 +65,9 @@ public class ExecuteScript implements Command {
      */
     public String describe() {
         return "Execute script with program commands";
+    }
+    
+    public String getName() {
+        return "Execute script";
     }
 }

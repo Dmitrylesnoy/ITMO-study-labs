@@ -72,6 +72,8 @@ public record Response(String name, Status status, String output, Exception e) {
                 return name + "  " + status.toString() + "\n " + output + "\n=> ";
             case FAILED:
                 return name + "  " + status.toString() + "\n " + e.toString() + "\n=> ";
+            case CLOSE:
+                return name + "  " + status.toString() + "\n=> ";
             default:
                 return status.toString() + "\n" + output + "\n=> ";
         }

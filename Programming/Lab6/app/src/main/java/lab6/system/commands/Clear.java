@@ -23,4 +23,8 @@ public class Clear implements Command {
     public String describe() {
         return "This command clears the Collection";
     }
+    
+    public String getName() {
+        return "Clear";
+    }
 }

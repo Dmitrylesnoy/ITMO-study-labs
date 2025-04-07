@@ -32,8 +32,8 @@ public class MinByMeleeWeapon implements Command {
             return;
         }
         output.append("SpaceMarine with the minimum melee weapon is: ")
-                .append((collection.stream().
-                    min(Comparator.comparing(m -> m.getMeleeWeapon().ordinal())).get()).getName())
+                .append((collection.stream().min(Comparator.comparing(m -> m.getMeleeWeapon().ordinal())).get())
+                        .getName())
                 .append("\n");
     }
 
@@ -53,5 +53,9 @@ public class MinByMeleeWeapon implements Command {
      */
     public String describe() {
         return "Returns any object with the minimum MeleeWeapon value";
+    }
+    
+    public String getName() {
+        return "Min by MeleeWeapon";
     }
 }

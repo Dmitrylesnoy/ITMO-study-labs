@@ -20,4 +20,8 @@ public class Info implements Command {
     public String describe() {
         return "Return date of creating collection and it's lenght";
     }
+    
+    public String getName() {
+        return "Info";
+    }
 }

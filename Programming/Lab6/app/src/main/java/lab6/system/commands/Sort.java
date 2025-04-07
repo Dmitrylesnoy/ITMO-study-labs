@@ -44,4 +44,8 @@ public class Sort implements Command {
     public String describe() {
         return "Sorts the stack of SpaceMarine objects in natural order.";
     }
+    
+    public String getName() {
+        return "Sort";
+    }
 }

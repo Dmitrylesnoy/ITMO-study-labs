@@ -3,6 +3,8 @@
  */
 package lab6;
 
-class AppTest {
+import lab6.system.io.console.StdConsole;
 
+
+class AppTest {
 }

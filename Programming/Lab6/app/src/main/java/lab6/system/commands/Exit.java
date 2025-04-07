@@ -11,7 +11,7 @@ public class Exit implements Command {
      */
     @Override
     public void execute() {
-        new Save().execute();
+        // new Save().execute();
         System.exit(0);
     }
 
@@ -22,5 +22,9 @@ public class Exit implements Command {
      */
     public String describe() {
         return "Break down the program process without saving collection in file";
+    }
+
+    public String getName() {
+        return "Exit";
     }
 }

@@ -56,4 +56,8 @@ public class RemoveGreater implements Command {
     public String describe() {
         return "Delete all elements from the collection that are greater than a given one";
     }
+    
+    public String getName() {
+        return "Remove greater";
+    }
 }
