@@ -72,7 +72,7 @@ set CLASSPATH=%APP_HOME%\lib\App.jar;%APP_HOME%\lib\guava-33.0.0-jre.jar;%APP_HO
 
 
 @rem Execute app
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %APP_OPTS%  -classpath "%CLASSPATH%" lab6.client.Client %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %APP_OPTS%  -classpath "%CLASSPATH%" lab6.App %*
 
 :end
 @rem End local scope for the variables with windows NT shell

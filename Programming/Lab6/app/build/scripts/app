@@ -210,7 +210,7 @@ DEFAULT_JVM_OPTS=""
 
 set -- \
         -classpath "$CLASSPATH" \
-        lab6.client.Client \
+        lab6.App \
         "$@"
 
 # Stop when "xargs" is not available.
