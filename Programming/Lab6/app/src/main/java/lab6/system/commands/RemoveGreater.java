@@ -61,7 +61,8 @@ public class RemoveGreater implements Command {
         return "Remove greater";
     }
     
-    public void setArgs(SpaceMarine marine) {
+    public Command setArgs(SpaceMarine marine) {
         obj = marine;
+        return this;
     }
 }

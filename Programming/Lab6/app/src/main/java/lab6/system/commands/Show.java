@@ -9,7 +9,7 @@ import lab6.system.model.SpaceMarine;
  * to retrieve and present the details of all SpaceMarines.
  */
 public class Show implements Command {
-    private StringBuilder output = new StringBuilder();
+    private StringBuilder output = new StringBuilder(" ");
 
     /**
      * Default constructor for the Show class, initializing an instance without specific parameters.
@@ -21,8 +21,15 @@ public class Show implements Command {
      * Executes the command to retrieve and display all SpaceMarine objects in the collection.
      */
     public void execute() {
-        CollectionManager.getInstance().getCollection().stream()
-            .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
+        CollectionManager
+                .
+        getInstance()
+                .
+                getCollection()
+                .
+        stream()
+                .map(m -> m.toString()).
+            forEach(m -> output.append(m).append('\n'));
     }
 
     /**

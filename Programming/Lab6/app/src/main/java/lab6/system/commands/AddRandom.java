@@ -37,8 +37,9 @@ public class AddRandom implements Command {
         }
     }
 
-    public void setArgs(int cnt) {
+    public Command setArgs(int cnt) {
         this.cnt = cnt;
+        return this;
     }
 
     /**

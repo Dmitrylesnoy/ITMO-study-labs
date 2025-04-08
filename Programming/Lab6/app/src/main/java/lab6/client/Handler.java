@@ -1,24 +1,32 @@
 package lab6.client;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import lab6.server.Router;
-import lab6.system.commands.*;
+import lab6.system.commands.Add;
+import lab6.system.commands.AddRandom;
+import lab6.system.commands.Clear;
+import lab6.system.commands.Command;
+import lab6.system.commands.ExecuteScript;
+import lab6.system.commands.Exit;
+import lab6.system.commands.FilterStartsWithAchievements;
+import lab6.system.commands.Help;
+import lab6.system.commands.Info;
+import lab6.system.commands.Load;
+import lab6.system.commands.MinByMeleeWeapon;
+import lab6.system.commands.PrintUniqueLoyal;
+import lab6.system.commands.RemoveByID;
+import lab6.system.commands.RemoveGreater;
+import lab6.system.commands.RemoveLower;
+import lab6.system.commands.Show;
+import lab6.system.commands.Sort;
+import lab6.system.commands.UpdateId;
 import lab6.system.io.console.StdConsole;
-import lab6.system.messages.*;
+import lab6.system.messages.Request;
+import lab6.system.messages.Response;
+import lab6.system.messages.Status;
 import lab6.system.model.builders.SpaceMarineBuilder;
 
 /**
@@ -32,8 +40,6 @@ public class Handler {
     private StdConsole console;
     Map<String, Command> cmds = new HashMap<>();
     private NetworkClient network = new NetworkClient();
-    private final String SERVER_IP = "127.0.0.1";
-    private final int SERVER_PORT = 5000;
 
     /**
      * Default constructor for the Handler class.
@@ -95,7 +101,7 @@ public class Handler {
      * @throws IOException
      */
     public Request makeRequest(String input) throws IOException {
-        String[] inp_split;
+        String[] inp_split, args = null;
         try {
             inp_split = input.strip().split("\\s+");
         } catch (Exception e) {
@@ -103,48 +109,36 @@ public class Handler {
         }
 
         if (inp_split.length > 0 && inp_split[0].strip() != "") {
-            String name = inp_split[0];
-            Command cmd;
             if (inp_split.length > 1) {
                 String[] agrs = Arrays.copyOfRange(inp_split, 1, inp_split.length);
-                cmd = setCommand(name, agrs);
-
-                return new Request(cmd, agrs);
-            } else {
-                return new Request(setCommand(name, null), null);
             }
-        } else
-            return null;
-    }
+        }
 
-    public Command setCommand(String name, String[] args) throws IOException {
+        String name = inp_split[0].toLowerCase();
+        Command cmd;
+        Object cmdArgs = null;
+
         if (cmds.containsKey(name)) {
-            Command cmd = cmds.get(name);
+            cmd = cmds.get(name);
 
-            if (cmd.getClass().equals(Add.class))
-                ((Add) cmd).setArgs(new SpaceMarineBuilder().build());
-            if (cmd.getClass().equals(RemoveGreater.class))
-                ((RemoveGreater) cmd).setArgs(new SpaceMarineBuilder().build());
-            if (cmd.getClass().equals(RemoveLower.class))
-                ((RemoveLower) cmd).setArgs(new SpaceMarineBuilder().build());
-            if (cmd.getClass().equals(UpdateId.class))
-                ((UpdateId) cmd).setArgs(new SpaceMarineBuilder().build());
-
+            if (cmd.getClass().equals(Add.class) ||
+                    cmd.getClass().equals(RemoveGreater.class) ||
+                    cmd.getClass().equals(RemoveLower.class) ||
+                    cmd.getClass().equals(UpdateId.class))
+                cmdArgs = new SpaceMarineBuilder().build();
             if (cmd.getClass().equals(AddRandom.class))
-                ((AddRandom) cmd).setArgs(args != null ? Integer.parseInt(args[0]) : 1);
+                cmdArgs = args != null ? Integer.parseInt(args[0]) : 1;
             if (cmd.getClass().equals(FilterStartsWithAchievements.class))
-                ((FilterStartsWithAchievements) cmd).setArgs(args != null ? args[0] : null);
+                cmdArgs = args != null ? args[0] : null;
             if (cmd.getClass().equals(RemoveByID.class))
-                ((RemoveByID) cmd).setArgs(args != null ? Long.parseLong(args[0]) : null);
-            if (cmd.getClass().equals(ExecuteScript.class)){
-                ((ExecuteScript) cmd).setArgs(args != null ? args[0] : null);
+                cmdArgs = args != null ? Long.parseLong(args[0]) : null;
+            if (cmd.getClass().equals(ExecuteScript.class)) {
+                cmdArgs = args != null ? args[0] : null;
                 cmd.execute();
             }
-
-            return cmd;
-        
-        } else {
+        } else
             throw new UnsupportedOperationException("Unknown command");
-        }
+
+        return new Request(cmd, cmdArgs);
     }
 }

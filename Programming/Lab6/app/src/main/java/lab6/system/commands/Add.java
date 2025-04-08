@@ -55,7 +55,8 @@ public class Add implements Command {
         return "Add";
     }
 
-    public void setArgs(SpaceMarine spacemarine){
+    public Command setArgs(SpaceMarine spacemarine){
         obj = spacemarine;
+        return this;
     }
 }

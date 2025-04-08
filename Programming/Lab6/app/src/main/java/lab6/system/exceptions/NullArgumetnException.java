@@ -23,6 +23,6 @@ public class NullArgumetnException extends IllegalArgumentException {
      */
     @Override
     public String toString() {
-        return "Wrong entered argument. Input mustn't be Null." + super.toString();
+        return "Wrong entered argument. Input mustn't be Null. " + super.toString();
     }
 }

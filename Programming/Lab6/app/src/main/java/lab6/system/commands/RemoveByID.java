@@ -36,8 +36,9 @@ public class RemoveByID implements Command {
      *
      * @param id the ID of the SpaceMarine to be removed
      */
-    public void setArgs(Long id) {
+    public Command setArgs(Long id) {
         this.id = id;
+        return this;
     }
 
     /**

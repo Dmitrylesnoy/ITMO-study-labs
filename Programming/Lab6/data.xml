@@ -18,36 +18,87 @@
   </SpaceMarine>
   <SpaceMarine>
     <id>2</id>
-    <name>ngcTzINY3a</name>
+    <name>jFCUx</name>
     <coordinates>
-      <x>800.8067626249675</x>
-      <y>577.2614</y>
+      <x>236.35193239417995</x>
+      <y>5.7841196</y>
     </coordinates>
     <creationDate>0</creationDate>
-    <health>903.9026610022199</health>
-    <loyal>false</loyal>
-    <achievements>Bsnzzb3r10bOg</achievements>
-    <meleeWeapon>CHAIN_SWORD</meleeWeapon>
+    <health/>
+    <loyal/>
+    <achievements>6ddfBsWQ2CTOmCzuqzrf6C</achievements>
+    <meleeWeapon>POWER_BLADE</meleeWeapon>
     <chapter>
-      <name>Af8zvQk</name>
+      <name>sK9Ve</name>
       <world></world>
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
     <id>3</id>
-    <name>eH7tlNS</name>
+    <name>eRS0Xxhn0kpB4</name>
     <coordinates>
-      <x>825.2688347227677</x>
-      <y>477.76666</y>
+      <x>611.4656565196836</x>
+      <y>672.9533</y>
     </coordinates>
     <creationDate>0</creationDate>
-    <health>748.8348683646684</health>
-    <loyal>false</loyal>
-    <achievements>8E448QTATA2EDvXJCMNVBYCI6qe1ivMl3huxPPeBbJouUGDN</achievements>
-    <meleeWeapon>POWER_FIST</meleeWeapon>
+    <health>289.1699229105658</health>
+    <loyal>true</loyal>
+    <achievements>k88ZnKekxFuDyXH1G1GqNrRUd0gi1fcaZAopKW</achievements>
+    <meleeWeapon>POWER_SWORD</meleeWeapon>
     <chapter>
-      <name>GLMO2jI5jA56Ji</name>
-      <world>a2vhxx</world>
+      <name>V9ahqUc2Y</name>
+      <world></world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
+    <id>4</id>
+    <name>svdQ5blQo</name>
+    <coordinates>
+      <x>389.5943381626764</x>
+      <y>100.69608</y>
+    </coordinates>
+    <creationDate>0</creationDate>
+    <health>136.16007399135967</health>
+    <loyal>false</loyal>
+    <achievements>n3tslnSmjUf3YRbkkybE1zrss9NrV0wbpYQL09k9HCtyronx</achievements>
+    <meleeWeapon>POWER_BLADE</meleeWeapon>
+    <chapter>
+      <name>L3CiVg</name>
+      <world>p7ZAkK</world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
+    <id>5</id>
+    <name>HMP6i</name>
+    <coordinates>
+      <x>295.002428739103</x>
+      <y>462.49884</y>
+    </coordinates>
+    <creationDate>0</creationDate>
+    <health/>
+    <loyal/>
+    <achievements>2TcTLoJsgiGp12AG10cHIOKYuenJJX6TytOIpkn4L4FvubSgw</achievements>
+    <meleeWeapon>POWER_SWORD</meleeWeapon>
+    <chapter>
+      <name>qgDx2XLH</name>
+      <world>9Usyg</world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
+    <id/>
+    <name>UyMrgbBCiqkD86</name>
+    <coordinates>
+      <x>580.2279700044888</x>
+      <y>678.62195</y>
+    </coordinates>
+    <creationDate/>
+    <health>794.1215946013393</health>
+    <loyal>false</loyal>
+    <achievements>P5ZGCTbqJ75uaQ</achievements>
+    <meleeWeapon>CHAIN_SWORD</meleeWeapon>
+    <chapter>
+      <name>rFNTfql6oC</name>
+      <world/>
     </chapter>
   </SpaceMarine>
 </Stack>

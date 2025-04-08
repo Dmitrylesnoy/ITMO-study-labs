@@ -8,10 +8,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
 import java.util.ArrayDeque;
 import java.util.Deque;
-
-import com.fasterxml.jackson.core.format.InputAccessor.Std;
 
 import lab6.system.collection.CollectionManager;
 import lab6.system.commands.Command;
@@ -29,51 +30,56 @@ import lab6.system.messages.Response;
  */
 public class Router {
     private CollectionManager cm;
-    private static Router instance;
     private Deque<Request> cmdsQueue;
     private Worker worker1;
-    private final int PORT = 5000;
+    private final int PORT = 2222;
+    private final int BUFFER_SIZE = 65535;
+    private DatagramChannel channel;
 
     /**
      * Default constructor for the Router class.
      * Initializes the Router instance and loads the collection manager.
      */
-    public Router() {
+    public Router() throws IOException{
         cm = CollectionManager.getInstance();
         cm.load();
         cmdsQueue = new ArrayDeque<Request>(1);
-        StdConsole.writeln("server started");
+        channel = DatagramChannel.open();
+        channel.bind(new InetSocketAddress((PORT)));
         worker1 = new Worker();
+        StdConsole.writeln("server started on port"+PORT);
     }
 
     public void run() {
-        try (DatagramSocket socket = new DatagramSocket(PORT)) {
+        try {
+            ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+            buffer.clear();
+
             StdConsole.writeln("    Waiting packet");
-            byte[] buffer = new byte[65535];
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-            socket.receive(packet);
+            InetSocketAddress clientAddress = (InetSocketAddress) channel.receive(buffer);
+            buffer.flip();
 
             StdConsole.writeln("    Deseralization message");
-            ByteArrayInputStream byteInput = new ByteArrayInputStream(packet.getData(), 0, packet.getLength());
-            ObjectInputStream objectInputStream = new ObjectInputStream(byteInput);
-            Request request = (Request) objectInputStream.readObject();
+            byte[] requestData=new byte[buffer.remaining()];
+            buffer.get(requestData);
+            ByteArrayInputStream byteInput = new ByteArrayInputStream(requestData);
+            ObjectInputStream objectInput = new ObjectInputStream(byteInput);
+            Request request = (Request) objectInput.readObject();
 
             StdConsole.writeln("    processing request");
             cmdsQueue.add(request);
-            Response response = worker1.processCommand(cmdsQueue.pop().command());
+            Response response = worker1.processCommand(cmdsQueue.pop());
 
             StdConsole.writeln("    Serialize responce ");
             ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteOutput);
-            objectOutputStream.writeObject(response);
-            byte[] responseData = byteOutput.toByteArray();
+            ObjectOutputStream objectOutput = new ObjectOutputStream(byteOutput);
+            objectOutput.writeObject(response);
+            byte[] responceData = byteOutput.toByteArray();
 
             StdConsole.writeln("    Sending answer packet");
-            DatagramPacket responcePacket = new DatagramPacket(responseData, 0, responseData.length,
-                    packet.getAddress(), packet.getPort());
-            socket.send(responcePacket);StdConsole.writeln("Response sent to " + packet.getAddress() + ":" + packet.getPort());
-            StdConsole.writeln("Response sent to " + packet.getAddress() + ":" + packet.getPort());
-        } catch (NullPointerException e){
+            ByteBuffer responceBuffer = ByteBuffer.wrap(responceData);
+            channel.send(responceBuffer, clientAddress);
+            StdConsole.writeln("Response sent to " + clientAddress.getAddress() + ":" + clientAddress.getPort());        } catch (NullPointerException e){
             StdConsole.writeln("Client disconnected");
         } catch (Exception e) {
             StdConsole.writeln(e.toString());
@@ -91,11 +97,7 @@ public class Router {
      */
     public Response runCommand(Request request) {
         cmdsQueue.add(request);
-        Response response = worker1.processCommand(cmdsQueue.pop().command());
+        Response response = worker1.processCommand(cmdsQueue.pop());
         return response;
-    }
-
-    public Router getInstance() {
-        return instance == null ? new Router() : instance;
     }
 }

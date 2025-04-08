@@ -31,8 +31,9 @@ public class ExecuteScript implements Command {
         this.scriptFilePath = scriptFilePath;
     }
 
-    public void setArgs(String scriptFilePath) {
+    public Command setArgs(String scriptFilePath) {
         this.scriptFilePath = scriptFilePath;
+        return this;
     }
     /**
      * Executes the script by reading commands from the specified script file.

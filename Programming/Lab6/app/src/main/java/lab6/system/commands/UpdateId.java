@@ -58,7 +58,8 @@ public class UpdateId implements Command {
         return "Update ID";
     }
 
-    public void setArgs(SpaceMarine marine) {
+    public Command setArgs(SpaceMarine marine) {
         obj = marine;
+        return this;
     }
 }

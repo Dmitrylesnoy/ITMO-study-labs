@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 import lab6.system.commands.Command;
 
-public record Request(Command command, String[] args) implements Serializable {
+public record Request(Command command, Object args) implements Serializable {
     // public class Request {
     // private String command;
     // private String[] args;

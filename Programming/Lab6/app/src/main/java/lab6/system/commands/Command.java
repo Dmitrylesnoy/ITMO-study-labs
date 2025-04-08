@@ -36,7 +36,7 @@ public interface Command extends Serializable {
 
     public String getName();
 
-    public default void setArgs(Object obj){
-        return;
+    public default Command setArgs(Object obj){
+        return this;
     }
 }

@@ -13,10 +13,11 @@ import java.net.SocketTimeoutException;
 import lab6.system.io.console.StdConsole;
 import lab6.system.messages.Request;
 import lab6.system.messages.Response;
+import lab6.system.messages.Status;
 
 public class NetworkClient {
-    private static final String SERVER_IP = "127.0.0.1"; // Пример IP сервера
-    private static final int SERVER_PORT = 5000; // Пример порта сервера
+    private static final String SERVER_IP = "77.234.196.4";//"127.0.0.1"; // Пример IP сервера
+    private static final int SERVER_PORT = 2222; // Пример порта сервера
     private static final int TIMEOUT = 2000; // Тайм-аут в миллисекундах (2 секунды)
     private static final int MAX_ATTEMPTS = 3; // Максимальное количество попыток
     private StdConsole console=new StdConsole();
@@ -26,10 +27,10 @@ public class NetworkClient {
             socket.setSoTimeout(TIMEOUT); // Устанавливаем тайм-аут
 
             // Сериализация Request в массив байтов
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(request);
-            byte[] requestData = baos.toByteArray();
+            ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutput = new ObjectOutputStream(byteOutput);
+            objectOutput.writeObject(request);
+            byte[] requestData = byteOutput.toByteArray();
 
             InetAddress serverAddress = InetAddress.getByName(SERVER_IP);
             DatagramPacket packet = new DatagramPacket(requestData, requestData.length, serverAddress, SERVER_PORT);
@@ -47,30 +48,33 @@ public class NetworkClient {
                     byte[] buffer = new byte[65535];
                     DatagramPacket responsePacket = new DatagramPacket(buffer, buffer.length);
                     socket.receive(responsePacket);
-
+                    
                     // Десериализация Response
-                    ByteArrayInputStream bais = new ByteArrayInputStream(responsePacket.getData(), 0,
+                    ByteArrayInputStream byteInput = new ByteArrayInputStream(responsePacket.getData(), 0,
                             responsePacket.getLength());
-                    ObjectInputStream ois = new ObjectInputStream(bais);
-                    response = (Response) ois.readObject();
+                    ObjectInputStream objectInput = new ObjectInputStream(byteInput);
+                    response = (Response) objectInput.readObject();
 
                     responseReceived = true;
 
                 } catch (SocketTimeoutException e) {
-                    console.writeln("Server did not respond within " + (TIMEOUT / 1000) + " seconds.");
-                    if (attempts == MAX_ATTEMPTS) {
+                    attempts++;
+                    console.writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");console.writeln("   Server did not respond within " + ((TIMEOUT / 1000)*attempts) + " seconds.");
+                    if (attempts >= MAX_ATTEMPTS) {
                         console.writeln("All attempts failed. Server is unavailable.");
+                        break;
                     }
+                } catch (Exception e) {
+                    console.writeln("Error sending request: " + e.getMessage());
+                    break;
                 }
-                attempts++;
-                console.writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");
             }
 
             return response;
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             console.writeln("Network error: " + e.toString());
-            return null;
+            return new Response("Network error", Status.FAILED,"",null);
         }
     }
 }

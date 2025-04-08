@@ -34,8 +34,9 @@ public class FilterStartsWithAchievements implements Command {
      *
      * @param sub the substring to filter achievements by
      */
-    public void setArgs(String sub) {
+    public Command setArgs(String sub) {
         this.sub = sub;
+        return this;
     }
 
     /**
