@@ -31,8 +31,8 @@ public record Request(Command command, Object args) implements Serializable {
      * @param command the name of the command
      * @param args    the arguments associated with the command
      */
-    // public Request(String command, String[] args) {
-    // this.command = command.toLowerCase();
-    // this.args = args;
-    // }
+    public Request(Command command, Object args) {
+        this.command = command;
+        this.args = args==null? "":args;
+    }
 }

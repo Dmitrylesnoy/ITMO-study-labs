@@ -77,7 +77,7 @@ public class Handler {
         // Request request = makeRequest(console.read());
         try {
             Request request = makeRequest(console.read());
-
+  
             Response response = network.sendRequest(request);
             console.write(response.toString());
             if (response.status() == Status.CLOSE) {
@@ -85,6 +85,9 @@ public class Handler {
                 System.exit(0);
             }
         } catch (NullPointerException e) {
+            console.write("=>");
+        } catch (UnsupportedOperationException e) {
+            console.writeln("Recursion detected, unsopported opetarion. Execution canceled");
             console.write("=>");
         } catch (Exception e) {
             console.writeln(e.toString());
@@ -101,7 +104,8 @@ public class Handler {
      * @throws IOException
      */
     public Request makeRequest(String input) throws IOException {
-        String[] inp_split, args = null;
+        String[] inp_split = null;
+        String[] inp_args = null;
         try {
             inp_split = input.strip().split("\\s+");
         } catch (Exception e) {
@@ -110,7 +114,7 @@ public class Handler {
 
         if (inp_split.length > 0 && inp_split[0].strip() != "") {
             if (inp_split.length > 1) {
-                String[] agrs = Arrays.copyOfRange(inp_split, 1, inp_split.length);
+                inp_args = Arrays.copyOfRange(inp_split, 1, inp_split.length);
             }
         }
 
@@ -123,18 +127,19 @@ public class Handler {
 
             if (cmd.getClass().equals(Add.class) ||
                     cmd.getClass().equals(RemoveGreater.class) ||
-                    cmd.getClass().equals(RemoveLower.class) ||
-                    cmd.getClass().equals(UpdateId.class))
+                    cmd.getClass().equals(RemoveLower.class))
                 cmdArgs = new SpaceMarineBuilder().build();
             if (cmd.getClass().equals(AddRandom.class))
-                cmdArgs = args != null ? Integer.parseInt(args[0]) : 1;
+                cmdArgs = inp_args != null ? Integer.parseInt(inp_args[0]) : 1;
             if (cmd.getClass().equals(FilterStartsWithAchievements.class))
-                cmdArgs = args != null ? args[0] : null;
+                cmdArgs = inp_args != null ? inp_args[0] : null;
             if (cmd.getClass().equals(RemoveByID.class))
-                cmdArgs = args != null ? Long.parseLong(args[0]) : null;
+                cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
+            if (cmd.getClass().equals(UpdateId.class))
+                cmdArgs = new SpaceMarineBuilder().setID(Long.parseLong(inp_args[0])).build();
             if (cmd.getClass().equals(ExecuteScript.class)) {
-                cmdArgs = args != null ? args[0] : null;
-                cmd.execute();
+                cmdArgs = inp_args != null ? inp_args[0] : null;
+                cmd.setArgs(cmdArgs).execute();
             }
         } else
             throw new UnsupportedOperationException("Unknown command");

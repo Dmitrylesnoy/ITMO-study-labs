@@ -6,17 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import lab6.system.collection.CollectionManager;
-import lab6.system.commands.Command;
-import lab6.system.io.console.StdConsole;
 import lab6.system.messages.Request;
 import lab6.system.messages.Response;
 
@@ -29,8 +24,7 @@ import lab6.system.messages.Response;
  * of Router exists.
  */
 public class Router {
-    private CollectionManager cm;
-    private Deque<Request> cmdsQueue;
+    // private Deque<Request> cmdsQueue;
     private Worker worker1;
     private final int PORT = 2222;
     private final int BUFFER_SIZE = 65535;
@@ -40,49 +34,67 @@ public class Router {
      * Default constructor for the Router class.
      * Initializes the Router instance and loads the collection manager.
      */
-    public Router() throws IOException{
-        cm = CollectionManager.getInstance();
-        cm.load();
-        cmdsQueue = new ArrayDeque<Request>(1);
+    private static final Logger logger = Logger.getLogger(Router.class.getName());
+
+    public Router() throws IOException {
+        logger.info("[SERVER INIT] Initializing router components");
+        // cmdsQueue = new ArrayDeque<Request>(1);
+        logger.info("[NETWORK] Opening datagram channel");
         channel = DatagramChannel.open();
-        channel.bind(new InetSocketAddress((PORT)));
+        logger.info(String.format("[NETWORK] Binding to port %d", PORT));
+        channel.bind(new InetSocketAddress(PORT));
+        channel.configureBlocking(false);
         worker1 = new Worker();
-        StdConsole.writeln("server started on port"+PORT);
+        logger.info(String.format("[SERVER START] Ready and listening on port %d", PORT));
     }
 
     public void run() {
+        ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+
         try {
-            ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
             buffer.clear();
+            // StdConsole.writeln(" Waiting packet");
 
-            StdConsole.writeln("    Waiting packet");
             InetSocketAddress clientAddress = (InetSocketAddress) channel.receive(buffer);
-            buffer.flip();
+            if (clientAddress == null) {
+                // StdConsole.writeln("Received null client address, skipping...");
+                return;
+            }
 
-            StdConsole.writeln("    Deseralization message");
-            byte[] requestData=new byte[buffer.remaining()];
+            buffer.flip();
+            logger.info("[PROCESSING] Deserializing incoming message");
+
+            byte[] requestData = new byte[buffer.remaining()];
             buffer.get(requestData);
+
+            Request request;
             ByteArrayInputStream byteInput = new ByteArrayInputStream(requestData);
             ObjectInputStream objectInput = new ObjectInputStream(byteInput);
-            Request request = (Request) objectInput.readObject();
+            request = (Request) objectInput.readObject();
+            
+            
+            logger.info(String.format("[PROCESSING] Executing request: %s", request.toString()));
+            Response response = worker1.processCommand(request);
 
-            StdConsole.writeln("    processing request");
-            cmdsQueue.add(request);
-            Response response = worker1.processCommand(cmdsQueue.pop());
-
-            StdConsole.writeln("    Serialize responce ");
+            logger.info("[PROCESSING] Serializing response");
+            byte[] responseData;
             ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
             ObjectOutputStream objectOutput = new ObjectOutputStream(byteOutput);
             objectOutput.writeObject(response);
-            byte[] responceData = byteOutput.toByteArray();
+            responseData = byteOutput.toByteArray();
 
-            StdConsole.writeln("    Sending answer packet");
-            ByteBuffer responceBuffer = ByteBuffer.wrap(responceData);
-            channel.send(responceBuffer, clientAddress);
-            StdConsole.writeln("Response sent to " + clientAddress.getAddress() + ":" + clientAddress.getPort());        } catch (NullPointerException e){
-            StdConsole.writeln("Client disconnected");
+            logger.info("[NETWORK] Sending response packet");
+            ByteBuffer responseBuffer = ByteBuffer.wrap(responseData);
+            channel.send(responseBuffer, clientAddress);
+            logger.info(String.format("[NETWORK] Response sent to %s:%d",
+                    clientAddress.getAddress().getHostAddress(),
+                    clientAddress.getPort()));
+        } catch (NullPointerException e) {
+            logger.warning("[CLIENT] Client connection terminated unexpectedly");
+            logger.log(Level.WARNING, "Client disconnect details", e);
         } catch (Exception e) {
-            StdConsole.writeln(e.toString());
+            logger.severe(String.format("[ERROR] Processing failed: %s", e.getMessage()));
+            logger.log(Level.WARNING, "Error details", e);
         }
     }
 
@@ -96,8 +108,8 @@ public class Router {
      * @throws ClassNotFoundException
      */
     public Response runCommand(Request request) {
-        cmdsQueue.add(request);
-        Response response = worker1.processCommand(cmdsQueue.pop());
+        // cmdsQueue.add(request);
+        Response response = worker1.processCommand(request);
         return response;
     }
 }

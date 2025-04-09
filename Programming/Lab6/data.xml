@@ -85,20 +85,37 @@
     </chapter>
   </SpaceMarine>
   <SpaceMarine>
-    <id/>
+    <id>6</id>
     <name>UyMrgbBCiqkD86</name>
     <coordinates>
       <x>580.2279700044888</x>
       <y>678.62195</y>
     </coordinates>
-    <creationDate/>
+    <creationDate>0</creationDate>
     <health>794.1215946013393</health>
     <loyal>false</loyal>
     <achievements>P5ZGCTbqJ75uaQ</achievements>
     <meleeWeapon>CHAIN_SWORD</meleeWeapon>
     <chapter>
       <name>rFNTfql6oC</name>
-      <world/>
+      <world></world>
+    </chapter>
+  </SpaceMarine>
+  <SpaceMarine>
+    <id/>
+    <name>69dZ5MYR9</name>
+    <coordinates>
+      <x>619.9899295204831</x>
+      <y>275.58466</y>
+    </coordinates>
+    <creationDate/>
+    <health/>
+    <loyal/>
+    <achievements>U4bBy9HJLeTvwZKaMxBnOxRFfFgL4V</achievements>
+    <meleeWeapon>POWER_BLADE</meleeWeapon>
+    <chapter>
+      <name>TELOGq</name>
+      <world>WYfJ0BfT4</world>
     </chapter>
   </SpaceMarine>
 </Stack>

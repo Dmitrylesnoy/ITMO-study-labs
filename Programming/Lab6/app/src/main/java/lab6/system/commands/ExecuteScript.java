@@ -31,8 +31,8 @@ public class ExecuteScript implements Command {
         this.scriptFilePath = scriptFilePath;
     }
 
-    public Command setArgs(String scriptFilePath) {
-        this.scriptFilePath = scriptFilePath;
+    public <T> Command setArgs(T scriptFilePath) {
+        this.scriptFilePath = (String)scriptFilePath;
         return this;
     }
     /**

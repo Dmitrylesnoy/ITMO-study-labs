@@ -57,7 +57,7 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
                     && chapter != null) {
                 this.name = name;
                 this.coordinates = coordinates;
-                // this.creationDate = new java.util.Date();
+                this.creationDate = new java.util.Date();
                 this.achievements = achievements;
                 this.meleeWeapon = meleeWeapon;
                 this.chapter = chapter;
@@ -166,5 +166,9 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     @Override
     public int compareTo(SpaceMarine other) {
         return this.name.compareTo(other.name);
+    }
+
+    public Long getId(){
+        return this.id;
     }
 }

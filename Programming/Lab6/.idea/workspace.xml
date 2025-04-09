@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eb1a936-ab26-40c7-861f-7be1ff1f49b3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../OPD/Lab4/ОПД_ЛР4_Вар15551_P3115_Линейский_Аким_Евгеньевич.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../OPD/Lab4/ОПД_ЛР4_Вар15551_P3115_Линейский_Аким_Евгеньевич.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
@@ -12,12 +13,35 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/client/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/client/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/client/NetworkClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/client/NetworkClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/server/Router.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/server/Router.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/server/Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/server/Worker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/collection/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/collection/CollectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Add.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Add.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveByID.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/RemoveByID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/commands/Show.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/messages/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/model/SpaceMarine.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/model/SpaceMarine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/lab6/system/model/builders/SpaceMarineBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/lab6/system/model/builders/SpaceMarineBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/client/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/client/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/classes/java/main/lab6/system/messages/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/client/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/client/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/client/NetworkClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/client/NetworkClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/server/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/server/Router.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/server/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/server/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/collection/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/collection/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/RemoveByID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/commands/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/messages/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/model/SpaceMarine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/model/SpaceMarine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/lab6/system/model/builders/SpaceMarineBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/lab6/system/model/builders/SpaceMarineBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +211,7 @@
       <workItem from="1744026124063" duration="1354000" />
       <workItem from="1744043477535" duration="1438000" />
       <workItem from="1744046194314" duration="166000" />
+      <workItem from="1744198962903" duration="1103000" />
     </task>
     <servers />
   </component>

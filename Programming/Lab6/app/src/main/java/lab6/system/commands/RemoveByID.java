@@ -2,9 +2,11 @@ package lab6.system.commands;
 
 import java.util.List;
 import java.util.Stack;
+import java.util.Collection;
 import java.util.stream.Collectors;
 
 import lab6.system.collection.CollectionManager;
+import lab6.system.io.console.StdConsole;
 import lab6.system.model.SpaceMarine;
 
 /**
@@ -36,8 +38,8 @@ public class RemoveByID implements Command {
      *
      * @param id the ID of the SpaceMarine to be removed
      */
-    public Command setArgs(Long id) {
-        this.id = id;
+    public  Command setArgs(Long id) {
+        this.id = (Long)id;
         return this;
     }
 
@@ -47,16 +49,15 @@ public class RemoveByID implements Command {
      */
     @Override
     public void execute() {
-        for (SpaceMarine marine : CollectionManager.getInstance().getCollection()) {
-            if (marine.getId() == id) {
-                CollectionManager.getInstance().getCollection().remove(marine);
-                break;
-            }
-        }
-        Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
-        newStack.addAll(CollectionManager.getInstance().getCollection().stream()
-                .filter(m -> m.getId() != id)
-                .collect(Collectors.toList()));
+
+        // Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
+        // newStack.addAll(CollectionManager.getInstance().getCollection().stream()
+        //         .filter(m -> m.getId() != id)
+        //         .collect(Collectors.toList()));
+        StdConsole.writeln("Given id "+id+" " +id.getClass());
+        Stack<SpaceMarine> newStack = CollectionManager.getInstance().getCollection().stream()
+                .filter(mar -> mar.getId().equals(id)==false).collect(Collectors.toCollection(Stack::new));
+        StdConsole.writeln(newStack.toString());
         CollectionManager.getInstance().setCollection(newStack);
     }
 

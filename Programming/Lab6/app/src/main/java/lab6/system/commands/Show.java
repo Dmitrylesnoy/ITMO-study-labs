@@ -21,13 +21,7 @@ public class Show implements Command {
      * Executes the command to retrieve and display all SpaceMarine objects in the collection.
      */
     public void execute() {
-        CollectionManager
-                .
-        getInstance()
-                .
-                getCollection()
-                .
-        stream()
+        CollectionManager.getInstance().getCollection().stream()
                 .map(m -> m.toString()).
             forEach(m -> output.append(m).append('\n'));
     }

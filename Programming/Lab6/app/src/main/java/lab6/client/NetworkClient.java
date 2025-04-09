@@ -16,11 +16,12 @@ import lab6.system.messages.Response;
 import lab6.system.messages.Status;
 
 public class NetworkClient {
-    private static final String SERVER_IP = "77.234.196.4";//"127.0.0.1"; // Пример IP сервера
+    private static final String SERVER_IP = "192.168.10.80";//"77.234.196.4"; //"127.0.0.1"; // Пример
+                                                           // IP сервера
     private static final int SERVER_PORT = 2222; // Пример порта сервера
-    private static final int TIMEOUT = 2000; // Тайм-аут в миллисекундах (2 секунды)
+    private static final int TIMEOUT = 5000; // Тайм-аут в миллисекундах (2 секунды)
     private static final int MAX_ATTEMPTS = 3; // Максимальное количество попыток
-    private StdConsole console=new StdConsole();
+    private StdConsole console = new StdConsole();
 
     public Response sendRequest(Request request) {
         try (DatagramSocket socket = new DatagramSocket()) {
@@ -48,7 +49,7 @@ public class NetworkClient {
                     byte[] buffer = new byte[65535];
                     DatagramPacket responsePacket = new DatagramPacket(buffer, buffer.length);
                     socket.receive(responsePacket);
-                    
+
                     // Десериализация Response
                     ByteArrayInputStream byteInput = new ByteArrayInputStream(responsePacket.getData(), 0,
                             responsePacket.getLength());
@@ -59,7 +60,8 @@ public class NetworkClient {
 
                 } catch (SocketTimeoutException e) {
                     attempts++;
-                    console.writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");console.writeln("   Server did not respond within " + ((TIMEOUT / 1000)*attempts) + " seconds.");
+                    console.writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");
+                    console.writeln("   Server did not respond within " + ((TIMEOUT / 1000) * attempts) + " seconds.");
                     if (attempts >= MAX_ATTEMPTS) {
                         console.writeln("All attempts failed. Server is unavailable.");
                         break;
@@ -74,7 +76,7 @@ public class NetworkClient {
 
         } catch (IOException e) {
             console.writeln("Network error: " + e.toString());
-            return new Response("Network error", Status.FAILED,"",null);
+            return new Response("Network error", Status.FAILED, "", null);
         }
     }
 }

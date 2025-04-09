@@ -7,6 +7,7 @@ import java.io.IOException;
  * It requires implementing classes to provide an execution method and a description.
  */
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public interface Command extends Serializable {
     /**
@@ -36,7 +37,7 @@ public interface Command extends Serializable {
 
     public String getName();
 
-    public default Command setArgs(Object obj){
+    public default <T> Command setArgs(T obj){
         return this;
     }
 }

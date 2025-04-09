@@ -175,4 +175,9 @@ public class SpaceMarineBuilder {
     public void setChapter() {
         this.chapter = new ChapterBuilder().build();
     }
+
+    public SpaceMarineBuilder setID(Long id) {
+        this.id = id;
+        return this;
+    }
 }

@@ -39,6 +39,7 @@ public class Add implements Command {
         // if (obj == null) {
         //     obj = new SpaceMarineBuilder().build();
         // }
+        if (obj.getId()==null) obj.setId(CollectionManager.getInstance().nextId());
         CollectionManager.getInstance().getCollection().add(obj);
     }
 
@@ -55,8 +56,8 @@ public class Add implements Command {
         return "Add";
     }
 
-    public Command setArgs(SpaceMarine spacemarine){
-        obj = spacemarine;
+    public <T> Command setArgs(T spacemarine){
+        obj = (SpaceMarine)spacemarine;
         return this;
     }
 }

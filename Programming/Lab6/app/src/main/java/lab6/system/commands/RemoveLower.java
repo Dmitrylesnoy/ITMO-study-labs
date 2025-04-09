@@ -59,8 +59,8 @@ public class RemoveLower implements Command {
         return "Remove lower";
     }
     
-    public Command setArgs(SpaceMarine marine) {
-        obj = marine;
+    public <T> Command setArgs(SpaceMarine marine) {
+        obj = (SpaceMarine)marine;
         return this;
     }
 }
