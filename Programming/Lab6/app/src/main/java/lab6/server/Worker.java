@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import lab6.server.utils.ScriptController;
-import lab6.system.collection.CollectionManager;
-import lab6.system.commands.*;
-import lab6.system.io.console.StdConsole;
-import lab6.system.messages.Request;
-import lab6.system.messages.Response;
-import lab6.system.messages.Status;
+import lab6.shared.collection.CollectionManager;
+import lab6.shared.commands.*;
+import lab6.shared.io.console.StdConsole;
+import lab6.shared.messages.Request;
+import lab6.shared.messages.Response;
+import lab6.shared.messages.Status;
 
 public class Worker {
     private static final Logger logger = Logger.getLogger(Worker.class.getName());

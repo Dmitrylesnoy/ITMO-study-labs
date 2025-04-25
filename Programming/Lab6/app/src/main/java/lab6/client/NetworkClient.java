@@ -10,10 +10,10 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 
-import lab6.system.io.console.StdConsole;
-import lab6.system.messages.Request;
-import lab6.system.messages.Response;
-import lab6.system.messages.Status;
+import lab6.shared.io.console.StdConsole;
+import lab6.shared.messages.Request;
+import lab6.shared.messages.Response;
+import lab6.shared.messages.Status;
 
 public class NetworkClient {
     private static final String SERVER_IP = "192.168.10.80";//"77.234.196.4"; //"127.0.0.1"; // Пример

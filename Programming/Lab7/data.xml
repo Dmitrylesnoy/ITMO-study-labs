@@ -1,0 +1,22 @@
+<Stack>
+    <SpaceMarine>
+        <id>2</id>
+        <name>MUdZJHkgEG</name>
+        <coordinates>
+            <x>433.98529181314285</x>
+            <y>767.9924</y>
+        </coordinates>
+        <creationDate>1743801953878</creationDate>
+        <health>991.3123048933119</health>
+        <loyal>false</loyal>
+        <achievements>qZYaqFHFHzRjp38Dr2Gx</achievements>
+        <meleeWeapon>POWER_BLADE</meleeWeapon>
+        <chapter>
+            <name>y6g0oZ7EPlJs</name>
+            <world />
+        </chapter>
+        <console>
+            <empty>true</empty>
+        </console>
+    </SpaceMarine>
+</Stack>

@@ -6,8 +6,8 @@ import java.util.Stack;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-import lab6.system.io.console.StdConsole;
-import lab6.system.model.SpaceMarine;
+import lab6.shared.io.console.StdConsole;
+import lab6.shared.model.SpaceMarine;
 
 /**
  * XMLhandler is responsible for handling the serialization and deserialization

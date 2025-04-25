@@ -4,71 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "89b0f6992a7099b1",
+        "id": "00edf6b9d9316476",
         "type": "tabs",
         "children": [
           {
-            "id": "711c9d0de91f0b1a",
+            "id": "4c26707dbf29020c",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Java 12th Herbert Schildt.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Java 12th Herbert Schildt"
-            }
-          },
-          {
-            "id": "9cd5bbaa8f32e750",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Horstmann Cay - Core Java. 1 (2021).pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Horstmann Cay - Core Java. 1 (2021)"
-            }
-          },
-          {
-            "id": "765f094fb75b2b38",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Ekkels Filosofiya-Thining of Java.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Ekkels Filosofiya-Thining of Java"
-            }
-          },
-          {
-            "id": "18c7504d8787e891",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_"
-            }
-          },
-          {
-            "id": "63bdad645a32c0bf",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Литература/Паттерны Банды четырех.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Паттерны Банды четырех"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Новая вкладка"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -125,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 234.5,
+    "collapsed": true
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -223,19 +173,22 @@
       "markdown-importer:Импорт Markdown-файлов": false
     }
   },
-  "active": "9cd5bbaa8f32e750",
+  "active": "4c26707dbf29020c",
   "lastOpenFiles": [
+    "Литература/Паттерны Банды четырех.pdf",
+    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
+    "Литература/Ekkels Filosofiya-Thining of Java.pdf",
+    "Литература/Java 12th Herbert Schildt.pdf",
+    "Математический анализ/2 сем/КЛК 1.md",
+    "Математический анализ/2 сем/КЛК 1  2 тест.md",
+    "Линейная алгебра/2 сем/КЛК 1.md",
+    "Математический анализ/2 сем/Система оценивания 2 сем.pdf",
+    "Математический анализ/2 сем/План занятий 2 сем.pdf",
+    "Математический анализ/2 сем/Организация курса 2 сем.pdf",
+    "Математический анализ/2 сем/Календарь занятий 2 сем.pdf",
+    "Литература/Horstmann Cay - Core Java. 1 (2021).pdf",
     "Programming/Lab6/app/build/classes/java/main/lab6/system/utils/ScriptController.class",
     "Programming/Lab6/app/build/classes/java/main/lab6/system/Router.class",
-    "Programming/Lab6/app/build/classes/java/main/lab6/system/commands/ExecuteScript.class",
-    "Programming/Lab6/app/build/tmp/compileJava/compileTransaction/stash-dir/ExecuteScript.class.uniqueId2",
-    "Programming/Lab6/app/build/tmp/compileJava/compileTransaction/stash-dir/Router.class.uniqueId1",
-    "Programming/Lab6/app/build/tmp/compileJava/compileTransaction/stash-dir/ScriptController.class.uniqueId0",
-    "Programming/Lab6/app/build/classes/java/main/lab6/system/io/xml/XMLhandler.class",
-    "Programming/Lab6/app/build/classes/java/main/lab6/system/model/SpaceMarine.class",
-    "Programming/Lab6/app/build/classes/java/main/lab6/system/utils/CollectionManager.class",
-    "Programming/Lab6/app/build/classes/java/main/lab6/system/Handler.class",
-    "Programming/Lab6/app/build/classes/java/main/lab6/App.class",
     "Programming/Lab6/app/build/docs/javadoc/resources/x.png",
     "Programming/Lab6/app/build/docs/javadoc/resources/glass.png",
     "Programming/Lab6/app/build/docs/javadoc/legal/jqueryUI.md",
@@ -250,7 +203,6 @@
     "Programming/Lab5 — копия/app/build/docs/javadoc/resources/glass.png",
     "Programming/Lab5 — копия/app/build/docs/javadoc/legal/jquery.md",
     "Programming/Lab5 — копия/app/build/docs/javadoc/legal/jqueryUI.md",
-    "Линейная алгебра/2 сем/КЛК 1.md",
     "Линейная алгебра/2 сем/ТМ 1 линал.md",
     "Математический анализ/1 сем/Теормин 2.md",
     "Математический анализ/1 сем/Теормин 1.md",
@@ -269,8 +221,6 @@
     "Programming/Lab3-4/README.md",
     "Математический анализ/Колок 2 - Экзамен 1 сем.md",
     "Математический анализ/Теормин 1.md",
-    "Математический анализ/Теормин 2.md",
-    "Линейная алгебра/Вопросы к экзамену 1 сем.md",
     "Без названия.canvas"
   ]
 }

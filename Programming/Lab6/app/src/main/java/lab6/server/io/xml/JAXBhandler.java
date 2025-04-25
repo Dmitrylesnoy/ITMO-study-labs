@@ -8,11 +8,11 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import lab6.system.io.console.StdConsole;
-import lab6.system.model.Chapter;
-import lab6.system.model.Coordinates;
-import lab6.system.model.MeleeWeapon;
-import lab6.system.model.SpaceMarine;
+import lab6.shared.io.console.StdConsole;
+import lab6.shared.model.Chapter;
+import lab6.shared.model.Coordinates;
+import lab6.shared.model.MeleeWeapon;
+import lab6.shared.model.SpaceMarine;
 
 /**
  * JAXBhandler is responsible for handling the serialization and deserialization

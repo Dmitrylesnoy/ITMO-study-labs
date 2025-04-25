@@ -12,8 +12,8 @@ import java.nio.channels.DatagramChannel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import lab6.system.messages.Request;
-import lab6.system.messages.Response;
+import lab6.shared.messages.Request;
+import lab6.shared.messages.Response;
 
 /**
  * The Router class is responsible for routing commands to their corresponding

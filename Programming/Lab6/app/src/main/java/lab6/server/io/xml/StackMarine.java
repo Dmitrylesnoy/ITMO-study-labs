@@ -6,7 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-import lab6.system.model.SpaceMarine;
+import lab6.shared.model.SpaceMarine;
 
 /**
  * StackMarine is a wrapper class for a stack of SpaceMarine objects.

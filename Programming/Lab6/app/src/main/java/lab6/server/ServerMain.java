@@ -2,9 +2,9 @@ package lab6.server;
 
 import java.io.IOException;
 
-import lab6.system.commands.AddRandom;
-import lab6.system.commands.Show;
-import lab6.system.messages.Request;
+import lab6.shared.commands.AddRandom;
+import lab6.shared.commands.Show;
+import lab6.shared.messages.Request;
 
 public class ServerMain {
     public static void main(String[] args) throws IOException {
