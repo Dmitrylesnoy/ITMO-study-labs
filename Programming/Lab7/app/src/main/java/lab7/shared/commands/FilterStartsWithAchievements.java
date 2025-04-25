@@ -7,15 +7,16 @@ import lab7.shared.model.SpaceMarine;
 
 /**
  * Command to filter SpaceMarine objects based on whether their achievements
- * start with a specified substring. This class implements the Command interface
+ * start with a specified substring. This class extends the Command interface
  * and provides functionality to execute the filtering operation.
  */
-public class FilterStartsWithAchievements implements Command {
+public class FilterStartsWithAchievements extends Command {
     private String sub;
     private StringBuilder output = new StringBuilder();
 
     /**
-     * Default constructor for the FilterStartsWithAchievements class, initializing an instance without a specific substring.
+     * Default constructor for the FilterStartsWithAchievements class, initializing
+     * an instance without a specific substring.
      */
     public FilterStartsWithAchievements() {
     }
@@ -35,7 +36,7 @@ public class FilterStartsWithAchievements implements Command {
      * @param sub the substring to filter achievements by
      */
     public <T> Command setArgs(T sub) {
-        this.sub = (String)sub;
+        this.sub = (String) sub;
         return this;
     }
 
@@ -47,7 +48,7 @@ public class FilterStartsWithAchievements implements Command {
     public void execute() {
         CollectionManager.getInstance().getCollection().stream()
                 .filter(m -> m.getAchievements().startsWith(sub))
-            .forEach(m -> output.append(m.toString()).append("\n"));
+                .forEach(m -> output.append(m.toString()).append("\n"));
     }
 
     /**
@@ -67,7 +68,7 @@ public class FilterStartsWithAchievements implements Command {
     public String describe() {
         return "Return all elements, which fields Achievements start with custom string";
     }
-    
+
     public String getName() {
         return "Filter starts with achievements";
     }

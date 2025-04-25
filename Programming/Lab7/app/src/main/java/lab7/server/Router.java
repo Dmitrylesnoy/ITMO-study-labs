@@ -2,13 +2,16 @@ package lab7.server;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,71 +20,116 @@ import lab7.shared.messages.Response;
 
 /**
  * The Router class is responsible for routing commands to their corresponding
- * command handlers.
- * It maintains a collection of commands and executes them based on user
- * requests.
- * This class implements the Singleton pattern to ensure that only one instance
- * of Router exists.
+ * command handlers using multithreaded processing.
  */
 public class Router {
-    // private Deque<Request> cmdsQueue;
-    private Worker worker1;
+    private final Worker worker;
     private final int PORT = 2224;
     private final int BUFFER_SIZE = 65535;
-    private DatagramChannel channel;
-
+    private final DatagramChannel channel;
+    private final ForkJoinPool forkJoinPool;
+    private final ExecutorService processPool;
+    private final ExecutorService sendPool;
+    private static final Logger logger = Logger.getLogger(Router.class.getName());
+// sockstat -4 -l | grep 2224
     /**
      * Default constructor for the Router class.
-     * Initializes the Router instance and loads the collection manager.
+     * Initializes thread pools and network channel.
      */
-    private static final Logger logger = Logger.getLogger(Router.class.getName());
-
     public Router() throws IOException {
         logger.info("[SERVER INIT] Initializing router components");
-        // cmdsQueue = new ArrayDeque<Request>(1);
         logger.info("[NETWORK] Opening datagram channel");
         channel = DatagramChannel.open();
         logger.info(String.format("[NETWORK] Binding to port %d", PORT));
         channel.bind(new InetSocketAddress(PORT));
         channel.configureBlocking(false);
-        worker1 = new Worker();
+        worker = new Worker();
+        forkJoinPool = ForkJoinPool.commonPool();
+        processPool = Executors.newCachedThreadPool();
+        sendPool = Executors.newFixedThreadPool(4); // Fixed pool for sending responses
         logger.info(String.format("[SERVER START] Ready and listening on port %d", PORT));
     }
 
+    /**
+     * Starts the server, reading requests using ForkJoinPool and blocking until
+     * interrupted.
+     */
     public void run() {
-        ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    readRequest();
+                } catch (Exception e) {
+                    logger.severe(String.format("[ERROR] Reading failed: %s", e.getMessage()));
+                    logger.log(Level.WARNING, "Error details", e);
+                }
+            }
+        }, forkJoinPool);
 
         try {
-            buffer.clear();
-            // StdConsole.writeln(" Waiting packet");
+            // Block the main thread until the future completes or is interrupted
+            future.join();
+        } catch (Exception e) {
+            logger.info("[SERVER] Server interrupted, shutting down");
+            shutdown();
+        }
+    }
 
-            InetSocketAddress clientAddress = (InetSocketAddress) channel.receive(buffer);
-            if (clientAddress == null) {
-                // StdConsole.writeln("Received null client address, skipping...");
-                return;
-            }
+    /**
+     * Reads a single request from the DatagramChannel and submits it for
+     * processing.
+     */
+    private void readRequest() throws IOException, ClassNotFoundException {
+        ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+        buffer.clear();
 
-            buffer.flip();
-            logger.info("[PROCESSING] Deserializing incoming message");
+        InetSocketAddress clientAddress = (InetSocketAddress) channel.receive(buffer);
+        if (clientAddress == null) {
+            return;
+        }
 
-            byte[] requestData = new byte[buffer.remaining()];
-            buffer.get(requestData);
+        buffer.flip();
+        logger.info("[PROCESSING] Deserializing incoming message");
 
-            Request request;
-            ByteArrayInputStream byteInput = new ByteArrayInputStream(requestData);
-            ObjectInputStream objectInput = new ObjectInputStream(byteInput);
-            request = (Request) objectInput.readObject();
-            
-            
-            logger.info(String.format("[PROCESSING] Executing request: %s", request.toString()));
-            Response response = worker1.processCommand(request);
+        byte[] requestData = new byte[buffer.remaining()];
+        buffer.get(requestData);
 
+        ByteArrayInputStream byteInput = new ByteArrayInputStream(requestData);
+        ObjectInputStream objectInput = new ObjectInputStream(byteInput);
+        Request request = (Request) objectInput.readObject();
+
+        logger.info(String.format("[PROCESSING] Received request: %s", request.toString()));
+
+        // Submit request processing to CachedThreadPool
+        processPool.submit(() -> processRequest(request, clientAddress));
+    }
+
+    /**
+     * Processes a request and submits the response for sending.
+     */
+    private void processRequest(Request request, InetSocketAddress clientAddress) {
+        try {
+            Response response = worker.processCommand(request);
+            logger.info(String.format("[PROCESSING] Processed request: %s", request.toString()));
+
+            // Submit response sending to FixedThreadPool
+            sendPool.submit(() -> sendResponse(response, clientAddress));
+        } catch (Exception e) {
+            logger.severe(String.format("[ERROR] Processing failed: %s", e.getMessage()));
+            logger.log(Level.WARNING, "Error details", e);
+        }
+    }
+
+    /**
+     * Sends a response to the client.
+     */
+    private void sendResponse(Response response, InetSocketAddress clientAddress) {
+        try {
             logger.info("[PROCESSING] Serializing response");
-            byte[] responseData;
             ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
             ObjectOutputStream objectOutput = new ObjectOutputStream(byteOutput);
             objectOutput.writeObject(response);
-            responseData = byteOutput.toByteArray();
+            byte[] responseData = byteOutput.toByteArray();
 
             logger.info("[NETWORK] Sending response packet");
             ByteBuffer responseBuffer = ByteBuffer.wrap(responseData);
@@ -89,11 +137,8 @@ public class Router {
             logger.info(String.format("[NETWORK] Response sent to %s:%d",
                     clientAddress.getAddress().getHostAddress(),
                     clientAddress.getPort()));
-        } catch (NullPointerException e) {
-            logger.warning("[CLIENT] Client connection terminated unexpectedly");
-            logger.log(Level.WARNING, "Client disconnect details", e);
-        } catch (Exception e) {
-            logger.severe(String.format("[ERROR] Processing failed: %s", e.getMessage()));
+        } catch (IOException e) {
+            logger.severe(String.format("[ERROR] Sending response failed: %s", e.getMessage()));
             logger.log(Level.WARNING, "Error details", e);
         }
     }
@@ -103,13 +148,23 @@ public class Router {
      *
      * @param request the request containing the command and its arguments
      * @return the response after executing the command
-     * @throws IOException
-     * @throws FileNotFoundException
-     * @throws ClassNotFoundException
      */
     public Response runCommand(Request request) {
-        // cmdsQueue.add(request);
-        Response response = worker1.processCommand(request);
-        return response;
+        return worker.processCommand(request);
+    }
+
+    /**
+     * Shuts down the thread pools and closes the channel.
+     */
+    public void shutdown() {
+        logger.info("[SERVER SHUTDOWN] Shutting down thread pools and channel");
+        processPool.shutdown();
+        sendPool.shutdown();
+        forkJoinPool.shutdown();
+        try {
+            channel.close();
+        } catch (IOException e) {
+            logger.severe("[ERROR] Failed to close channel: " + e.getMessage());
+        }
     }
 }

@@ -8,20 +8,25 @@ import lab7.shared.collection.CollectionManager;
 import lab7.shared.model.SpaceMarine;
 
 /**
- * Command to remove all SpaceMarine objects from the collection that are lower than a specified object.
- * This class implements the Command interface and provides functionality to delete SpaceMarines
+ * Command to remove all SpaceMarine objects from the collection that are lower
+ * than a specified object.
+ * This class extends the Command interface and provides functionality to delete
+ * SpaceMarines
  * based on their ID comparison.
  */
-public class RemoveLower implements Command {
+public class RemoveLower extends Command {
     private SpaceMarine obj;
 
     /**
-     * Default constructor for the RemoveLower class, initializing an instance without specific parameters.
+     * Default constructor for the RemoveLower class, initializing an instance
+     * without specific parameters.
      */
-    public RemoveLower() {}
+    public RemoveLower() {
+    }
 
     /**
-     * Constructor that initializes the RemoveLower command with a specific SpaceMarine object.
+     * Constructor that initializes the RemoveLower command with a specific
+     * SpaceMarine object.
      *
      * @param obj the SpaceMarine object to compare against
      */
@@ -30,8 +35,10 @@ public class RemoveLower implements Command {
     }
 
     /**
-     * Executes the command to remove SpaceMarine objects with IDs lower than the specified object's ID.
-     * If no object is specified, a new SpaceMarine is created using the SpaceMarineBuilder.
+     * Executes the command to remove SpaceMarine objects with IDs lower than the
+     * specified object's ID.
+     * If no object is specified, a new SpaceMarine is created using the
+     * SpaceMarineBuilder.
      */
     @Override
     public void execute() {
@@ -41,7 +48,7 @@ public class RemoveLower implements Command {
         Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
         newStack.addAll(
                 CollectionManager.getInstance().getCollection().stream()
-                        .filter(mar -> mar.compareTo(obj) < 0)
+                        .filter(mar -> mar.compareTo(obj) < 0).filter(m -> m.getCreator_id().equals(userId))
                         .collect(Collectors.toList()));
         CollectionManager.getInstance().setCollection(newStack);
     }
@@ -54,13 +61,13 @@ public class RemoveLower implements Command {
     public String describe() {
         return "Delete all elements from the collection that are lower than a given one";
     }
-    
+
     public String getName() {
         return "Remove lower";
     }
-    
+
     public <T> Command setArgs(SpaceMarine marine) {
-        obj = (SpaceMarine)marine;
+        obj = (SpaceMarine) marine;
         return this;
     }
 }

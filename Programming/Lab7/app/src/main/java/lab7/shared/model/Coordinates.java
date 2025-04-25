@@ -11,12 +11,13 @@ import lombok.Setter;
 /**
  * Represents a set of coordinates with X and Y values.
  * This class provides constructors for initializing the coordinates,
- * methods for generating hash codes, equality checks, and string representation.
+ * methods for generating hash codes, equality checks, and string
+ * representation.
  */
 @Getter
 @Setter
 @JacksonXmlRootElement(localName = "Coordinates")
-public class Coordinates implements Serializable{
+public class Coordinates implements Serializable {
     @JacksonXmlElementWrapper(localName = "x")
     private double x;
     @JacksonXmlElementWrapper(localName = "y")

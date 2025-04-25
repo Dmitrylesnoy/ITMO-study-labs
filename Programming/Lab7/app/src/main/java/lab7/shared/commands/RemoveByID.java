@@ -11,10 +11,10 @@ import lab7.shared.model.SpaceMarine;
 
 /**
  * Command to remove a SpaceMarine object from the collection by its ID.
- * This class implements the Command interface and provides functionality
+ * This class extends the Command interface and provides functionality
  * to delete a specific SpaceMarine based on the provided ID.
  */
-public class RemoveByID implements Command {
+public class RemoveByID extends Command {
     private Long id;
 
     /**
@@ -38,8 +38,8 @@ public class RemoveByID implements Command {
      *
      * @param id the ID of the SpaceMarine to be removed
      */
-    public  Command setArgs(Long id) {
-        this.id = (Long)id;
+    public Command setArgs(Long id) {
+        this.id = (Long) id;
         return this;
     }
 
@@ -52,11 +52,11 @@ public class RemoveByID implements Command {
 
         // Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
         // newStack.addAll(CollectionManager.getInstance().getCollection().stream()
-        //         .filter(m -> m.getId() != id)
-        //         .collect(Collectors.toList()));
-        StdConsole.writeln("Given id "+id+" " +id.getClass());
+        // .filter(m -> m.getId() != id)
+        // .collect(Collectors.toList()));
+        StdConsole.writeln("Given id " + id + " " + id.getClass());
         Stack<SpaceMarine> newStack = CollectionManager.getInstance().getCollection().stream()
-                .filter(mar -> mar.getId().equals(id)==false).collect(Collectors.toCollection(Stack::new));
+                .filter(mar -> mar.getId().equals(id) == false).collect(Collectors.toCollection(Stack::new));
         StdConsole.writeln(newStack.toString());
         CollectionManager.getInstance().setCollection(newStack);
     }
@@ -69,7 +69,7 @@ public class RemoveByID implements Command {
     public String describe() {
         return "This command removes an element from the collection by its id";
     }
-    
+
     public String getName() {
         return "Remove by ID";
     }

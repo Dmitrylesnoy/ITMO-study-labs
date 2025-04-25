@@ -8,21 +8,24 @@ import lab7.shared.model.SpaceMarine;
 
 /**
  * Command to find the SpaceMarine object with the minimum melee weapon value.
- * This class implements the Command interface and provides functionality to
+ * This class extends the Command interface and provides functionality to
  * retrieve the SpaceMarine with the least powerful melee weapon.
  */
-public class MinByMeleeWeapon implements Command {
+public class MinByMeleeWeapon extends Command {
     private StringBuilder output = new StringBuilder();
 
     /**
-     * Default constructor for the MinByMeleeWeapon class, initializing an instance without specific parameters.
+     * Default constructor for the MinByMeleeWeapon class, initializing an instance
+     * without specific parameters.
      */
     public MinByMeleeWeapon() {
     }
 
     /**
-     * Executes the command to find the SpaceMarine with the minimum melee weapon value.
-     * If the collection is empty, it appends a message indicating that the collection is empty.
+     * Executes the command to find the SpaceMarine with the minimum melee weapon
+     * value.
+     * If the collection is empty, it appends a message indicating that the
+     * collection is empty.
      */
     @Override
     public void execute() {
@@ -54,7 +57,7 @@ public class MinByMeleeWeapon implements Command {
     public String describe() {
         return "Returns any object with the minimum MeleeWeapon value";
     }
-    
+
     public String getName() {
         return "Min by MeleeWeapon";
     }

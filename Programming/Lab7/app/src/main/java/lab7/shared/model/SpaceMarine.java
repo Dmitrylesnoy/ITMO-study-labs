@@ -13,13 +13,15 @@ import lombok.Setter;
  * Represents a SpaceMarine entity with various attributes such as id, name,
  * coordinates, health, loyalty, achievements, melee weapon, and chapter.
  * This class provides constructors for initializing these attributes and
- * methods for generating hash codes, equality checks, and string representation.
+ * methods for generating hash codes, equality checks, and string
+ * representation.
  */
 @Getter
 @Setter
 @JacksonXmlRootElement(localName = "SpaceMarine")
 public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
-    private Long id; // Field cannot be null, must be greater than 0, unique, and generated automatically
+    private Long id; // Field cannot be null, must be greater than 0, unique, and generated
+                     // automatically
     private String name; // Field cannot be null, cannot be empty
     private Coordinates coordinates; // Field cannot be null
     private java.util.Date creationDate; // Field cannot be null, generated automatically
@@ -30,6 +32,7 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     private Chapter chapter; // Field can be null
     @JsonIgnore
     private transient StdConsole console = new StdConsole();
+    private Integer creator_id;
 
     /**
      * Default constructor for the SpaceMarine class.

@@ -23,6 +23,8 @@ public class Handler {
     private StdConsole console;
     Map<String, Command> cmds = new HashMap<>();
     private NetworkClient network = new NetworkClient();
+    private String username;
+    private String password;
 
     /**
      * Default constructor for the Handler class.
@@ -30,6 +32,10 @@ public class Handler {
     public Handler() {
         // router = new Router();
         console = new StdConsole();
+        StdConsole.write("Enter username: ");
+        username = StdConsole.read();
+        StdConsole.write("Enter password: ");
+        password = StdConsole.read();
         StdConsole.write("=>");
         console.add("help");
 
@@ -127,6 +133,6 @@ public class Handler {
         } else
             throw new UnsupportedOperationException("Unknown command");
 
-        return new Request(cmd, cmdArgs);
+        return new Request(cmd, cmdArgs, username, password);
     }
 }

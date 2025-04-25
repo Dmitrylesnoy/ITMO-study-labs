@@ -12,26 +12,29 @@ import lab7.shared.model.SpaceMarine;
 
 /**
  * Command to print SpaceMarine objects with unique loyalty values.
- * This class implements the Command interface and provides functionality
+ * This class extends the Command interface and provides functionality
  * to identify and display SpaceMarines that have a unique loyalty status.
  */
-public class PrintUniqueLoyal implements Command {
+public class PrintUniqueLoyal extends Command {
     private StringBuilder output = new StringBuilder();
 
     /**
-     * Default constructor for the PrintUniqueLoyal class, initializing an instance without specific parameters.
+     * Default constructor for the PrintUniqueLoyal class, initializing an instance
+     * without specific parameters.
      */
     public PrintUniqueLoyal() {
     }
 
     /**
-     * Executes the command to find and print SpaceMarine objects with unique loyalty values.
-     * It counts the occurrences of loyalty values and appends the unique ones to the output.
+     * Executes the command to find and print SpaceMarine objects with unique
+     * loyalty values.
+     * It counts the occurrences of loyalty values and appends the unique ones to
+     * the output.
      */
     @Override
     public void execute() {
-        Set<Boolean> loyalList = CollectionManager.getInstance().getCollection().stream().
-            map(m -> m.getLoyal()).distinct().collect(Collectors.toSet());
+        Set<Boolean> loyalList = CollectionManager.getInstance().getCollection().stream().map(m -> m.getLoyal())
+                .distinct().collect(Collectors.toSet());
         output.append(loyalList.toString()).append("\n");
     }
 
@@ -52,7 +55,7 @@ public class PrintUniqueLoyal implements Command {
     public String describe() {
         return "Prints objects with unique Loyal fields for all elements";
     }
-    
+
     public String getName() {
         return "Print unique loyal";
     }

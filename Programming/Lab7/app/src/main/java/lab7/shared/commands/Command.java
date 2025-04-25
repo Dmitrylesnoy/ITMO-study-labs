@@ -7,22 +7,26 @@ import java.io.IOException;
  * It requires implementing classes to provide an execution method and a description.
  */
 import java.io.Serializable;
-import java.util.ArrayList;
 
-public interface Command extends Serializable {
+public abstract class Command implements Serializable {
+    protected Integer userId;
     /**
      * Executes the command.
      *
      * @throws IOException if an I/O error occurs during execution
      */
-    public void execute() throws IOException;
+    public abstract void execute() throws IOException;
 
     /**
      * Provides a description of the command's functionality.
      *
      * @return a string describing the command
      */
-    public String describe();
+    public abstract String describe();
+
+    public void setUser(Integer userId) {
+        this.userId=userId;
+    }
 
     // public void setArgs(String[] args);
 
@@ -31,13 +35,13 @@ public interface Command extends Serializable {
      *
      * @return the output as a string
      */
-    public default String getOutput() {
+    public String getOutput() {
         return "";
     }
 
-    public String getName();
+    public abstract String getName();
 
-    public default <T> Command setArgs(T obj){
+    public <T> Command setArgs(T obj){
         return this;
     }
 }

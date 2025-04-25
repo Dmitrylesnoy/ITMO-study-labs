@@ -5,9 +5,10 @@ import java.util.Queue;
 
 /**
  * ScriptConsole is a specialized console that extends StdConsole.
- * Script console need to parse line by line command from script and put those into Handler processing
+ * Script console need to parse line by line command from script and put those
+ * into Handler processing
  * It provides functionality for reading and writing data using a queue .
- * This class implements methods to manage console input and output.
+ * This class extends methods to manage console input and output.
  */
 public class ScriptConsole extends StdConsole {
     private static Queue<String> data = new LinkedList<String>();
@@ -28,23 +29,23 @@ public class ScriptConsole extends StdConsole {
     public static String read() {
         return data.poll();
     }
-    
+
     /*
      * Writes a line of output to the queue.
      *
      * @param line the line to write
      */
     // public static void write(String line) {
-        // data.add(line);
+    // data.add(line);
     // }
-    
+
     /*
      * Writes a line of output to the queue followed by a newline.
      *
      * @param line the line to write
      */
     // public static void writeln(String line) {
-        // data.add(line);
+    // data.add(line);
     // }
 
     public void add(String line) {

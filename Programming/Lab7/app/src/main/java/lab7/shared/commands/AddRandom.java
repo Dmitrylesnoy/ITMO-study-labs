@@ -3,11 +3,11 @@ package lab7.shared.commands;
 import lab7.shared.builders.SpaceMarineGenerator;
 
 /**
- * The Add class implements the Command interface and is responsible for adding
+ * The Add class extends the Command interface and is responsible for adding
  * a SpaceMarine object to a collection. It can create a new SpaceMarine using
  * a builder with using user params.
  */
-public class AddRandom implements Command {
+public class AddRandom extends Command {
     private int cnt = 1;
 
     /**
@@ -33,12 +33,13 @@ public class AddRandom implements Command {
     public void execute() {
         for (int i = 0; i < cnt; i++) {
             Add addRand = new Add(new SpaceMarineGenerator().generate());
+            addRand.setUser(userId);
             addRand.execute();
         }
     }
 
     public <T> Command setArgs(T cnt) {
-        this.cnt = (int)cnt;
+        this.cnt = (int) cnt;
         return this;
     }
 
@@ -50,7 +51,7 @@ public class AddRandom implements Command {
     public String describe() {
         return "Adds a SpaceMarine to the collection.";
     }
-    
+
     public String getName() {
         return "Add random";
     }

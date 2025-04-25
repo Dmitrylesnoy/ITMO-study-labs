@@ -5,13 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import lab7.shared.model.Chapter;
 import lab7.shared.model.Coordinates;
@@ -19,48 +16,32 @@ import lab7.shared.model.MeleeWeapon;
 import lab7.shared.model.SpaceMarine;
 
 public class DatabaseManager {
-    private static final Logger logger = Logger.getLogger(DatabaseManager.class.getName());
-
     private final String url;
     private final String user;
     private final String password;
 
     public DatabaseManager(String url, String user, String password) {
-        logger.info("[DATABASE] Initializing DatabaseManager with URL: " + url);
-        // if (!url.startsWith("jdbc:postgresql:")) {
-        //     String errorMsg = "Invalid JDBC URL: must start with jdbc:postgresql:";
-        //     logger.severe(errorMsg);
-        //     throw new IllegalArgumentException(errorMsg);
-        // }
+        if (!url.startsWith("jdbc:postgresql:")) {
+            throw new IllegalArgumentException("Invalid JDBC URL: must start with jdbc:postgresql:");
+        }
         this.url = url;
         this.user = user;
         this.password = password;
-        logger.config("DatabaseManager initialized successfully");
     }
 
     private Connection getConnection() throws SQLException {
-        logger.fine("Attempting to get database connection");
-        Connection conn = DriverManager.getConnection(url, user, password);
-        logger.fine("Database connection established successfully");
-        return conn;
+        System.out.println("Connecting to: " + url);
+        return DriverManager.getConnection(url, user, password);
     }
 
-    public Long getNextId() {
-        logger.fine("Getting next ID from sequence");
+    public Long getNextId() throws SQLException {
         try (Connection conn = getConnection();
                 PreparedStatement stmt = conn.prepareStatement("SELECT nextval('space_marine_id_seq')")) {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                Long id = rs.getLong(1);
-                logger.fine("Retrieved next ID from sequence: " + id);
-                return id;
+                return rs.getLong(1);
             }
-            String errorMsg = "Failed to retrieve next ID from space_marine_id_seq";
-            logger.severe(errorMsg);
-            throw new SQLException(errorMsg);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error getting next ID", e);
-            return null;
+            throw new SQLException("Failed to retrieve next ID from space_marine_id_seq");
         }
     }
 
@@ -80,15 +61,18 @@ public class DatabaseManager {
                 PreparedStatement chapterStmt = conn.prepareStatement(
                         "INSERT INTO chapter (name, world) VALUES (?, ?) RETURNING id");
                 PreparedStatement marineStmt = conn.prepareStatement(
-                        "INSERT INTO space_marine (id, name, coordinates_id, creation_date, health, loyal, achievements, melee_weapon, chapter_id) "
+                        "INSERT INTO space_marine (id, name, coordinates_id, creation_date, health, loyal, achievements, melee_weapon, chapter_id, creator_id) "
                                 +
-                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?::melee_weapon, ?)");
+                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?::melee_weapon, ?, ?)");
 
                 for (SpaceMarine marine : spaceMarines) {
-                    // Validate non-null coordinates
-                    if (marine.getCoordinates() == null) {
-                        throw new IllegalArgumentException("SpaceMarine must have non-null coordinates");
-                    }
+                    // Validate non-null coordinates and creator_id
+                    // if (marine.getCoordinates() == null) {
+                    //     throw new IllegalArgumentException("SpaceMarine must have non-null coordinates");
+                    // }
+                    // if (marine.getCreator_id() == null) {
+                    //     throw new IllegalArgumentException("SpaceMarine must have a valid creator_id");
+                    // }
 
                     // Assign creationDate and id if not set
                     if (marine.getCreationDate() == null) {
@@ -100,9 +84,6 @@ public class DatabaseManager {
 
                     // Insert Coordinates
                     Coordinates coords = marine.getCoordinates();
-                    // if (coords.getX() == null || coords.getY() == null) {
-                    //     throw new IllegalArgumentException("Coordinates x and y must not be null");
-                    // }
                     System.out.println("Inserting Coordinates: x=" + coords.getX() + ", y=" + coords.getY());
                     coordStmt.setDouble(1, coords.getX());
                     coordStmt.setFloat(2, coords.getY());
@@ -128,23 +109,12 @@ public class DatabaseManager {
                         chapterId = chapterRs.getInt(1);
                     }
 
-                    // Validate health
-                    Double health = marine.getHealth();
-                    if (health != null && health <= 0) {
-                        throw new IllegalArgumentException("Health must be positive if not null, got: " + health);
-                    }
-                    System.out.println("Inserting SpaceMarine: id=" + marine.getId() + ", health=" + health);
-
                     // Insert SpaceMarine
                     marineStmt.setLong(1, marine.getId());
                     marineStmt.setString(2, marine.getName());
                     marineStmt.setInt(3, coordId);
                     marineStmt.setTimestamp(4, new Timestamp(marine.getCreationDate().getTime()));
-                    if (health != null) {
-                        marineStmt.setDouble(5, health);
-                    } else {
-                        marineStmt.setNull(5, java.sql.Types.DOUBLE);
-                    }
+                    marineStmt.setObject(5, marine.getHealth(), java.sql.Types.DOUBLE);
                     if (marine.getLoyal() != null) {
                         marineStmt.setBoolean(6, marine.getLoyal());
                     } else {
@@ -153,6 +123,7 @@ public class DatabaseManager {
                     marineStmt.setString(7, marine.getAchievements());
                     marineStmt.setString(8, marine.getMeleeWeapon() != null ? marine.getMeleeWeapon().name() : null);
                     marineStmt.setObject(9, chapterId, java.sql.Types.INTEGER);
+                    marineStmt.setInt(10, marine.getCreator_id());
                     marineStmt.executeUpdate();
                 }
 
@@ -179,12 +150,10 @@ public class DatabaseManager {
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {
-                    // Create Coordinates
                     Coordinates coordinates = new Coordinates(
                             rs.getDouble("x"),
                             rs.getFloat("y"));
 
-                    // Create Chapter (if not null)
                     Chapter chapter = null;
                     if (rs.getString("chapter_name") != null) {
                         chapter = new Chapter(
@@ -192,7 +161,6 @@ public class DatabaseManager {
                                 rs.getString("world"));
                     }
 
-                    // Create SpaceMarine
                     Double health = rs.getDouble("health");
                     if (rs.wasNull())
                         health = null;
@@ -211,16 +179,87 @@ public class DatabaseManager {
                             chapter);
                     marine.setId(rs.getLong("id"));
                     marine.setCreationDate(new Date(rs.getTimestamp("creation_date").getTime()));
+                    marine.setCreator_id(rs.getInt("creator_id"));
 
                     spaceMarines.add(marine);
                 }
             }
         } catch (Exception e) {
-            spaceMarines = new ArrayList<SpaceMarine>();
             e.printStackTrace();
+            spaceMarines = new ArrayList<SpaceMarine>();
         }
 
         return spaceMarines;
     }
 
+    public Integer getUserId(String name, String password) throws SQLException {
+        if (name == null || password == null) {
+            throw new IllegalArgumentException("Name and password must not be null");
+        }
+
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(
+                        "SELECT id FROM users WHERE name = ? AND password = ?")) {
+            stmt.setString(1, name);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+            return null;
+        }
+    }
+
+    public Integer addUser(String name, String password) throws SQLException {
+        if (name == null || password == null) {
+            throw new IllegalArgumentException("Name and password must not be null");
+        }
+
+        try (Connection conn = getConnection()) {
+            conn.setAutoCommit(false);
+            try {
+                // Check if user exists with matching name and password
+                try (PreparedStatement checkStmt = conn.prepareStatement(
+                        "SELECT id FROM users WHERE name = ? AND password = ?")) {
+                    checkStmt.setString(1, name);
+                    checkStmt.setString(2, password);
+                    ResultSet rs = checkStmt.executeQuery();
+                    if (rs.next()) {
+                        conn.commit();
+                        return rs.getInt("id"); // Return existing user's ID
+                    }
+                }
+
+                // Check if name exists with different password
+                try (PreparedStatement checkNameStmt = conn.prepareStatement(
+                        "SELECT id FROM users WHERE name = ?")) {
+                    checkNameStmt.setString(1, name);
+                    ResultSet rs = checkNameStmt.executeQuery();
+                    if (rs.next()) {
+                        conn.rollback();
+                        throw new IllegalArgumentException("Username exists with a different password");
+                    }
+                }
+
+                // Insert new user
+                try (PreparedStatement insertStmt = conn.prepareStatement(
+                        "INSERT INTO users (name, password) VALUES (?, ?) RETURNING id")) {
+                    insertStmt.setString(1, name);
+                    insertStmt.setString(2, password);
+                    ResultSet rs = insertStmt.executeQuery();
+                    if (rs.next()) {
+                        Integer userId = rs.getInt("id");
+                        conn.commit();
+                        return userId;
+                    }
+                    throw new SQLException("Failed to retrieve new user ID");
+                }
+            } catch (SQLException | IllegalArgumentException e) {
+                conn.rollback();
+                throw e;
+            } finally {
+                conn.setAutoCommit(true);
+            }
+        }
+    }
 }

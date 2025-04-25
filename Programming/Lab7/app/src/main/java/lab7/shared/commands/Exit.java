@@ -1,10 +1,11 @@
 package lab7.shared.commands;
 
 /**
- * Command to terminate the program. This class implements the Command interface
- * and provides functionality to exit the application without saving the current state.
+ * Command to terminate the program. This class extends the Command interface
+ * and provides functionality to exit the application without saving the current
+ * state.
  */
-public class Exit implements Command {
+public class Exit extends Command {
 
     /**
      * Executes the exit command, terminating the program.

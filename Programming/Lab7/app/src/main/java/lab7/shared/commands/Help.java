@@ -2,24 +2,27 @@ package lab7.shared.commands;
 
 import java.util.Map;
 
-
 /**
- * Command to provide a list of available commands along with their descriptions.
- * This class implements the Command interface and allows users to see what commands
+ * Command to provide a list of available commands along with their
+ * descriptions.
+ * This class extends the Command interface and allows users to see what
+ * commands
  * are available in the system.
  */
-public class Help implements Command {
+public class Help extends Command {
     private StringBuilder output = new StringBuilder();
     private Map<String, Command> helpCmds;
 
     /**
-     * Default constructor for the Help class, initializing an instance without specific commands.
+     * Default constructor for the Help class, initializing an instance without
+     * specific commands.
      */
     public Help() {
     }
 
     /**
-     * Constructor that initializes the Help command with a map of available commands.
+     * Constructor that initializes the Help command with a map of available
+     * commands.
      *
      * @param cmds a map of command names to their corresponding Command objects
      */
@@ -28,7 +31,8 @@ public class Help implements Command {
     }
 
     /**
-     * Executes the help command, appending the list of available commands and their descriptions
+     * Executes the help command, appending the list of available commands and their
+     * descriptions
      * to the output.
      */
     public void execute() {
@@ -39,7 +43,8 @@ public class Help implements Command {
     /**
      * Retrieves the output of the help command.
      *
-     * @return a string containing the list of available commands and their descriptions
+     * @return a string containing the list of available commands and their
+     *         descriptions
      */
     public String getOutput() {
         return output.toString();
@@ -53,7 +58,7 @@ public class Help implements Command {
     public String describe() {
         return "Return list of all commands with description";
     }
-    
+
     public String getName() {
         return "Help";
     }

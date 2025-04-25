@@ -10,11 +10,13 @@ import lab7.client.Handler;
 import lab7.shared.io.console.StdConsole;
 
 /**
- * The ExecuteScript class implements the Command interface and is responsible for executing
- * a script file that contains a series of commands. Each command in the script is processed
+ * The ExecuteScript class extends the Command interface and is responsible for
+ * executing
+ * a script file that contains a series of commands. Each command in the script
+ * is processed
  * sequentially, allowing for batch execution of commands.
  */
-public class ExecuteScript implements Command {
+public class ExecuteScript extends Command {
     private String scriptFilePath;
 
     /**
@@ -33,9 +35,10 @@ public class ExecuteScript implements Command {
     }
 
     public <T> Command setArgs(T scriptFilePath) {
-        this.scriptFilePath = (String)scriptFilePath;
+        this.scriptFilePath = (String) scriptFilePath;
         return this;
     }
+
     /**
      * Executes the script by reading commands from the specified script file.
      * Each line in the script file is treated as a command and is processed
@@ -51,7 +54,7 @@ public class ExecuteScript implements Command {
             File scriptFile = new File(scriptFilePath);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile));
             bufferedReader.lines().peek(l -> console.writeln("added  " + l))
-                .forEach(l -> console.add(l));
+                    .forEach(l -> console.add(l));
             bufferedReader.close();
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("Script file not found: " + scriptFilePath);
@@ -68,7 +71,7 @@ public class ExecuteScript implements Command {
     public String describe() {
         return "Execute script with program commands";
     }
-    
+
     public String getName() {
         return "Execute script";
     }

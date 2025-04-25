@@ -7,6 +7,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.concurrent.locks.ReentrantLock;
 
 import lab7.server.io.DatabaseManager;
 import lab7.server.io.xml.XMLhandler;
@@ -16,18 +17,19 @@ import lab7.shared.model.SpaceMarine;
 /**
  * Manages a collection of SpaceMarine objects using a stack.
  * This class provides methods for adding to the collection, saving it to an XML
- * file,
- * and loading it from an XML file. It implements the Singleton pattern to
- * ensure
- * that only one instance of CollectionManager exists.
+ * file, and loading it from an XML file. It extends the Singleton pattern to
+ * ensure that only one instance of CollectionManager exists.
  */
 public class CollectionManager {
     private Stack<SpaceMarine> myStack = new Stack<SpaceMarine>();
     private static CollectionManager instance;
     private IDgenerator idgenerator = new IDgenerator();
     private XMLhandler xmlHandler = new XMLhandler("data.xml");
-    private DatabaseManager dbManager = new DatabaseManager("jdbc:postgresql://pg/studs", "s466513",
-            System.getProperty("PGPASS")); // aIiQ#2356
+    private DatabaseManager dbManager = new DatabaseManager(
+            "jdbc:postgresql://pg/studs",
+            "s466513",
+            System.getProperty("PGPASS"));
+    private final ReentrantLock lock = new ReentrantLock();
 
     /**
      * Default constructor for the CollectionManager class.
@@ -52,7 +54,12 @@ public class CollectionManager {
      * @return the stack of SpaceMarine objects
      */
     public Stack<SpaceMarine> getCollection() {
-        return this.myStack;
+        lock.lock();
+        try {
+            return this.myStack;
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -61,35 +68,46 @@ public class CollectionManager {
      * @param newStack the new stack of SpaceMarine objects
      */
     public void setCollection(Stack<SpaceMarine> newStack) {
-        this.myStack = newStack;
-        idgenerator.updateIndexer(myStack);
-
+        lock.lock();
+        try {
+            this.myStack = newStack;
+            idgenerator.updateIndexer(myStack);
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
-     * Saves the current collection of SpaceMarine objects to an XML file.
+     * Saves the current collection of SpaceMarine objects to an XML file and
+     * database.
      */
     public void save() {
-        XMLhandler.writeCollection(this.myStack);
+        lock.lock();
         try {
-            dbManager.write(new ArrayList<>(this.myStack));
-        } catch (SQLException e) {
-            e.printStackTrace();
+            XMLhandler.writeCollection(this.myStack);
+            try {
+                dbManager.write(new ArrayList<>(this.myStack));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } finally {
+            lock.unlock();
         }
-
     }
 
     /**
-     * Loads the collection of SpaceMarine objects from an XML file.
+     * Loads the collection of SpaceMarine objects from the database.
      */
     public void load() {
+        lock.lock();
+        try {
+            this.myStack = new Stack<SpaceMarine>();
+            myStack.addAll(dbManager.read());
 
-        this.myStack = (Stack<SpaceMarine>) xmlHandler.readCollection() == null ? new Stack<SpaceMarine>()
-                : (Stack<SpaceMarine>) xmlHandler.readCollection();
-        StdConsole.writeln("loaded stack, start indexing");
-        idgenerator.updateIndexer(myStack);
-        this.myStack = new Stack<SpaceMarine>();
-        myStack.addAll(dbManager.read());
+            idgenerator.updateIndexer(myStack);
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -113,13 +131,28 @@ public class CollectionManager {
      * @param marine the SpaceMarine object to add
      */
     public void Add(SpaceMarine marine) {
-        marine.setCreationDate(new java.util.Date());
-        marine.setId(idgenerator.getNextId());
-        this.myStack.add(marine);
+        lock.lock();
+        try {
+            marine.setCreationDate(new java.util.Date());
+            marine.setId(dbManager.getNextId());
+            this.myStack.add(marine);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
     }
 
     public Long nextId() {
-        // return idgenerator.getNextId();
-        return dbManager.getNextId();
+        try {
+            return dbManager.getNextId();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public DatabaseManager getDataBaseManager() {
+        return dbManager;
     }
 }

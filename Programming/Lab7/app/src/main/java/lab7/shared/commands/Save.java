@@ -4,12 +4,13 @@ import lab7.shared.collection.CollectionManager;
 
 /**
  * Command to save the collection of SpaceMarine objects to a file.
- * This class implements the Command interface and provides functionality
+ * This class extends the Command interface and provides functionality
  * to persist the current state of the collection.
  */
-public class Save implements Command {
+public class Save extends Command {
     /**
-     * Default constructor for the Save class, initializing an instance without specific parameters.
+     * Default constructor for the Save class, initializing an instance without
+     * specific parameters.
      */
     public Save() {
     }
@@ -31,7 +32,7 @@ public class Save implements Command {
     public String describe() {
         return "This command saves the collection to a file";
     }
-    
+
     public String getName() {
         return "Save";
     }

@@ -1,18 +1,14 @@
 package lab7.shared.commands;
 
-import java.util.Collection;
-import java.util.Stack;
-
 import lab7.shared.collection.CollectionManager;
-import lab7.shared.collection.IDgenerator;
 import lab7.shared.model.SpaceMarine;
 
 /**
- * The Add class implements the Command interface and is responsible for adding
+ * The Add class extends the Command interface and is responsible for adding
  * a SpaceMarine object to a collection. It can create a new SpaceMarine using
  * a builder with using user params.
  */
-public class Add implements Command {
+public class Add extends Command {
     private SpaceMarine obj;
 
     /**
@@ -37,9 +33,11 @@ public class Add implements Command {
     @Override
     public void execute() {
         // if (obj == null) {
-        //     obj = new SpaceMarineBuilder().build();
+        // obj = new SpaceMarineBuilder().build();
         // }
-        if (obj.getId()==null) obj.setId(CollectionManager.getInstance().nextId());
+        obj.setCreator_id(userId);
+        if (obj.getId() == null)
+            obj.setId(CollectionManager.getInstance().nextId());
         CollectionManager.getInstance().getCollection().add(obj);
     }
 
@@ -56,8 +54,10 @@ public class Add implements Command {
         return "Add";
     }
 
-    public <T> Command setArgs(T spacemarine){
-        obj = (SpaceMarine)spacemarine;
+    public <T> Command setArgs(T spacemarine) {
+        obj = (SpaceMarine) spacemarine;
         return this;
     }
+
+
 }

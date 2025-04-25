@@ -2,16 +2,15 @@ package lab7.shared.commands;
 
 import java.util.Stack;
 
-import lab7.shared.builders.SpaceMarineBuilder;
 import lab7.shared.collection.CollectionManager;
 import lab7.shared.model.SpaceMarine;
 
 /**
  * Command to update a SpaceMarine object in the collection based on its ID.
- * This class implements the Command interface and provides functionality to
+ * This class extends the Command interface and provides functionality to
  * replace an existing SpaceMarine with a new one that has the same ID.
  */
-public class UpdateId implements Command {
+public class UpdateId extends Command {
     private SpaceMarine obj;
 
     /**
@@ -59,7 +58,7 @@ public class UpdateId implements Command {
     }
 
     public <T> Command setArgs(T marine) {
-        obj = (SpaceMarine)marine;
+        obj = (SpaceMarine) marine;
         return this;
     }
 }

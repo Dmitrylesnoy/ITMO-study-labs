@@ -2,19 +2,17 @@ package lab7.server;
 
 import java.io.IOException;
 
-import lab7.shared.commands.AddRandom;
-import lab7.shared.commands.Show;
-import lab7.shared.messages.Request;
-
 public class ServerMain {
-    public static void main(String[] args) throws IOException {
-        Router router = new Router();
-        // router.runCommand(new Request(new Show(), null));
-        // router.runCommand(new Request(new AddRandom(), 1));
-        // router.runCommand(new Request(new Show(), null));
-        // NullPointerException -> Show.execute
-        while (true) {
+    public static void main(String[] args) {
+        try {
+            Router router = new Router();
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                router.shutdown();
+                System.out.println("Server shut down gracefully");
+            }));
             router.run();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
