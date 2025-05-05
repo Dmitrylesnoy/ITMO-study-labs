@@ -1,36 +1,37 @@
 ORG 0x584
-ITER: WORD 0x01
-LEN: WORD 0
+ARD0: WORD 0
 
 ; ВУ-3: DR(R/W)      #6
 ;       SR(R), RM(W) #7
 
 ORG 0x28C
+POINTER: WORD 0x584
+ITER: WORD 0
+
 START:  CLA
 
 INPLEN: CALL READ
-        POP
+        ST ITER
 MAIN:
-        ST (ITER)+
-        LOOP (LEN)
+        ST (POINTER)+
+        LOOP ITER
         JUMP FIRSTWORD
         HLT
 FIRSTWORD:
-        DEC
+        LD ITER
         BEQ SECONDWORD
-        INC
+        DEC
+        ST ITER
         CALL READ
-        POP
         SWAB
+        ST (POINTER)
 SECONDWORD:
-        INC
         CALL READ
-        POP
         JUMP MAIN
 
 READ:   IN 7
         AND #0x40
         BEQ READ
+        LD (POINTER)
         IN 6
-        PUSH
         RET
