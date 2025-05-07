@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import lab7.client.Handler;
 import lab7.shared.io.console.StdConsole;
 
 /**
@@ -50,11 +49,11 @@ public class ExecuteScript extends Command {
     @Override
     public void execute() throws IOException {
         try {
-            StdConsole console = StdConsole.getInstance();
+            // StdConsole console = StdConsole.getInstance();
             File scriptFile = new File(scriptFilePath);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile));
-            bufferedReader.lines().peek(l -> console.writeln("added  " + l))
-                    .forEach(l -> console.add(l));
+            bufferedReader.lines().peek(l -> StdConsole.writeln("added  " + l))
+                    .forEach(l -> StdConsole.add(l));
             bufferedReader.close();
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("Script file not found: " + scriptFilePath);

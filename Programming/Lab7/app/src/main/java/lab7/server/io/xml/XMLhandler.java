@@ -22,7 +22,6 @@ public class XMLhandler {
     static {
         filename = System.getenv("FILENAME");
         // filename = System.getProperty("FILENAME");
-
     }
 
     /**

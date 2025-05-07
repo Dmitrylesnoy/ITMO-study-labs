@@ -28,8 +28,8 @@ public class Chapter implements Serializable {
     /**
      * Default constructor for the Chapter class.
      */
-    private Chapter() {
-    }
+    // private Chapter() {
+    // }
 
     /**
      * Constructs a Chapter with the specified name and world.

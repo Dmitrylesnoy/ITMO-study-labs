@@ -1,7 +1,6 @@
 package lab7.shared.collection;
 
 import java.util.Collection;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import lab7.shared.model.SpaceMarine;

@@ -36,7 +36,7 @@ public class ChapterBuilder {
     public void setName() {
         while (true) {
             StdConsole.writeln("Enter the Name of the Chapter: ");
-            name = StdConsole.getInstance().read();
+            String name = StdConsole.read();
             if (name != null && !name.isEmpty()) {
                 this.name = name;
                 break;
@@ -51,7 +51,7 @@ public class ChapterBuilder {
      */
     public void setWorld() {
         while (true) {
-            world = StdConsole.getInstance().read("Enter the World of the Chapter: ");
+            String world = StdConsole.read("Enter the World of the Chapter: ");
             if (world != null && !world.isEmpty()) {
                 this.world = world;
                 break;

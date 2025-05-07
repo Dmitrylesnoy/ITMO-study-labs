@@ -16,16 +16,16 @@ import java.util.Queue;
 public class StdConsole {
     private static final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-    private  Queue<String> data = new LinkedList<String>();
+    private static Queue<String> data = new LinkedList<String>();
 
     private static StdConsole instance;
 
     /**
      * Default constructor for the StdConsole class, initializing an instance.
      */
-    public StdConsole() {
-        this.instance = this;
-    }
+    // public StdConsole() {
+        // this.instance = this;
+    // }
 
     /**
      * Reads a line of input from the console.
@@ -34,8 +34,8 @@ public class StdConsole {
      */
     public static String read() {
         try {
-            if (StdConsole.getInstance().isEmpty() == false)
-                return StdConsole.getInstance().poll();
+            if (isEmpty() == false)
+                return poll();
             return consoleReader.readLine();
         } catch (IOException e) {
             return null;
@@ -49,8 +49,8 @@ public class StdConsole {
      * @return the input line, or null if an I/O error occurs
      */
     public static String read(String prompt) {
-        if (StdConsole.getInstance().isEmpty() == false)
-            return StdConsole.getInstance().poll();
+        if (isEmpty() == false)
+            return poll();
         writeln(prompt);
         return read();
     }
@@ -81,18 +81,18 @@ public class StdConsole {
         }
     }
 
-    public void add(String line) {
+    public static void add(String line) {
         data.add(line);
     }
 
-    public String poll() {
+    public static String poll() {
         if (isEmpty() == false)
             return data.poll();
         else
             return "";
     }
 
-    public boolean isEmpty() {
+    public static boolean isEmpty() {
         return data.isEmpty();
     }
     /**
@@ -100,16 +100,16 @@ public class StdConsole {
      *
      * @throws Exception if an I/O error occurs
      */
-    public void close() throws Exception {
+    public static void close() throws Exception {
         consoleReader.close();
         consoleWriter.close();
     }
 
-    /**
-     * Retrieves the singleton getinstance of the StdConsole.
-     *
-     * @return the getinstance of StdConsole
-     */
+    // /**
+    //  * Retrieves the singleton getinstance of the StdConsole.
+    //  *
+    //  * @return the getinstance of StdConsole
+    //  */
     public static StdConsole getInstance() {
         return instance != null ? instance : new StdConsole();
     }

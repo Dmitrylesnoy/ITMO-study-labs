@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.concurrent.locks.ReentrantLock;
 
-import lab7.server.io.DatabaseManager;
+import lab7.server.io.database.DatabaseManager;
 import lab7.server.io.xml.XMLhandler;
-import lab7.shared.io.console.StdConsole;
 import lab7.shared.model.SpaceMarine;
 
 /**
@@ -26,9 +25,8 @@ public class CollectionManager {
     private IDgenerator idgenerator = new IDgenerator();
     private XMLhandler xmlHandler = new XMLhandler("data.xml");
     private DatabaseManager dbManager = new DatabaseManager(
-            "jdbc:postgresql://pg/studs",
-            "s466513",
-            System.getProperty("PGPASS"));
+                        "jdbc:postgresql://pg/studs", "s466513",
+                        System.getProperty("PGPASS"));
     private final ReentrantLock lock = new ReentrantLock();
 
     /**
@@ -87,7 +85,7 @@ public class CollectionManager {
             XMLhandler.writeCollection(this.myStack);
             try {
                 dbManager.write(new ArrayList<>(this.myStack));
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } finally {
@@ -100,10 +98,9 @@ public class CollectionManager {
      */
     public void load() {
         lock.lock();
+        this.myStack = new Stack<SpaceMarine>();
         try {
-            this.myStack = new Stack<SpaceMarine>();
             myStack.addAll(dbManager.read());
-
             idgenerator.updateIndexer(myStack);
         } finally {
             lock.unlock();
@@ -117,7 +114,7 @@ public class CollectionManager {
      */
     public String getTime() {
         try {
-            Path file = Paths.get(xmlHandler.getName());
+            Path file = Paths.get(XMLhandler.getName());
             BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
             return "Creation time: " + attr.creationTime();
         } catch (Exception e) {
@@ -135,7 +132,9 @@ public class CollectionManager {
         try {
             marine.setCreationDate(new java.util.Date());
             marine.setId(dbManager.getNextId());
-            this.myStack.add(marine);
+            if (dbManager.addSpaceMarine(marine))
+                myStack.add(marine);
+            // this.myStack.add(marine);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

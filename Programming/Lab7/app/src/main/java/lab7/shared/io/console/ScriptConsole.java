@@ -48,7 +48,7 @@ public class ScriptConsole extends StdConsole {
     // data.add(line);
     // }
 
-    public void add(String line) {
+    public static void add(String line) {
         // ScriptConsole.getInstance().add(line);
         data.add(line);
     }

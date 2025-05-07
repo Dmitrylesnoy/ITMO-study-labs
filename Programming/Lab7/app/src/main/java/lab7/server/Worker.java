@@ -3,7 +3,7 @@ package lab7.server;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import lab7.server.io.DatabaseManager;
+import lab7.server.io.database.DatabaseManager;
 import lab7.server.utils.ScriptController;
 import lab7.shared.collection.CollectionManager;
 import lab7.shared.commands.Command;

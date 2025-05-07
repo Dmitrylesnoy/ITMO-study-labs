@@ -46,7 +46,7 @@ public class Router {
         worker = new Worker();
         forkJoinPool = ForkJoinPool.commonPool();
         processPool = Executors.newCachedThreadPool();
-        sendPool = Executors.newFixedThreadPool(4); // Fixed pool for sending responses
+        sendPool = Executors.newFixedThreadPool(4);
         logger.info(String.format("[SERVER START] Ready and listening on port %d", PORT));
     }
 

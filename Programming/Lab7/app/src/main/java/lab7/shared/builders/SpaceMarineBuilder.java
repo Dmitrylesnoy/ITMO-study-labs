@@ -16,7 +16,6 @@ public class SpaceMarineBuilder {
                      // automatically
     private String name; // Field cannot be null, cannot be empty
     private Coordinates coordinates; // Field cannot be null
-    private java.util.Date creationDate; // Field cannot be null, generated automatically
     private Double health; // Must be greater than 0
     private Boolean loyal;
     private String achievements; // Field cannot be null
@@ -49,6 +48,8 @@ public class SpaceMarineBuilder {
             buildMarine.setHealth(health);
         if (Boolean.TRUE.equals(loyal) || Boolean.FALSE.equals(loyal))
             buildMarine.setLoyal(loyal);
+        if (id != null)
+            buildMarine.setId(id);
         return buildMarine;
     }
 
@@ -59,7 +60,7 @@ public class SpaceMarineBuilder {
     public void setName() {
         String name;
         while (true) {
-            name = StdConsole.getInstance().read("Enter the name of the SpaceMarine: ");
+            name = StdConsole.read("Enter the name of the SpaceMarine: ");
             if (name != null && !name.isEmpty()) {
                 this.name = name;
                 break;
@@ -84,14 +85,14 @@ public class SpaceMarineBuilder {
         Double health;
         String ans = "";
         while (ans.equals("Y") == false) {
-            ans = StdConsole.getInstance().read("Would you set the health of the SpaceMarine? (Y/N)");
+            ans = StdConsole.read("Would you set the health of the SpaceMarine? (Y/N)");
             if (ans.equals("N")) {
                 return;
             }
         }
         while (true) {
             try {
-                health = Double.parseDouble(StdConsole.getInstance().read("Enter the health of the SpaceMarine: "));
+                health = Double.parseDouble(StdConsole.read("Enter the health of the SpaceMarine: "));
                 if (health > 0) {
                     this.health = health;
                     return;
@@ -112,12 +113,12 @@ public class SpaceMarineBuilder {
     public void setLoyalty() {
         String ans = "";
         while (ans.equals("Y") == false) {
-            ans = StdConsole.getInstance().read("Would you set the loyalty of the SpaceMarine? (Y/N)");
+            ans = StdConsole.read("Would you set the loyalty of the SpaceMarine? (Y/N)");
             if (ans.equals("N"))
                 return;
         }
         while (true) {
-            ans = StdConsole.getInstance().read("Is the SpaceMarine loyal? (true/false): ");
+            ans = StdConsole.read("Is the SpaceMarine loyal? (true/false): ");
             if (ans.equalsIgnoreCase("true")) {
                 this.loyal = true;
                 return;
@@ -137,7 +138,7 @@ public class SpaceMarineBuilder {
     public void setAchievements() {
         String achievements;
         while (true) {
-            achievements = StdConsole.getInstance().read("Enter the achievements of the SpaceMarine: ");
+            achievements = StdConsole.read("Enter the achievements of the SpaceMarine: ");
             if (achievements != null && !achievements.isEmpty()) {
                 this.achievements = achievements;
                 break;
@@ -159,7 +160,7 @@ public class SpaceMarineBuilder {
                     "    POWER_SWORD,\r\n" + //
                     "    POWER_BLADE,\r\n" + //
                     "    POWER_FIST; \r\n");
-            ans = StdConsole.getInstance().read();
+            ans = StdConsole.read();
             try {
                 this.meleeWeapon = MeleeWeapon.valueOf(ans.toUpperCase());
                 break;

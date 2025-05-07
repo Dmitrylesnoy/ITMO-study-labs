@@ -20,7 +20,7 @@ import lab7.shared.messages.Status;
  * managing the console interface.
  */
 public class Handler {
-    private StdConsole console;
+    // private StdConsole console;
     Map<String, Command> cmds = new HashMap<>();
     private NetworkClient network = new NetworkClient();
     private String username;
@@ -31,13 +31,13 @@ public class Handler {
      */
     public Handler() {
         // router = new Router();
-        console = new StdConsole();
+        // console = new StdConsole();
         StdConsole.write("Enter username: ");
         username = StdConsole.read();
         StdConsole.write("Enter password: ");
         password = StdConsole.read();
         StdConsole.write("=>");
-        console.add("help");
+        StdConsole.add("help");
 
         cmds.put("add", new Add());
         cmds.put("add_random", new AddRandom());
@@ -125,7 +125,7 @@ public class Handler {
             if (cmd.getClass().equals(RemoveByID.class))
                 cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
             if (cmd.getClass().equals(UpdateId.class))
-                cmdArgs = new SpaceMarineBuilder().setId(Long.parseLong(inp_args[0])).build();
+                cmdArgs = new SpaceMarineBuilder().setId(inp_args!=null? Long.parseLong(inp_args[0]):-1).build();
             if (cmd.getClass().equals(ExecuteScript.class)) {
                 cmdArgs = inp_args != null ? inp_args[0] : null;
                 cmd.setArgs(cmdArgs).execute();

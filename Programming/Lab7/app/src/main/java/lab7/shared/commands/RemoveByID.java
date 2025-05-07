@@ -1,8 +1,6 @@
 package lab7.shared.commands;
 
-import java.util.List;
 import java.util.Stack;
-import java.util.Collection;
 import java.util.stream.Collectors;
 
 import lab7.shared.collection.CollectionManager;

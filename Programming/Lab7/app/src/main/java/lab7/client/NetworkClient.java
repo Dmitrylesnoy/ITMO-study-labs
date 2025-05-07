@@ -21,7 +21,7 @@ public class NetworkClient {
     private static final int SERVER_PORT = 2224; // Пример порта сервера
     private static final int TIMEOUT = 5000; // Тайм-аут в миллисекундах (2 секунды)
     private static final int MAX_ATTEMPTS = 3; // Максимальное количество попыток
-    private StdConsole console = new StdConsole();
+    // private StdConsole console = new StdConsole();
 
     public Response sendRequest(Request request) {
         try (DatagramSocket socket = new DatagramSocket()) {
@@ -60,14 +60,14 @@ public class NetworkClient {
 
                 } catch (SocketTimeoutException e) {
                     attempts++;
-                    console.writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");
-                    console.writeln("   Server did not respond within " + ((TIMEOUT / 1000) * attempts) + " seconds.");
+                    StdConsole.writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");
+                    StdConsole.writeln("   Server did not respond within " + ((TIMEOUT / 1000) * attempts) + " seconds.");
                     if (attempts >= MAX_ATTEMPTS) {
-                        console.writeln("All attempts failed. Server is unavailable.");
+                        StdConsole.writeln("All attempts failed. Server is unavailable.");
                         break;
                     }
                 } catch (Exception e) {
-                    console.writeln("Error sending request: " + e.getMessage());
+                    StdConsole.writeln("Error sending request: " + e.getMessage());
                     break;
                 }
             }
@@ -75,7 +75,7 @@ public class NetworkClient {
             return response;
 
         } catch (IOException e) {
-            console.writeln("Network error: " + e.toString());
+            StdConsole.writeln("Network error: " + e.toString());
             return new Response("Network error", Status.FAILED, "", null);
         }
     }
