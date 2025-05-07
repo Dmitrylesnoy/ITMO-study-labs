@@ -1,5 +1,6 @@
 package lab7.server.io.database;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -30,11 +31,21 @@ public class DatabaseManager {
     }
 
     public Integer getUserId(String name, String password) throws SQLException {
-        return userdb.getUserId(name, password);
+        try {
+            return userdb.getUserId(name, password);
+        } catch (NoSuchAlgorithmException e) {
+            e.getStackTrace();
+            return null;
+        }
     }
 
     public Integer addUser(String name, String password) throws SQLException {
-        return userdb.addUser(name, password);
+        try {
+            return userdb.addUser(name, password);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Long getNextId() throws SQLException {

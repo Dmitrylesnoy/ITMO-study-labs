@@ -1,6 +1,8 @@
 package lab7.client;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -124,8 +126,10 @@ public class Handler {
                 cmdArgs = inp_args != null ? inp_args[0] : null;
             if (cmd.getClass().equals(RemoveByID.class))
                 cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
+            if (cmd.getClass().equals(Show.class))
+                cmdArgs = inp_args != null ? Integer.parseInt(inp_args[0]) : null;
             if (cmd.getClass().equals(UpdateId.class))
-                cmdArgs = new SpaceMarineBuilder().setId(inp_args!=null? Long.parseLong(inp_args[0]):-1).build();
+                cmdArgs = new SpaceMarineBuilder().setId(inp_args != null ? Long.parseLong(inp_args[0]) : -1).build();
             if (cmd.getClass().equals(ExecuteScript.class)) {
                 cmdArgs = inp_args != null ? inp_args[0] : null;
                 cmd.setArgs(cmdArgs).execute();
@@ -133,6 +137,24 @@ public class Handler {
         } else
             throw new UnsupportedOperationException("Unknown command");
 
-        return new Request(cmd, cmdArgs, username, password);
+        return new Request(cmd, cmdArgs, username, hashPassword(password));
     }
+
+    private String hashPassword(String password)  {
+        try{if (password == null) {
+            return null;
+        }
+
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] hashBytes = md.digest(password.getBytes());
+
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    } catch (NoSuchAlgorithmException e) {
+        return null;
+    }
+}
 }

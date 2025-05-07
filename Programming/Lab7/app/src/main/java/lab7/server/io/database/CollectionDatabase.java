@@ -56,7 +56,7 @@ public class CollectionDatabase {
 
                     // Insert Coordinates
                     Coordinates coords = marine.getCoordinates();
-                    System.out.println("Inserting Coordinates: x=" + coords.getX() + ", y=" + coords.getY());
+                    // System.out.println("Inserting Coordinates: x=" + coords.getX() + ", y=" + coords.getY());
                     coordStmt.setDouble(1, coords.getX());
                     coordStmt.setFloat(2, coords.getY());
                     ResultSet coordRs = coordStmt.executeQuery();

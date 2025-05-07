@@ -13,10 +13,10 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf"
+                "file": "Литература/Изучаем_PostgreSQL_10_2019_Салахалдин_Джуба,_Андрей_Волков.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_"
+              "title": "Изучаем_PostgreSQL_10_2019_Салахалдин_Джуба,_Андрей_Волков"
             }
           }
         ]
@@ -76,7 +76,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 234.5,
+    "collapsed": true
   },
   "right": {
     "id": "851b775513eb3dc4",
@@ -176,9 +177,9 @@
   },
   "active": "4c26707dbf29020c",
   "lastOpenFiles": [
+    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
     "Литература/Изучаем_PostgreSQL_10_2019_Салахалдин_Джуба,_Андрей_Волков.pdf",
     "Литература/Паттерны Банды четырех.pdf",
-    "Литература/Dzhoshua_Bloh_Java_effektivnoe_programmirovanie_3-e_izdanie_.pdf",
     "Литература/Ekkels Filosofiya-Thining of Java.pdf",
     "Литература/Java 12th Herbert Schildt.pdf",
     "Математический анализ/2 сем/КЛК 1.md",

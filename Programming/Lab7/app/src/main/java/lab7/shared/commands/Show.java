@@ -1,6 +1,7 @@
 package lab7.shared.commands;
 
 import lab7.shared.collection.CollectionManager;
+import lab7.shared.model.SpaceMarine;
 
 /**
  * Command to display all SpaceMarine objects in the collection.
@@ -9,6 +10,7 @@ import lab7.shared.collection.CollectionManager;
  */
 public class Show extends Command {
     private StringBuilder output = new StringBuilder(" ");
+    private int count;
 
     /**
      * Default constructor for the Show class, initializing an instance without
@@ -22,8 +24,19 @@ public class Show extends Command {
      * collection.
      */
     public void execute() {
-        CollectionManager.getInstance().getCollection().stream()
-                .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
+        if (count == 0)
+            CollectionManager.getInstance().getCollection().stream()
+                    .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
+        else {
+            if (count > 0)
+                CollectionManager.getInstance().getCollection().stream().skip((count - 1) * 10).limit(10)
+                        .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
+            else
+                CollectionManager.getInstance().getCollection().stream()
+                        .skip(CollectionManager.getInstance().getCollection().size() - 10)
+                        .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
+
+        }
     }
 
     /**
@@ -35,9 +48,14 @@ public class Show extends Command {
         return output.toString();
     }
 
+    public <T> Command setArgs(T count) {
+        this.count = (int) count;
+        return this;
+    }
+
     /**
      * Describes the command's functionality.
-     *
+     *.
      * @return a string describing the purpose of this command
      */
     public String describe() {

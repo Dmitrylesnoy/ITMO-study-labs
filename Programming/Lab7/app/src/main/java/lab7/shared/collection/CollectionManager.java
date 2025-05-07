@@ -25,7 +25,7 @@ public class CollectionManager {
     private IDgenerator idgenerator = new IDgenerator();
     private XMLhandler xmlHandler = new XMLhandler("data.xml");
     private DatabaseManager dbManager = new DatabaseManager(
-                        "jdbc:postgresql://pg/studs", "s466513",
+            "jdbc:postgresql://pg/studs", "s466513",
                         System.getProperty("PGPASS"));
     private final ReentrantLock lock = new ReentrantLock();
 
