@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" spacing="10"
+    alignment="CENTER" prefWidth="400" prefHeight="300">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <Text text="Авторизация" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <TabPane fx:id="authTabPane">
+        <Tab fx:id="loginTab" text="Вход">
+            <VBox spacing="10">
+                <TextField fx:id="loginField" promptText="Логин" />
+                <PasswordField fx:id="passwordField" promptText="Пароль" />
+                <Button text="Войти" fx:id="loginButton" defaultButton="true"
+                    style="-fx-base: #0093ff;" />
+                <Label fx:id="authErrorLabel" style="-fx-text-fill: red;" visible="false" />
+            </VBox>
+        </Tab>
+        <Tab fx:id="registerTab" text="Регистрация">
+            <VBox spacing="10">
+                <TextField fx:id="regLoginField" promptText="Логин" />
+                <PasswordField fx:id="regPasswordField" promptText="Пароль" />
+                <PasswordField fx:id="regConfirmPasswordField" promptText="Подтвердите пароль" />
+                <Button text="Зарегистрироваться" fx:id="registerButton" defaultButton="true"
+                    style="-fx-base: #4CAF50;" />
+                <Label fx:id="regErrorLabel" style="-fx-text-fill: red;" visible="false" />
+                <Label fx:id="regSuccessLabel" style="-fx-text-fill: green;" visible="false"
+                    text="Регистрация успешна!" />
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,0 +1,85 @@
+plugins {
+    id 'application'
+    id 'java' // Добавляем явно для большей ясности
+    id 'io.freefair.lombok' version '8.12'
+    id 'org.openjfx.javafxplugin' version '0.1.0'  // Плагин для JavaFX
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+javafx {
+    version = "17"  // Версия JavaFX
+    modules = [ 'javafx.controls', 'javafx.fxml' ]  // Модули, которые вы хотите использовать
+}
+
+dependencies {
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation libs.guava
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
+    implementation 'org.glassfish.jaxb:jaxb-xjc:4.0.0'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.2'
+    implementation 'org.postgresql:postgresql:42.7.4'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'lab8.client.ClientMain' // Указываем основной класс клиента (исправьте, если это не так)
+}
+
+jar {
+    enabled = false // Отключаем стандартную задачу jar
+}
+
+// Задача для сборки JAR клиента
+tasks.register('clientJar', Jar) {
+    archiveBaseName = 'ClientApp'
+    manifest {
+        attributes 'Main-Class': 'lab8.client.ClientMain'
+    }
+    from(sourceSets.main.output) {
+        include 'lab8/client/**'
+        include 'lab8/shared/**'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// Задача для сборки JAR сервера
+tasks.register('serverJar', Jar) {
+    archiveBaseName = 'ServerApp'
+    manifest {
+        attributes 'Main-Class': 'lab8.server.ServerMain'
+    }
+    from(sourceSets.main.output) {
+        include 'lab8/server/**'
+        include 'lab8/shared/**'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+run {
+    standardInput = System.in
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.build {
+    dependsOn 'clientJar'
+    dependsOn 'serverJar'
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?language JavaScript?>
+ 
+<?import java.lang.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+
+<Group fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/fxml/2.2">
+    <Button text="Click!" onAction="pressButton()" fx:id="btn" prefWidth="60" />
+    <fx:script>
+        var x = 0;
+        function pressButton()
+        {
+        x++;
+        btn.setText(x)
+        }
+    </fx:script>
+</Group>
