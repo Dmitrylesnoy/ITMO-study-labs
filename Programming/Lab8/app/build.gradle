@@ -1,9 +1,12 @@
 plugins {
     id 'application'
-    id 'java' // Добавляем явно для большей ясности
+    id 'java'                          // Явно включаем Java-плагин
     id 'io.freefair.lombok' version '8.12'
-    id 'org.openjfx.javafxplugin' version '0.1.0'  // Плагин для JavaFX
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
+
+group = 'lab8.client'
+// version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -11,8 +14,14 @@ repositories {
 }
 
 javafx {
-    version = "17"  // Версия JavaFX
-    modules = [ 'javafx.controls', 'javafx.fxml' ]  // Модули, которые вы хотите использовать
+    version = '17'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 dependencies {
@@ -25,46 +34,32 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.7.4'
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
 application {
-    mainClass = 'lab8.client.ClientMain' // Указываем основной класс клиента (исправьте, если это не так)
+    mainClass = 'lab8.client.ClientMain'
 }
 
 jar {
-    enabled = false // Отключаем стандартную задачу jar
+    enabled = false
 }
 
-// Задача для сборки JAR клиента
 tasks.register('clientJar', Jar) {
     archiveBaseName = 'ClientApp'
     manifest {
         attributes 'Main-Class': 'lab8.client.ClientMain'
     }
-    from(sourceSets.main.output) {
-        include 'lab8/client/**'
-        include 'lab8/shared/**'
-    }
+    from(sourceSets.main.output)          // включает и .class, и ресурсы
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
-// Задача для сборки JAR сервера
 tasks.register('serverJar', Jar) {
     archiveBaseName = 'ServerApp'
     manifest {
         attributes 'Main-Class': 'lab8.server.ServerMain'
     }
-    from(sourceSets.main.output) {
-        include 'lab8/server/**'
-        include 'lab8/shared/**'
-    }
+    from(sourceSets.main.output)
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
@@ -80,6 +75,5 @@ tasks.named('test') {
 }
 
 tasks.build {
-    dependsOn 'clientJar'
-    dependsOn 'serverJar'
+    dependsOn 'clientJar', 'serverJar'
 }
