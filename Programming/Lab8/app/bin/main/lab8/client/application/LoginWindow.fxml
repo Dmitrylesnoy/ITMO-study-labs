@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Button?>
-
-<VBox fx:id="root" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab8.client.application.LoginController">
-    <Button text="Login" onAction="#login" fx:id="btnLogin" />
-</VBox>

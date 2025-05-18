@@ -1,0 +1,48 @@
+/* Фон всей сцены */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #a5d6a7, #66bb6a);
+}
+
+/* Блок авторизации */
+.login-box {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 128, 0, 0.2), 10, 0.3, 0, 4);
+    -fx-spacing: 12;
+    -fx-alignment: center;
+}
+
+.title-label {
+    -fx-text-fill: #2e7d32;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+TextField, PasswordField {
+    -fx-background-color: #e8f5e9;
+    -fx-border-color: #66bb6a;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: #1b5e20;
+    -fx-prompt-text-fill: #81c784;
+}
+
+/* Кнопка */
+Button {
+    -fx-background-color: linear-gradient(to right, #43a047, #2e7d32);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 10 0;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.2), 5, 0.2, 0, 2);
+}
+
+Button:hover {
+    -fx-background-color: linear-gradient(to right, #66bb6a, #388e3c);
+    -fx-cursor: hand;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-transition: all 0.3s ease;
+}

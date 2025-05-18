@@ -1,14 +1,9 @@
 package lab8.client;
 
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import lab8.client.application.LoginController;
-import lab8.client.utils.Handler;
 
 public class ClientMain extends Application{
     /**
@@ -27,8 +22,8 @@ public class ClientMain extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        VBox root = FXMLLoader.load(getClass().getResource("application/LoginWindow.fxml"));
-        Scene scene = new Scene(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        Scene scene = new Scene(loader.load());
 
         stage.setScene(scene);
         stage.setTitle("Login");
