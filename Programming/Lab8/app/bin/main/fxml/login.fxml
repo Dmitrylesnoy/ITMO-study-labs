@@ -5,7 +5,7 @@
 
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="lab8.client.controllers.LoginController"
-    stylesheets="@../css/login.css" >
+    stylesheets="@../css/style.css" >
 
     <children>
         <VBox fx:id="loginContainer" alignment="CENTER" spacing="15"

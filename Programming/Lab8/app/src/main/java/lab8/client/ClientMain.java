@@ -22,13 +22,10 @@ public class ClientMain extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-        Scene scene = new Scene(loader.load());
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/login.fxml")),900,700);
 
         stage.setScene(scene);
         stage.setTitle("Login");
-        stage.setWidth(900);
-        stage.setHeight(700);
         stage.show();
     }
 }

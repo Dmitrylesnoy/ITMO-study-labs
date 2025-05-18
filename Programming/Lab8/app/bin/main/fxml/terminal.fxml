@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="lab8.client.controllers.TerminalController"
+    stylesheets="@../css/style.css">
+
+    <top>
+        <VBox spacing="5">
+            <HBox spacing="10" styleClass="top-bar">
+                <padding>
+                    <Insets top="10" bottom="10"/>
+                </padding>
+                <Label fx:id="userLabel" text="User: admin" styleClass="user-label" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <Button text="Terminal" onAction="#openTerminal" />
+                <Button text="Table" onAction="#openTable" />
+                <Button text="Cards" onAction="#openCards" />
+            </HBox>
+
+            <TextField fx:id="commandInput"
+                promptText="Enter command..."
+                styleClass="command-field"
+                maxWidth="Infinity"
+            />
+        </VBox>
+    </top>
+
+    <!-- Поле вывода текста -->
+    <center>
+        <TextArea fx:id="outputArea"
+            editable="false"
+            wrapText="true"
+            styleClass="output-area"
+            VBox.vgrow="ALWAYS" />
+    </center>
+</BorderPane>
