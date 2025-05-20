@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+    fx:controller="lab8.client.controllers.TableController"
+    stylesheets="@../css/style.css"
+    styleClass="main-root">
+
+    <top>
+        <VBox spacing="5">
+            <HBox spacing="10" styleClass="top-bar">
+                <padding>
+                    <Insets top="10" bottom="10" />
+                </padding>
+                <Label fx:id="userLabel" text="User: admin" styleClass="user-label" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <Button text="Terminal" onAction="#openTerminal" />
+                <Button text="Table" onAction="#openTable" />
+                <Button text="Cards" onAction="#openCards" />
+            </HBox>
+
+            <TextField fx:id="commandInput"
+                promptText="Enter command..."
+                styleClass="command-field" />
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="80" />
+                <TableColumn fx:id="colName" text="Name" prefWidth="120" />
+                <TableColumn fx:id="colX" text="X" prefWidth="80" />
+                <TableColumn fx:id="colY" text="Y" prefWidth="80" />
+                <TableColumn fx:id="colCreationDate" text="Creation Date" prefWidth="150" />
+                <TableColumn fx:id="colHealth" text="Health" prefWidth="80" />
+                <TableColumn fx:id="colLoyal" text="Loyal" prefWidth="80" />
+                <TableColumn fx:id="colAchievements" text="Achievements" prefWidth="200" />
+                <TableColumn fx:id="colWeapon" text="Melee Weapon" prefWidth="120" />
+                <TableColumn fx:id="colChapterName" text="Chapter Name" prefWidth="150" />
+                <TableColumn fx:id="colChapterWorld" text="Chapter World" prefWidth="150" />
+                <TableColumn fx:id="colCreatorId" text="Creator ID" prefWidth="100" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
