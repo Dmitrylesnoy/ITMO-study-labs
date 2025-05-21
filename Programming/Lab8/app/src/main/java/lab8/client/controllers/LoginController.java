@@ -1,7 +1,7 @@
 package lab8.client.controllers;
 
 import java.io.IOException;
-import lab8.client.utils.Handler;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lab8.client.utils.Handler;
 
 public class LoginController {
 
@@ -43,29 +44,27 @@ public class LoginController {
 
         System.out.println("Login: " + username);
         System.out.println("Password: " + password);
-        // new Thread(() -> {
-        //     loginStatus = new Handler().tryLogin(username, password);
-        //     if (loginStatus)
-        //         nextWindow();
-        // }).start();
-        loginStatus = true;
-        nextWindow();
+        if (Handler.tryLogin(username, password)) {
+            nextWindow();
+            return;
+        }
+        setStatusText("Wrong login or password");
+        // loginStatus = true;
+        // nextWindow();
     }
 
-    public void nextWindow()  {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/terminal.fxml"));
-            System.out.println("loaded a terminal stage");
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root, 900, 700));
-            stage.setTitle("Terminal");
-            stage.show();
-            System.out.println("Showed a new stage");
-            ((Stage) loginBtn.getScene().getWindow()).close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            nextWindow();
-        }
+    public void nextWindow() {
+            // Parent root = FXMLLoader.load(getClass().getResource("/fxml/terminal.fxml"));
+            // System.out.println("loaded a terminal stage");
+            // Stage stage = new Stage();
+            // stage.setScene(new Scene(root, 900, 700));
+            // stage.setTitle("Terminal");
+            // stage.show();
+            // System.out.println("Showed a new stage");
+            // ((Stage) loginBtn.getScene().getWindow()).close();
+            ToolbarController.getInstance().getTable_stage().show();;
+
+
     }
 
     public String getUsername() {

@@ -10,6 +10,6 @@ public record Request(Command command, Object args, String username, String pass
         this.command = command;
         this.args = args == null ? "" : args;
         this.username = username;
-        this.password = password;
+        this.password = (password);
     }
 }

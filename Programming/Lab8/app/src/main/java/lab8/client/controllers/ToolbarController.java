@@ -2,17 +2,20 @@ package lab8.client.controllers;
 
 import java.io.IOException;
 
+import javax.tools.Tool;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import lombok.Getter;
 
+@Getter
 public class ToolbarController {
 
     @FXML
@@ -26,33 +29,49 @@ public class ToolbarController {
     @FXML
     private Button cardsBtn;
 
+    private static ToolbarController instance = new ToolbarController();
+    private Stage terminal_stage = openWindow("/fxml/terminal.fxml", "Table", 1200, 700);
+    private Stage table_stage = openWindow("/fxml/table.fxml", "Table", 1200, 700);
+    private Stage cards_stage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
+    
     @FXML
-    private void openTerminal(ActionEvent event) {
-        openWindow(event,"/fxml/terminal.fxml", "Терминал", 900, 700);
+    public void openTerminal(ActionEvent event) {
+        terminal_stage.show();
     }
 
     @FXML
-    private void openTable(ActionEvent event) {
-        openWindow(event,"/fxml/table.fxml", "Таблица", 1200, 700);
-
+    public void openTable(ActionEvent event) {
+        table_stage.show();
     }
 
     @FXML
-    private void openCards(ActionEvent event) {
-        openWindow(event,"/fxml/cards.fxml", "Карточки", 900, 700);
+    public void openCards(ActionEvent event) {
+        cards_stage.show();
     }
 
-    private void openWindow(ActionEvent event,String fxmlPath, String title, int w, int h) {
+    @FXML
+    public void setUser(String username) {
+        userLabel.setText(username);
+    }
+
+    public static Stage openWindow(String fxmlPath, String title, int w, int h) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(ToolbarController.class.getResource(fxmlPath));
             Parent root = loader.load();
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root,w,h));
+            // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, w, h));
             stage.setTitle(title);
-            stage.show();
+            // stage.show();
+            return stage;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
+    }
+
+    public static ToolbarController getInstance() {
+        return instance == null ? instance = new ToolbarController() : instance;
     }
 }

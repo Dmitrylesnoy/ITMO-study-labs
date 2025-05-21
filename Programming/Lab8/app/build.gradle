@@ -2,10 +2,7 @@ plugins {
     id 'application'
     id 'java'                          // Явно включаем Java-плагин
     id 'io.freefair.lombok' version '8.12'
-    // id 'org.openjfx.javafxplugin' version '0.1.0'
-    // id 'org.openjfx.javafxplugin' version '0.0.10'
     id 'org.openjfx.javafxplugin' version '0.0.14'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
 
 }
 
@@ -27,8 +24,6 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
-
-
 
 dependencies {
     testImplementation libs.junit.jupiter
@@ -54,7 +49,7 @@ tasks.register('clientJar', Jar) {
     manifest {
         attributes 'Main-Class': 'lab8.client.ClientMain'
     }
-    from(sourceSets.main.output)          // включает и .class, и ресурсы
+    from(sourceSets.main.output)
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }

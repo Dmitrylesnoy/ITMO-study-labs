@@ -8,7 +8,7 @@
     stylesheets="@../css/style.css" >
 
     <children>
-        <VBox fx:id="loginContainer" alignment="CENTER" spacing="15"
+        <VBox alignment="CENTER" spacing="15"
             maxWidth="300" maxHeight="220" styleClass="login-box">
             <Label text="Space Marine Collection" styleClass="title-label" />
             <TextField fx:id="loginField" promptText="Login" maxWidth="250"/>

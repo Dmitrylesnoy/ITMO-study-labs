@@ -9,25 +9,7 @@ import java.util.Map;
 
 import lab8.client.controllers.LoginController;
 import lab8.shared.builders.SpaceMarineBuilder;
-import lab8.shared.commands.Add;
-import lab8.shared.commands.AddRandom;
-import lab8.shared.commands.Clear;
-import lab8.shared.commands.Command;
-import lab8.shared.commands.ExecuteScript;
-import lab8.shared.commands.Exit;
-import lab8.shared.commands.FilterStartsWithAchievements;
-import lab8.shared.commands.Help;
-import lab8.shared.commands.Info;
-import lab8.shared.commands.Load;
-import lab8.shared.commands.Login;
-import lab8.shared.commands.MinByMeleeWeapon;
-import lab8.shared.commands.PrintUniqueLoyal;
-import lab8.shared.commands.RemoveByID;
-import lab8.shared.commands.RemoveGreater;
-import lab8.shared.commands.RemoveLower;
-import lab8.shared.commands.Show;
-import lab8.shared.commands.Sort;
-import lab8.shared.commands.UpdateId;
+import lab8.shared.commands.*;
 import lab8.shared.io.console.StdConsole;
 import lab8.shared.messages.Request;
 import lab8.shared.messages.Response;
@@ -44,8 +26,8 @@ public class Handler {
     // private StdConsole console;
     Map<String, Command> cmds = new HashMap<>();
     private static NetworkClient network = new NetworkClient();
-    private String username;
-    private String password;
+    private static String username;
+    private static String password;
     private LoginController loginController = new LoginController();
 
     /**
@@ -63,11 +45,8 @@ public class Handler {
         // StdConsole.write("=>");
         // StdConsole.add("help");
 
-        while (!loginController.getLoginStatus()) {
-            continue;
-        }
-        username = loginController.getUsername();
-        password = loginController.getPassword();
+        if (!username.isBlank() && !password.isBlank())
+            loginController.nextWindow();
 
         cmds.put("add", new Add());
         cmds.put("add_random", new AddRandom());
@@ -169,7 +148,7 @@ public class Handler {
         return new Request(cmd, cmdArgs, username, hashPassword(password));
     }
 
-    private String hashPassword(String password) {
+    private static String hashPassword(String password) {
         try {
             if (password == null) {
                 return null;
@@ -188,8 +167,17 @@ public class Handler {
         }
     }
 
-    public boolean tryLogin(String usernameT, String passwordT) {
-        Response response = network.sendRequest(new Request(new Login(), null, usernameT, passwordT));
-        return response.status().equals(Status.COMPLETE) ? true : false;
+    public static void setUser(String username, String password) {
+        Handler.username = username;
+        Handler.password = password;
+    }
+
+    public static boolean tryLogin(String usernameT, String passwordT) {
+        Response response = network.sendRequest(new Request(new Login(), null, usernameT, hashPassword(passwordT)));
+        if (response.status().equals(Status.COMPLETE)) {
+            setUser(usernameT, passwordT);
+            return true;
+        } else
+            return false;
     }
 }

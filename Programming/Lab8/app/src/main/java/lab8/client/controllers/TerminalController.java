@@ -2,9 +2,12 @@ package lab8.client.controllers;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import lab8.shared.io.console.StdConsole;
 
 public class TerminalController extends ToolbarController {
 
@@ -15,34 +18,38 @@ public class TerminalController extends ToolbarController {
     private TextArea outputArea;
 
     @FXML
-    private void openTerminal() {
-        outputArea.appendText("Терминал открыт\n");
-    }
+    private Button sendButton;
+
+    private String input = "";
 
     @FXML
-    private void openTable() {
-        outputArea.appendText("Таблица открыта\n");
-    }
-
-    @FXML
-    private void openCards() {
-        outputArea.appendText("Карточки открыты\n");
+    private void handleSendCommand(ActionEvent event) {
+        input = commandInput.getText();
+        if (!input.isEmpty()) {
+            outputArea.appendText("=> " + input + "\n");
+            commandInput.clear();
+        }
     }
 
     @FXML
     public String readInput() throws IOException {
-        return commandInput.getText();
+        String input_read = input;
+        input = "";
+        return input_read;
     }
 
     @FXML
     public void write(String output) {
-        outputArea.appendText(output);
+        try {
+            outputArea.appendText(output);
+        } catch (NullPointerException e) {
+            StdConsole.write(output);
+        }
     }
 
     @FXML
     public void writeln(String output) {
         write(output);
-        outputArea.appendText("\n");
+        write("\n");
     }
-
 }
