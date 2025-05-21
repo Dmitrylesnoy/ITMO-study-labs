@@ -14,6 +14,7 @@
             <TextField fx:id="loginField" promptText="Login" maxWidth="250"/>
             <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250"/>
             <Button fx:id="loginBtn" text="Login" onAction="#loginClick" maxWidth="250"/>
+            <Label fx:id="statusLabel" styleClass="status-label" maxWidth="250" wrapText="true" text=""/>
         </VBox>
     </children>
 </StackPane>

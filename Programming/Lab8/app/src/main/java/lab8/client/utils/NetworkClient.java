@@ -76,7 +76,7 @@ public class NetworkClient {
 
         } catch (IOException e) {
             StdConsole.writeln("Network error: " + e.toString());
-            return new Response("Network error", Status.FAILED, "", null);
+            return new Response("Network error", Status.FAILED, "", null, null);
         }
     }
 }

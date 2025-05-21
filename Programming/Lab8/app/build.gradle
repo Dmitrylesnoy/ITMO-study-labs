@@ -2,7 +2,11 @@ plugins {
     id 'application'
     id 'java'                          // Явно включаем Java-плагин
     id 'io.freefair.lombok' version '8.12'
-    id 'org.openjfx.javafxplugin' version '0.1.0'
+    // id 'org.openjfx.javafxplugin' version '0.1.0'
+    // id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.0.14'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+
 }
 
 group = 'lab8.client'
@@ -46,6 +50,7 @@ jar {
 
 tasks.register('clientJar', Jar) {
     archiveBaseName = 'ClientApp'
+    archiveClassifier.set('')
     manifest {
         attributes 'Main-Class': 'lab8.client.ClientMain'
     }

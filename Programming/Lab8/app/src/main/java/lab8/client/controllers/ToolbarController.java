@@ -1,15 +1,17 @@
 package lab8.client.controllers;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class ToolbarController {
 
@@ -25,29 +27,30 @@ public class ToolbarController {
     private Button cardsBtn;
 
     @FXML
-    private void openTerminal() {
-        openWindow("/fxml/terminal.fxml", "Терминал", 900, 700);
+    private void openTerminal(ActionEvent event) {
+        openWindow(event,"/fxml/terminal.fxml", "Терминал", 900, 700);
     }
 
     @FXML
-    private void openTable() {
-        openWindow("/fxml/table.fxml", "Таблица", 1000, 700);
+    private void openTable(ActionEvent event) {
+        openWindow(event,"/fxml/table.fxml", "Таблица", 1200, 700);
+
     }
 
     @FXML
-    private void openCards() {
-        openWindow("/fxml/cards.fxml", "Карточки", 900, 700);
+    private void openCards(ActionEvent event) {
+        openWindow(event,"/fxml/cards.fxml", "Карточки", 900, 700);
     }
 
-    private void openWindow(String fxmlPath, String title, int w, int h) {
+    private void openWindow(ActionEvent event,String fxmlPath, String title, int w, int h) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root, w,h));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root,w,h));
             stage.setTitle(title);
             stage.show();
-            System.out.println("Showed a new stage");
-            ((Stage) toolbar.getScene().getWindow()).close();
         } catch (IOException e) {
             e.printStackTrace();
         }

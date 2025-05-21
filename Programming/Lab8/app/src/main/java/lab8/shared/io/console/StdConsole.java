@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import lab8.client.controllers.TerminalController;
+
 /**
  * StdConsole provides standard input and output functionality for console applications.
  * This class allows reading from the console and writing output to it, using buffered
@@ -17,6 +19,7 @@ public class StdConsole {
     private static final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
     private static Queue<String> data = new LinkedList<String>();
+    private static TerminalController terminalView = new TerminalController();
 
     private static StdConsole instance;
 
@@ -36,7 +39,8 @@ public class StdConsole {
         try {
             if (isEmpty() == false)
                 return poll();
-            return consoleReader.readLine();
+            // return consoleReader.readLine();
+            return terminalView.readInput();
         } catch (IOException e) {
             return null;
         }
@@ -63,6 +67,7 @@ public class StdConsole {
     public static void write(String text) {
         try {
             consoleWriter.append(text).flush();
+            terminalView.write(text);
         } catch (IOException e) {
             // Handle exception
         }
@@ -76,6 +81,7 @@ public class StdConsole {
     public static void writeln(String text) {
         try {
             consoleWriter.append(text).append(System.lineSeparator()).flush();
+            terminalView.writeln(text);
         } catch (IOException e) {
             // Handle exception
         }

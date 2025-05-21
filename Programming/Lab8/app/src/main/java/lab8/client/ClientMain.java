@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lab8.client.utils.Handler;
 
 public class ClientMain extends Application{
     /**
@@ -13,10 +14,10 @@ public class ClientMain extends Application{
     public static void main(String[] args) {
         Application.launch(args);
 
-            // Handler handler = new Handler();
-            // while (true) {
-            //     handler.run();
-            // }
+        Handler handler = new Handler();
+        while (true) {
+            handler.run();
+        }
 
     }
 

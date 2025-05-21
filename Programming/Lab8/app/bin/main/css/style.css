@@ -57,7 +57,7 @@ Button:hover {
     -fx-font-weight: bold;
     -fx-text-fill: #2e7d32;
     -fx-font-size: 16px;
-    -fx-background-color: rgba(230, 255, 230, 0.8);
+    -fx-background-color: rgba(190, 210, 190, 0.8);
     -fx-padding: 4 8;
     -fx-background-radius: 6;
     -fx-effect: dropshadow(gaussian, rgba(0, 128, 0, 0.08), 3, 0.2, 0, 1);
@@ -97,7 +97,7 @@ Button:hover {
 
 /* ===== TableView — общий фон и рамка ===== */
 .table-view {
-    -fx-background-color: #1d261d;
+    -fx-background-color: #a5c3a5;
     -fx-border-color: #4caf50;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
@@ -111,7 +111,7 @@ Button:hover {
 
 .table-view .column-header,
 .table-view .column-header .label {
-    -fx-text-fill: #c8f6c8;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
 }
 

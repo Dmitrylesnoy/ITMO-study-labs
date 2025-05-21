@@ -10,8 +10,9 @@
 
     <top>
         <VBox spacing="5">
-            <HBox spacing="10" styleClass="top-bar">                <padding>
-                    <Insets top="10" bottom="10"/>
+            <HBox spacing="10" styleClass="top-bar">
+                <padding>
+                    <Insets top="10" bottom="10" />
                 </padding>
                 <Label fx:id="userLabel" text="User: admin" styleClass="user-label" />
                 <Pane HBox.hgrow="ALWAYS" />
@@ -22,7 +23,7 @@
 
             <TextField fx:id="commandInput"
                 promptText="Enter command..."
-                styleClass="command-field"/>
+                styleClass="command-field" />
         </VBox>
     </top>
 

@@ -7,10 +7,31 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import lab8.client.controllers.LoginController;
 import lab8.shared.builders.SpaceMarineBuilder;
-import lab8.shared.commands.*;
+import lab8.shared.commands.Add;
+import lab8.shared.commands.AddRandom;
+import lab8.shared.commands.Clear;
+import lab8.shared.commands.Command;
+import lab8.shared.commands.ExecuteScript;
+import lab8.shared.commands.Exit;
+import lab8.shared.commands.FilterStartsWithAchievements;
+import lab8.shared.commands.Help;
+import lab8.shared.commands.Info;
+import lab8.shared.commands.Load;
+import lab8.shared.commands.Login;
+import lab8.shared.commands.MinByMeleeWeapon;
+import lab8.shared.commands.PrintUniqueLoyal;
+import lab8.shared.commands.RemoveByID;
+import lab8.shared.commands.RemoveGreater;
+import lab8.shared.commands.RemoveLower;
+import lab8.shared.commands.Show;
+import lab8.shared.commands.Sort;
+import lab8.shared.commands.UpdateId;
 import lab8.shared.io.console.StdConsole;
-import lab8.shared.messages.*;
+import lab8.shared.messages.Request;
+import lab8.shared.messages.Response;
+import lab8.shared.messages.Status;
 
 /**
  * The Handler class is responsible for processing user input commands.
@@ -22,9 +43,10 @@ import lab8.shared.messages.*;
 public class Handler {
     // private StdConsole console;
     Map<String, Command> cmds = new HashMap<>();
-    private NetworkClient network = new NetworkClient();
+    private static NetworkClient network = new NetworkClient();
     private String username;
     private String password;
+    private LoginController loginController = new LoginController();
 
     /**
      * Default constructor for the Handler class.
@@ -32,12 +54,20 @@ public class Handler {
     public Handler() {
         // router = new Router();
         // console = new StdConsole();
-        StdConsole.write("Enter username: ");
-        username = StdConsole.read();
-        StdConsole.write("Enter password: ");
-        password = StdConsole.read();
-        StdConsole.write("=>");
-        StdConsole.add("help");
+
+        // StdConsole.write("Enter username: ");
+        // username = StdConsole.read();
+        // StdConsole.write("Enter password: ");
+        // password = StdConsole.read();
+
+        // StdConsole.write("=>");
+        // StdConsole.add("help");
+
+        while (!loginController.getLoginStatus()) {
+            continue;
+        }
+        username = loginController.getUsername();
+        password = loginController.getPassword();
 
         cmds.put("add", new Add());
         cmds.put("add_random", new AddRandom());
@@ -66,7 +96,7 @@ public class Handler {
         // Request request = makeRequest(console.read());
         try {
             Request request = makeRequest(StdConsole.read());
-  
+
             Response response = network.sendRequest(request);
             StdConsole.write(response.toString());
             if (response.status() == Status.CLOSE) {
@@ -75,9 +105,10 @@ public class Handler {
             }
         } catch (NullPointerException e) {
             StdConsole.write("=>");
-        // } catch (UnsupportedOperationException e) {
-        //     console.writeln("Recursion detected, unsopported opetarion. Execution canceled");
-        //     console.write("=>");
+            // } catch (UnsupportedOperationException e) {
+            // console.writeln("Recursion detected, unsopported opetarion. Execution
+            // canceled");
+            // console.write("=>");
         } catch (Exception e) {
             StdConsole.writeln(e.toString());
             StdConsole.write("=>");
@@ -138,21 +169,27 @@ public class Handler {
         return new Request(cmd, cmdArgs, username, hashPassword(password));
     }
 
-    private String hashPassword(String password)  {
-        try{if (password == null) {
+    private String hashPassword(String password) {
+        try {
+            if (password == null) {
+                return null;
+            }
+
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            byte[] hashBytes = md.digest(password.getBytes());
+
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
             return null;
         }
-
-        MessageDigest md = MessageDigest.getInstance("SHA-1");
-        byte[] hashBytes = md.digest(password.getBytes());
-
-        StringBuilder sb = new StringBuilder();
-        for (byte b : hashBytes) {
-            sb.append(String.format("%02x", b));
-        }
-        return sb.toString();
-    } catch (NoSuchAlgorithmException e) {
-        return null;
     }
-}
+
+    public boolean tryLogin(String usernameT, String passwordT) {
+        Response response = network.sendRequest(new Request(new Login(), null, usernameT, passwordT));
+        return response.status().equals(Status.COMPLETE) ? true : false;
+    }
 }

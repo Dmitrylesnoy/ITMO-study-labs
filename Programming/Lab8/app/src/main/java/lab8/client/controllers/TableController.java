@@ -10,7 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.*;
 
-public class TableController implements Initializable {
+public class TableController extends ToolbarController implements Initializable {
 
     @FXML
     private TableView<SpaceMarine> tableView;
@@ -87,17 +87,4 @@ public class TableController implements Initializable {
     public void refreshTable() {
         tableView.refresh();
     }
-
-    // Заглушки для панели навигации
-    @FXML
-    private void openTerminal() {
-        /* ... */ }
-
-    @FXML
-    private void openTable() {
-        /* ... */ }
-
-    @FXML
-    private void openCards() {
-        /* ... */ }
 }

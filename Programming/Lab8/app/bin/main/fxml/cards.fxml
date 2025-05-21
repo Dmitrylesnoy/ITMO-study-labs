@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+    fx:controller="lab8.client.controllers.CardsController"
+    stylesheets="@../css/style.css"
+    styleClass="main-root">
+
+    <top>
+        <VBox spacing="5">
+            <HBox spacing="10" styleClass="top-bar">
+                <padding>
+                    <Insets top="10" bottom="10" />
+                </padding>
+                <Label fx:id="userLabel" text="User: admin" styleClass="user-label" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <Button text="Terminal" onAction="#openTerminal" />
+                <Button text="Table" onAction="#openTable" />
+                <Button text="Cards" onAction="#openCards" />
+            </HBox>
+
+            <TextField fx:id="commandInput"
+                promptText="Enter command..."
+                styleClass="command-field" />
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="cards-scroll-pane">
+            <FlowPane fx:id="cardsContainer"
+                hgap="20" vgap="20"
+                padding="$INSETS"
+                styleClass="cards-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20" />
+                </padding>
+            </FlowPane>
+        </ScrollPane>
+    </center>
+</BorderPane>

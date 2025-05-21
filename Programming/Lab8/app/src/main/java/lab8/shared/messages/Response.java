@@ -1,6 +1,9 @@
 package lab8.shared.messages;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import lab8.shared.model.SpaceMarine;
 
 /**
  * Represents a response to a command, containing the command name, status,
@@ -8,7 +11,7 @@ import java.io.Serializable;
  * constructors for initializing the response and formats the output based
  * on the command's status.
  */
-public record Response(String name, Status status, String output, Exception e) implements Serializable {
+public record Response(String name, Status status, String output, Exception e, ArrayList<SpaceMarine> listMarine) implements Serializable {
     // }class Response {
     // private String name;
     // private Status status;

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableView?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
     fx:controller="lab8.client.controllers.TableController"
@@ -27,8 +30,10 @@
     </top>
 
     <center>
-        <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
-            <columns>
+        <TableView fx:id="tableView" styleClass="table-view" GridPane.hgrow="ALWAYS">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>            <columns>
                 <TableColumn fx:id="colId" text="ID" prefWidth="80" />
                 <TableColumn fx:id="colName" text="Name" prefWidth="120" />
                 <TableColumn fx:id="colX" text="X" prefWidth="80" />

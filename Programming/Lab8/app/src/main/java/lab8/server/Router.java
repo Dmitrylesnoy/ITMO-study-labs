@@ -139,7 +139,7 @@ public class Router {
                 // }
             } else
                 sendPool.submit(
-                        () -> sendResponse(new Response("Server error", Status.FAILED, null, e), clientAddress));
+                        () -> sendResponse(new Response("Server error", Status.FAILED, null, e, null), clientAddress));
         }
     }
 
@@ -161,7 +161,7 @@ public class Router {
                     clientAddress.getAddress().getHostAddress(),
                     clientAddress.getPort()));
         } catch (SocketException e) {
-            sendResponse(new Response("Too long output, try to request less data", Status.FAILED, null, e), clientAddress);
+            sendResponse(new Response("Too long output, try to request less data", Status.FAILED, null, e, null), clientAddress);
         } catch (IOException e) {
             logger.severe(String.format("[ERROR] Sending response failed: %s", e.getMessage()));
             logger.log(Level.WARNING, "Error details", e);
