@@ -42,14 +42,16 @@ public class Worker {
                 request.args().getClass()));
         // } else
         // logger.info("[PROCESSING] Empty arguments");
+
         Response response = null;
         try {
             Integer user = dbManager.addUser(request.username(), request.password());
+            if (cmd.getClass().equals(Login.class)) {
+                return new Response("Login", Status.COMPLETE, "login", null, null);
+            }
+
             logger.info(String.format("[PROCESSING] Setting user id " + user));
             cmd.setUser(user);
-            if (cmd.getClass().equals(Login.class)) {
-                return new Response("Login", Status.COMPLETE, "ok", null, null);
-            }
 
             logger.info(String.format("[PROCESSING] Start executing"));
             if (cmd.getClass().equals(LoadClient.class)) {
@@ -58,6 +60,7 @@ public class Worker {
                 response = new Response("loadclient", Status.COMPLETE, null, null, clieList);
             } else
                 cmd.execute();
+
             logger.info(String.format("[PROCESSING] %s command executiong finished", cmd.getName()));
             Save save = new Save();
             save.execute();

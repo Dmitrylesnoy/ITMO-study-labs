@@ -39,12 +39,10 @@ public class TableController extends ToolbarController implements Initializable 
     @FXML
     private TableColumn<SpaceMarine, Integer> colCreatorId;
 
-    // Хранение данных в ObservableList, чтобы можно было refresh()
     private ObservableList<SpaceMarine> marineData = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Настройка колонок
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCreationDate.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
@@ -65,25 +63,16 @@ public class TableController extends ToolbarController implements Initializable 
             return new SimpleStringProperty(c != null ? c.getWorld() : "");
         });
 
-        // Включаем сортировку по всем колонкам
         tableView.getColumns().forEach(col -> col.setSortable(true));
 
-        // Устанавливаем пустой список по умолчанию
         tableView.setItems(marineData);
     }
 
-    /**
-     * Принимает коллекцию SpaceMarine и подставляет её в TableView.
-     */
+
     public void setSpaceMarines(List<SpaceMarine> list) {
         marineData.setAll(list);
-        // Первая сортировка по ID, если нужно:
-        // tableView.getSortOrder().setAll(colId);
     }
 
-    /**
-     * Обновляет содержимое таблицы (перерисовывает ячейки).
-     */
     public void refreshTable() {
         tableView.refresh();
     }

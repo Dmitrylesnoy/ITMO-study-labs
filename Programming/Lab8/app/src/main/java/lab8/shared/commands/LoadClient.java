@@ -1,8 +1,5 @@
 package lab8.shared.commands;
 
-import lab8.shared.collection.CollectionManager;
-import lab8.shared.model.SpaceMarine;
-
 /**
  * Command to display all SpaceMarine objects in the collection.
  * This class extends the Command interface and provides functionality

@@ -24,6 +24,10 @@
             <TextField fx:id="commandInput"
                 promptText="Enter command..."
                 styleClass="command-field" />
+            <Button fx:id="sendButton"
+                text="Enter"
+                onAction="#handleSendCommand"
+                styleClass="send-button" />
         </VBox>
     </top>
 
@@ -32,6 +36,7 @@
             editable="false"
             wrapText="true"
             styleClass="output-area"
-            VBox.vgrow="ALWAYS" />
+            VBox.vgrow="ALWAYS"
+            text="" />
     </center>
 </BorderPane>
