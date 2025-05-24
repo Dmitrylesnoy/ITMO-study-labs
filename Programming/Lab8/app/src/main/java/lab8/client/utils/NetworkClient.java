@@ -10,14 +10,14 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 
-import lab8.shared.io.console.StdConsole;
+import lab8.shared.io.console.ClientConsole;
 import lab8.shared.messages.Request;
 import lab8.shared.messages.Response;
 import lab8.shared.messages.Status;
 
 public class NetworkClient {
-    private static final String SERVER_IP = "192.168.10.80";//"77.234.196.4"; //"127.0.0.1"; // Пример
-                                                           // IP сервера
+    private static final String SERVER_IP = "192.168.10.80";// "77.234.196.4"; //"127.0.0.1"; // Пример
+                                                            // IP сервера
     private static final int SERVER_PORT = 2224; // Пример порта сервера
     private static final int TIMEOUT = 5000; // Тайм-аут в миллисекундах (2 секунды)
     private static final int MAX_ATTEMPTS = 3; // Максимальное количество попыток
@@ -60,14 +60,15 @@ public class NetworkClient {
 
                 } catch (SocketTimeoutException e) {
                     attempts++;
-                    StdConsole.writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");
-                    StdConsole.writeln("   Server did not respond within " + ((TIMEOUT / 1000) * attempts) + " seconds.");
+                    ClientConsole.getInstance().writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");
+                    ClientConsole.getInstance()
+                            .writeln("   Server did not respond within " + ((TIMEOUT / 1000) * attempts) + " seconds.");
                     if (attempts >= MAX_ATTEMPTS) {
-                        StdConsole.writeln("All attempts failed. Server is unavailable.");
+                        ClientConsole.getInstance().writeln("All attempts failed. Server is unavailable.");
                         break;
                     }
                 } catch (Exception e) {
-                    StdConsole.writeln("Error sending request: " + e.getMessage());
+                    ClientConsole.getInstance().writeln("Error sending request: " + e.getMessage());
                     break;
                 }
             }
@@ -75,7 +76,7 @@ public class NetworkClient {
             return response;
 
         } catch (IOException e) {
-            StdConsole.writeln("Network error: " + e.toString());
+            ClientConsole.getInstance().writeln("Network error: " + e.toString());
             return new Response("Network error", Status.FAILED, "", null, null);
         }
     }

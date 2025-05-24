@@ -52,6 +52,8 @@ tasks.register('clientJar', Jar) {
         include 'lab8/client/**'
         include 'lab8/shared/**'
     }
+    // from sourceSets.main.output
+    from sourceSets.main.resources
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }

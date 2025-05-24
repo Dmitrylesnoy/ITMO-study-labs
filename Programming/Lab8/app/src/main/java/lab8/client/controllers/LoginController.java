@@ -44,17 +44,7 @@ public class LoginController {
         // nextWindow();
     }
 
-    public void nextWindow() {
-            // Parent root = FXMLLoader.load(getClass().getResource("/fxml/terminal.fxml"));
-            // System.out.println("loaded a terminal stage");
-            // Stage stage = new Stage();
-            // stage.setScene(new Scene(root, 900, 700));
-            // stage.setTitle("Terminal");
-            // stage.show();
-            System.out.println("Showed a new stage");
-            ((Stage) loginBtn.getScene().getWindow()).close();
-            // ToolbarController.getInstance().openTerminal(null).show();;
-    }
+
 
     public Stage open() {
         return ToolbarController.getInstance().openWindow("/fxml/login.fxml","login",900,700);

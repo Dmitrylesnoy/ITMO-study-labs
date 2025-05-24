@@ -27,7 +27,7 @@ public class ClientMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // ToolbarController.getInstance();
+        ToolbarController.getInstance();
         LoginController loginController = new LoginController();
         loginController.open().show();
         // stageL.show();

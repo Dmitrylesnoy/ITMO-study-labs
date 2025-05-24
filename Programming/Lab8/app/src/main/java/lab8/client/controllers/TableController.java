@@ -10,38 +10,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.*;
 
-public class TableController extends ToolbarController implements Initializable {
+public class TableController extends ToolbarController {
 
-    @FXML
-    private TableView<SpaceMarine> tableView;
-    @FXML
-    private TableColumn<SpaceMarine, Long> colId;
-    @FXML
-    private TableColumn<SpaceMarine, String> colName;
-    @FXML
-    private TableColumn<SpaceMarine, Double> colX;
-    @FXML
-    private TableColumn<SpaceMarine, Float> colY;
-    @FXML
-    private TableColumn<SpaceMarine, Date> colCreationDate;
-    @FXML
-    private TableColumn<SpaceMarine, Double> colHealth;
-    @FXML
-    private TableColumn<SpaceMarine, Boolean> colLoyal;
-    @FXML
-    private TableColumn<SpaceMarine, String> colAchievements;
-    @FXML
-    private TableColumn<SpaceMarine, MeleeWeapon> colWeapon;
-    @FXML
-    private TableColumn<SpaceMarine, String> colChapterName;
-    @FXML
-    private TableColumn<SpaceMarine, String> colChapterWorld;
-    @FXML
-    private TableColumn<SpaceMarine, Integer> colCreatorId;
+    @FXML private TableView<SpaceMarine> tableView;
+    @FXML private TableColumn<SpaceMarine, Long> colId;
+    @FXML private TableColumn<SpaceMarine, String> colName;
+    @FXML private TableColumn<SpaceMarine, Double> colX;
+    @FXML private TableColumn<SpaceMarine, Float> colY;
+    @FXML private TableColumn<SpaceMarine, Date> colCreationDate;
+    @FXML private TableColumn<SpaceMarine, Double> colHealth;
+    @FXML private TableColumn<SpaceMarine, Boolean> colLoyal;
+    @FXML private TableColumn<SpaceMarine, String> colAchievements;
+    @FXML private TableColumn<SpaceMarine, MeleeWeapon> colWeapon;
+    @FXML private TableColumn<SpaceMarine, String> colChapterName;
+    @FXML private TableColumn<SpaceMarine, String> colChapterWorld;
+    @FXML private TableColumn<SpaceMarine, Integer> colCreatorId;
 
     private ObservableList<SpaceMarine> marineData = FXCollections.observableArrayList();
 
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));

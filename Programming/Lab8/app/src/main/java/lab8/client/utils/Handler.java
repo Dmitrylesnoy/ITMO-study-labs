@@ -10,7 +10,7 @@ import java.util.Map;
 import lab8.client.controllers.LoginController;
 import lab8.shared.builders.SpaceMarineBuilder;
 import lab8.shared.commands.*;
-import lab8.shared.io.console.StdConsole;
+import lab8.shared.io.console.ClientConsole;
 import lab8.shared.messages.Request;
 import lab8.shared.messages.Response;
 import lab8.shared.messages.Status;
@@ -28,7 +28,7 @@ public class Handler {
     private static NetworkClient network = new NetworkClient();
     private static String username;
     private static String password;
-    private LoginController loginController = new LoginController();
+    private ClientConsole console = ClientConsole.getInstance();
 
     /**
      * Default constructor for the Handler class.
@@ -37,16 +37,16 @@ public class Handler {
         // router = new Router();
         // console = new StdConsole();
 
-        // StdConsole.write("Enter username: ");
-        // username = StdConsole.read();
-        // StdConsole.write("Enter password: ");
-        // password = StdConsole.read();
+        // console.write("Enter username: ");
+        // username = console.read();
+        // console.write("Enter password: ");
+        // password = console.read();
 
-        // StdConsole.write("=>");
-        // StdConsole.add("help");
+        // console.write("=>");
+        // console.add("help");
 
-        if (!username.isBlank() && !password.isBlank())
-            loginController.nextWindow();
+        // if (!username.isBlank() && !password.isBlank())
+        //     loginController.nextWindow();
 
         cmds.put("add", new Add());
         cmds.put("add_random", new AddRandom());
@@ -74,23 +74,23 @@ public class Handler {
     public void run() {
         // Request request = makeRequest(console.read());
         try {
-            Request request = makeRequest(StdConsole.read());
+            Request request = makeRequest(console.read());
 
             Response response = network.sendRequest(request);
-            StdConsole.write(response.toString());
+            console.write(response.toString());
             if (response.status() == Status.CLOSE) {
                 request.command().execute();
                 System.exit(0);
             }
         } catch (NullPointerException e) {
-            StdConsole.write("=>");
+            console.write("=>");
             // } catch (UnsupportedOperationException e) {
             // console.writeln("Recursion detected, unsopported opetarion. Execution
             // canceled");
             // console.write("=>");
         } catch (Exception e) {
-            StdConsole.writeln(e.toString());
-            StdConsole.write("=>");
+            console.writeln(e.toString());
+            console.write("=>");
         }
 
     }

@@ -1,13 +1,9 @@
 package lab8.client.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +14,7 @@ import javafx.stage.Stage;
 import lombok.Getter;
 
 @Getter
-public class ToolbarController implements Initializable{
+public class ToolbarController {
 
     @FXML private HBox toolbar;
     @FXML private Label userLabel;
@@ -27,31 +23,30 @@ public class ToolbarController implements Initializable{
     @FXML private Button cardsBtn;
 
     private static ToolbarController instance;
-    private Stage terminal_stage;
-    private Stage table_stage;
-    private Stage cards_stage;
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        terminal_stage = openWindow("/fxml/terminal.fxml", "Table", 1200, 700);
-        table_stage = openWindow("/fxml/table.fxml", "Table", 1200, 700);
-        cards_stage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
-    }
-
+    private static Stage terminalStage=openWindow("/fxml/terminal.fxml", "Table", 900, 700);
+    private static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1200, 700);
+    private static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
+  
     @FXML
     public void openTerminal(ActionEvent event) {
-        ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
-        terminal_stage.show();
+        closeWindow(event);
+        terminalStage.show();
     }
 
     @FXML
     public void openTable(ActionEvent event) {
-        table_stage.show();
+        closeWindow(event);
+        tableStage.show();
     }
 
     @FXML
     public void openCards(ActionEvent event) {
-        cards_stage.show();
+        closeWindow(event);
+        cardsStage.show();
+    }
+
+    public void closeWindow(ActionEvent event) {
+        ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
     @FXML
@@ -59,7 +54,7 @@ public class ToolbarController implements Initializable{
         userLabel.setText(username);
     }
 
-    public Stage openWindow(String fxmlPath, String title, int w, int h) {
+    public static Stage openWindow(String fxmlPath, String title, int w, int h) {
         try {
             FXMLLoader loader = new FXMLLoader(ToolbarController.class.getResource(fxmlPath));
             Parent root = loader.load();
@@ -68,7 +63,6 @@ public class ToolbarController implements Initializable{
             Stage stage = new Stage();
             stage.setScene(new Scene(root, w, h));
             stage.setTitle(title);
-            stage.show();
             return stage;
         } catch (IOException e) {
             e.printStackTrace();
