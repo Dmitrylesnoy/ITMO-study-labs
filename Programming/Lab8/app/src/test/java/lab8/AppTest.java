@@ -3,5 +3,65 @@
  */
 package lab8;
 
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Stream;
+
 class AppTest {
+    // @Test
+    // void methdoTest(){
+    //     new InputStreamReader((InputStream) new Object()).skip();
+
+    // }
+
+    @Test
+    void test() {
+        Set<Integer> set = new TreeSet<>();
+        set.add(4);
+        set.add(5);
+        set.add(2);
+        set.add(4);
+        set.add(3);
+        set.add(1);
+        set.remove(2);
+        System.out.println(set);
+
+
+    }
+
+    @Test
+    void test2() {
+        Stream. of ( "mercury" ,
+                "venus",
+                "mars", "jupiter", "saturn","uranus",
+                "neptune")
+                .filter(s -> s.length()!=7)
+                .map(s -> s.substring(0,s.length()-2)+
+                        s.substring(s.length()-1)+
+                        s.substring(s.length()-2,s.length()-1))
+                .skip(2)
+                .sorted ( )
+                .forEachOrdered (System.out::print) ;
+
+    }
+
+    @Test
+    void test3() {
+        JTextField c = new JTextField("Aboba");
+        c.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                return;
+            }
+        });
+    }
 }

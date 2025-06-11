@@ -2,6 +2,7 @@ package lab8.shared.messages;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Deque;
 
 import lab8.shared.model.SpaceMarine;
 
@@ -11,7 +12,7 @@ import lab8.shared.model.SpaceMarine;
  * constructors for initializing the response and formats the output based
  * on the command's status.
  */
-public record Response(String name, Status status, String output, Exception e, ArrayList<SpaceMarine> listMarine) implements Serializable {
+public record Response(String name, Status status, String output, Exception e, Deque<SpaceMarine> listMarine) implements Serializable {
     // }class Response {
     // private String name;
     // private Status status;
@@ -72,17 +73,17 @@ public record Response(String name, Status status, String output, Exception e, A
         switch (status) {
             case COMPLETE:
                 if (output.isEmpty()) {
-                    return name + "  " + status.toString() + "\n=> ";
+                    return name + "  " + status.toString() ; //+ "\n=> ";
                 }
-                return output + "\n=>";
+                return output; // + "\n=>";
             case WARNING:
-                return name + "  " + status.toString() + "\n " + output + "\n=> ";
+                return name + "  " + status.toString() + "\n " + output ; //+ "\n=> ";
             case FAILED:
-                return name + "  " + status.toString() + "\n " + e.toString() + "\n=> ";
+                return name + "  " + status.toString() + "\n " + e.toString() ; //+ "\n=> ";
             case CLOSE:
-                return name + "  " + status.toString() + "\n=> ";
+                return name + "  " + status.toString() ; //+ "\n=> ";
             default:
-                return status.toString() + "\n" + output + "\n=> ";
+                return status.toString() + "\n" + output ; //+ "\n=> ";
         }
     }
 }

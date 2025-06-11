@@ -30,7 +30,7 @@
         </VBox>
     </top>
 
-    <center>
+    <!-- <center>
         <ScrollPane fitToWidth="true" styleClass="cards-scroll-pane">
             <FlowPane fx:id="cardsContainer"
                 hgap="20" vgap="20"
@@ -41,5 +41,5 @@
                 </padding>
             </FlowPane>
         </ScrollPane>
-    </center>
+    </center> -->
 </BorderPane>

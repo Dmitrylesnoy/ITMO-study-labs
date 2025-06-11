@@ -3,17 +3,21 @@ package lab8.client.utils;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
-import lab8.client.controllers.LoginController;
 import lab8.shared.builders.SpaceMarineBuilder;
 import lab8.shared.commands.*;
 import lab8.shared.io.console.ClientConsole;
+import lab8.shared.io.console.StdConsole;
 import lab8.shared.messages.Request;
 import lab8.shared.messages.Response;
 import lab8.shared.messages.Status;
+import lab8.shared.model.SpaceMarine;
 
 /**
  * The Handler class is responsible for processing user input commands.
@@ -29,25 +33,13 @@ public class Handler {
     private static String username;
     private static String password;
     private ClientConsole console = ClientConsole.getInstance();
+    private static Handler instance;
+    private static Deque<SpaceMarine> localMarines = new ArrayDeque<SpaceMarine>();
 
     /**
      * Default constructor for the Handler class.
      */
     public Handler() {
-        // router = new Router();
-        // console = new StdConsole();
-
-        // console.write("Enter username: ");
-        // username = console.read();
-        // console.write("Enter password: ");
-        // password = console.read();
-
-        // console.write("=>");
-        // console.add("help");
-
-        // if (!username.isBlank() && !password.isBlank())
-        //     loginController.nextWindow();
-
         cmds.put("add", new Add());
         cmds.put("add_random", new AddRandom());
         cmds.put("clear", new Clear());
@@ -75,22 +67,29 @@ public class Handler {
         // Request request = makeRequest(console.read());
         try {
             Request request = makeRequest(console.read());
+            if (request.command().equals(Show.class)) {
+                refreshCollection();
+                console.writeln(localMarines.toString());
+                return;
+            }
 
             Response response = network.sendRequest(request);
-            console.write(response.toString());
+            console.writeln(response.toString());
             if (response.status() == Status.CLOSE) {
                 request.command().execute();
                 System.exit(0);
             }
+            refreshCollection();
         } catch (NullPointerException e) {
-            console.write("=>");
+            // console.write("=>");
+            console.writeln(e.toString());
             // } catch (UnsupportedOperationException e) {
             // console.writeln("Recursion detected, unsopported opetarion. Execution
             // canceled");
             // console.write("=>");
         } catch (Exception e) {
+            // console.write("=>");
             console.writeln(e.toString());
-            console.write("=>");
         }
 
     }
@@ -106,7 +105,7 @@ public class Handler {
         String[] inp_split = null;
         String[] inp_args = null;
         try {
-            inp_split = input.strip().split("\\s+");
+            inp_split = input.strip().split("\s+");
         } catch (Exception e) {
             inp_split = new String[] {};
         }
@@ -134,8 +133,6 @@ public class Handler {
                 cmdArgs = inp_args != null ? inp_args[0] : null;
             if (cmd.getClass().equals(RemoveByID.class))
                 cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
-            if (cmd.getClass().equals(Show.class))
-                cmdArgs = inp_args != null ? Integer.parseInt(inp_args[0]) : null;
             if (cmd.getClass().equals(UpdateId.class))
                 cmdArgs = new SpaceMarineBuilder().setId(inp_args != null ? Long.parseLong(inp_args[0]) : -1).build();
             if (cmd.getClass().equals(ExecuteScript.class)) {
@@ -174,10 +171,31 @@ public class Handler {
 
     public static boolean tryLogin(String usernameT, String passwordT) {
         Response response = network.sendRequest(new Request(new Login(), null, usernameT, hashPassword(passwordT)));
+        StdConsole.writeln("answer recived");
         if (response.status().equals(Status.COMPLETE)) {
             setUser(usernameT, passwordT);
+            StdConsole.writeln("Login succes");
             return true;
         } else
             return false;
+    }
+
+    public static Handler getInstance() {
+        return instance == null ? instance = new Handler() : instance;
+    }
+
+    public static void refreshCollection() {
+        Request request=null;
+        Response response = null;
+        Deque acc = new ArrayDeque<SpaceMarine>();
+
+        int part=0;
+        do {
+            part = Integer.parseInt(response!=null? response.output():"-1") + 1;
+            request= new Request(new LoadPart(), part, username, hashPassword(password));
+            response = network.sendRequest(request);
+            acc.addAll(response.listMarine());
+
+        } while (response != null && response.status() != Status.COMPLETE);
     }
 }

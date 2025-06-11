@@ -11,9 +11,10 @@ import lab8.shared.commands.Command;
 import lab8.shared.commands.ExecuteScript;
 import lab8.shared.commands.Exit;
 import lab8.shared.commands.Load;
-import lab8.shared.commands.LoadClient;
+import lab8.shared.commands.LoadPart;
 import lab8.shared.commands.Login;
 import lab8.shared.commands.Save;
+import lab8.shared.commands.Show;
 import lab8.shared.messages.Request;
 import lab8.shared.messages.Response;
 import lab8.shared.messages.Status;
@@ -36,12 +37,10 @@ public class Worker {
 
     public Response processCommand(Request request) {
         Command cmd = request.command();
-        // if (args != null) {
+ 
         cmd.setArgs(request.args());
         logger.info(String.format("[PROCESSING] Arguments set: %s, %s", request.args().toString(),
                 request.args().getClass()));
-        // } else
-        // logger.info("[PROCESSING] Empty arguments");
 
         Response response = null;
         try {
@@ -54,20 +53,21 @@ public class Worker {
             cmd.setUser(user);
 
             logger.info(String.format("[PROCESSING] Start executing"));
-            if (cmd.getClass().equals(LoadClient.class)) {
-                ArrayList clieList = new ArrayList<SpaceMarine>();
-                clieList.addAll(CollectionManager.getInstance().getCollection());
-                response = new Response("loadclient", Status.COMPLETE, null, null, clieList);
-            } else
-                cmd.execute();
+            cmd.execute();
 
             logger.info(String.format("[PROCESSING] %s command executiong finished", cmd.getName()));
             Save save = new Save();
             save.execute();
+
             if (cmd.getClass() == ExecuteScript.class)
                 scriptCtrl.endScript();
-            if (cmd.getClass() == Exit.class) {
+            if (cmd.getClass() == Exit.class) 
                 response = new Response(cmd.getName(), Status.CLOSE, "", null, null);
+            if (cmd.getClass().equals(LoadPart.class)) {
+                if (cmd.getOutput().equals("FULL"))
+                    response = new Response(cmd.getName(), Status.COMPLETE, "FULL", null, ((LoadPart) cmd).getPart());
+                else
+                    response = new Response(cmd.getName(), Status.WAITNEXT, cmd.getOutput(), null, ((LoadPart) cmd).getPart());
             } else
                 response = new Response(cmd.getName(), Status.COMPLETE, cmd.getOutput(), null, null);
 

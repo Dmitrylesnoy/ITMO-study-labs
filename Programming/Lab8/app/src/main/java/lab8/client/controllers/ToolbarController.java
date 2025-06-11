@@ -1,31 +1,38 @@
 package lab8.client.controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import lombok.Getter;
 
 @Getter
-public class ToolbarController {
+public class ToolbarController implements Initializable {
 
-    @FXML private HBox toolbar;
-    @FXML private Label userLabel;
-    @FXML private Button terminalBtn;
-    @FXML private Button tableBtn;
-    @FXML private Button cardsBtn;
+    @FXML protected HBox toolbar;
+    @FXML protected Label userLabel;
+    @FXML protected Button terminalBtn;
+    @FXML protected Button tableBtn;
+    @FXML protected Button cardsBtn;
 
-    private static ToolbarController instance;
-    private static Stage terminalStage=openWindow("/fxml/terminal.fxml", "Table", 900, 700);
-    private static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1200, 700);
-    private static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
+    protected static String username = "";
+    protected static ToolbarController instance;
+    protected static Stage terminalStage=openWindow("/fxml/terminal.fxml", "Table", 900, 700);
+    protected static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1200, 700);
+    protected static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
   
     @FXML
     public void openTerminal(ActionEvent event) {
@@ -50,8 +57,11 @@ public class ToolbarController {
     }
 
     @FXML
-    public void setUser(String username) {
-        userLabel.setText(username);
+    public void setUser(String user) {
+        ToolbarController.username = user;
+        ((Label) terminalStage.getScene().getRoot().lookup("#userLabel")).setText("User: " + username);
+        ((Label) tableStage.getScene().getRoot().lookup("#userLabel")).setText("User: " + username);
+        ((Label) cardsStage.getScene().getRoot().lookup("#userLabel")).setText("User: " + username);
     }
 
     public static Stage openWindow(String fxmlPath, String title, int w, int h) {
@@ -72,5 +82,17 @@ public class ToolbarController {
 
     public static ToolbarController getInstance() {
         return instance == null ? instance = new ToolbarController() : instance;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        userLabel.setOnMouseClicked(e -> {
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "Are you want lo log out?", ButtonType.YES, ButtonType.NO);
+            dialog.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES){
+                LoginController.open().show();
+            } else System.out.println("Нет");
+            });
+        });
     }
 }

@@ -7,7 +7,6 @@
 /* ===== Блок авторизации ===== */
 .login-box {
     -fx-background-color: rgba(33, 46, 33, 0.95);
-    /* тёмно-зелёный */
     -fx-background-radius: 12;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 255, 128, 0.15), 10, 0.3, 0, 4);
     -fx-spacing: 12;
@@ -17,7 +16,6 @@
 /* ===== Заголовок ===== */
 .title-label {
     -fx-text-fill: #81c784;
-    /* светло-зелёный акцент */
     -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
@@ -43,7 +41,6 @@ Button {
     -fx-background-radius: 6;
     -fx-padding: 10 16;
     -fx-pref-width: 120px;
-    /* кнопки функции шире */
     -fx-effect: dropshadow(one-pass-box, rgba(0, 255, 128, 0.2), 5, 0.2, 0, 2);
 }
 
@@ -80,6 +77,10 @@ Button:hover {
     -fx-margin: 8;
 }
 
+.send-button {
+    -fx-padding: 8 10;
+}
+
 /* ===== Поле вывода ===== */
 .output-area {
     -fx-background-color: #121c12;
@@ -93,3 +94,70 @@ Button:hover {
     -fx-text-fill: #a5d6a7;
 }
 
+/* ===== TableView — общий фон и рамка ===== */
+.table-view {
+    -fx-background-color: #263826;
+    -fx-border-color: #4caf50;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+
+/* ===== Заголовки колонок ===== */
+.table-view .column-header-background {
+    -fx-background-color: #1b2e1b;
+}
+
+.table-view .column-header,
+.table-view .column-header .label {
+    -fx-text-fill: #c8f6c8;
+    -fx-font-weight: bold;
+    -fx-background-color: #1b2e1b;
+}
+
+.status-label {
+    -fx-text-fill: #e8f5e9;
+}
+
+/* ===== Ячейки ===== */
+.table-view .cell {
+    -fx-text-fill: #c8f6c8;
+    -fx-border-color: transparent transparent #4caf50 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: #263826;
+}
+
+/* ===== Выделенный ряд ===== */
+.table-view .cell:selected {
+    -fx-background-color: rgba(76, 175, 80, 0.3);
+    -fx-text-fill: #e8f5e9;
+}
+
+/* ===== Стрелка сортировки ===== */
+.table-view .column-header .sort-arrow {
+    -fx-background-color: #81c784;
+}
+
+/* ===== Scrollbar ===== */
+.scroll-bar:vertical {
+    -fx-background-color: #1b2e1b;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #2e7d32;
+    -fx-background-radius: 2em;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #388e3c;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: #81c784;
+}

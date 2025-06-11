@@ -36,6 +36,7 @@ public class LoginController {
             // nextWindow();
             setStatusText("Logged in!");
             ((Stage) loginBtn.getScene().getWindow()).close();
+            ToolbarController.getInstance().setUser(username);
             ToolbarController.getInstance().openTerminal(event);
             loginStatus = true;
             return;
@@ -46,7 +47,7 @@ public class LoginController {
 
 
 
-    public Stage open() {
+    public static Stage open() {
         return ToolbarController.getInstance().openWindow("/fxml/login.fxml","login",900,700);
     }
 

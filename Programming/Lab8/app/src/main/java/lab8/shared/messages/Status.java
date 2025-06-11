@@ -6,6 +6,7 @@ package lab8.shared.messages;
  */
 public enum Status {
     COMPLETE("Completed successfully"),
+    WAITNEXT("Responce sendind by a part"),
     WARNING("Completed with warnings"),
     FAILED("Execution failed"),
     INPUT("Input message"),

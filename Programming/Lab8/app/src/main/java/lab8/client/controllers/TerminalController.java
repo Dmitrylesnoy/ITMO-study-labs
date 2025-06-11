@@ -8,10 +8,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
+import lab8.client.utils.Handler;
 import lab8.shared.io.console.ClientConsole;
 import lab8.shared.io.console.StdConsole;
 
@@ -27,24 +28,51 @@ public class TerminalController extends ToolbarController {
     private Button sendButton;
 
     private String input = "";
-    private Deque<String> outputDeque = new LinkedList<String>();
+    private static Deque<String> outputDeque = new LinkedList<String>();
 
     public void initialize(URL location, ResourceBundle resources) {
         // super.initialize(location, resources);
         // updateOutputText(output);
         // outputArea.setText("Welcome to terminal of SpaceMarine manager!");
-        while (!outputDeque.isEmpty()) {
-            writeln(outputDeque.poll());
-        }
+        printOutput();
     }
 
     @FXML
     private void handleSendCommand(ActionEvent event) {
-        input = commandInput.getText();
-        if (!input.isBlank()) {
-            outputArea.appendText("=> " + input + "\n");
+        processInput();
+    }
+
+    private void processInput() {
+        // input = commandInput.getText();
+        if (!(input = commandInput.getText()).isBlank()) {
+            outputArea.appendText("=> "+input + "\n");
             commandInput.clear();
             ClientConsole.getInstance().add(input);
+            Handler.getInstance().run();
+            printOutput();
+            // outputArea.appendText(outputDeque.poll());
+        } else
+            input = "";
+
+    }
+
+    private void printOutput() {
+        while (!outputDeque.isEmpty()) {
+            String out=outputDeque.poll();
+            try {
+                outputArea.appendText(out);
+            } catch (Exception e) {
+                e.printStackTrace();
+                StdConsole.writeln(e.toString());
+                outputDeque.push(out);
+                Alert msg = new Alert(AlertType.INFORMATION);
+                msg.setContentText(out);
+                msg.setTitle("Info");
+                msg.show();
+                StdConsole.write(out);
+                e.printStackTrace();
+            }
+            // writeln(outputDeque.poll());
         }
     }
 
@@ -54,21 +82,11 @@ public class TerminalController extends ToolbarController {
         return input_read;
     }
 
-    public void write(String output) {
-        try {
-            outputArea.appendText(output);
-        } catch (Exception e) {
-            outputDeque.push(output);
-            Alert msg = new Alert(AlertType.INFORMATION);
-            msg.setContentText(output);
-            msg.setTitle("Info");
-            msg.show();
-            StdConsole.write(output);
-            e.printStackTrace();
-        }
+    public static void write(String output) {
+        outputDeque.push(output);
     }
 
-    public void writeln(String output) {
-        write(output + "\n");
+    public static void writeln(String output) {
+        outputDeque.push(output + "\n");
     }
 }

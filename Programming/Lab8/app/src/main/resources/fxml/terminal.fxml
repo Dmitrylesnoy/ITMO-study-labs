@@ -21,13 +21,21 @@
                 <Button fx:id="cardsBtn" text="Карточки" onAction="#openCards" />
             </HBox>
 
-            <TextField fx:id="commandInput"
-                promptText="Enter command..."
-                styleClass="command-field" />
-            <Button fx:id="sendButton"
-                text="Enter"
-                onAction="#handleSendCommand"
-                styleClass="send-button" />
+            <HBox spacing="5">
+                <padding>
+                    <Insets top="5" bottom="5" />
+                </padding>
+                <TextField fx:id="commandInput"
+                    promptText="Enter command..."
+                    styleClass="command-field"
+                    HBox.hgrow="ALWAYS"
+                    onAction="#handleSendCommand" />
+                <Button fx:id="sendButton"
+                    text="Enter"
+                    onAction="#handleSendCommand" 
+                    styleClass="send-button"/>
+            </HBox>
+
         </VBox>
     </top>
 

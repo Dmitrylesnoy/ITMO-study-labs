@@ -2,6 +2,7 @@ package lab8.shared.commands;
 
 import lab8.shared.collection.CollectionManager;
 import lab8.shared.model.SpaceMarine;
+import lombok.Getter;
 
 /**
  * Command to display all SpaceMarine objects in the collection.
@@ -10,7 +11,6 @@ import lab8.shared.model.SpaceMarine;
  */
 public class Show extends Command {
     private StringBuilder output = new StringBuilder(" ");
-    private int count;
 
     /**
      * Default constructor for the Show class, initializing an instance without
@@ -24,19 +24,19 @@ public class Show extends Command {
      * collection.
      */
     public void execute() {
-        if (count == 0)
+        // if (count == 0)
             CollectionManager.getInstance().getCollection().stream()
                     .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
-        else {
-            if (count > 0)
-                CollectionManager.getInstance().getCollection().stream().skip((count - 1) * 10).limit(10)
-                        .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
-            else
-                CollectionManager.getInstance().getCollection().stream()
-                        .skip(CollectionManager.getInstance().getCollection().size() - 10)
-                        .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
+        // else {
+        //     if (count > 0)
+        //         CollectionManager.getInstance().getCollection().stream().skip((count - 1) * 10).limit(10)
+        //                 .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
+        //     else
+        //         CollectionManager.getInstance().getCollection().stream()
+        //                 .skip(CollectionManager.getInstance().getCollection().size() - 10)
+        //                 .map(m -> m.toString()).forEach(m -> output.append(m).append('\n'));
 
-        }
+        // }
     }
 
     /**
@@ -46,11 +46,6 @@ public class Show extends Command {
      */
     public String getOutput() {
         return output.toString();
-    }
-
-    public <T> Command setArgs(T count) {
-        this.count = (int) count;
-        return this;
     }
 
     /**

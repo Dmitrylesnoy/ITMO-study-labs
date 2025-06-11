@@ -12,7 +12,7 @@ public class ClientConsole {
 
     public ClientConsole() {
         instance = this;
-        terminal = new TerminalController();
+        // terminal = new TerminalController();
     }
 
     public static ClientConsole getInstance() {
@@ -20,11 +20,13 @@ public class ClientConsole {
     }
 
     public void write(String text) {
-        terminal.write(text);
+        TerminalController.write(text);
+        StdConsole.write(text);
     }
 
     public void writeln(String text) {
-        terminal.writeln(text);
+        TerminalController.writeln(text);
+        StdConsole.writeln(text);
     }
 
     public String read() {
