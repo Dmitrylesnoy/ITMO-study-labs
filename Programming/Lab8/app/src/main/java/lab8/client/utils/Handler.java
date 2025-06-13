@@ -34,7 +34,7 @@ public class Handler {
     private static String password;
     private ClientConsole console = ClientConsole.getInstance();
     private static Handler instance;
-    private static Deque<SpaceMarine> localMarines = new ArrayDeque<SpaceMarine>();
+    private static Deque<SpaceMarine> localMarines = new ArrayDeque<SpaceMarine>(0);
 
     /**
      * Default constructor for the Handler class.
@@ -81,14 +81,9 @@ public class Handler {
             }
             refreshCollection();
         } catch (NullPointerException e) {
-            // console.write("=>");
             console.writeln(e.toString());
-            // } catch (UnsupportedOperationException e) {
-            // console.writeln("Recursion detected, unsopported opetarion. Execution
-            // canceled");
-            // console.write("=>");
+
         } catch (Exception e) {
-            // console.write("=>");
             console.writeln(e.toString());
         }
 
@@ -169,6 +164,11 @@ public class Handler {
         Handler.password = password;
     }
 
+    public Deque<SpaceMarine> getCollection() {
+        refreshCollection();
+        return localMarines;
+    }
+
     public static boolean tryLogin(String usernameT, String passwordT) {
         Response response = network.sendRequest(new Request(new Login(), null, usernameT, hashPassword(passwordT)));
         StdConsole.writeln("answer recived");
@@ -187,14 +187,15 @@ public class Handler {
     public static void refreshCollection() {
         Request request=null;
         Response response = null;
-        Deque acc = new ArrayDeque<SpaceMarine>();
+        Deque acc = new ArrayDeque<SpaceMarine>(0);
 
         int part=0;
         do {
-            part = Integer.parseInt(response!=null? response.output():"-1") + 1;
+            part = Integer.parseInt(response!=null && response.output()!=null? response.output():"-1") + 1;
             request= new Request(new LoadPart(), part, username, hashPassword(password));
             response = network.sendRequest(request);
-            acc.addAll(response.listMarine());
+            if (response.listMarine()!=null)
+                acc.addAll(response.listMarine());
 
         } while (response != null && response.status() != Status.COMPLETE);
     }

@@ -32,7 +32,7 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     private Chapter chapter; // Field can be null
     @JsonIgnore
     private transient StdConsole console = new StdConsole();
-    private Integer creator_id;
+    private Integer creatorId;
 
     /**
      * Default constructor for the SpaceMarine class.

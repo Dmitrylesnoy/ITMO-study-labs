@@ -68,13 +68,12 @@ public class ToolbarController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(ToolbarController.class.getResource(fxmlPath));
             Parent root = loader.load();
-
-            // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Stage stage = new Stage();
             stage.setScene(new Scene(root, w, h));
             stage.setTitle(title);
             return stage;
         } catch (IOException e) {
+            System.err.println("Failed to load FXML: " + fxmlPath);
             e.printStackTrace();
             return null;
         }
@@ -86,12 +85,15 @@ public class ToolbarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
         userLabel.setOnMouseClicked(e -> {
-        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "Are you want lo log out?", ButtonType.YES, ButtonType.NO);
+            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to log out?", ButtonType.YES, ButtonType.NO);
             dialog.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.YES){
-                LoginController.open().show();
-            } else System.out.println("Нет");
+                if (response == ButtonType.YES) {
+                    LoginController.open().show();
+                } else {
+                    System.out.println("Logout cancelled.");
+                }
             });
         });
     }

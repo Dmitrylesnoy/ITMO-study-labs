@@ -35,7 +35,7 @@ public class Add extends Command {
         // if (obj == null) {
         // obj = new SpaceMarineBuilder().build();
         // }
-        obj.setCreator_id(userId);
+        obj.setCreatorId(userId);
         if (obj.getId() == null)
             obj.setId(CollectionManager.getInstance().nextId());
         CollectionManager.getInstance().getCollection().add(obj);

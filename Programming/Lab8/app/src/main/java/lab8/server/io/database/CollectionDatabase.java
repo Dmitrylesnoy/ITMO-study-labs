@@ -95,7 +95,7 @@ public class CollectionDatabase {
                     marineStmt.setString(7, marine.getAchievements());
                     marineStmt.setString(8, marine.getMeleeWeapon() != null ? marine.getMeleeWeapon().name() : null);
                     marineStmt.setObject(9, chapterId, java.sql.Types.INTEGER);
-                    marineStmt.setInt(10, marine.getCreator_id());
+                    marineStmt.setInt(10, marine.getCreatorId());
                     marineStmt.executeUpdate();
                 }
 
@@ -151,7 +151,7 @@ public class CollectionDatabase {
                             chapter);
                     marine.setId(rs.getLong("id"));
                     marine.setCreationDate(new Date(rs.getTimestamp("creation_date").getTime()));
-                    marine.setCreator_id(rs.getInt("creator_id"));
+                    marine.setCreatorId(rs.getInt("creator_id"));
 
                     spaceMarines.add(marine);
                 }
@@ -220,7 +220,7 @@ public class CollectionDatabase {
                 marineStmt.setString(7, marine.getAchievements());
                 marineStmt.setString(8, marine.getMeleeWeapon() != null ? marine.getMeleeWeapon().name() : null);
                 marineStmt.setObject(9, chapterId, java.sql.Types.INTEGER);
-                marineStmt.setInt(10, marine.getCreator_id());
+                marineStmt.setInt(10, marine.getCreatorId());
 
                 marineStmt.executeUpdate();
                 conn.commit();

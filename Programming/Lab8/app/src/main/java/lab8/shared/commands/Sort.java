@@ -30,7 +30,7 @@ public class Sort extends Command {
     public void execute() {
         Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
         newStack.addAll(CollectionManager.getInstance().getCollection().stream()
-                .filter(m -> m.getCreator_id().equals(userId))
+                .filter(m -> m.getCreatorId().equals(userId))
                 .sorted().collect(Collectors.toList()));
         CollectionManager.getInstance().setCollection(newStack);
     }

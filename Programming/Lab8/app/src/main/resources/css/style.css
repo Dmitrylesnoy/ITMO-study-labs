@@ -109,7 +109,8 @@ Button:hover {
 }
 
 .table-view .column-header,
-.table-view .column-header .label {
+.table-view .column-header .label,
+Label {
     -fx-text-fill: #c8f6c8;
     -fx-font-weight: bold;
     -fx-background-color: #1b2e1b;

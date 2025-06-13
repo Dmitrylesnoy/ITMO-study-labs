@@ -48,7 +48,7 @@ public class RemoveLower extends Command {
         Stack<SpaceMarine> newStack = new Stack<SpaceMarine>();
         newStack.addAll(
                 CollectionManager.getInstance().getCollection().stream()
-                        .filter(mar -> mar.compareTo(obj) < 0).filter(m -> m.getCreator_id().equals(userId))
+                        .filter(mar -> mar.compareTo(obj) < 0).filter(m -> m.getCreatorId().equals(userId))
                         .collect(Collectors.toList()));
         CollectionManager.getInstance().setCollection(newStack);
     }

@@ -16,7 +16,7 @@ public class Clear extends Command {
     @Override
     public void execute() {
         CollectionManager.getInstance().setCollection((CollectionManager.getInstance().getCollection().stream()
-                .filter(m -> !m.getCreator_id().equals(userId)).collect(Collectors.toCollection(Stack::new))));
+                .filter(m -> !m.getCreatorId().equals(userId)).collect(Collectors.toCollection(Stack::new))));
     }
 
     /**
