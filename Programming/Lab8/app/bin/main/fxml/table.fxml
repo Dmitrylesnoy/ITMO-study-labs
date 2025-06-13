@@ -35,20 +35,9 @@
 
     <center>
         <TableView fx:id="tableView" styleClass="table-view" GridPane.hgrow="ALWAYS">
-            <columns>
-                <TableColumn fx:id="colId" text="ID" prefWidth="80" />
-                <TableColumn fx:id="colName" text="Name" prefWidth="120" />
-                <TableColumn fx:id="colX" text="X Coordinate" prefWidth="100" />
-                <TableColumn fx:id="colY" text="Y Coordinate" prefWidth="100" />
-                <TableColumn fx:id="colCreationDate" text="Creation Date" prefWidth="150" />
-                <TableColumn fx:id="colHealth" text="Health" prefWidth="100" />
-                <TableColumn fx:id="colLoyal" text="Loyal" prefWidth="80" />
-                <TableColumn fx:id="colAchievements" text="Achievements" prefWidth="150" />
-                <TableColumn fx:id="colWeapon" text="Melee Weapon" prefWidth="120" />
-                <TableColumn fx:id="colChapterName" text="Chapter Name" prefWidth="120" />
-                <TableColumn fx:id="colChapterWorld" text="Chapter World" prefWidth="120" />
-                <TableColumn fx:id="colCreatorId" text="Creator ID" prefWidth="100" />
-            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
         </TableView>
     </center>
 </BorderPane>

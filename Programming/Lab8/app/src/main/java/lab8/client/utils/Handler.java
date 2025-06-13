@@ -187,7 +187,7 @@ public class Handler {
     public static void refreshCollection() {
         Request request=null;
         Response response = null;
-        Deque acc = new ArrayDeque<SpaceMarine>(0);
+        Deque accumulate = new ArrayDeque<SpaceMarine>(0);
 
         int part=0;
         do {
@@ -195,8 +195,9 @@ public class Handler {
             request= new Request(new LoadPart(), part, username, hashPassword(password));
             response = network.sendRequest(request);
             if (response.listMarine()!=null)
-                acc.addAll(response.listMarine());
-
+                accumulate.addAll(response.listMarine());
         } while (response != null && response.status() != Status.COMPLETE);
+        localMarines.clear();
+        localMarines.addAll(accumulate);
     }
 }

@@ -31,7 +31,7 @@ public class ToolbarController implements Initializable {
     protected static String username = "";
     protected static ToolbarController instance;
     protected static Stage terminalStage=openWindow("/fxml/terminal.fxml", "Table", 900, 700);
-    protected static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1200, 700);
+    protected static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1000, 700);
     protected static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
   
     @FXML
@@ -90,6 +90,7 @@ public class ToolbarController implements Initializable {
             Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to log out?", ButtonType.YES, ButtonType.NO);
             dialog.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.YES) {
+                    ((Stage) userLabel.getScene().getWindow()).close();
                     LoginController.open().show();
                 } else {
                     System.out.println("Logout cancelled.");
