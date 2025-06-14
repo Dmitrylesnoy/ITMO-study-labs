@@ -29,6 +29,8 @@
                     <Insets top="5" bottom="5" />
                 </padding>
                 <Button fx:id="reloadButton" text="Reload Data" onAction="#refreshTable" />
+                <!-- <Button fx:id="editButton" text="Edit Data" onAction="#editItem" /> -->
+
             </HBox>
         </VBox>
     </top>

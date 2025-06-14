@@ -15,6 +15,8 @@
                     <Insets top="10" bottom="10" />
                 </padding>
                 <Label fx:id="userLabel" text="User: admin" styleClass="user-label" />
+                <Button fx:id="themeButton" styleClass="theme-toggle-button"
+                    onAction="#toggleTheme" />
                 <Pane HBox.hgrow="ALWAYS" />
                 <Button fx:id="terminalBtn" text="Терминал" onAction="#openTerminal" />
                 <Button fx:id="tableBtn" text="Таблица" onAction="#openTable" />

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+    fx:controller="lab8.client.controllers.EditController"
+    stylesheets="@../css/style.css"
+    styleClass="main-root">
+    <center>
+        <VBox spacing="15" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
+            AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+            <children>
+                <Label text="Edit SpaceMarine" styleClass="title-label" />
+                <GridPane hgap="10" vgap="10" alignment="CENTER_LEFT">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="300" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="100" />
+                    </columnConstraints>
+                    <children>
+                        <TextField fx:id="idField" editable="false" promptText="ID"
+                            GridPane.rowIndex="0" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Unique ID, read-only" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="ID" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                        <TextField fx:id="nameField" promptText="Name" GridPane.rowIndex="1"
+                            GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Cannot be empty" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Name" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                        <TextField fx:id="coordXField" promptText="Coordinates X"
+                            GridPane.rowIndex="2" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Double value" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Coord X" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                        <TextField fx:id="coordYField" promptText="Coordinates Y"
+                            GridPane.rowIndex="3" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Float value, cannot be null" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Coord Y" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                        <TextField fx:id="creationDateField" editable="false"
+                            promptText="Creation Date" GridPane.rowIndex="4"
+                            GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Auto-generated, read-only" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Creation Date" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+                        <TextField fx:id="healthField" promptText="Health" GridPane.rowIndex="5"
+                            GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Must be greater than 0" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Health" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="loyalCheckBox" text="Loyal" GridPane.rowIndex="6"
+                            GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="True or false, can be unset" />
+                            </tooltip>
+                        </CheckBox>
+                        <Label text="Loyal" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+                        <TextField fx:id="achievementsField" promptText="Achievements"
+                            GridPane.rowIndex="7" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Cannot be empty" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Achievements" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="meleeWeaponCombo" promptText="Melee Weapon"
+                            GridPane.rowIndex="8" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Choose weapon or leave empty" />
+                            </tooltip>
+                        </ComboBox>
+                        <Label text="Melee Weapon" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+                        <TextField fx:id="chapterNameField" promptText="Chapter Name"
+                            GridPane.rowIndex="9" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Cannot be empty" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Chapter Name" GridPane.rowIndex="9" GridPane.columnIndex="1" />
+                        <TextField fx:id="chapterWorldField" promptText="Chapter World"
+                            GridPane.rowIndex="10" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Can be empty" />
+                            </tooltip>
+                        </TextField>
+                        <Label text="Chapter World" GridPane.rowIndex="10" GridPane.columnIndex="1" />
+                    </children>
+                </GridPane>
+                <HBox spacing="10" alignment="CENTER">
+                    <children>
+                        <Button text="Save" onAction="#saveMarine" />
+                        <Button text="Cancel" onAction="#cancel" />
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+        </VBox>
+    </center>
+</BorderPane>

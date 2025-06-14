@@ -2,8 +2,8 @@ package lab8.client.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,9 +27,12 @@ public class ToolbarController implements Initializable {
     @FXML protected Button terminalBtn;
     @FXML protected Button tableBtn;
     @FXML protected Button cardsBtn;
+    @FXML protected Button themeButton;
 
     protected static String username = "";
     protected static ToolbarController instance;
+    protected static boolean isLightTheme = true;
+
     protected static Stage terminalStage=openWindow("/fxml/terminal.fxml", "Table", 900, 700);
     protected static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1000, 700);
     protected static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
@@ -87,7 +90,8 @@ public class ToolbarController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
         userLabel.setOnMouseClicked(e -> {
-            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to log out?", ButtonType.YES, ButtonType.NO);
+            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to log out?", ButtonType.YES,
+                    ButtonType.NO);
             dialog.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.YES) {
                     ((Stage) userLabel.getScene().getWindow()).close();
@@ -97,5 +101,21 @@ public class ToolbarController implements Initializable {
                 }
             });
         });
+    }
+
+    @FXML
+    public void toggleTheme(ActionEvent event) {
+        isLightTheme = !isLightTheme;
+        String stylesheet = isLightTheme ? "/css/dark-theme.css" : "/css/light-theme.css";
+        updateStylesheet(terminalStage, stylesheet);
+        updateStylesheet(tableStage, stylesheet);
+        updateStylesheet(cardsStage, stylesheet);
+    }
+
+    private void updateStylesheet(Stage stage, String stylesheet) {
+        if (stage != null && stage.getScene() != null) {
+            stage.getScene().getStylesheets().clear();
+            stage.getScene().getStylesheets().add(getClass().getResource(stylesheet).toExternalForm());
+        }
     }
 }

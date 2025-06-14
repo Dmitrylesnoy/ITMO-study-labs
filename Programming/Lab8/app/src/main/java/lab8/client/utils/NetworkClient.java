@@ -69,6 +69,7 @@ public class NetworkClient {
                     }
                 } catch (Exception e) {
                     ClientConsole.getInstance().writeln("Error sending request: " + e.getMessage());
+                    // TODO; пофиксить зависание приложение и ALERT
                     break;
                 }
             }

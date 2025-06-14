@@ -23,10 +23,6 @@
                 <Button text="Table" onAction="#openTable" />
                 <Button text="Cards" onAction="#openCards" />
             </HBox>
-
-            <TextField fx:id="commandInput"
-                promptText="Enter command..."
-                styleClass="command-field" />
         </VBox>
     </top>
 

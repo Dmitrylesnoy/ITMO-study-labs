@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+import org.glassfish.jaxb.core.v2.TODO;
+
+import javafx.application.Platform;
 import lab8.shared.builders.SpaceMarineBuilder;
 import lab8.shared.commands.*;
 import lab8.shared.io.console.ClientConsole;
@@ -67,6 +70,10 @@ public class Handler {
         // Request request = makeRequest(console.read());
         try {
             Request request = makeRequest(console.read());
+            if (request.command().equals(Exit.class)){
+                Platform.exit();
+                System.exit(0);
+            }
             if (request.command().equals(Show.class)) {
                 refreshCollection();
                 console.writeln(localMarines.toString());
@@ -77,6 +84,7 @@ public class Handler {
             console.writeln(response.toString());
             if (response.status() == Status.CLOSE) {
                 request.command().execute();
+                Platform.exit();
                 System.exit(0);
             }
             refreshCollection();
@@ -167,6 +175,11 @@ public class Handler {
     public Deque<SpaceMarine> getCollection() {
         refreshCollection();
         return localMarines;
+    }
+
+    public void setCollection(Deque<SpaceMarine> newDeque) {
+        this.localMarines = newDeque;
+        // TODO
     }
 
     public static boolean tryLogin(String usernameT, String passwordT) {

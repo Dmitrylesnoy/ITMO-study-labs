@@ -31,7 +31,7 @@ public class TerminalController extends ToolbarController {
     private static Deque<String> outputDeque = new LinkedList<String>();
 
     public void initialize(URL location, ResourceBundle resources) {
-        // super.initialize(location, resources);
+        super.initialize(location, resources);
         // updateOutputText(output);
         // outputArea.setText("Welcome to terminal of SpaceMarine manager!");
         printOutput();

@@ -135,3 +135,25 @@ Button:hover {
 .table-view .column-header .sort-arrow {
     -fx-background-color: #81c784;
 }
+
+.theme-toggle-button {
+    -fx-background-color: #43a047;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-padding: 0;
+    -fx-text-fill: transparent;
+    -fx-background-image: url('/images/theme_switch.png');
+    /* Иконка луны для тёмной темы */
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-effect: dropshadow(one-pass-box, rgba(76, 175, 80, 0.25), 5, 0.2, 0, 2);
+}
+
+.theme-toggle-button:hover {
+    -fx-background-color: #66bb6a;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}

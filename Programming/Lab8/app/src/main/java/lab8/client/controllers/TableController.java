@@ -9,7 +9,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.lang.reflect.Field;
@@ -35,6 +40,15 @@ public class TableController extends ToolbarController {
         setupDynamicColumns();
         tableView.setItems(marineData);
         setupDataUpdateTimeline();
+
+        tableView.setOnMouseClicked(event -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+                SpaceMarine selectedMarine = tableView.getSelectionModel().getSelectedItem();
+                if (selectedMarine != null) {
+                    openEditWindow(selectedMarine);
+                }
+            }
+        });
     }
 
     private void setupDynamicColumns() {
@@ -158,5 +172,24 @@ public class TableController extends ToolbarController {
             alert.setContentText(message);
             alert.showAndWait();
         });
+    }
+
+    public void openEditWindow(SpaceMarine marine) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit-marine.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Edit SpaceMarine");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+
+            EditController controller = loader.getController();
+            controller.setMarine(marine, this);
+
+            stage.showAndWait();
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to open edit window: " + e.getMessage());
+        }
     }
 }

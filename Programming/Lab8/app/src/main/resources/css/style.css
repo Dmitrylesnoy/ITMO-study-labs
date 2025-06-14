@@ -158,3 +158,25 @@ Label {
 .scroll-bar:vertical .decrement-arrow {
     -fx-background-color: #81c784;
 }
+
+.theme-toggle-button {
+    -fx-background-color: #2e7d32;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-padding: 0;
+    -fx-text-fill: transparent;
+    -fx-background-image: url('/images/theme_switch.png');
+    /* Иконка солнца для светлой темы */
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 255, 128, 0.2), 5, 0.2, 0, 2);
+}
+
+.theme-toggle-button:hover {
+    -fx-background-color: #388e3c;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
