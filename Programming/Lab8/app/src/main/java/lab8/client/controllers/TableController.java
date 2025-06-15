@@ -23,15 +23,23 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class TableController extends ToolbarController {
 
-
-    @FXML private TableView<SpaceMarine> tableView;
-    @FXML private Button reloadButton;
-    @FXML private Button addButton;
+    @FXML
+    private TableView<SpaceMarine> tableView;
+    @FXML
+    private Button reloadButton;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button filterButton;
+    @FXML
+    private Button resetFilterButton;
 
     private ObservableList<SpaceMarine> marineData = FXCollections.observableArrayList();
+    private Predicate<SpaceMarine> currentFilter = marine -> true; // Изначально фильтр пропускает все
     private Timeline dataUpdateTimeline;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -95,7 +103,6 @@ public class TableController extends ToolbarController {
                 });
             }
         }
-
     }
 
     private List<Field> getAllFields() {
@@ -112,14 +119,10 @@ public class TableController extends ToolbarController {
     private void addColumn(String name, Class<?> type,
             java.util.function.Function<SpaceMarine, String> valueExtractor) {
         TableColumn<SpaceMarine, String> column = new TableColumn<>(name);
-        // column.setPrefWidth(name.contains(".") ? 150 : 100);
-        // column.setPrefWidth((new Text(name)).getLayoutBounds().getWidth() + 20);
         column.setCellValueFactory(cellData -> new SimpleStringProperty(valueExtractor.apply(cellData.getValue())));
         tableView.getColumns().add(column);
     }
 
-
-    
     private void setupDataUpdateTimeline() {
         dataUpdateTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(5), event -> Platform.runLater(() -> {
@@ -129,22 +132,15 @@ public class TableController extends ToolbarController {
         dataUpdateTimeline.play();
     }
 
-    public void pauseTableUpdate() {
-        dataUpdateTimeline.pause();
-    }
-
-    public void playTableUpdate() {
-        dataUpdateTimeline.play();
-    }
-
     private void loadData() {
-        if (tableView == null) 
+        if (tableView == null)
             return;
         try {
             Stack<SpaceMarine> marineStack = Handler.getInstance().getCollection();
-            // if (marineStack == null || marineStack.isEmpty()) 
-                // showAlert(Alert.AlertType.WARNING, "Warning", "No data from server");
-            marineData.setAll(marineStack);
+            List<SpaceMarine> filteredData = marineStack.stream()
+                    .filter(currentFilter)
+                    .toList();
+            marineData.setAll(filteredData);
             tableView.refresh();
         } catch (Exception e) {
             marineData.clear();
@@ -152,18 +148,31 @@ public class TableController extends ToolbarController {
         }
     }
 
-
     public void setSpaceMarines(List<SpaceMarine> list) {
         Platform.runLater(() -> {
             if (list != null && !list.isEmpty()) {
-                marineData.setAll(list);
-                if (tableView != null) 
+                List<SpaceMarine> filteredData = list.stream()
+                        .filter(currentFilter)
+                        .toList();
+                marineData.setAll(filteredData);
+                if (tableView != null)
                     tableView.refresh();
             } else {
                 marineData.clear();
                 showAlert(Alert.AlertType.WARNING, "Warning", "Invalid or empty data provided.");
             }
         });
+    }
+
+    public void setFilter(Predicate<SpaceMarine> filter) {
+        this.currentFilter = filter != null ? filter : marine -> true;
+        loadData(); // Применяем фильтр сразу
+    }
+
+    @FXML
+    public void resetFilter() {
+        this.currentFilter = marine -> true;
+        loadData();
     }
 
     @FXML
@@ -176,7 +185,7 @@ public class TableController extends ToolbarController {
     public void openEditWindow(SpaceMarine marine) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit-marine.fxml"));
-            Stage stage = openWindow(loader, "Edit SpaceMarine",null,null);
+            Stage stage = openWindow(loader, "Edit SpaceMarine", null, null);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
@@ -189,6 +198,11 @@ public class TableController extends ToolbarController {
         }
     }
 
+    @FXML
+    public void addView(ActionEvent event) {
+        openAddWindow();
+    }
+
     public void openAddWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit-marine.fxml"));
@@ -199,7 +213,6 @@ public class TableController extends ToolbarController {
             EditController controller = loader.getController();
             controller.setMode(true).setMarine(new SpaceMarine()).setTable(this);
 
-
             stage.showAndWait();
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to open edit window: " + e.getMessage());
@@ -207,7 +220,24 @@ public class TableController extends ToolbarController {
     }
 
     @FXML
-    public void addItem(ActionEvent event) {
-        openAddWindow();
+    public void filterView(ActionEvent event) {
+        openFilterWindow();
+    }
+
+    public void openFilterWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/filter-marine.fxml"));
+            Stage stage = openWindow(loader, "Table filter", 400, 400);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+
+            FilterController controller = loader.getController();
+            controller.setTable(this);
+
+            stage.showAndWait();
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to open filter window: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

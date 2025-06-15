@@ -87,22 +87,19 @@ public class EditController {
     @FXML
     private void saveMarine() {
         try {
-            SpaceMarine marine;
-            if (!modeNew) {
-                marine = editItem(false);
-                if (marine != null)
+            SpaceMarine marine=editItem(modeNew);
+            if (marine != null) {
+                if (!modeNew) {
                     Handler.getInstance().updateItem(marine);
-            } else {
-                marine = editItem(true);
-                if (marine != null)
+                } else {
                     Handler.getInstance().run(new Request(new Add(), marine, null, null));
-
+                }
+                closeWindow();
             }
             tableController.refreshTable();
-            closeWindow();
         } catch (NumberFormatException e) {
             ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",
-                    "Invalid number format in coordinates or health.");
+                    "Invalid number format in coordinates.");
         } catch (Exception e) {
             ToolbarController.showAlert(Alert.AlertType.ERROR, "Error", "Failed to save marine: " + e.getMessage());
         }
@@ -121,11 +118,6 @@ public class EditController {
             return null;
         }
         Float coordY = Float.parseFloat(coordYField.getText()); //  TODO ограничения htalth
-        if (healthField.getText().isEmpty()) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",
-                    "health cannot be empty.");
-            return null;
-        }
         Double health = healthField.getText().isEmpty() ? null : Double.parseDouble(healthField.getText());
         if (health != null && health <= 0) {
             ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+    fx:controller="lab8.client.controllers.FilterController"
+    stylesheets="@../css/style.css"
+    styleClass="main-root">
+    <center>
+        <VBox spacing="15" alignment="CENTER_LEFT" AnchorPane.topAnchor="20"
+            AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+            <children>
+                <Label text="Filter SpaceMarines" styleClass="title-label" />
+                <GridPane hgap="10" vgap="10" alignment="CENTER_LEFT">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="150" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200" />
+                    </columnConstraints>
+                    <children>
+                        <Label text="Column" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Choose a column to filter by" />
+                            </tooltip>
+                        </Label>
+                        <ComboBox fx:id="columnCombo" promptText="Select column"
+                            GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200">
+                            <tooltip>
+                                <Tooltip text="Choose a column to filter by" />
+                            </tooltip>
+                        </ComboBox>
+                        <Label fx:id="conditionLabel" text="Condition" GridPane.rowIndex="1"
+                            GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Choose a filter condition" />
+                            </tooltip>
+                        </Label>
+                        <ComboBox fx:id="conditionCombo" promptText="Select condition"
+                            GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200">
+                            <tooltip>
+                                <Tooltip text="Choose a filter condition" />
+                            </tooltip>
+                        </ComboBox>
+                        <Label fx:id="valueLabel" text="Value" GridPane.rowIndex="2"
+                            GridPane.columnIndex="0">
+                            <tooltip>
+                                <Tooltip text="Enter or select filter value" />
+                            </tooltip>
+                        </Label>
+                        <TextField fx:id="valueField" promptText="Enter value" GridPane.rowIndex="2"
+                            GridPane.columnIndex="1" prefWidth="200">
+                            <tooltip>
+                                <Tooltip text="Enter filter value (e.g., number, text, or date)" />
+                            </tooltip>
+                        </TextField>
+                        <ComboBox fx:id="valueCombo" promptText="Select value" GridPane.rowIndex="2"
+                            GridPane.columnIndex="1" prefWidth="200" visible="false" />
+                        <DatePicker fx:id="datePicker" promptText="Select date"
+                            GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="200"
+                            visible="false" />
+                    </children>
+                </GridPane>
+                <HBox spacing="10" alignment="CENTER">
+                    <children>
+                        <Button text="Apply" onAction="#applyFilter" />
+                        <Button text="Reset" onAction="#resetFilter" />
+                        <Button text="Cancel" onAction="#cancel" />
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+        </VBox>
+    </center>
+</BorderPane>
