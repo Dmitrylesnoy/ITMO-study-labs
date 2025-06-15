@@ -2,8 +2,9 @@ package lab8.client.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,21 +23,27 @@ import lombok.Getter;
 @Getter
 public class ToolbarController implements Initializable {
 
-    @FXML protected HBox toolbar;
-    @FXML protected Label userLabel;
-    @FXML protected Button terminalBtn;
-    @FXML protected Button tableBtn;
-    @FXML protected Button cardsBtn;
-    @FXML protected Button themeButton;
+    @FXML
+    protected HBox toolbar;
+    @FXML
+    protected Label userLabel;
+    @FXML
+    protected Button terminalBtn;
+    @FXML
+    protected Button tableBtn;
+    @FXML
+    protected Button cardsBtn;
+    @FXML
+    protected Button themeButton;
 
     protected static String username = "";
     protected static ToolbarController instance;
     protected static boolean isLightTheme = true;
 
-    protected static Stage terminalStage=openWindow("/fxml/terminal.fxml", "Table", 900, 700);
+    protected static Stage terminalStage = openWindow("/fxml/terminal.fxml", "Table", 900, 700);
     protected static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1000, 700);
     protected static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
-  
+
     @FXML
     public void openTerminal(ActionEvent event) {
         closeWindow(event);
@@ -67,16 +74,23 @@ public class ToolbarController implements Initializable {
         ((Label) cardsStage.getScene().getRoot().lookup("#userLabel")).setText("User: " + username);
     }
 
-    public static Stage openWindow(String fxmlPath, String title, int w, int h) {
+    public static Stage openWindow(String fxmlPath, String title, Integer w, Integer h) {
+        FXMLLoader loader = new FXMLLoader(ToolbarController.class.getResource(fxmlPath));
+        return openWindow(loader, title, w, h);
+    }
+
+    public static Stage openWindow(FXMLLoader loader, String title, Integer w, Integer h) {
         try {
-            FXMLLoader loader = new FXMLLoader(ToolbarController.class.getResource(fxmlPath));
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(root, w, h));
+            if (w == null && h == null)
+                stage.setScene(new Scene(root));
+            else
+                stage.setScene(new Scene(root, w, h));
             stage.setTitle(title);
             return stage;
         } catch (IOException e) {
-            System.err.println("Failed to load FXML: " + fxmlPath);
+            System.err.println("Failed to load FXML: " + loader.getLocation().toExternalForm());
             e.printStackTrace();
             return null;
         }
@@ -117,5 +131,15 @@ public class ToolbarController implements Initializable {
             stage.getScene().getStylesheets().clear();
             stage.getScene().getStylesheets().add(getClass().getResource(stylesheet).toExternalForm());
         }
+    }
+
+    public static void showAlert(Alert.AlertType type, String title, String message) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(type);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        });
     }
 }

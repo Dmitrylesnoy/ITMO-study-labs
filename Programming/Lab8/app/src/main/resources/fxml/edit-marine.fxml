@@ -12,7 +12,7 @@
         <VBox spacing="15" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
             AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
             <children>
-                <Label text="Edit SpaceMarine" styleClass="title-label" />
+                <Label fx:id="viewName" text="Edit SpaceMarine" styleClass="title-label" />
                 <GridPane hgap="10" vgap="10" alignment="CENTER_LEFT">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" minWidth="300" />

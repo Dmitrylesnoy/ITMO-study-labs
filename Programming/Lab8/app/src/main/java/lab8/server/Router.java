@@ -123,7 +123,8 @@ public class Router {
             sendPool.submit(() -> sendResponse(response, clientAddress));
         } catch (Exception e) {
             logger.severe(String.format("[ERROR] Processing failed: %s", e.getMessage()));
-            logger.log(Level.WARNING, "Error details", e);
+            logger.log(Level.WARNING, "Error details", e.toString());
+            e.printStackTrace();
 
             // if (e.getClass().equals(SocketException.class)) {
                 if (request.command().getClass().equals(Show.class)) {

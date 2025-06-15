@@ -24,7 +24,7 @@ public class LoginController {
     private void loginClick(ActionEvent event) {
         username = loginField.getText();
         password = passwordField.getText();
-        if (username.isBlank() || password.isBlank()) {
+        if (username==null || password==null || username.isBlank() || password.isBlank()) {
             setStatusText("Login or password cannot be empty");
             return;
         }

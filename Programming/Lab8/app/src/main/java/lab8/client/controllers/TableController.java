@@ -2,12 +2,14 @@ package lab8.client.controllers;
 
 import lab8.client.utils.Handler;
 import lab8.shared.model.*;
+import lombok.Getter;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,10 +27,9 @@ import java.util.*;
 public class TableController extends ToolbarController {
 
 
-    @FXML
-    private TableView<SpaceMarine> tableView;
-    @FXML
-    private Button reloadButton;
+    @FXML private TableView<SpaceMarine> tableView;
+    @FXML private Button reloadButton;
+    @FXML private Button addButton;
 
     private ObservableList<SpaceMarine> marineData = FXCollections.observableArrayList();
     private Timeline dataUpdateTimeline;
@@ -128,14 +129,22 @@ public class TableController extends ToolbarController {
         dataUpdateTimeline.play();
     }
 
+    public void pauseTableUpdate() {
+        dataUpdateTimeline.pause();
+    }
+
+    public void playTableUpdate() {
+        dataUpdateTimeline.play();
+    }
+
     private void loadData() {
         if (tableView == null) 
             return;
         try {
-            Deque<SpaceMarine> marineDeque = Handler.getInstance().getCollection();
-            // if (marineDeque == null || marineDeque.isEmpty()) 
+            Stack<SpaceMarine> marineStack = Handler.getInstance().getCollection();
+            // if (marineStack == null || marineStack.isEmpty()) 
                 // showAlert(Alert.AlertType.WARNING, "Warning", "No data from server");
-            marineData.setAll(marineDeque);
+            marineData.setAll(marineStack);
             tableView.refresh();
         } catch (Exception e) {
             marineData.clear();
@@ -164,32 +173,41 @@ public class TableController extends ToolbarController {
         });
     }
 
-    private void showAlert(Alert.AlertType type, String title, String message) {
-        Platform.runLater(() -> {
-            Alert alert = new Alert(type);
-            alert.setTitle(title);
-            alert.setHeaderText(null);
-            alert.setContentText(message);
-            alert.showAndWait();
-        });
-    }
-
     public void openEditWindow(SpaceMarine marine) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit-marine.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = new Stage();
-            stage.setTitle("Edit SpaceMarine");
-            stage.setScene(scene);
+            Stage stage = openWindow(loader, "Edit SpaceMarine",null,null);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
             EditController controller = loader.getController();
-            controller.setMarine(marine, this);
+            controller.setTable(this).setMarine(marine);
 
             stage.showAndWait();
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to open edit window: " + e.getMessage());
         }
+    }
+
+    public void openAddWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit-marine.fxml"));
+            Stage stage = openWindow(loader, "Add SpaceMarine", null, null);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+
+            EditController controller = loader.getController();
+            controller.setMode("Add").setMarine(new SpaceMarine()).setTable(this);
+
+
+            stage.showAndWait();
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to open edit window: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void addItem(ActionEvent event) {
+        openAddWindow();
     }
 }

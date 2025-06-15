@@ -43,11 +43,11 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     /**
      * Constructs a SpaceMarine with the specified attributes.
      *
-     * @param name the name of the SpaceMarine
-     * @param coordinates the coordinates of the SpaceMarine
+     * @param name         the name of the SpaceMarine
+     * @param coordinates  the coordinates of the SpaceMarine
      * @param achievements the achievements of the SpaceMarine
-     * @param meleeWeapon the melee weapon of the SpaceMarine
-     * @param chapter the chapter of the SpaceMarine
+     * @param meleeWeapon  the melee weapon of the SpaceMarine
+     * @param chapter      the chapter of the SpaceMarine
      */
     public SpaceMarine(String name, Coordinates coordinates, String achievements, MeleeWeapon meleeWeapon,
             Chapter chapter) {
@@ -70,15 +70,16 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     }
 
     /**
-     * Constructs a SpaceMarine with the specified attributes, including health and loyalty.
+     * Constructs a SpaceMarine with the specified attributes, including health and
+     * loyalty.
      *
-     * @param name the name of the SpaceMarine
-     * @param coordinates the coordinates of the SpaceMarine
-     * @param health the health of the SpaceMarine
-     * @param loyal the loyalty status of the SpaceMarine
+     * @param name         the name of the SpaceMarine
+     * @param coordinates  the coordinates of the SpaceMarine
+     * @param health       the health of the SpaceMarine
+     * @param loyal        the loyalty status of the SpaceMarine
      * @param achievements the achievements of the SpaceMarine
-     * @param meleeWeapon the melee weapon of the SpaceMarine
-     * @param chapter the chapter of the SpaceMarine
+     * @param meleeWeapon  the melee weapon of the SpaceMarine
+     * @param chapter      the chapter of the SpaceMarine
      */
     public SpaceMarine(String name, Coordinates coordinates, Double health, Boolean loyal, String achievements,
             MeleeWeapon meleeWeapon, Chapter chapter) {
@@ -103,7 +104,7 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     @Override
     public String toString() {
         String description = this.getClass().toString() + ": " + name.toString();
-        description += "\n  id: " + id.toString();
+        description += "\n  id: " + (id == null ? id.toString() : "null");
         description += "\n  coordinates: " + coordinates.toString();
         description += "\n  creationDate: " + creationDate.toString();
         description += "\n  achievements: " + achievements;

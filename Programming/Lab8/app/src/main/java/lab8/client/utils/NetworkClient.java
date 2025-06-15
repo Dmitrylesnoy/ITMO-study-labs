@@ -10,6 +10,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 
+import javafx.scene.control.Alert.AlertType;
+import lab8.client.controllers.ToolbarController;
 import lab8.shared.io.console.ClientConsole;
 import lab8.shared.messages.Request;
 import lab8.shared.messages.Response;
@@ -60,15 +62,17 @@ public class NetworkClient {
 
                 } catch (SocketTimeoutException e) {
                     attempts++;
+
                     ClientConsole.getInstance().writeln("Attempt " + attempts + " of " + MAX_ATTEMPTS + " to reach server...");
-                    ClientConsole.getInstance()
-                            .writeln("   Server did not respond within " + ((TIMEOUT / 1000) * attempts) + " seconds.");
+                    ClientConsole.getInstance().writeln("   Server did not respond within " + ((TIMEOUT / 1000) * attempts) + " seconds.");
                     if (attempts >= MAX_ATTEMPTS) {
                         ClientConsole.getInstance().writeln("All attempts failed. Server is unavailable.");
+                        ToolbarController.showAlert(AlertType.ERROR, "Time out","All attempts failed. Server is unavailable.");
                         break;
                     }
                 } catch (Exception e) {
                     ClientConsole.getInstance().writeln("Error sending request: " + e.getMessage());
+                    ToolbarController.showAlert(AlertType.ERROR, "Sending Error",e.getMessage());
                     // TODO; пофиксить зависание приложение и ALERT
                     break;
                 }

@@ -3,6 +3,7 @@ package lab8.shared.messages;
 import java.io.Serializable;
 
 import lab8.shared.commands.Command;
+import lombok.Setter;
 
 public record Request(Command command, Object args, String username, String password) implements Serializable {
 

@@ -10,11 +10,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import org.glassfish.jaxb.core.v2.TODO;
-
 import javafx.application.Platform;
 import lab8.shared.builders.SpaceMarineBuilder;
-import lab8.shared.commands.*;
+import lab8.shared.commands.Add;
+import lab8.shared.commands.AddRandom;
+import lab8.shared.commands.Clear;
+import lab8.shared.commands.Command;
+import lab8.shared.commands.ExecuteScript;
+import lab8.shared.commands.Exit;
+import lab8.shared.commands.FilterStartsWithAchievements;
+import lab8.shared.commands.Help;
+import lab8.shared.commands.Info;
+import lab8.shared.commands.Load;
+import lab8.shared.commands.LoadPart;
+import lab8.shared.commands.Login;
+import lab8.shared.commands.MinByMeleeWeapon;
+import lab8.shared.commands.PrintUniqueLoyal;
+import lab8.shared.commands.RemoveByID;
+import lab8.shared.commands.RemoveGreater;
+import lab8.shared.commands.RemoveLower;
+import lab8.shared.commands.EditItem;
+import lab8.shared.commands.Show;
+import lab8.shared.commands.Sort;
+import lab8.shared.commands.UpdateId;
 import lab8.shared.io.console.ClientConsole;
 import lab8.shared.io.console.StdConsole;
 import lab8.shared.messages.Request;
@@ -37,7 +55,8 @@ public class Handler {
     private static String password;
     private ClientConsole console = ClientConsole.getInstance();
     private static Handler instance;
-    private static Deque<SpaceMarine> localMarines = new ArrayDeque<SpaceMarine>(0);
+    private static Stack<SpaceMarine> localMarines = new Stack<SpaceMarine>();
+    private static boolean login = false;
 
     /**
      * Default constructor for the Handler class.
@@ -63,23 +82,10 @@ public class Handler {
         cmds.put("help", new Help(cmds));
     }
 
-    /**
-     * Runs the command based on user input read from the console.
-     */
-    public void run() {
-        // Request request = makeRequest(console.read());
+    public void run(Request request) {
         try {
-            Request request = makeRequest(console.read());
-            if (request.command().equals(Exit.class)){
-                Platform.exit();
-                System.exit(0);
-            }
-            if (request.command().equals(Show.class)) {
-                refreshCollection();
-                console.writeln(localMarines.toString());
-                return;
-            }
-
+            if (request.username()==null || request.password()==null)
+                request = new Request(request.command(),request.args(), username, hashPassword(password));
             Response response = network.sendRequest(request);
             console.writeln(response.toString());
             if (response.status() == Status.CLOSE) {
@@ -88,6 +94,31 @@ public class Handler {
                 System.exit(0);
             }
             refreshCollection();
+        } catch (NullPointerException e) {
+            console.writeln(e.toString());
+
+        } catch (Exception e) {
+            console.writeln(e.toString());
+        }
+    }
+
+    /**
+     * Runs the command based on user input read from the console.
+     */
+    public void run() {
+        // Request request = makeRequest(console.read());
+        try {
+            Request request = makeRequest(console.read());
+            if (request.command().equals(Exit.class)) {
+                Platform.exit();
+                System.exit(0);
+            }
+            if (request.command().equals(Show.class)) {
+                refreshCollection();
+                console.writeln(localMarines.toString());
+                return;
+            }
+            run(request);
         } catch (NullPointerException e) {
             console.writeln(e.toString());
 
@@ -172,14 +203,14 @@ public class Handler {
         Handler.password = password;
     }
 
-    public Deque<SpaceMarine> getCollection() {
+    public Stack<SpaceMarine> getCollection() {
         refreshCollection();
         return localMarines;
     }
 
-    public void setCollection(Deque<SpaceMarine> newDeque) {
-        this.localMarines = newDeque;
-        // TODO
+    public void updateItem(SpaceMarine edited) {
+        run(new Request(new EditItem(), edited, username, hashPassword(password)));
+        refreshCollection();
     }
 
     public static boolean tryLogin(String usernameT, String passwordT) {
@@ -188,9 +219,10 @@ public class Handler {
         if (response.status().equals(Status.COMPLETE)) {
             setUser(usernameT, passwordT);
             StdConsole.writeln("Login succes");
-            return true;
+            login = true;
         } else
-            return false;
+            login = false;
+        return login;
     }
 
     public static Handler getInstance() {
@@ -198,16 +230,18 @@ public class Handler {
     }
 
     public static void refreshCollection() {
-        Request request=null;
+        if (!login)
+            return;
+        Request request = null;
         Response response = null;
         Deque accumulate = new ArrayDeque<SpaceMarine>(0);
 
-        int part=0;
+        int part = 0;
         do {
-            part = Integer.parseInt(response!=null && response.output()!=null? response.output():"-1") + 1;
-            request= new Request(new LoadPart(), part, username, hashPassword(password));
+            part = Integer.parseInt(response != null && response.output() != null ? response.output() : "-1") + 1;
+            request = new Request(new LoadPart(), part, username, hashPassword(password));
             response = network.sendRequest(request);
-            if (response.listMarine()!=null)
+            if (response.listMarine() != null)
                 accumulate.addAll(response.listMarine());
         } while (response != null && response.status() != Status.COMPLETE);
         localMarines.clear();
