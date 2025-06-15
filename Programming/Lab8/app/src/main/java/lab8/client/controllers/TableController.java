@@ -181,7 +181,7 @@ public class TableController extends ToolbarController {
             stage.setResizable(false);
 
             EditController controller = loader.getController();
-            controller.setMode("edit").setTable(this).setMarine(marine);
+            controller.setTable(this).setMarine(marine);
 
             stage.showAndWait();
         } catch (Exception e) {
@@ -197,7 +197,7 @@ public class TableController extends ToolbarController {
             stage.setResizable(false);
 
             EditController controller = loader.getController();
-            controller.setMode("add").setMarine(new SpaceMarine()).setTable(this);
+            controller.setMode(true).setMarine(new SpaceMarine()).setTable(this);
 
 
             stage.showAndWait();

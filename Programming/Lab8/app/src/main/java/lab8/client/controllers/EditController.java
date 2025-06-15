@@ -1,27 +1,38 @@
 package lab8.client.controllers;
 
+import java.text.SimpleDateFormat;
+
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lab8.client.utils.Handler;
 import lab8.shared.commands.Add;
 import lab8.shared.io.console.StdConsole;
 import lab8.shared.messages.Request;
-import lab8.shared.model.*;
-import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import java.text.SimpleDateFormat;
-import javafx.stage.Stage;
+import lab8.shared.model.Chapter;
+import lab8.shared.model.Coordinates;
+import lab8.shared.model.MeleeWeapon;
+import lab8.shared.model.SpaceMarine;
 
 public class EditController {
 
     @FXML
     private TextField idField, nameField, coordXField, coordYField, creationDateField, healthField, achievementsField,
             chapterNameField, chapterWorldField;
-    @FXML private CheckBox loyalCheckBox;
-    @FXML private ComboBox<MeleeWeapon> meleeWeaponCombo;
-    @FXML Label viewName;
+    @FXML
+    private CheckBox loyalCheckBox;
+    @FXML
+    private ComboBox<MeleeWeapon> meleeWeaponCombo;
+    @FXML
+    Label viewName;
 
     private static SpaceMarine marine;
-    private String mode = "edit";
+    private boolean modeNew = false;
     private TableController tableController;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -41,29 +52,24 @@ public class EditController {
         return this;
     }
 
-    public EditController setMode(String mode) {
-        switch (mode.toLowerCase()) {
-            case "add":
-                viewName.setText("Add SpaceMarine");
-                mode = "add";
-                break;
-            case "edit":
-                viewName.setText("Edit SpaceMarine");
-                mode = "edit";
-                break;
-            default:
-                StdConsole.writeln(mode);
-                break;
-        }
+    public EditController setMode(boolean mode) {
+        this.modeNew = mode;
+        if (modeNew)
+            viewName.setText("Add SpaceMarine");
+        else
+            viewName.setText("Edit SpaceMarine");
+
+        StdConsole.writeln(modeNew ? "true" : "fasle");
         return this;
     }
 
     private void populateFields() {
-        idField.setText(marine.getId() != null ? marine.getId().toString() : "");    
+        idField.setText(marine.getId() != null ? marine.getId().toString() : "");
         nameField.setText(marine.getName() != null ? marine.getName() : "");
         coordXField.setText(String.valueOf(marine.getCoordinates() != null ? marine.getCoordinates().getX() : ""));
         coordYField.setText(marine.getCoordinates() != null && marine.getCoordinates().getY() != null
-                ? marine.getCoordinates().getY().toString(): "");
+                ? marine.getCoordinates().getY().toString()
+                : "");
         creationDateField.setText(marine.getCreationDate() != null ? dateFormat.format(marine.getCreationDate()) : "");
         healthField.setText(marine.getHealth() != null ? marine.getHealth().toString() : "");
         loyalCheckBox.setSelected(marine.getLoyal() != null ? marine.getLoyal() : false);
@@ -82,18 +88,15 @@ public class EditController {
     private void saveMarine() {
         try {
             SpaceMarine marine;
-            switch (mode) {
-                case "edit":
-                    marine = editItem(mode);
-                    if (marine!=null)
-                        Handler.getInstance().updateItem(marine);
-                    break;
-                case "add":
-                    marine = addItem();
-                    if (marine!=null)
-                        Handler.getInstance().run(new Request(new Add(), marine,null,null));
-                default:
-                    break;
+            if (!modeNew) {
+                marine = editItem(false);
+                if (marine != null)
+                    Handler.getInstance().updateItem(marine);
+            } else {
+                marine = editItem(true);
+                if (marine != null)
+                    Handler.getInstance().run(new Request(new Add(), marine, null, null));
+
             }
             tableController.refreshTable();
             closeWindow();
@@ -104,8 +107,8 @@ public class EditController {
             ToolbarController.showAlert(Alert.AlertType.ERROR, "Error", "Failed to save marine: " + e.getMessage());
         }
     }
-    
-    private SpaceMarine editItem(String mode) {
+
+    private SpaceMarine editItem(boolean mode) {
         String name = nameField.getText();
         if (name == null || name.trim().isEmpty()) {
             ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Name cannot be empty.");
@@ -117,7 +120,12 @@ public class EditController {
                     "Coordinates Y cannot be empty.");
             return null;
         }
-        Float coordY = Float.parseFloat(coordYField.getText());
+        Float coordY = Float.parseFloat(coordYField.getText()); //  TODO ограничения htalth
+        if (healthField.getText().isEmpty()) {
+            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",
+                    "health cannot be empty.");
+            return null;
+        }
         Double health = healthField.getText().isEmpty() ? null : Double.parseDouble(healthField.getText());
         if (health != null && health <= 0) {
             ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",
@@ -134,35 +142,22 @@ public class EditController {
             return null;
         }
 
-        switch (mode) {
-            case "edit":
-                marine.setName(nameField.getText());
-                marine.setCoordinates(new Coordinates(coordX, coordY));
-                marine.setHealth(health);
-                marine.setLoyal(loyalCheckBox.isSelected() ? loyalCheckBox.isSelected() : null);
-                marine.setAchievements(achievementsField.getText());
-                marine.setMeleeWeapon(meleeWeaponCombo.getValue());
-                marine.setChapter(new Chapter(chapterName, chapterWorldField.getText()));
-                break;
-            case "add":
-                marine = new SpaceMarine(nameField.getText(), new Coordinates(coordX, coordY), health,
-                        loyalCheckBox.isSelected(),
-                        achievementsField.getText(), meleeWeaponCombo.getValue(),
-                        new Chapter(chapterName, chapterWorldField.getText()));
-                break;
-            default:
-                break;
+        if (!mode) {
+            marine.setName(nameField.getText());
+            marine.setCoordinates(new Coordinates(coordX, coordY));
+            marine.setHealth(health);
+            marine.setLoyal(loyalCheckBox.isSelected() ? loyalCheckBox.isSelected() : null);
+            marine.setAchievements(achievementsField.getText());
+            marine.setMeleeWeapon(meleeWeaponCombo.getValue());
+            marine.setChapter(new Chapter(chapterName, chapterWorldField.getText()));
+        } else {
+            marine = new SpaceMarine(nameField.getText(), new Coordinates(coordX, coordY), health,
+                    loyalCheckBox.isSelected(),
+                    achievementsField.getText(), meleeWeaponCombo.getValue(),
+                    new Chapter(chapterName, chapterWorldField.getText()));
+
         }
         return marine;
-    }
-
-    private SpaceMarine addItem() {
-        SpaceMarine addMarine;
-        while (true) {
-            addMarine = editItem("add");
-            if (addMarine != null)
-                return addMarine;
-        }
     }
 
     @FXML
