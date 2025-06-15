@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-    fx:controller="lab8.client.controllers.FilterController"
+    fx:controller="lab8.client.controllers.dialogs.FilterController"
     stylesheets="@../css/style.css"
     styleClass="main-root">
     <center>

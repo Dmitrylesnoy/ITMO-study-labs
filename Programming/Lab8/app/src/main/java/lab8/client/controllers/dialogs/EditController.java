@@ -1,4 +1,4 @@
-package lab8.client.controllers;
+package lab8.client.controllers.dialogs;
 
 import java.text.SimpleDateFormat;
 
@@ -10,6 +10,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lab8.client.controllers.TableController;
+import lab8.client.controllers.util.ToolbarController;
 import lab8.client.utils.Handler;
 import lab8.shared.commands.Add;
 import lab8.shared.io.console.StdConsole;

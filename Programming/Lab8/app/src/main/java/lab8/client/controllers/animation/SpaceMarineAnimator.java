@@ -1,4 +1,4 @@
-package lab8.client.controllers;
+package lab8.client.controllers.animation;
 
 public class SpaceMarineAnimator {
     private final double orbitRadius; // Radius for orbiting animation

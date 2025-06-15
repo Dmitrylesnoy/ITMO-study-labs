@@ -1,53 +1,46 @@
 package lab8.client.controllers;
 
-import lab8.client.utils.Handler;
-import lab8.shared.model.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import lab8.client.controllers.dialogs.EditController;
+import lab8.client.controllers.dialogs.FilterController;
+import lab8.client.controllers.util.DataSyncThread;
+import lab8.client.controllers.util.ToolbarController;
+import lab8.shared.model.Chapter;
+import lab8.shared.model.Coordinates;
+import lab8.shared.model.SpaceMarine;
 
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class TableController extends ToolbarController {
-
-    @FXML
-    private TableView<SpaceMarine> tableView;
-    @FXML
-    private Button reloadButton;
-    @FXML
-    private Button addButton;
-    @FXML
-    private Button filterButton;
-    @FXML
-    private Button resetFilterButton;
+    @FXML private TableView<SpaceMarine> tableView;
+    @FXML private Button reloadButton;
+    @FXML private Button addButton;
+    @FXML private Button filterButton;
 
     private ObservableList<SpaceMarine> marineData = FXCollections.observableArrayList();
-    private Predicate<SpaceMarine> currentFilter = marine -> true; // Изначально фильтр пропускает все
-    private Timeline dataUpdateTimeline;
+    private Predicate<SpaceMarine> currentFilter = marine -> true;
+    private DataSyncThread dataSyncThread;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
         setupDynamicColumns();
+        dataSyncThread = new DataSyncThread(marineData, this::onDataUpdated);
         tableView.setItems(marineData);
-        setupDataUpdateTimeline();
-
         tableView.setOnMouseClicked(event -> {
             if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
                 SpaceMarine selectedMarine = tableView.getSelectionModel().getSelectedItem();
@@ -56,6 +49,7 @@ public class TableController extends ToolbarController {
                 }
             }
         });
+        dataSyncThread.start();
     }
 
     private void setupDynamicColumns() {
@@ -121,63 +115,41 @@ public class TableController extends ToolbarController {
         tableView.getColumns().add(column);
     }
 
-    private void setupDataUpdateTimeline() {
-        dataUpdateTimeline = new Timeline(
-                new KeyFrame(Duration.seconds(5), event -> Platform.runLater(() -> {
-                    loadData();
-                })));
-        dataUpdateTimeline.setCycleCount(Timeline.INDEFINITE);
-        dataUpdateTimeline.play();
-    }
-
-    private void loadData() {
-        if (tableView == null)
-            return;
-        try {
-            Stack<SpaceMarine> marineStack = Handler.getInstance().getCollection();
-            List<SpaceMarine> filteredData = marineStack.stream()
-                    .filter(currentFilter)
-                    .toList();
-            marineData.setAll(filteredData);
-            tableView.refresh();
-        } catch (Exception e) {
-            marineData.clear();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to load data: " + e.getMessage());
-        }
+    private void onDataUpdated() {
+        List<SpaceMarine> filteredData = marineData.stream()
+                .filter(currentFilter)
+                .collect(Collectors.toList());
+        marineData.setAll(filteredData);
+        tableView.refresh();
     }
 
     public void setSpaceMarines(List<SpaceMarine> list) {
-        Platform.runLater(() -> {
-            if (list != null && !list.isEmpty()) {
-                List<SpaceMarine> filteredData = list.stream()
-                        .filter(currentFilter)
-                        .toList();
-                marineData.setAll(filteredData);
-                if (tableView != null)
-                    tableView.refresh();
-            } else {
-                marineData.clear();
-                showAlert(Alert.AlertType.WARNING, "Warning", "Invalid or empty data provided.");
-            }
-        });
+        if (list != null && !list.isEmpty()) {
+            List<SpaceMarine> filteredData = list.stream()
+                    .filter(currentFilter)
+                    .collect(Collectors.toList());
+            marineData.setAll(filteredData);
+            tableView.refresh();
+        } else {
+            marineData.clear();
+            showAlert(Alert.AlertType.WARNING, "Warning", "Invalid or empty data provided.");
+        }
     }
 
     public void setFilter(Predicate<SpaceMarine> filter) {
         this.currentFilter = filter != null ? filter : marine -> true;
-        loadData(); // Применяем фильтр сразу
+        onDataUpdated();
     }
 
     @FXML
     public void resetFilter() {
         this.currentFilter = marine -> true;
-        loadData();
+        onDataUpdated();
     }
 
     @FXML
     public void refreshTable() {
-        Platform.runLater(() -> {
-            loadData();
-        });
+        dataSyncThread.refreshNow();
     }
 
     public void openEditWindow(SpaceMarine marine) {
@@ -197,7 +169,7 @@ public class TableController extends ToolbarController {
     }
 
     @FXML
-    public void addView(ActionEvent event) {
+    public void addView() {
         openAddWindow();
     }
 
@@ -218,14 +190,14 @@ public class TableController extends ToolbarController {
     }
 
     @FXML
-    public void filterView(ActionEvent event) {
+    public void filterView() {
         openFilterWindow();
     }
 
     public void openFilterWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/filter-marine.fxml"));
-            Stage stage = openWindow(loader, "Table filter", 400, 400);
+            Stage stage = openWindow(loader, "Table filter", null, null);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
@@ -235,7 +207,10 @@ public class TableController extends ToolbarController {
             stage.showAndWait();
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to open filter window: " + e.getMessage());
-            e.printStackTrace();
         }
+    }
+
+    public void shutdown() {
+        dataSyncThread.shutdown();
     }
 }

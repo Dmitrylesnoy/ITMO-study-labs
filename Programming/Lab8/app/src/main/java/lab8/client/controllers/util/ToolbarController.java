@@ -1,4 +1,4 @@
-package lab8.client.controllers;
+package lab8.client.controllers.util;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +18,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import lab8.client.controllers.LoginController;
 import lombok.Getter;
 
 @Getter

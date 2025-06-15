@@ -3,7 +3,7 @@ package lab8.client;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import lab8.client.controllers.LoginController;
-import lab8.client.controllers.ToolbarController;
+import lab8.client.controllers.util.ToolbarController;
 import lab8.client.utils.Handler;
 import lab8.shared.io.console.ClientConsole;
 

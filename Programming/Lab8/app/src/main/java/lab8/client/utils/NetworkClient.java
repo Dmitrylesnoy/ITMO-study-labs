@@ -12,7 +12,7 @@ import java.net.SocketTimeoutException;
 
 import javafx.scene.control.Alert.AlertType;
 import lab8.client.controllers.TableController;
-import lab8.client.controllers.ToolbarController;
+import lab8.client.controllers.util.ToolbarController;
 import lab8.shared.io.console.ClientConsole;
 import lab8.shared.messages.Request;
 import lab8.shared.messages.Response;

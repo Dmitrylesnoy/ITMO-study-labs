@@ -1,5 +1,6 @@
-package lab8.client.controllers;
+package lab8.client.controllers.dialogs;
 
+import lab8.client.controllers.TableController;
 import lab8.shared.model.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
