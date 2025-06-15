@@ -42,7 +42,7 @@ public class ToolbarController implements Initializable {
 
     protected static Stage terminalStage = openWindow("/fxml/terminal.fxml", "Table", 900, 700);
     protected static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1000, 700);
-    protected static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", 900, 700);
+    protected static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", null, null);
 
     @FXML
     public void openTerminal(ActionEvent event) {

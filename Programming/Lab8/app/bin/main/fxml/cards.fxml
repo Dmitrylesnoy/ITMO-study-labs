@@ -3,14 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.canvas.Canvas?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
     fx:controller="lab8.client.controllers.CardsController"
     stylesheets="@../css/style.css"
     styleClass="main-root">
-
     <top>
         <VBox spacing="5">
             <HBox spacing="10" styleClass="top-bar">
@@ -23,19 +22,16 @@
                 <Button text="Table" onAction="#openTable" />
                 <Button text="Cards" onAction="#openCards" />
             </HBox>
+            <HBox spacing="5">
+                <padding>
+                    <Insets top="5" bottom="5" />
+                </padding>
+                <Button fx:id="reloadButton" text="Reload Data" onAction="#refreshData" />
+                <Button fx:id="animationButton" text="Animation" onAction="#animation" />
+            </HBox>
         </VBox>
     </top>
-
-    <!-- <center>
-        <ScrollPane fitToWidth="true" styleClass="cards-scroll-pane">
-            <FlowPane fx:id="cardsContainer"
-                hgap="20" vgap="20"
-                padding="$INSETS"
-                styleClass="cards-container">
-                <padding>
-                    <Insets top="20" right="20" bottom="20" left="20" />
-                </padding>
-            </FlowPane>
-        </ScrollPane>
-    </center> -->
+    <center>
+        <Canvas fx:id="canvas" width="1000" height="700" />
+    </center>
 </BorderPane>
