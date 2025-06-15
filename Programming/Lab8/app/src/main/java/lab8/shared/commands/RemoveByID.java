@@ -4,7 +4,6 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 import lab8.shared.collection.CollectionManager;
-import lab8.shared.io.console.StdConsole;
 import lab8.shared.model.SpaceMarine;
 
 /**
@@ -52,10 +51,10 @@ public class RemoveByID extends Command {
         // newStack.addAll(CollectionManager.getInstance().getCollection().stream()
         // .filter(m -> m.getId() != id)
         // .collect(Collectors.toList()));
-        StdConsole.writeln("Given id " + id + " " + id.getClass());
+        console.writeln("Given id " + id + " " + id.getClass());
         Stack<SpaceMarine> newStack = CollectionManager.getInstance().getCollection().stream()
                 .filter(mar -> mar.getId().equals(id) == false).collect(Collectors.toCollection(Stack::new));
-        StdConsole.writeln(newStack.toString());
+        console.writeln(newStack.toString());
         CollectionManager.getInstance().setCollection(newStack);
     }
 

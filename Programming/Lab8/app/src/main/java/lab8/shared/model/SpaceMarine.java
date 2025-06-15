@@ -104,9 +104,9 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     @Override
     public String toString() {
         String description = this.getClass().toString() + ": " + name.toString();
-        description += "\n  id: " + (id == null ? id.toString() : "null");
+        description += "\n  id: " + (id == null ? "null" : id.toString());
         description += "\n  coordinates: " + coordinates.toString();
-        description += "\n  creationDate: " + creationDate.toString();
+        description += "\n  creationDate: " + (creationDate==null?"null":creationDate.toString());
         description += "\n  achievements: " + achievements;
         description += "\n  meleeWeapon: " + meleeWeapon.toString();
         description += "\n  chapter: " + chapter.toString();

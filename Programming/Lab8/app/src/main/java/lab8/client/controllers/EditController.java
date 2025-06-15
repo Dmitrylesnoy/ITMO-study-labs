@@ -2,6 +2,7 @@ package lab8.client.controllers;
 
 import lab8.client.utils.Handler;
 import lab8.shared.commands.Add;
+import lab8.shared.io.console.StdConsole;
 import lab8.shared.messages.Request;
 import lab8.shared.model.*;
 import javafx.collections.FXCollections;
@@ -46,20 +47,23 @@ public class EditController {
                 viewName.setText("Add SpaceMarine");
                 mode = "add";
                 break;
-            default:
+            case "edit":
                 viewName.setText("Edit SpaceMarine");
                 mode = "edit";
+                break;
+            default:
+                StdConsole.writeln(mode);
                 break;
         }
         return this;
     }
 
     private void populateFields() {
+        idField.setText(marine.getId() != null ? marine.getId().toString() : "");    
         nameField.setText(marine.getName() != null ? marine.getName() : "");
         coordXField.setText(String.valueOf(marine.getCoordinates() != null ? marine.getCoordinates().getX() : ""));
         coordYField.setText(marine.getCoordinates() != null && marine.getCoordinates().getY() != null
-                ? marine.getCoordinates().getY().toString()
-                : "");
+                ? marine.getCoordinates().getY().toString(): "");
         creationDateField.setText(marine.getCreationDate() != null ? dateFormat.format(marine.getCreationDate()) : "");
         healthField.setText(marine.getHealth() != null ? marine.getHealth().toString() : "");
         loyalCheckBox.setSelected(marine.getLoyal() != null ? marine.getLoyal() : false);
@@ -80,9 +84,9 @@ public class EditController {
             SpaceMarine marine;
             switch (mode) {
                 case "edit":
-                    marine = editItem();
+                    marine = editItem(mode);
                     if (marine!=null)
-                    Handler.getInstance().updateItem(marine);
+                        Handler.getInstance().updateItem(marine);
                     break;
                 case "add":
                     marine = addItem();
@@ -101,7 +105,7 @@ public class EditController {
         }
     }
     
-    private SpaceMarine editItem() {
+    private SpaceMarine editItem(String mode) {
         String name = nameField.getText();
         if (name == null || name.trim().isEmpty()) {
             ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Name cannot be empty.");
@@ -130,22 +134,32 @@ public class EditController {
             return null;
         }
 
-        marine = new SpaceMarine();
-        marine.setName(nameField.getText());
-        marine.setCoordinates(new Coordinates(coordX, coordY));
-        marine.setHealth(health);
-        marine.setLoyal(loyalCheckBox.isSelected() ? loyalCheckBox.isSelected() : null);
-        marine.setAchievements(achievementsField.getText());
-        marine.setMeleeWeapon(meleeWeaponCombo.getValue());
-        marine.setChapter(new Chapter(chapterName, chapterWorldField.getText()));
-
+        switch (mode) {
+            case "edit":
+                marine.setName(nameField.getText());
+                marine.setCoordinates(new Coordinates(coordX, coordY));
+                marine.setHealth(health);
+                marine.setLoyal(loyalCheckBox.isSelected() ? loyalCheckBox.isSelected() : null);
+                marine.setAchievements(achievementsField.getText());
+                marine.setMeleeWeapon(meleeWeaponCombo.getValue());
+                marine.setChapter(new Chapter(chapterName, chapterWorldField.getText()));
+                break;
+            case "add":
+                marine = new SpaceMarine(nameField.getText(), new Coordinates(coordX, coordY), health,
+                        loyalCheckBox.isSelected(),
+                        achievementsField.getText(), meleeWeaponCombo.getValue(),
+                        new Chapter(chapterName, chapterWorldField.getText()));
+                break;
+            default:
+                break;
+        }
         return marine;
     }
 
     private SpaceMarine addItem() {
         SpaceMarine addMarine;
         while (true) {
-            addMarine = editItem();
+            addMarine = editItem("add");
             if (addMarine != null)
                 return addMarine;
         }

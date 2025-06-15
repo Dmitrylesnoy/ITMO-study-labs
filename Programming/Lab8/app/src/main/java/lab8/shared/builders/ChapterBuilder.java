@@ -1,6 +1,6 @@
 package lab8.shared.builders;
 
-import lab8.shared.io.console.StdConsole;
+import lab8.shared.io.console.ClientConsole;
 import lab8.shared.model.Chapter;
 
 /**
@@ -11,6 +11,7 @@ import lab8.shared.model.Chapter;
 public class ChapterBuilder {
     private String name; // Field cannot be null, String cannot be empty
     private String world; // Field can be null
+    private ClientConsole console;
 
     /**
      * Default constructor for the ChapterBuilder class, initializing the name and
@@ -35,13 +36,13 @@ public class ChapterBuilder {
      */
     public void setName() {
         while (true) {
-            StdConsole.writeln("Enter the Name of the Chapter: ");
-            String name = StdConsole.read();
+            console.writeln("Enter the Name of the Chapter: ");
+            String name = console.read();
             if (name != null && !name.isEmpty()) {
                 this.name = name;
                 break;
             } else {
-                StdConsole.writeln("Invalid input: Name cannot be null or empty. Please try again.");
+                console.writeln("Invalid input: Name cannot be null or empty. Please try again.");
             }
         }
     }
@@ -51,12 +52,12 @@ public class ChapterBuilder {
      */
     public void setWorld() {
         while (true) {
-            String world = StdConsole.read("Enter the World of the Chapter: ");
+            String world = console.read("Enter the World of the Chapter: ");
             if (world != null && !world.isEmpty()) {
                 this.world = world;
                 break;
             } else {
-                StdConsole.writeln("Invalid input: World cannot be null. Please try again.");
+                console.writeln("Invalid input: World cannot be null. Please try again.");
             }
         }
     }

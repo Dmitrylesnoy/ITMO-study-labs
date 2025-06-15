@@ -27,8 +27,9 @@ public class TerminalController extends ToolbarController {
     @FXML
     private Button sendButton;
 
-    private String input = "";
+    private static String input = "";
     private static Deque<String> outputDeque = new LinkedList<String>();
+    private static TerminalController instance;
 
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
@@ -39,20 +40,30 @@ public class TerminalController extends ToolbarController {
 
     @FXML
     private void handleSendCommand(ActionEvent event) {
-        processInput();
-    }
-
-    private void processInput() {
-        // input = commandInput.getText();
-        if (!(input = commandInput.getText()).isBlank()) {
+        input = commandInput.getText();
+        if (input!=null && !input.isBlank()) {
             outputArea.appendText("=> "+input + "\n");
             commandInput.clear();
-            ClientConsole.getInstance().add(input);
+            input = input.trim();
+            ClientConsole.add(input);
             Handler.getInstance().run();
-            printOutput();
+            Thread printThread = new Thread(()->{ // TODO thread to long output
+                try{
+                    printOutput();
+                } catch (Exception e){
+                    Thread.currentThread().interrupt();
+                }
+            });
+            printThread.start();
+            try {
+                printThread.join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            // printOutput();
             // outputArea.appendText(outputDeque.poll());
         } else
-            input = "";
+            input = null;
 
     }
 
@@ -61,7 +72,7 @@ public class TerminalController extends ToolbarController {
             String out=outputDeque.poll();
             try {
                 outputArea.appendText(out);
-            } catch (Exception e) {
+            } catch (NullPointerException e) {
                 e.printStackTrace();
                 StdConsole.writeln(e.toString());
                 outputDeque.push(out);
@@ -78,15 +89,20 @@ public class TerminalController extends ToolbarController {
 
     public String readInput() {
         String input_read = input;
-        input = "";
+        input = null;
         return input_read;
     }
 
     public static void write(String output) {
         outputDeque.push(output);
+        
     }
 
     public static void writeln(String output) {
-        outputDeque.push(output + "\n");
+        write(output + "\n");
+    }
+
+    public static TerminalController getInstance() {
+        return instance == null ? instance = new TerminalController() : instance;
     }
 }

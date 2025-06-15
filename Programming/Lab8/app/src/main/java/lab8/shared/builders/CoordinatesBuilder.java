@@ -1,6 +1,6 @@
 package lab8.shared.builders;
 
-import lab8.shared.io.console.StdConsole;
+import lab8.shared.io.console.ClientConsole;
 import lab8.shared.model.Coordinates;
 
 /**
@@ -11,6 +11,7 @@ import lab8.shared.model.Coordinates;
 public class CoordinatesBuilder {
     private Double x;
     private Float y; // not null
+    private ClientConsole console;
 
     /**
      * Default constructor for the CoordinatesBuilder class, initializing the Y coordinate
@@ -19,7 +20,7 @@ public class CoordinatesBuilder {
     public CoordinatesBuilder() {
         this.y = setY();
         while (true) {
-            String ans = StdConsole.read("Would you enter the X coordinate? Y/N:");
+            String ans = console.read("Would you enter the X coordinate? Y/N:");
             if (ans.equals("Y")) {
                 this.x = setX();
                 break;
@@ -50,9 +51,9 @@ public class CoordinatesBuilder {
     public Double setX() {
         while (true) {
             try {
-                return Double.parseDouble(StdConsole.read("Enter the x coordinate (double): "));
+                return Double.parseDouble(console.read("Enter the x coordinate (double): "));
             } catch (Exception e) {
-                StdConsole.writeln("Invalid input: Please enter a valid number for x.");
+                console.writeln("Invalid input: Please enter a valid number for x.");
             }
         }
     }
@@ -65,9 +66,9 @@ public class CoordinatesBuilder {
     public Float setY() {
         while (true) {
             try {
-                return Float.parseFloat(StdConsole.read("Enter the y coordinate (float): "));
+                return Float.parseFloat(console.read("Enter the y coordinate (float): "));
             } catch (Exception e) {
-                StdConsole.writeln("Invalid input: Please enter a valid number for y.");
+                console.writeln("Invalid input: Please enter a valid number for y.");
             }
         }
     }

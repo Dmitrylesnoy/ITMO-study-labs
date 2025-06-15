@@ -15,7 +15,7 @@ import lab8.shared.model.SpaceMarine;
  */
 public class LoadPart extends Command {
     private Integer start = 0;
-    private int len = 5;
+    private int len = 10;
     private Deque<SpaceMarine> part = new ArrayDeque<SpaceMarine>();
 
     /**

@@ -8,8 +8,11 @@ import java.io.IOException;
  */
 import java.io.Serializable;
 
+import lab8.shared.io.console.ClientConsole;
+
 public abstract class Command implements Serializable {
     protected Integer userId;
+    protected ClientConsole console;
     /**
      * Executes the command.
      *
