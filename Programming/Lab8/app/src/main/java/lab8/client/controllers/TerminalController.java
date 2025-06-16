@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import lab8.client.controllers.util.ToolbarController;
 import lab8.client.utils.Handler;
+import lab8.client.controllers.util.LocalizationManager;
 import lab8.shared.io.console.ClientConsole;
 import lab8.shared.io.console.StdConsole;
 
@@ -21,10 +22,8 @@ public class TerminalController extends ToolbarController {
 
     @FXML
     private TextField commandInput;
-
     @FXML
     private TextArea outputArea;
-
     @FXML
     private Button sendButton;
 
@@ -34,24 +33,24 @@ public class TerminalController extends ToolbarController {
 
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        // updateOutputText(output);
-        // outputArea.setText("Welcome to terminal of SpaceMarine manager!");
+        sendButton.textProperty().bind(LocalizationManager.createStringBinding("terminal.send"));
+        outputArea.setText(LocalizationManager.getString("terminal.welcome"));
         printOutput();
     }
 
     @FXML
     private void handleSendCommand(ActionEvent event) {
         input = commandInput.getText();
-        if (input!=null && !input.isBlank()) {
-            outputArea.appendText("=> "+input + "\n");
+        if (input != null && !input.isBlank()) {
+            outputArea.appendText("=> " + input + "\n");
             commandInput.clear();
             input = input.trim();
             ClientConsole.add(input);
             Handler.getInstance().run();
-            Thread printThread = new Thread(()->{ // TODO thread to long output
-                try{
+            Thread printThread = new Thread(() -> {
+                try {
                     printOutput();
-                } catch (Exception e){
+                } catch (Exception e) {
                     Thread.currentThread().interrupt();
                 }
             });
@@ -61,16 +60,14 @@ public class TerminalController extends ToolbarController {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            // printOutput();
-            // outputArea.appendText(outputDeque.poll());
-        } else
+        } else {
             input = null;
-
+        }
     }
 
     private void printOutput() {
         while (!outputDeque.isEmpty()) {
-            String out=outputDeque.poll();
+            String out = outputDeque.poll();
             try {
                 outputArea.appendText(out);
             } catch (NullPointerException e) {
@@ -78,13 +75,12 @@ public class TerminalController extends ToolbarController {
                 StdConsole.writeln(e.toString());
                 outputDeque.push(out);
                 Alert msg = new Alert(AlertType.INFORMATION);
+                msg.setTitle(LocalizationManager.getString("terminal.title"));
                 msg.setContentText(out);
-                msg.setTitle("Info");
                 msg.show();
                 StdConsole.write(out);
                 e.printStackTrace();
             }
-            // writeln(outputDeque.poll());
         }
     }
 
@@ -96,7 +92,6 @@ public class TerminalController extends ToolbarController {
 
     public static void write(String output) {
         outputDeque.push(output);
-        
     }
 
     public static void writeln(String output) {

@@ -16,6 +16,7 @@
                 onAction="#loginClick" />
             <Button fx:id="loginBtn" text="Login" onAction="#loginClick" maxWidth="250"/>
             <Label fx:id="statusLabel" styleClass="status-label" maxWidth="250" wrapText="true" text=""/>
+            <ComboBox fx:id="languageSelector" promptText="Select lang" />
         </VBox>
     </children>
 </StackPane>

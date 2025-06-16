@@ -2,9 +2,13 @@ package lab8.client.controllers.util;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +20,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
+import javafx.collections.FXCollections;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import lab8.client.controllers.LoginController;
@@ -36,14 +42,68 @@ public class ToolbarController implements Initializable {
     protected Button cardsBtn;
     @FXML
     protected Button themeButton;
+    @FXML
+    protected ComboBox<String> languageSelector;
 
-    protected static String username = "";
+    protected static StringProperty usernameProperty = new SimpleStringProperty("");
     protected static ToolbarController instance;
     protected static boolean isLightTheme = true;
 
-    protected static Stage terminalStage = openWindow("/fxml/terminal.fxml", "Table", 900, 700);
-    protected static Stage tableStage = openWindow("/fxml/table.fxml", "Table", 1000, 700);
-    protected static Stage cardsStage = openWindow("/fxml/cards.fxml", "Cards", null, null);
+    protected static Stage terminalStage = openWindow("/fxml/terminal.fxml",
+            LocalizationManager.getString("terminal.title"), 900, 700);
+    protected static Stage tableStage = openWindow("/fxml/table.fxml", LocalizationManager.getString("table.title"),
+            1000, 700);
+    protected static Stage cardsStage = openWindow("/fxml/cards.fxml", LocalizationManager.getString("cards.title"),
+            null, null);
+
+    @FXML
+    public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
+        // Bind userLabel to a combination of localized "toolbar.user" and username
+        userLabel.textProperty().bind(LocalizationManager.createStringBinding("toolbar.user")
+                .concat(": ")
+                .concat(usernameProperty));
+        terminalBtn.textProperty().bind(LocalizationManager.createStringBinding("toolbar.terminal"));
+        tableBtn.textProperty().bind(LocalizationManager.createStringBinding("toolbar.table"));
+        cardsBtn.textProperty().bind(LocalizationManager.createStringBinding("toolbar.cards"));
+        themeButton.textProperty().bind(LocalizationManager.createStringBinding("toolbar.theme"));
+        languageSelector.setItems(FXCollections.observableArrayList(
+                "Русский", "Nederlands", "Ελληνικά", "Español (Puerto Rico)"));
+        languageSelector.setOnAction(this::handleLanguageChange);
+        userLabel.setOnMouseClicked(e -> {
+            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION,
+                    LocalizationManager.getString("toolbar.logout.confirm"), ButtonType.YES,
+                    ButtonType.NO);
+            dialog.setTitle(LocalizationManager.getString("toolbar.logout.confirm"));
+            dialog.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.YES) {
+                    ((Stage) userLabel.getScene().getWindow()).close();
+                    LoginController.open().show();
+                } else {
+                    System.out.println(LocalizationManager.getString("toolbar.logout.cancelled"));
+                }
+            });
+        });
+    }
+
+    @FXML
+    private void handleLanguageChange(ActionEvent event) {
+        String selected = languageSelector.getSelectionModel().getSelectedItem();
+        switch (selected) {
+            case "Русский":
+                LocalizationManager.switchToRussian();
+                break;
+            case "Nederlands":
+                LocalizationManager.switchToDutch();
+                break;
+            case "Ελληνικά":
+                LocalizationManager.switchToGreek();
+                break;
+            case "Español (Puerto Rico)":
+                LocalizationManager.switchToSpanishPR();
+                break;
+        }
+    }
 
     @FXML
     public void openTerminal(ActionEvent event) {
@@ -69,10 +129,7 @@ public class ToolbarController implements Initializable {
 
     @FXML
     public void setUser(String user) {
-        ToolbarController.username = user;
-        ((Label) terminalStage.getScene().getRoot().lookup("#userLabel")).setText("User: " + username);
-        ((Label) tableStage.getScene().getRoot().lookup("#userLabel")).setText("User: " + username);
-        ((Label) cardsStage.getScene().getRoot().lookup("#userLabel")).setText("User: " + username);
+        usernameProperty.set(user);
     }
 
     public static Stage openWindow(String fxmlPath, String title, Integer w, Integer h) {
@@ -101,36 +158,17 @@ public class ToolbarController implements Initializable {
         return instance == null ? instance = new ToolbarController() : instance;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        instance = this;
-        userLabel.setOnMouseClicked(e -> {
-            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to log out?", ButtonType.YES,
-                    ButtonType.NO);
-            dialog.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.YES) {
-                    ((Stage) userLabel.getScene().getWindow()).close();
-                    LoginController.open().show();
-                } else {
-                    System.out.println("Logout cancelled.");
-                }
-            });
-        });
-    }
-
     @FXML
     public void toggleTheme(ActionEvent event) {
         isLightTheme = !isLightTheme;
-        String stylesheet = isLightTheme ? "/css/dark-theme.css" : "/css/light-theme.css";
-        updateStylesheet(terminalStage, stylesheet);
-        updateStylesheet(tableStage, stylesheet);
-        updateStylesheet(cardsStage, stylesheet);
+        updateStageStylesheet(((Stage) ((Node) event.getSource()).getScene().getWindow()));
     }
 
-    private void updateStylesheet(Stage stage, String stylesheet) {
+    private static void updateStageStylesheet(Stage stage) {
         if (stage != null && stage.getScene() != null) {
             stage.getScene().getStylesheets().clear();
-            stage.getScene().getStylesheets().add(getClass().getResource(stylesheet).toExternalForm());
+            String stylesheet = isLightTheme ? "/css/light-theme.css" : "/css/dark-theme.css";
+            stage.getScene().getStylesheets().add(ToolbarController.class.getResource(stylesheet).toExternalForm());
         }
     }
 

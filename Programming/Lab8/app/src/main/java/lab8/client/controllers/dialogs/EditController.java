@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import lab8.client.controllers.TableController;
 import lab8.client.controllers.util.ToolbarController;
 import lab8.client.utils.Handler;
+import lab8.client.controllers.util.LocalizationManager;
 import lab8.shared.commands.Add;
 import lab8.shared.io.console.StdConsole;
 import lab8.shared.messages.Request;
@@ -24,14 +25,29 @@ import lab8.shared.model.SpaceMarine;
 public class EditController {
 
     @FXML
-    private TextField idField, nameField, coordXField, coordYField, creationDateField, healthField, achievementsField,
-            chapterNameField, chapterWorldField;
+    private TextField idField;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField coordXField;
+    @FXML
+    private TextField coordYField;
+    @FXML
+    private TextField creationDateField;
+    @FXML
+    private TextField healthField;
+    @FXML
+    private TextField achievementsField;
+    @FXML
+    private TextField chapterNameField;
+    @FXML
+    private TextField chapterWorldField;
     @FXML
     private CheckBox loyalCheckBox;
     @FXML
     private ComboBox<MeleeWeapon> meleeWeaponCombo;
     @FXML
-    Label viewName;
+    private Label viewName;
 
     private static SpaceMarine marine;
     private boolean modeNew = false;
@@ -41,6 +57,20 @@ public class EditController {
     @FXML
     public void initialize() {
         meleeWeaponCombo.setItems(FXCollections.observableArrayList(MeleeWeapon.values()));
+        // Bind localized texts
+        viewName.textProperty().bind(LocalizationManager.createStringBinding(
+                modeNew ? "edit.title.add" : "edit.title.edit"));
+        idField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.id"));
+        nameField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.name"));
+        coordXField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.coordinates.x"));
+        coordYField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.coordinates.y"));
+        creationDateField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.creationDate"));
+        healthField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.health"));
+        achievementsField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.achievements"));
+        chapterNameField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.chapter.name"));
+        chapterWorldField.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.chapter.world"));
+        loyalCheckBox.textProperty().bind(LocalizationManager.createStringBinding("edit.loyal"));
+        meleeWeaponCombo.promptTextProperty().bind(LocalizationManager.createStringBinding("edit.meleeWeapon"));
     }
 
     public EditController setMarine(SpaceMarine marine) {
@@ -56,12 +86,9 @@ public class EditController {
 
     public EditController setMode(boolean mode) {
         this.modeNew = mode;
-        if (modeNew)
-            viewName.setText("Add SpaceMarine");
-        else
-            viewName.setText("Edit SpaceMarine");
-
-        StdConsole.writeln(modeNew ? "true" : "fasle");
+        viewName.textProperty().bind(LocalizationManager.createStringBinding(
+                modeNew ? "edit.title.add" : "edit.title.edit"));
+        StdConsole.writeln(modeNew ? "true" : "false");
         return this;
     }
 
@@ -89,7 +116,7 @@ public class EditController {
     @FXML
     private void saveMarine() {
         try {
-            SpaceMarine marine=editItem(modeNew);
+            SpaceMarine marine = editItem(modeNew);
             if (marine != null) {
                 if (!modeNew) {
                     Handler.getInstance().updateItem(marine);
@@ -100,39 +127,49 @@ public class EditController {
             }
             tableController.refreshTable();
         } catch (NumberFormatException e) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",
-                    "Invalid number format in coordinates.");
+            ToolbarController.showAlert(Alert.AlertType.ERROR,
+                    LocalizationManager.getString("edit.error.number_format"),
+                    LocalizationManager.getString("edit.error.number_format"));
         } catch (Exception e) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Error", "Failed to save marine: " + e.getMessage());
+            ToolbarController.showAlert(Alert.AlertType.ERROR, LocalizationManager.getString("edit.error.save_failed"),
+                    LocalizationManager.getString("edit.error.save_failed") + ": " + e.getMessage());
         }
     }
 
     private SpaceMarine editItem(boolean mode) {
         String name = nameField.getText();
         if (name == null || name.trim().isEmpty()) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Name cannot be empty.");
+            ToolbarController.showAlert(Alert.AlertType.ERROR,
+                    LocalizationManager.getString("edit.error.validation.name"),
+                    LocalizationManager.getString("edit.error.validation.name"));
             return null;
         }
         double coordX = Double.parseDouble(coordXField.getText());
         if (coordYField.getText().isEmpty()) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",
-                    "Coordinates Y cannot be empty.");
+            ToolbarController.showAlert(Alert.AlertType.ERROR,
+                    LocalizationManager.getString("edit.error.validation.coordY"),
+                    LocalizationManager.getString("edit.error.validation.coordY"));
             return null;
         }
-        Float coordY = Float.parseFloat(coordYField.getText()); //  TODO ограничения htalth
+        Float coordY = Float.parseFloat(coordYField.getText());
         Double health = healthField.getText().isEmpty() ? null : Double.parseDouble(healthField.getText());
         if (health != null && health <= 0) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error",
-                    "Health must be greater than 0.");
+            ToolbarController.showAlert(Alert.AlertType.ERROR,
+                    LocalizationManager.getString("edit.error.validation.health"),
+                    LocalizationManager.getString("edit.error.validation.health"));
             return null;
         }
         if (achievementsField.getText().isEmpty()) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Achievements cannot be empty.");
+            ToolbarController.showAlert(Alert.AlertType.ERROR,
+                    LocalizationManager.getString("edit.error.validation.achievements"),
+                    LocalizationManager.getString("edit.error.validation.achievements"));
             return null;
         }
         String chapterName = chapterNameField.getText();
         if (chapterName.isEmpty()) {
-            ToolbarController.showAlert(Alert.AlertType.ERROR, "Validation Error", "Chapter name cannot be empty.");
+            ToolbarController.showAlert(Alert.AlertType.ERROR,
+                    LocalizationManager.getString("edit.error.validation.chapter"),
+                    LocalizationManager.getString("edit.error.validation.chapter"));
             return null;
         }
 
@@ -149,7 +186,6 @@ public class EditController {
                     loyalCheckBox.isSelected(),
                     achievementsField.getText(), meleeWeaponCombo.getValue(),
                     new Chapter(chapterName, chapterWorldField.getText()));
-
         }
         return marine;
     }

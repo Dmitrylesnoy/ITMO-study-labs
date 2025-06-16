@@ -13,6 +13,7 @@ import lab8.client.controllers.dialogs.EditController;
 import lab8.client.controllers.dialogs.FilterController;
 import lab8.client.controllers.util.DataSyncThread;
 import lab8.client.controllers.util.ToolbarController;
+import lab8.client.controllers.util.LocalizationManager;
 import lab8.shared.model.Chapter;
 import lab8.shared.model.Coordinates;
 import lab8.shared.model.SpaceMarine;
@@ -25,10 +26,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class TableController extends ToolbarController {
-    @FXML private TableView<SpaceMarine> tableView;
-    @FXML private Button reloadButton;
-    @FXML private Button addButton;
-    @FXML private Button filterButton;
+    @FXML
+    private TableView<SpaceMarine> tableView;
+    @FXML
+    private Button reloadButton;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button filterButton;
 
     private ObservableList<SpaceMarine> marineData = FXCollections.observableArrayList();
     private Predicate<SpaceMarine> currentFilter = marine -> true;
@@ -50,6 +55,11 @@ public class TableController extends ToolbarController {
             }
         });
         dataSyncThread.start();
+
+        // Bind localized texts
+        reloadButton.textProperty().bind(LocalizationManager.createStringBinding("table.reload"));
+        addButton.textProperty().bind(LocalizationManager.createStringBinding("table.add"));
+        filterButton.textProperty().bind(LocalizationManager.createStringBinding("table.filter"));
     }
 
     private void setupDynamicColumns() {
@@ -110,7 +120,8 @@ public class TableController extends ToolbarController {
 
     private void addColumn(String name, Class<?> type,
             java.util.function.Function<SpaceMarine, String> valueExtractor) {
-        TableColumn<SpaceMarine, String> column = new TableColumn<>(name);
+        TableColumn<SpaceMarine, String> column = new TableColumn<>();
+        column.textProperty().bind(LocalizationManager.createStringBinding("filter.column." + name));
         column.setCellValueFactory(cellData -> new SimpleStringProperty(valueExtractor.apply(cellData.getValue())));
         tableView.getColumns().add(column);
     }
@@ -132,7 +143,8 @@ public class TableController extends ToolbarController {
             tableView.refresh();
         } else {
             marineData.clear();
-            showAlert(Alert.AlertType.WARNING, "Warning", "Invalid or empty data provided.");
+            showAlert(Alert.AlertType.WARNING, LocalizationManager.getString("table.warning.invalid_data"),
+                    LocalizationManager.getString("table.warning.invalid_data"));
         }
     }
 
@@ -155,7 +167,7 @@ public class TableController extends ToolbarController {
     public void openEditWindow(SpaceMarine marine) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit-marine.fxml"));
-            Stage stage = openWindow(loader, "Edit SpaceMarine", null, null);
+            Stage stage = openWindow(loader, LocalizationManager.getString("edit.title.edit"), null, null);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
@@ -164,7 +176,8 @@ public class TableController extends ToolbarController {
 
             stage.showAndWait();
         } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to open edit window: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, LocalizationManager.getString("table.error.edit_failed"),
+                    LocalizationManager.getString("table.error.edit_failed") + ": " + e.getMessage());
         }
     }
 
@@ -176,7 +189,7 @@ public class TableController extends ToolbarController {
     public void openAddWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit-marine.fxml"));
-            Stage stage = openWindow(loader, "Add SpaceMarine", null, null);
+            Stage stage = openWindow(loader, LocalizationManager.getString("edit.title.add"), null, null);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
@@ -185,7 +198,8 @@ public class TableController extends ToolbarController {
 
             stage.showAndWait();
         } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to open edit window: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, LocalizationManager.getString("table.error.edit_failed"),
+                    LocalizationManager.getString("table.error.edit_failed") + ": " + e.getMessage());
         }
     }
 
@@ -197,7 +211,7 @@ public class TableController extends ToolbarController {
     public void openFilterWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/filter-marine.fxml"));
-            Stage stage = openWindow(loader, "Table filter", null, null);
+            Stage stage = openWindow(loader, LocalizationManager.getString("filter.title"), null, null);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
@@ -206,7 +220,8 @@ public class TableController extends ToolbarController {
 
             stage.showAndWait();
         } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to open filter window: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, LocalizationManager.getString("table.error.filter_failed"),
+                    LocalizationManager.getString("table.error.filter_failed") + ": " + e.getMessage());
         }
     }
 

@@ -35,7 +35,7 @@ public class LocalizationManager {
         try {
             return getBundle().getString(key);
         } catch (Exception e) {
-            return key; // Fallback to key if translation is missing
+            return key; 
         }
     }
 

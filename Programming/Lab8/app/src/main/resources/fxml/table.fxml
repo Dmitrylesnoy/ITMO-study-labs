@@ -17,10 +17,12 @@
                     <Insets top="10" bottom="10" />
                 </padding>
                 <Label fx:id="userLabel" text="User: admin" styleClass="user-label" />
+                <Button fx:id="themeButton" styleClass="theme-toggle-button" onAction="#toggleTheme" />
+                <ComboBox fx:id="languageSelector" promptText="Select lang" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <Button text="Terminal" onAction="#openTerminal" />
-                <Button text="Table" onAction="#openTable" />
-                <Button text="Cards" onAction="#openCards" />
+                <Button fx:id="terminalBtn" text="Терминал" onAction="#openTerminal" />
+                <Button fx:id="tableBtn" text="Таблица" onAction="#openTable" />
+                <Button fx:id="cardsBtn" text="Карточки" onAction="#openCards" />
             </HBox>
 
 
