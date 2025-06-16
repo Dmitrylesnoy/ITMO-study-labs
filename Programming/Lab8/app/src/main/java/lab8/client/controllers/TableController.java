@@ -1,29 +1,42 @@
 package lab8.client.controllers;
 
+import java.lang.reflect.Field;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lab8.client.controllers.dialogs.EditController;
 import lab8.client.controllers.dialogs.FilterController;
 import lab8.client.controllers.util.DataSyncThread;
-import lab8.client.controllers.util.ToolbarController;
 import lab8.client.controllers.util.LocalizationManager;
+import lab8.client.controllers.util.ToolbarController;
+import lab8.client.utils.Handler;
+import lab8.shared.commands.Clear;
+import lab8.shared.messages.Request;
 import lab8.shared.model.Chapter;
 import lab8.shared.model.Coordinates;
 import lab8.shared.model.SpaceMarine;
-
-import java.lang.reflect.Field;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class TableController extends ToolbarController {
     @FXML
@@ -49,11 +62,17 @@ public class TableController extends ToolbarController {
         tableView.setOnMouseClicked(event -> {
             if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
                 SpaceMarine selectedMarine = tableView.getSelectionModel().getSelectedItem();
-                if (selectedMarine != null) {
+                if (selectedMarine != null)
                     openEditWindow(selectedMarine);
-                }
             }
         });
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem deleteItem = new MenuItem();
+        deleteItem.textProperty().bind(LocalizationManager.createStringBinding("table.context.delete"));
+        deleteItem.setOnAction(e -> showDeleteConfirmation());
+        contextMenu.getItems().add(deleteItem);
+        tableView.setContextMenu(contextMenu);
+
         dataSyncThread.start();
 
         // Bind localized texts
@@ -227,5 +246,32 @@ public class TableController extends ToolbarController {
 
     public void shutdown() {
         dataSyncThread.shutdown();
+    }
+
+    private void showDeleteConfirmation() {
+        SpaceMarine selectedMarine = tableView.getSelectionModel().getSelectedItem();
+        if (selectedMarine == null) {
+            ToolbarController.showAlert(Alert.AlertType.WARNING,
+                    LocalizationManager.getString("table.error"),
+                    LocalizationManager.getString("table.error.no_selection"));
+            return;
+        }
+
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        dialog.setTitle(LocalizationManager.getString("table.dialog.delete.title"));
+        dialog.setHeaderText(null);
+        dialog.setContentText(LocalizationManager.getString("table.dialog.delete.message"));
+
+        // Localize button text
+        ButtonType yesButton = new ButtonType(LocalizationManager.getString("dialog.yes"));
+        ButtonType noButton = new ButtonType(LocalizationManager.getString("dialog.no"));
+        dialog.getButtonTypes().setAll(yesButton, noButton);
+
+        dialog.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+                Handler.getInstance().run(new Request(new Clear(), selectedMarine.getId(),null,null));
+                refreshTable();
+            }
+        });
     }
 }

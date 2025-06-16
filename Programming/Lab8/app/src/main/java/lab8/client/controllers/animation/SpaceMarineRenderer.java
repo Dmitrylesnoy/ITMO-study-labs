@@ -111,7 +111,7 @@ public class SpaceMarineRenderer {
 
         gc.setFill(color);
         gc.setFont(javafx.scene.text.Font.font("Arial", 12));
-        gc.fillText("ID: " + id, x - 20, y - size - 5);
+        gc.fillText("ID: " + id, drawX - 20, drawY - size - 5);
     }
 
     public SpaceMarine findMarineAt(double clickX, double clickY) {

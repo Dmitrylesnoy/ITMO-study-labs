@@ -167,6 +167,8 @@ public class Handler {
                 cmdArgs = inp_args != null ? inp_args[0] : null;
             if (cmd.getClass().equals(RemoveByID.class))
                 cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
+            if (cmd.getClass().equals(Clear.class))
+                cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
             if (cmd.getClass().equals(UpdateId.class))
                 cmdArgs = new SpaceMarineBuilder().setId(inp_args != null ? Long.parseLong(inp_args[0]) : -1).build();
             if (cmd.getClass().equals(ExecuteScript.class)) {
