@@ -2,10 +2,7 @@ package lab8.client.controllers.util;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.Set;
-
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -47,7 +44,7 @@ public class ToolbarController implements Initializable {
 
     protected static StringProperty usernameProperty = new SimpleStringProperty("");
     protected static ToolbarController instance;
-    protected static boolean isLightTheme = true;
+    protected static boolean isDarkTheme = true;
 
     protected static Stage terminalStage = openWindow("/fxml/terminal.fxml",
             LocalizationManager.getString("terminal.title"), 900, 700);
@@ -158,20 +155,6 @@ public class ToolbarController implements Initializable {
         return instance == null ? instance = new ToolbarController() : instance;
     }
 
-    @FXML
-    public void toggleTheme(ActionEvent event) {
-        isLightTheme = !isLightTheme;
-        updateStageStylesheet(((Stage) ((Node) event.getSource()).getScene().getWindow()));
-    }
-
-    private static void updateStageStylesheet(Stage stage) {
-        if (stage != null && stage.getScene() != null) {
-            stage.getScene().getStylesheets().clear();
-            String stylesheet = isLightTheme ? "/css/light-theme.css" : "/css/dark-theme.css";
-            stage.getScene().getStylesheets().add(ToolbarController.class.getResource(stylesheet).toExternalForm());
-        }
-    }
-
     public static void showAlert(Alert.AlertType type, String title, String message) {
         Platform.runLater(() -> {
             Alert alert = new Alert(type);
@@ -180,5 +163,23 @@ public class ToolbarController implements Initializable {
             alert.setContentText(message);
             alert.showAndWait();
         });
+    }
+
+    @FXML
+    public void toggleTheme(ActionEvent event) {
+        Scene scene = themeButton.getScene();
+        Stage stage = (Stage) scene.getWindow();
+
+        if (isDarkTheme) {
+            scene.getStylesheets().remove("dark-theme.css");
+            scene.getStylesheets().add("light-theme.css");
+        } else {
+            scene.getStylesheets().remove("light-theme.css");
+            scene.getStylesheets().add("dark-theme.css");
+        }
+
+        isDarkTheme = !isDarkTheme;
+        // String stylesheet = isLightTheme ? "/css/light-theme.css" : "/css/dark-theme.css";
+
     }
 }

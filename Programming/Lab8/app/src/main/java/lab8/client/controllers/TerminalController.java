@@ -47,6 +47,7 @@ public class TerminalController extends ToolbarController {
             input = input.trim();
             ClientConsole.add(input);
             Handler.getInstance().run();
+            printOutput();
             Thread printThread = new Thread(() -> {
                 try {
                     printOutput();
