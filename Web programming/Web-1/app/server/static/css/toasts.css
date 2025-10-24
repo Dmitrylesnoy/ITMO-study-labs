@@ -1,0 +1,62 @@
+.notifications {
+    position: fixed;
+    right: 0px;
+    bottom: 5px;
+    z-index: 10000;
+}
+
+.toast {
+    border-radius: 5px;
+    width: 400px;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    animation: showOn 0.3s ease 1 forwards;
+    box-shadow: var(--shadow);
+}
+
+.close-btn {
+    /* display: flex; */
+    justify-content: left;
+    margin: 25px;
+}
+
+.toast h1 {
+    font-size: 28px;
+}
+
+.icon {
+    padding: 20px 20px;
+    font-size: 3rem;
+    color: white;
+}
+
+.success {
+    background-image: linear-gradient(to right, #13c93a, #ffffff 30%);
+}
+
+.error {
+    background-image: linear-gradient(to right, #ff0000, #ffffff 30%);
+    ;
+}
+
+.warning {
+    background-image: linear-gradient(to right, #ffae00, #ffffff 30%);
+}
+
+.info {
+    background-image: linear-gradient(to right, #479cd4, #ffffff 30%);
+}
+
+
+@keyframes showOn {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-10%);
+    }
+}

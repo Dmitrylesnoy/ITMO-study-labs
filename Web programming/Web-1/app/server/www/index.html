@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Линейский Аким Евгеньевич">
+    <meta name="group" content="P3215">
+    <meta name="variant" content="466513">
+    <title>Web-prog Lab-1</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@material/circular-progress@14.0.0/dist/mdc.circular-progress.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>Web - lab 1. var - 466513</h1>
+        <h2>Линейский Аким Евгеньевич, группа P3215</h2>
+    </header>
+
+
+    <main class="main-container">
+        <div class="main-row">
+            <div class="form-cell">
+                <form id="formCoords" class="card">
+                    <div class="input-group">
+                        <label for="x" class="required-field">X:</label>
+                        <div id="x">
+                            <label><input type="radio" name="x" value="-3">-3</label>
+                            <label><input type="radio" name="x" value="-2">-2</label>
+                            <label><input type="radio" name="x" value="-1">-1</label>
+                            <label><input type="radio" name="x" value="0">0</label>
+                            <label><input type="radio" name="x" value="1">1</label>
+                            <label><input type="radio" name="x" value="2">2</label>
+                            <label><input type="radio" name="x" value="3">3</label>
+                            <label><input type="radio" name="x" value="4">4</label>
+                            <label><input type="radio" name="x" value="5">5</label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="y" class="required-field">Y:</label>
+                        <input type="text" id="y" name="y" maxlength="8" placeholder="От -3 до 3">
+                    </div>
+                    <div class="input-group">
+                        <label for="r" class="required-field">R:</label>
+                        <select id="r" name="r">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" id="submitBtn">
+                            <span id="submitBtnText">Check</span>
+                            <!-- <i class="fa fa-spinner fa-spin" id="progress1"></i> -->
+                            <svg id="custom-bar" width="40px" height="40px" viewBox="0 0 40 40" style="display:none;">
+                                <circle cx="20" cy="20" r="15" stroke="#927ea4" stroke-width="4" fill="none" />
+                                <circle cx="20" cy="20" r="15" stroke="white" stroke-width="4" fill="none"
+                                    stroke-dasharray="15" />
+                            </svg>
+                        </button>
+                        <button type="button" id="resetBtn">Reset data</button>
+                        <div class="mdc-circular-progress mdc-circular-progress--indeterminate" role="progressbar"
+                            aria-label="Example Progress Bar" aria-valuemin="0" aria-valuemax="1">
+
+                            <div class="mdc-circular-progress__determinate-container">
+                                <svg class="mdc-circular-progress__determinate-circle-graphic" viewBox="0 0 48 48"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="mdc-circular-progress__determinate-track" cx="24" cy="24" r="18"
+                                        stroke-width="4" />
+                                    <circle class="mdc-circular-progress__determinate-circle" cx="24" cy="24" r="18"
+                                        stroke-dasharray="113.097" stroke-dashoffset="113.097" stroke-width="4" />
+                                </svg>
+                            </div>
+                            <div class="mdc-circular-progress__indeterminate-container">
+                                <div class="mdc-circular-progress__spinner-layer">
+                                    <div
+                                        class="mdc-circular-progress__circle-clipper mdc-circular-progress__circle-left">
+                                        <svg class="mdc-circular-progress__indeterminate-circle-graphic"
+                                            viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="24" cy="24" r="18" stroke-dasharray="113.097"
+                                                stroke-dashoffset="56.549" stroke-width="4" stroke="black" />
+                                        </svg>
+                                    </div>
+                                    <div class="mdc-circular-progress__gap-patch">
+                                        <svg class="mdc-circular-progress__indeterminate-circle-graphic"
+                                            viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="24" cy="24" r="18" stroke-dasharray="113.097"
+                                                stroke-dashoffset="56.549" stroke-width="3.2" />
+                                        </svg>
+                                    </div>
+                                    <div
+                                        class="mdc-circular-progress__circle-clipper mdc-circular-progress__circle-right">
+                                        <svg class="mdc-circular-progress__indeterminate-circle-graphic"
+                                            viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="24" cy="24" r="18" stroke-dasharray="113.097"
+                                                stroke-dashoffset="56.549" stroke-width="4" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="graph-cell">
+                <div id="graph">
+                    <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="50" y1="200" x2="350" y2="200" stroke="black" stroke-width="2" />
+                        <line x1="200" y1="350" x2="200" y2="50" stroke="black" stroke-width="2" />
+
+                        <line x1="150" y1="195" x2="150" y2="205" stroke="black" stroke-width="2" />
+                        <line x1="100" y1="195" x2="100" y2="205" stroke="black" stroke-width="2" />
+                        <line x1="250" y1="195" x2="250" y2="205" stroke="black" stroke-width="2" />
+                        <line x1="300" y1="195" x2="300" y2="205" stroke="black" stroke-width="2" />
+
+                        <line x1="195" y1="150" x2="205" y2="150" stroke="black" stroke-width="2" />
+                        <line x1="195" y1="100" x2="205" y2="100" stroke="black" stroke-width="2" />
+                        <line x1="195" y1="250" x2="205" y2="250" stroke="black" stroke-width="2" />
+                        <line x1="195" y1="300" x2="205" y2="300" stroke="black" stroke-width="2" />
+
+                        <text x="360" y="190" fill="black" font-size="12">X</text>
+                        <text x="210" y="40" fill="black" font-size="12">Y</text>
+
+                        <text x="145" y="220" fill="black" font-size="10" text-anchor="middle">-R/2</text>
+                        <text x="95" y="220" fill="black" font-size="10" text-anchor="middle">-R</text>
+                        <text x="255" y="220" fill="black" font-size="10" text-anchor="middle">R/2</text>
+                        <text x="305" y="220" fill="black" font-size="10" text-anchor="middle">R</text>
+
+                        <text x="220" y="145" fill="black" font-size="10" text-anchor="start">R/2</text>
+                        <text x="220" y="95" fill="black" font-size="10" text-anchor="start">R</text>
+                        <text x="220" y="255" fill="black" font-size="10" text-anchor="start">-R/2</text>
+                        <text x="220" y="305" fill="black" font-size="10" text-anchor="start">-R</text>
+
+                        <path d="M 200 200 L 100 200 A 100 100 0 0 1 200 100 Z" fill="rgba(138,43,226,0.3)"
+                            stroke="#8a2be2" stroke-width="2" />
+
+                        <polygon points="200,150 300,200 200,200" fill="rgba(138,43,226,0.3)" stroke="#8a2be2"
+                            stroke-width="2" />
+
+                        <rect x="100" y="200" width="100" height="50" fill="rgba(138,43,226,0.3)" stroke="#8a2be2"
+                            stroke-width="2" />
+
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-row">
+            <div class="table-cell">
+                <div class="table">
+                    <table id="tableData">
+                        <thead>
+                            <tr>
+                                <th>X</th>
+                                <th>Y</th>
+                                <th>R</th>
+                                <th>Hit</th>
+                                <th>Calc time</th>
+                                <th>Current time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="output">
+                            <tr>
+                                <!-- <td>Data x</td>
+                                <td>Data y</td>
+                                <td>Data r</td>
+                                <td>Data hit</td>
+                                <td>Data duration</td>
+                                <td>Data current time</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="table-cell">
+                <img id="fox_picture" alt="Some picture" width="400px">
+            </div>
+        </div>
+    </main>
+    <div class="notifications"></div>
+<script defer src="bundle.js"></script></body>
+
+</html>
