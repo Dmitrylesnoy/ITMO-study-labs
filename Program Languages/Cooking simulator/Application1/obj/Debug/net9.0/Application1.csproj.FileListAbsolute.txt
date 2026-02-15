@@ -13,3 +13,18 @@ c:\Users\Vasy Medov\Documents\ITMO\ITMO-study-labs\Program Languages\C# lang\App
 C:\Users\Vasy Medov\Documents\ITMO\ITMO-study-labs\Program Languages\C# lang\Application1\bin\Debug\net9.0\Application1.exe
 C:\Users\Vasy Medov\Documents\ITMO\ITMO-study-labs\Program Languages\C# lang\Application1\bin\Debug\net9.0\Application1.runtimeconfig.json
 C:\Users\Vasy Medov\Documents\ITMO\ITMO-study-labs\Program Languages\C# lang\Application1\obj\Debug\net9.0\Application1.genruntimeconfig.cache
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\bin\Debug\net9.0\Application1.exe
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\bin\Debug\net9.0\Application1.deps.json
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\bin\Debug\net9.0\Application1.runtimeconfig.json
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\bin\Debug\net9.0\Application1.dll
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\bin\Debug\net9.0\Application1.pdb
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.AssemblyInfoInputs.cache
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.AssemblyInfo.cs
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.csproj.CoreCompileInputs.cache
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.sourcelink.json
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.dll
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\refint\Application1.dll
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.pdb
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\Application1.genruntimeconfig.cache
+C:\Users\Vasy Medov\Documents\ITMO\Cooking simulator\Application1\obj\Debug\net9.0\ref\Application1.dll
