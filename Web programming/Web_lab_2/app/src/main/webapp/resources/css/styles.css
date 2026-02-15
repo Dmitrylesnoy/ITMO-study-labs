@@ -1,0 +1,205 @@
+:root {
+  --primary: #8a2be2;
+  --secondary: #6a0dad;
+  --light-purple: #d8bfd8;
+  --light-bg: #f0e6ff;
+  --text: #333;
+  --bg: #f8f8f8;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 4px;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 24px;
+  color: var(--text);
+  padding: 20px;
+  background-color: var(--bg);
+}
+
+header h1,
+header h2 {
+  color: var(--primary);
+  text-align: center;
+  margin: 10px 0;
+}
+
+.main-container {
+  display: table;
+}
+
+.main-row {
+  display: table-row;
+}
+
+.form-cell,
+.graph-cell,
+.table-cell {
+  display: table-cell;
+  vertical-align: top;
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+#formCoords div {
+  margin-bottom: 15px;
+}
+
+#formCoords label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+#formCoords input,
+#formCoords select {
+  border: 2px solid var(--light-purple);
+  border-radius: var(--border-radius);
+  height: 50px;
+  box-sizing: border-box;
+}
+
+#formCoords input[type="text"],
+#formCoords select {
+  padding: 8px;
+  width: 200px;
+}
+
+#formCoords input[type="submit"] {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: inherit;
+  /* vertical-align: top; */
+  height: 60px;
+  min-width: 60px;
+  display: inline-block;
+  vertical-align: middle;
+
+  /* box-sizing: border-box; */
+}
+
+#formCoords input[type="submit"]:hover {
+  background-color: var(--secondary);
+}
+
+button {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: inherit;
+  height: 60px;
+  display: inline-block;
+  vertical-align: middle;
+
+  /* position: relative; */
+  /* box-sizing: border-box; */
+}
+
+button:hover {
+  background-color: var(--secondary);
+}
+
+#x label {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+#x input[type="radio"] {
+  vertical-align: middle;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+#tableData {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: var(--shadow);
+}
+
+#tableData th {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+#tableData td {
+  padding: 10px;
+  border-bottom: 1px solid var(--light-purple);
+}
+
+#tableData tr:hover {
+  background-color: var(--light-bg);
+}
+
+#formCoords > div {
+  border-left: 3px solid var(--primary);
+  padding-left: 10px;
+}
+
+.required-field::after {
+  content: " *";
+  color: #ff0000;
+}
+
+#formCoords .input-group {
+  color: #4b0082;
+}
+
+.hit-yes {
+  background-color: lightgreen;
+}
+
+.hit-no {
+  background-color: lightcoral;
+}
+
+#fox_picture {
+  vertical-align: middle;
+  margin: 50px 50px;
+}
+
+/* .mdc-circular-progress {
+    width: 50px;
+    height: 50px;
+    visibility: hidden;
+    display: inline-block;
+    --mdc-circular-progress-active-indicator-color: white;
+    --mdc-circular-progress-track-color: rgba(255, 255, 255, 0.3);
+    vertical-align: middle;
+} */
+
+#custom-bar {
+  display: inline-block;
+  vertical-align: middle;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
