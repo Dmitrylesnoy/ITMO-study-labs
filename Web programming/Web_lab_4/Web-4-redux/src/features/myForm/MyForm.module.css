@@ -1,0 +1,121 @@
+.formCoords div {
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+}
+
+.formCoords label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+.formCoords input,
+.formCoords select {
+  border: 2px solid var(--light-purple);
+  border-radius: var(--border-radius);
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.formCoords input[type="text"],
+.formCoords select {
+  padding: 8px;
+  width: 200px;
+}
+
+.radio label {
+  display: inline-block;
+  margin-right: var(--spacing-sm);
+  margin-bottom: 5px;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+.radio input[type="radio"] {
+  vertical-align: middle;
+}
+
+.formCoords > div {
+  border-left: 3px solid var(--primary);
+  padding-left: var(--spacing-sm);
+}
+
+.requiredField::after {
+  content: " *";
+  color: #ff0000;
+}
+
+.inputGroup {
+  color: #4b0082;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 18px;
+  margin-top: var(--spacing-xs);
+}
+
+.foxPicture {
+  vertical-align: middle;
+  margin: 50px 50px;
+}
+
+.customBar {
+  vertical-align: middle;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+.formContainer {
+  padding: var(--spacing-md);
+}
+
+.formCoords {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.coordsGroup,
+.radioGroup,
+.buttonGroup {
+  border: 1px solid var(--light-purple);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  background-color: rgba(138, 43, 226, 0.05);
+}
+
+@media (max-width: 886px) {
+  .formCoords input[type="text"],
+  .formCoords select {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .formContainer {
+    padding: var(--spacing-sm);
+  }
+
+  .coordsGroup,
+  .radioGroup,
+  .buttonGroup {
+    padding: var(--spacing-sm);
+  }
+
+  .radio label {
+    display: block;
+    margin-right: 0;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .radio input[type="radio"] {
+    margin-right: var(--spacing-xs);
+  }
+}
+
+@media (min-width: 887px) and (max-width: 1191px) {
+  .formCoords {
+    gap: var(--spacing-md);
+  }
+}

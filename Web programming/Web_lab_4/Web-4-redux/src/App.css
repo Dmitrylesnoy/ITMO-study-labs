@@ -1,0 +1,92 @@
+header h1,
+header h2 {
+  color: var(--primary);
+  text-align: center;
+  margin: 10px 0;
+}
+
+.main-header {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.main-header h1,
+.main-header h2 {
+  color: var(--primary);
+  margin: 0;
+  flex: 1;
+}
+
+.card {
+  text-align: justify;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submitButton,
+button {
+  margin: 5px;
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: inherit;
+  height: 60px;
+  min-width: 60px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.submitButton:hover,
+button:hover {
+  background-color: var(--secondary);
+}
+
+#custom-bar {
+  vertical-align: middle;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+#fox_picture {
+  vertical-align: middle;
+  margin: 50px 50px;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.logo {
+  vertical-align: middle;
+  margin: var(--spacing-lg);
+  animation: spin 3s linear infinite;
+  height: 80px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

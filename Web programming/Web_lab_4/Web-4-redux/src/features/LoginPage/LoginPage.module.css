@@ -1,0 +1,142 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--light-bg);
+  padding: var(--spacing-md);
+}
+
+.content {
+  text-align: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: var(--spacing-xxl);
+  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  vertical-align: middle;
+  margin: var(--spacing-lg);
+  animation: spin 3s linear infinite;
+  height: 80px;
+}
+
+.title {
+  color: var(--primary);
+  text-align: center;
+  margin: var(--spacing-sm) 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--text);
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-top: 30px;
+}
+
+.inputGroup {
+  text-align: left;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--secondary);
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--light-purple);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loginButton {
+  margin: var(--spacing-xs);
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: inherit;
+  height: 60px;
+  min-width: 60px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.loginButton:hover {
+  background-color: var(--secondary);
+}
+
+@media (max-width: 886px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+
+  .content {
+    padding: var(--spacing-xl);
+  }
+
+  .title {
+    font-size: calc(var(--font-size-mobile) * 1.5);
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  .loginButton {
+    height: 50px;
+    font-size: var(--font-size-mobile);
+  }
+
+  input {
+    padding: 10px 12px;
+    font-size: var(--font-size-mobile);
+  }
+}
+
+@media (min-width: 887px) and (max-width: 1191px) {
+  .content {
+    padding: var(--spacing-xl);
+  }
+
+  .title {
+    font-size: calc(var(--font-size-tablet) * 1.2);
+  }
+}
