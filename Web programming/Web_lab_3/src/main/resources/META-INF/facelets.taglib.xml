@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib>
+    <namespace>http://lab.web/pointform</namespace>
+    <tag>
+        <tag-name>pointInput</tag-name>
+        <component>
+            <component-type>pointInput</component-type>
+        </component>
+    </tag>
+</facelet-taglib>

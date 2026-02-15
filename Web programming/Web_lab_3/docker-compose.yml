@@ -1,0 +1,41 @@
+version: "3.5"
+services:
+  wildfly:
+    build:
+      context: .
+      #from .env
+      args:
+        - DATABASE_URL=${DATABASE_URL}
+        - DB_USERNAME=${DB_USERNAME}
+        - DB_PASSWORD=${DB_PASSWORD}
+        - WAR_PATH=${WAR_PATH}
+    container_name: web3
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    networks:
+      - default
+  postgres:
+    image: postgres:16.0
+    container_name: web3_db
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - wildfly_data:/var/lib/postgresql/data
+    restart: always
+    shm_size: 128mb
+    networks:
+      - default
+volumes:
+  wildfly_data:
+  wildfly_config:
+networks:
+  default:
+    driver: bridge

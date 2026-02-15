@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="primefaces"
+  lang="en">
+  <h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Линейский Аким Евгеньевич" />
+    <meta name="group" content="P3215" />
+    <meta name="variant" content="26499" />
+    <title>Web-prog Lab-3</title>
+
+    <h:outputStylesheet library="css" name="styles.css" />
+  </h:head>
+  <h:body>
+    <header>
+      <h1>Web - lab 3. var - 26499</h1>
+      <h2>Линейский Аким Евгеньевич, группа P3215</h2>
+    </header>
+    <main>
+      <h:panelGroup id="dateTimeCard">
+        <div class="card">
+          <h1>
+            Date:
+            <h:outputText value="#{dateTimeBean.stringCurrentDateTime}" />
+          </h1>
+          <h:form>
+            <h:commandButton
+              id="moveToMainButton"
+              value="Go to Main page"
+              action="main"
+              styleClass="ui-button custom-primary-btn" />
+          </h:form>
+        </div>
+      </h:panelGroup>
+      <p:poll interval="6" update="dateTimeCard" />
+    </main>
+  </h:body>
+</html>

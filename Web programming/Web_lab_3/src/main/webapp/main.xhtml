@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="primefaces"
+  xmlns:pf="http://lab.web/pointform"
+  lang="en">
+  <h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Линейский Аким Евгеньевич" />
+    <meta name="group" content="P3215" />
+    <meta name="variant" content="26499" />
+    <title>Web-prog Lab-3</title>
+
+    <h:outputStylesheet library="css" name="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <h:outputScript library="js" name="graph.js" />
+    <h:outputScript> window.pointsData = '#{hitData.dataAsJson}'; </h:outputScript>
+    <h:outputScript library="js" name="main.js" />
+  </h:head>
+
+  <body>
+    <div class="notifications"></div>
+    <header>
+      <h1>Web - lab 3. var - 26499</h1>
+      <h2>Линейский Аким Евгеньевич, группа P3215</h2>
+    </header>
+
+    <main class="main-container">
+      <div class="main-row">
+        <div class="card">
+          <h:form id="formCoords">
+            <h:inputHidden id="graphClickFlag" value="#{point.graphClick}" />
+            <pf:pointInput id="xInput" field="x" type="radio" range="-4,4" step="1" />
+            <pf:pointInput id="yInput" field="y" type="text" range="-5,3" />
+            <pf:pointInput id="rInput" field="r" type="button" range="1,5" />
+            <div>
+              <h:commandButton id="submitBtn" styleClass="ui-button" value="Check" action="#{inputProcess.submitPoint}">
+                <f:ajax execute="@form" render="@form tableData" oncomplete="loadPointsData(); updateGraph();" />
+              </h:commandButton>
+              <h:commandButton
+                id="resetBtn"
+                styleClass="ui-button"
+                value="Reset"
+                action="#{point.reset}"
+                immediate="true">
+                <f:ajax execute="@this" render="@form" />
+              </h:commandButton>
+            </div>
+            <h:outputScript> window.pointsData = '#{hitData.dataAsJson}'; updateGraph(); </h:outputScript>
+          </h:form>
+          <h:form>
+            <h:commandButton id="moveToHelloButton" styleClass="ui-button" value="Go to Hello page" action="hello" />
+          </h:form>
+        </div>
+        <div class="card">
+          <canvas id="graph" class="card" width="500" height="500"></canvas>
+          <h:outputScript>initializeCanvas();</h:outputScript>
+        </div>
+      </div>
+      <div class="main-row">
+        <div class="card">
+          <h:graphicImage library="media" name="frog.jpeg" width="400px" alt="Frog" />
+        </div>
+        <div class="table card">
+          <h:dataTable
+            id="tableData"
+            value="#{hitData.data}"
+            var="pointData"
+            styleClass="data-table"
+            rowClass="#{pointData.hit ? 'hit-yes' : 'hit-no'}">
+            <h:column>
+              <f:facet name="header">X</f:facet>
+              #{pointData.x}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Y</f:facet>
+              #{pointData.y}
+            </h:column>
+            <h:column>
+              <f:facet name="header">R</f:facet>
+              #{pointData.r}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Hit</f:facet>
+              #{pointData.hit ? 'Yes' : 'No'}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Calc time</f:facet>
+              #{pointData.execTime} ns
+            </h:column>
+            <h:column>
+              <f:facet name="header">Current time</f:facet>
+              #{pointData.dataFormatted}
+            </h:column>
+          </h:dataTable>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
