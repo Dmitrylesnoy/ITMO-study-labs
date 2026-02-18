@@ -69,6 +69,7 @@ def is_number(s):
 
 
 def transform2diagonal(A, B):
+    """Преобразование матрицы в диагональную"""
     n = len(A)
     A_new = A.copy()
     B_new = B.copy()
@@ -79,9 +80,15 @@ def transform2diagonal(A, B):
             A_new[[max_e, i]] = A_new[[i, max_e]]
             B_new[max_e], B_new[i] = B_new[i], B_new[max_e]
             diagonal_count += 1
+
+    for i in range(len(A)):
+        if abs(A[i,i]) <= np.sum(np.abs(A[i])) - abs(A[i,i]):
+            pass
         
-                    
-    # TODO: проверка отсутствия преобладания на диагонали
+    for i in range(len(A)):
+        if abs(A[i,i]) <= np.sum(np.abs(A[i])) - abs(A[i,i]):
+            print("⚠️ Внимание: отсутствует диагональное преобладание")
+            break    
     
     return A_new, B_new
 
@@ -131,7 +138,6 @@ def calc_gauss_seidel(A, X, B, m=10, e=1e-2):
                 print("Итерации расходятся")
                 exit(0)
 
-# TODO: проверка ввода пользователя
 '''
 • Проверка диагонального преобладания (в случае, если диагональное 
 преобладание в исходной  матрице отсутствует, сделать перестановку 
@@ -143,10 +149,10 @@ def calc_gauss_seidel(A, X, B, m=10, e=1e-2):
 
 n = validate_int_input("Введите размерность матрицы:", min_value=1)
 
-print("Выберите способ ввода матрицы:")
+print("Выберите способ ввода матрицы: ")
 print("1 - Ввести вручную")
 print("2 - Сгенерировать случайную матрицу")
-choice = validate_int_input("Ваш выбор (1 или 2):", min_value=1, max_value=2)
+choice = validate_int_input("Ваш выбор (1 или 2): ", min_value=1, max_value=2)
 
 if choice == 1:
     # [[2,2,10],
