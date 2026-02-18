@@ -48,6 +48,7 @@ def calc_gauss_seidel(A, X, B, m=10, e=1e-2):
 
         if delta < e:
             print(f"Решение найдено за {k} итераций:")
+            print("Вектор неизвестных:")
             for i in range(n):
                 print(f"x{i+1} = {X[i]:.6f}")
             break
@@ -72,17 +73,34 @@ def calc_gauss_seidel(A, X, B, m=10, e=1e-2):
 • Вывод вектора  погрешностей: |𝑥𝑖(𝑘) − 𝑥𝑖(𝑘−1)|'''
 
 n = int(input("Введите размерность матрицы:"))
-# [[2,2,10],
-# [10,1,1],
-# [2,10,1]]
-A = np.zeros((n, n), float)
-print("Построчно введите матрицу коэффициентов A")
-for i in range(n):
-    A[i] = list(map(float, input(f"A[{i+1}]: ").split()))
-    
-# [14,12,13]
-print("Введите матрицу свободных членов B")
-B = np.array(list(map(float, input("B: ").split())), float)
+
+print("Выберите способ ввода матрицы:")
+print("1 - Ввести вручную")
+print("2 - Сгенерировать случайную матрицу")
+choice = input("Ваш выбор (1 или 2): ")
+
+if choice == "1":
+    # [[2,2,10],
+    # [10,1,1],
+    # [2,10,1]]
+    A = np.zeros((n, n), float)
+    print("Построчно введите матрицу коэффициентов A")
+    for i in range(n):
+        A[i] = list(map(float, input(f"A[{i+1}]: ").split()))
+        
+    # [14,12,13]
+    print("Введите матрицу свободных членов B")
+    B = np.array(list(map(float, input("B: ").split())), float)
+elif choice == "2":
+    A = np.random.rand(n, n) * 10 - 5
+    B = np.random.rand(n) * 20 - 10
+    print("Сгенерированная матрица A:")
+    print(A)
+    print("Сгенерированный вектор B:")
+    print(B)
+else:
+    print("Неверный выбор. Выход.")
+    exit(1)
 
 X = np.zeros(n, float)
 m = 10
