@@ -1,30 +1,11 @@
 import numpy as np
-
-
-def validate_number_input(prompt, min_value=None, max_value=None):
-    """Валидация числового ввода числа с плавующей точкой"""
-    while True:
-        user_input = input(prompt).strip()
-        if not user_input:
-            print("Ошибка: ввод не может быть пустым")
-            continue
-        if not is_number(user_input):
-            print("Ошибка: введите число")
-            continue
-        value = float(user_input)
-        if min_value is not None and value < min_value:
-            print(f"Ошибка: значение должно быть >= {min_value}")
-            continue
-        if max_value is not None and value > max_value:
-            print(f"Ошибка: значение должно быть <= {max_value}")
-            continue
-        return value
+import json
 
 
 def validate_int_input(prompt, min_value=None, max_value=None):
     """Валидация целочисленного ввода"""
     while True:
-        user_input = input(prompt).strip()
+        user_input = input(prompt).strip().replace(",", ".")
         if not user_input:
             print("Ошибка: ввод не может быть пустым")
             continue
@@ -53,7 +34,7 @@ def validate_vector(prompt, expected_cols):
             print(f"Ошибка: ожидается {expected_cols} значений, получено {len(values)}")
             continue
         try:
-            row = [float(val) for val in values]
+            row = [float(val.replace(",",".")) for val in values]
             return row
         except ValueError:
             print("Ошибка: все элементы должны быть числами")
@@ -66,6 +47,36 @@ def is_number(s):
         return True
     except ValueError:
         return False
+    
+
+def parse_json_matrix(filename):
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        if not all(k in data for k in ['A', 'B', 'X']):
+            print("Ошибка: JSON должен содержать поля 'A', 'B', 'X'")
+            return None, None, None
+        
+        A = np.array(data['A'], dtype=float)
+        B = np.array(data['B'], dtype=float)
+        X = np.array(data['X'], dtype=float)
+        
+        n = len(A)
+        if A.shape != (n, n) or len(B) != n or len(X) != n:
+            print("Ошибка: несоответствие размерностей матриц")
+            return None, None, None
+            
+        return A, B, X
+        
+    except FileNotFoundError:
+        print(f"Ошибка: файл '{filename}' не найден")
+    except json.JSONDecodeError as e:
+        print(f"Ошибка: некорректный JSON - {e}")
+    except Exception as e:
+        print(f"Ошибка: {e}")
+    
+    return None, None, None
 
 
 def transform2diagonal(A, B):
@@ -80,10 +91,6 @@ def transform2diagonal(A, B):
             A_new[[max_e, i]] = A_new[[i, max_e]]
             B_new[max_e], B_new[i] = B_new[i], B_new[max_e]
             diagonal_count += 1
-
-    for i in range(len(A)):
-        if abs(A[i,i]) <= np.sum(np.abs(A[i])) - abs(A[i,i]):
-            pass
         
     for i in range(len(A)):
         if abs(A[i,i]) <= np.sum(np.abs(A[i])) - abs(A[i,i]):
@@ -152,7 +159,8 @@ n = validate_int_input("Введите размерность матрицы:", 
 print("Выберите способ ввода матрицы: ")
 print("1 - Ввести вручную")
 print("2 - Сгенерировать случайную матрицу")
-choice = validate_int_input("Ваш выбор (1 или 2): ", min_value=1, max_value=2)
+print("3 - прочитать данные из файла")
+choice = validate_int_input("Ваш выбор: ", 1, 3)
 
 if choice == 1:
     # [[2,2,10],
@@ -179,6 +187,16 @@ elif choice == 2:
     print(B)
     print("Сгенерированный вектор X:")
     print(X)
+    
+elif choice == 3:
+    A, B, X = parse_json_matrix(input("Введите имя файла: "))
+    print("Сгенерированная матрица A:")
+    print(A)
+    print("Сгенерированный вектор B:")
+    print(B)
+    print("Сгенерированный вектор X:")
+    print(X)
+    
     
 else:
     print("Неверный выбор. Выход.")
