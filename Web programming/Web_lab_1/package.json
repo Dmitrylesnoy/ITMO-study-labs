@@ -1,0 +1,43 @@
+{
+  "dependencies": {
+    "@material/circular-progress": "^14.0.0",
+    "@material/web": "^2.4.0",
+    "lodash": "^4.17.21",
+    "toastr": "^2.1.4"
+  },
+  "name": "web-1",
+  "version": "1.0.0",
+  "description": "Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^6.11.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.4",
+    "image-webpack-loader": "^8.1.0",
+    "mini-css-extract-plugin": "^2.9.4",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dmitrylesnoy/Web-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dmitrylesnoy/Web-1/issues"
+  },
+  "homepage": "https://github.com/Dmitrylesnoy/Web-1#readme"
+}
