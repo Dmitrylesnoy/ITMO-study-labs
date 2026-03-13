@@ -1,0 +1,57 @@
+    .data
+
+input_addr:      .word  0x80               ; Input address where input string is stored
+n:               .word  0x00               ; Variable count the lengh of input string characters
+i:               .word  0x80               ; iterator for symbols in input
+buf:             .byte  ''                 ; buffer for 1 symb operand
+end_sym:         .byte  '\n'
+output_addr:     .word  0x84               ; Output address where the result string should be stored
+j:               .word  0x84               ; iterator for symbols in result
+const_1:         .word  0x01               ; Constant 1
+
+
+    .text
+
+_start:
+
+reverse_start:
+    load         i   
+    add          const_1                                
+    load_acc                      
+    sub          end_sym                   
+    beqz         reverse_while             ; if (mem[i+1]=='\n') goto reverse_while
+    load         i                         
+    add          const_1                   
+    store        i                         ; i++
+    jmp          reverse_start             ; goto reverse_start
+
+reverse_while:
+    load         i
+    sub          input_addr 
+    ble          reverse_end               ; if (i<input_addr) goto reverse_end
+
+    load_addr    i                         ; acc = mem[i]
+    store_addr   j
+
+
+    load         i 
+    sub          const_1                   
+    store        i                         ; i--
+    load         j 
+    add          const_1                   
+    store        j                         ; j++
+
+    jmp          reverse_while 
+
+reverse_end:
+    halt
+
+reverse_overflow:
+    load_imm     0xCCCC_CCCC
+    store_ind    output_addr                 ; mem[mem[output_addr]] = 0xCCCC_CCCC
+    halt
+
+not_in_domain:
+    load_imm     -1
+    store_ind    output_addr                 ; mem[mem[output_addr]] = -1
+    halt
