@@ -1,5 +1,5 @@
     .data
-buffer:          .byte  '___________________________________'         ; buffer for 2symbols
+buffer:          .byte  '        '         ; buffer for 2symbols
 input_addr:      .word  0x80               ; Input address where input string is stored
 output_addr:     .word  0x84               ; Output address where the result string should be stored
 buffer_ptr:      .word  0x00               ; pointer to 1 symbol in string
