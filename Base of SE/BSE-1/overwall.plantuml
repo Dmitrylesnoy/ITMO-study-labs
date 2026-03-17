@@ -1,0 +1,70 @@
+@startuml
+header SRS Fanfics.me - Лабораторная работа #1
+title Общая диаграмма прецедентов системы (все функции)
+left to right direction
+
+actor "Гость" as Guest
+actor "Читатель" as User
+actor "Администратор" as Admin
+actor "Система" as System
+
+
+package "Ядро и навигация (1.1, 1.3)" {
+    usecase "Авторизация в родительском портале" as UC_Auth
+    usecase "Переход по подразделам портала" as UC_Nav
+    usecase "Просмотр общей статистики подраздела" as UC_Portal_Stats
+}
+
+package "Администрирование и инструментарий (1.2, 1.12.5)" {
+    usecase "Управление структурой и версткой" as UC_Admin_Pages
+    usecase "Настройка поиска и фильтров" as UC_Admin_Search
+    usecase "Регистрация и откат изменений" as UC_System_Action
+}
+
+package "Поиск и фильтрация контента (1.5, 1.6, 1.9, 1.10)" {
+    usecase "Поиск фанфиков" as UC_Fanfics
+    usecase "Поиск по рекомендациям" as UC_Recs
+    usecase "Просмотр рейтингов за периоды" as UC_Ratings
+    usecase "Просмотр фанарта" as UC_Art
+}
+
+package "Справочные данные (1.12, 1.13)" {
+    usecase "Просмотр энциклопедии" as UC_Wiki
+    usecase "Просмотр списка произведений канона" as UC_Canon
+}
+
+package "Социальные и интерактивные функции (1.4, 1.7, 1.8, 1.11)" {
+    usecase "Просмотр и фильтрация новостей" as UC_News
+    usecase "Ведение и поиск по блогу" as UC_Blog
+    usecase "Работа с заявками и коллекциями" as UC_Community
+    usecase "Отправка сообщения администрации" as UC_Report
+}
+
+Guest <|-- User
+
+Guest --- UC_Nav
+Guest --- UC_Portal_Stats
+Guest --- UC_Fanfics
+Guest --- UC_Recs
+Guest --- UC_Ratings
+Guest --- UC_Art
+Guest --- UC_Wiki
+Guest --- UC_Canon
+Guest --- UC_News
+
+User --- UC_Auth
+User --- UC_Blog
+User --- UC_Community
+User --- UC_Report
+
+Admin --- UC_Admin_Pages
+Admin --- UC_Admin_Search
+Admin --- UC_Report : "получение данных"
+
+System --- UC_System_Action
+UC_Admin_Pages ..> UC_System_Action : <<include>>
+UC_Wiki ..> UC_Report : <<extend>>
+UC_Canon ..> UC_Report : <<extend>>
+UC_Blog ..> UC_Report : <<extend>>
+
+@enduml

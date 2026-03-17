@@ -1,0 +1,26 @@
+@startuml
+header SRS Fanfics.me - ЛР #1
+title UC-01: Поиск и фильтрация фанфиков
+left to right direction
+
+actor "Гость/Читатель" as User
+
+package "Система Фанфики" {
+    usecase "Поиск фанфиков" as UC_Search
+    usecase "Настройка фильтров" as UC_Filters
+    usecase "Исключение контента\n(без проверки/метки)" as UC_Exclude
+    usecase "Выбор сортировки" as UC_Sort
+    usecase "Просмотр результатов" as UC_Results
+    usecase "Вывод ошибки\n(ничего не найдено)" as UC_Error
+}
+
+User --- UC_Search
+
+UC_Search ..> UC_Filters : <<include>>
+UC_Search ..> UC_Results : <<include>>
+
+UC_Filters <.. UC_Exclude : <<extend>>
+UC_Search <.. UC_Sort : <<extend>>
+UC_Results <.. UC_Error : <<extend>>
+
+@enduml

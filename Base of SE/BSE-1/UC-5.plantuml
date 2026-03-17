@@ -1,0 +1,40 @@
+@startuml
+header SRS Fanfics.me - ЛР #1
+title UC-05: Создание страницы подраздела
+left to right direction
+
+actor "Гость/Читатель" as User
+actor "Администратор" as Admin
+actor "Система" as System
+
+package "Подразде портала" {
+    usecase "Создание страницы" as UC_Create
+    usecase "Настройка контента и вёрстки" as UC_Edit
+        usecase "Настройка поиска" as UC_Set_Search
+        usecase "Настройка формата отображения" as UC_Set_Show
+        usecase "Настройка сортировки" as UC_Set_Sort
+    
+    usecase "Применение изменений" as UC_Save
+    usecase "Регистрация страницы" as UC_Register
+    usecase "Подключение функций страницы" as UC_Turn_On
+    usecase "Отказ изменений" as UC_Revert
+    
+    
+    usecase "Просмотр страницы" as UC_Look
+}
+
+Admin --- UC_Create
+Admin --- UC_Edit 
+UC_Edit <.. UC_Set_Search : <<extend>>
+UC_Edit <.. UC_Set_Sort : <<extend>>
+UC_Edit ..> UC_Set_Show : <<include>>
+
+System --- UC_Save
+UC_Save ..> UC_Register : <<include>>
+UC_Save <.. UC_Turn_On : <<extend>>
+
+UC_Save <.. UC_Revert : <<extend>> "Ошибка\nшага 4"
+
+User --- UC_Look
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+header SRS Fanfics.me - ЛР #1
+title UС-02: Поиск по рекомендациям
+left to right direction
+
+actor "Гость/Читатель" as User
+
+package "Страница Рейтинг" {
+    usecase "Поиск по рейтингам" as UC_Rating_Search
+    usecase "Настройка фильтров\n(категория, размер, статус)" as UC_Filters
+    usecase "Выбор периода" as UC_Period
+    usecase "Фильтр проверки\nна грамотность" as UC_Grammar
+    usecase "Просмотр списка результатов" as UC_Show
+}
+
+User --- UC_Rating_Search
+
+UC_Rating_Search ..> UC_Filters : <<include>>
+UC_Rating_Search ..> UC_Show : <<include>>
+
+UC_Rating_Search <.. UC_Period : <<extend>>
+UC_Rating_Search <.. UC_Grammar : <<extend>>
+@enduml

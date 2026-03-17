@@ -1,0 +1,30 @@
+@startuml
+header SRS Fanfics.me - ЛР #1
+title UC-03: Навигация по энциклопедии
+left to right direction
+
+actor "Гость" as Guest
+actor "Читатель" as User
+actor "Администратор" as Admin
+
+package "страница Энциклопедия" {
+    usecase "Просмотр материалов" as UC_Read
+    usecase "Переход по ссылкам" as UC_Link
+    usecase "Просмотр статистики\nфандома" as UC_Stats
+    usecase "Сообщить об ошибке /\nДополнить информацию" as UC_Message_Error
+    usecase "Получение сообщения" as UC_Error_Receive
+}
+
+Guest <|-- User
+
+Guest --- UC_Read
+Guest --- UC_Link
+Guest --- UC_Stats
+
+User --- UC_Message_Error
+
+' Альтернативный сценарий сообщения об ошибке
+UC_Message_Error --- Admin : "отправка данных"
+Admin --- UC_Error_Receive : "обработка сообщения"
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+header SRS Fanfics.me - ЛР #1
+title UC-04: Навигация по энциклопедии
+left to right direction
+
+actor "Гость/Читатель" as User
+
+package "страница Фанарт" {
+    usecase "Переключть выборку" as UC_Change_topic
+    usecase "Просмотр контента выборки" as UC_Show
+    usecase "Выбор параметров поиска" as UC_Search_Param
+    usecase "Флаг Скрыть нейроарт" as UC_Hide_Neyro
+    usecase "Фильтр по категории" as UC_Category
+}
+
+User --- UC_Change_topic
+User --- UC_Show
+User --- UC_Search_Param
+
+UC_Search_Param ..> UC_Hide_Neyro : <<include>>
+UC_Search_Param ..> UC_Category : <<include>>
+
+@enduml
