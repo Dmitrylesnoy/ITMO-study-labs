@@ -56,22 +56,31 @@ def function_4(x) -> float:
     if abs(x) < 1e-10:  # в близи к нуля
         return 1.0
     return np.sin(x)/x
+    
 
 def runge_rule(e):
     
     return True
 
-def rectangles(fun, a, b, n, type="center"):
+def left_rectangles(fun, a, b, n):
     result = 0
     h = (b-a) / n
     for i in range(n):
-        if type=="center":
-            result += h * fun(a+h/2 + h*i)
-        if type=="left":
-            result += h * fun(a+h*i)    
-        if type=="right":
-            result += h * fun(a+h*(i+1))
-            
+        result += h * fun(a+h*i)    
+    return result
+
+def right_rectangles(fun, a, b, n):
+    result = 0
+    h = (b-a) / n
+    for i in range(n): 
+        result += h * fun(a+h*(i+1))
+    return result
+
+def center_rectangles(fun, a, b, n):
+    result = 0
+    h = (b-a) / n
+    for i in range(n):
+        result += h * fun(a+h/2 + h*i)
     return result
 
 def trapezoid(fun, a, b, n):  # If n<3 ?
@@ -100,13 +109,67 @@ def simpson(fun, a, b, n):
             result += 4 * y_i
             
     return result* h/3
+
+def runge_rule(I1, I0, k, e):
+    R = abs(I1 - I0) / (2**k - 1)
+    return R < e 
+
+def calucale_integral(fun, k,  a, b, e, logs=False, max_iter=100_000):
+    n=4
+    i=0
+    integrals = []
+    
+    while i<max_iter:
+        integrals.append(fun(a, b, n))
+        if i<2:
+            continue
+        
+        if runge_rule(integrals[-1], integrals[-2], k, e):
+            break
+        
+        if logs:
+            print(f"[{i}]: {integrals[-1]}")
+        
+    return integrals[-1]
+
+class Task:
+    
+    def __init__(self):
+        self.methods = {"left_rectangles": (left_rectangles, 2),
+                        "right_rectacngles": (right_rectangles, 2),
+                        "center_rectangles": (center_rectangles, 2),
+                        "trapezoid": (trapezoid, 3),
+                        "simpson": (simpson, 4)}
+        
+    def set_limits(self, a, b):
+        self.a = a
+        self.b = b
+        
+    def set_e(self, e):
+        self.e = e
+        
+    def set_fun(self, fun):
+        self.fun = fun
+        
+    def set_method(self, method_name):
+        self.method, self.k = self.methods[method_name]
+        
+    def get_methods_names(self):
+        return self.methods.keys
+    
+    def get_description(self):
+        return self.description
+        
+    def solve(self, logs=False, max_iter=100_000):
+        return calucale_integral(self.fun, self.method, self.k, self.a, self.b, self.e, logs, max_iter)
+    
     
     
 '''
     Реализовать в программе методы по выбору пользователя: 
-     Метод прямоугольников (3 модификации: левые, правые, средние) 
-     Метод трапеций 
-     Метод Симпсона 
+    +? Метод прямоугольников (3 модификации: левые, правые, средние) 
+    +? Метод трапеций 
+    +? Метод Симпсона 
     2. Методы должны быть оформлены в виде отдельной(ого) функции/класса. 
     3. Вычисление значений функции оформить в виде отдельной(ого) функ
     ции/класса. 
@@ -130,8 +193,18 @@ def simpson(fun, a, b, n):
 a, b = 0.0, 0.0
 n = 4
 e = 1.0
+user_task = Task
 
-functions = [function_1,function_2, function_3, function_4]
+functions = [(function_1, """Непрерывная функция, парабола \n
+                        f(x) = x² + 2x + 1")"""),
+             (function_2, """Разрыв 1-го рода в точке x = 1 \n
+                        f(x) = { x², если x < 1 \n
+                               { x + 1, если x ≥ 1 """),
+             (function_3, """Разрыв 2-го рода в точке x = 2
+                        f(x) = 1/(x - 2) + x"""), 
+             (function_4), """Устранимый разрыв в точке x = 0 \n
+                        f(x) = sin(x)/x при x ≠ 0, f(0) = 1"""]
+
 cfun = None
 
 while 1:
@@ -141,32 +214,33 @@ while 1:
     print("1 - задать пределы")
     print("2 - задать точность")
     print("3 - выбрать функцию")
-    print("4 - вычислить интеграл")
+    print("4 - выбрать метод")
+    print("5 - вычислить интеграл")
     
     choice = input2num("Ваш выбор: ", True, 1, 4)
     print()
+    
 
     match choice:
         case 1:
             a = input2num("Введите левый предел интегррирования a: ")
             b = input2num("Введите правый предел интегррирования b: ")
+            user_task.set_limits(a,b)
         case 2:
-            e = input2num("Введите точность вычислений: ")
+            user_task.set_e(input2num("Введите точность вычислений: "))
         case 3:
-            
-            print('''1. Непрерывная функция, парабола 
-                        f(x) = x² + 2x + 1''')
-            print('''2.Разрыв 1-го рода в точке x = 1
-                        f(x) = { x², если x < 1 
-                               { x + 1, если x ≥ 1 ''')
-            print('''3. Разрыв 2-го рода в точке x = 2
-                        f(x) = 1/(x - 2) + x''')
-            print('''4. Устранимый разрыв в точке x = 0
-                        f(x) = sin(x)/x при x ≠ 0, f(0) = 1''')
+            for i in range(len(functions)):
+                print(i, functions[i][1])
 
-            cfun = functions[input2num("Введите номер функции: ", True, 1, 4)-1] 
-        
-        
+            user_task.set_fun(functions[input2num("Введите номер функции: ", True, 1, 4)][0] )
+        case 4:
+            i=0
+            for _ in user_task.get_methods_names():
+                print(f"{i}: {_}")
+            user_task.set_method(user_task.get_methods_names[input2num("Введите номер метода: ", True, 0, len(user_task.get_methods_names))])
+        case 5:
+            integral = user_task.solve(logs=True)
+            print("Найденый приближенный интеграл: " + integral)
         
         case 0:
             exit()
