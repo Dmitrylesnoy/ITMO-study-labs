@@ -1,0 +1,62 @@
+@startuml
+header SRS Fanfics.me - Лабораторная работа #1
+title Общая функциональная схема системы (консолидированная)
+left to right direction
+
+' Настройка стиля
+skinparam packageStyle rectangle
+
+' Определение актеров
+actor "Гость" as Guest
+actor "Читатель" as User
+actor "Администратор" as Admin
+actor "Система" as System
+
+' Иерархия актеров
+Guest <|-- User
+
+package "Система Fanfics.me" {
+
+    usecase "Авторизация и управление профилем" as UC_Profile
+    usecase "Навигация между подразделами и порталом" as UC_Navigation
+    usecase "Просмотр общей статистики (фандом/портал)" as UC_Stats
+
+    usecase "Универсальный поиск по базе контента" as UC_Search
+    usecase "Применение фильтров (жанры, категории, грамотность, ИИ)" as UC_Filter
+    usecase "Сортировка списков (дата, рейтинг, популярность)" as UC_Sort
+    usecase "Просмотр детальной информации (чтение/визуализация)" as UC_View
+
+    usecase "Создание контента (посты в блог, заявки, коллекции)" as UC_Create_Content
+    usecase "Взаимодействие (комментарии, избранное, подписки)" as UC_Interact
+    usecase "Обратная связь (жалобы, ошибки, предложения)" as UC_Feedback
+
+    usecase "Управление структурой и версткой страниц" as UC_Admin_Layout
+    usecase "Конфигурация механизмов поиска и отображения" as UC_Admin_Config
+    usecase "Модерация новостей и контента" as UC_Admin_Mod
+    usecase "Регистрация изменений и откат системы" as UC_System_Registry
+}
+
+Guest --- UC_Navigation
+Guest --- UC_Stats
+Guest --- UC_Search
+Guest --- UC_View
+
+UC_Search ..> UC_Filter : <<include>>
+UC_Search ..> UC_Sort : <<include>>
+
+User --- UC_Profile
+User --- UC_Create_Content
+User --- UC_Interact
+User --- UC_Feedback
+
+Admin --- UC_Admin_Layout
+Admin --- UC_Admin_Config
+Admin --- UC_Admin_Mod
+Admin --- UC_Feedback : "Обработка"
+
+System --- UC_Profile : "Валидация"
+System --- UC_System_Registry
+
+UC_Admin_Layout ..> UC_System_Registry : <<include>>
+
+@enduml
