@@ -150,79 +150,78 @@ def calucale_integral(fun, method, k, a, b, e, max_iter=50):
     return old_I, n
 
 
-def find_discontinuity(fun, a, b, steps=1000):
+def find_discontinuity(fun, a, b, steps=10000):
+    """Улучшенный поиск разрывов через анализ скачков и больших значений"""
     discont = []
     dx = (b - a) / steps
+    threshold = 1e4  # Порог значения
 
+    prev_y = None
     for i in range(steps + 1):
         x = a + i * dx
         try:
             y = fun(x)
-            if y is None or np.isinf(y) or np.isnan(y) or abs(y) > 1e10:
+            # 1. Проверка на бесконечность/NaN
+            if y is None or np.isinf(y) or np.isnan(y) or abs(y) > threshold:
                 discont.append(x)
-                print(f"Найдена точка разрыва: {x}")
+            # 2. Проверка на резкий скачок (разрыв 1 или 2 рода)
+            elif prev_y is not None and abs(y - prev_y) > threshold:
+                discont.append(x)
+            prev_y = y
         except (ZeroDivisionError, ValueError):
-            l, r = x - dx, x
-            for _ in range(30):
-                m = (l + r) / 2
-                try:
-                    val = fun(m)
-                    if val is None or abs(val) > 1e10:
-                        raise ValueError
-                    l = m
-                except:
-                    r = m
-            discont.append(r)
-            print(f"Найдена точка разрыва: {x}")
+            discont.append(x)
+            prev_y = None
 
+    # Группировка близких точек
     unique = []
     if discont:
         discont.sort()
         unique.append(discont[0])
         for p in discont[1:]:
-            if p - unique[-1] > 1e-5:
+            if p - unique[-1] > (b - a) / 100:
                 unique.append(p)
     return unique
 
 
 def smart_integral(fun, method, k, a, b, e):
-    print("Поиск разрывов...")
+    print("--- Анализ интервала на наличие разрывов ---")
     points = find_discontinuity(fun, a, b)
-    total_val, total_n = 0, 0
 
     if not points:
+        print("Разрывов не обнаружено. Вычисляю стандартным методом...")
         return calucale_integral(fun, method, k, a, b, e)
 
-    print(f"Обнаружен разрыв в точках: {[round(p, 4) for p in points]}")
-    points.sort()
-    curr_start = a
-    for c in points:
-        d_left = c - curr_start
-        d_right = b - c
+    # Берем критическую точку (обычно она одна в лабораторных)
+    c = points[0]
+    print(f"Обнаружен разрыв в точке x ≈ {round(c, 4)}")
 
-        if d_left > 0 and d_right > 0:
-            offset = min(d_left, d_right)
-            print(
-                f"Зануление симметричного участка вокруг x={round(c,4)}: [{round(c-offset, 4)}, {round(c+offset, 4)}]"
-            )
-            if d_left > d_right:
-                segment_b = c - offset
-                if abs(segment_b - curr_start) > 1e-9:
-                    val, n = calucale_integral(
-                        fun, method, k, curr_start, segment_b, e / 2
-                    )
-                    total_val += val
-                    total_n += n
+    d_left = c - a
+    d_right = b - c
 
-            curr_start = c + offset
-        elif d_left <= 0:
-            curr_start = c + 1e-9
-    if b - curr_start > 1e-9:
-        val, n = calucale_integral(fun, method, k, curr_start, b, e / 2)
-        total_val += val
-        total_n += n
+    # Находим радиус симметрии (принцип главного значения)
+    epsilon = min(d_left, d_right)
 
-    return total_val, total_n
+    # Исключаемый участок: [c - epsilon, c + epsilon]
+    print(
+        f"Симметричный участок вокруг разрыва: [{round(c-epsilon, 4)}, {round(c+epsilon, 4)}]"
+    )
+    print("Интеграл на этом участке принят за 0 (взаимное сокращение бесконечностей).")
+
+    # Проверяем, остался ли какой-то кусок для расчета
+    if abs(d_left - d_right) < 1e-7:
+        print("Интервал полностью симметричен относительно разрыва. Ответ: 0")
+        return 0.0, 0
+
+    # Выбираем оставшийся "хвост"
+    if d_left > d_right:
+        new_a, new_b = a, c - epsilon
+    else:
+        new_a, new_b = c + epsilon, b
+
+    print(
+        f"Вычисляю интеграл на оставшемся участке: [{round(new_a, 4)}, {round(new_b, 4)}]"
+    )
+    return calucale_integral(fun, method, k, new_a, new_b, e)
 
 
 class Task:

@@ -101,8 +101,8 @@ def trapezoid(fun, a, b, n):
 
 def simpson(fun, a, b, n):
     if n % 2 != 0: n += 1                
-    result = fun(a) + fun(b)
     h = (b-a) / n
+    result = fun(a) + fun(b)
     for i in range(1, n):
         y_i = fun(a+h*i)
         if i%2==0:
@@ -113,7 +113,7 @@ def simpson(fun, a, b, n):
     return result * h / 3
 
 
-def calucale_integral(fun, method, k, a, b, e, max_iter=50):
+def calucale_integral(fun, method, k, a, b, e, max_iter=25):
     """
     Вычисление интеграла с заданной точностью
     fun - интегрируемая функция
@@ -138,6 +138,10 @@ def calucale_integral(fun, method, k, a, b, e, max_iter=50):
         n *= 2
         curr_I = method(fun, s_a, s_b, n)
 
+        if np.isinf(curr_I) or np.isnan(curr_I):
+            print("Ошибка: Интеграл расходится (бесконечное значение)")
+            return None, n
+
         if abs(curr_I-old_I) / (2**k - 1) < e:
             return curr_I, n
 
@@ -147,17 +151,22 @@ def calucale_integral(fun, method, k, a, b, e, max_iter=50):
 
     return old_I, n
 
-def find_discontinuity(fun, a, b, steps=1000):
+
+def find_discontinuity(fun, a, b, steps=10000):
+    """ Поиск точек разрыва """
     discont = []
     dx = (b - a) / steps
+    threshold = 1e4
 
+    prev_y = None
     for i in range(steps+1):
         x = a + i * dx
         try:
             y = fun(x)
-            if y is None or np.isinf(y) or np.isnan(y) or abs(y) > 1e10:
+            if y is None or np.isinf(y) or np.isnan(y) or abs(y) > threshold:
                 discont.append(x)
-                print(f"Найдена точка разрыва: {x}")
+            elif prev_y is not None and abs(prev_y - y) > threshold:
+                discont.append(x)
         except (ZeroDivisionError, ValueError):
             l, r = x - dx, x
             for _ in range(30):
@@ -166,28 +175,31 @@ def find_discontinuity(fun, a, b, steps=1000):
                     val = fun(m)
                     if val is None or abs(val) > 1e10: raise ValueError
                     l = m
-                except: r = m
+                except:
+                    r = m
             discont.append(r)
-            print(f"Найдена точка разрыва: {x}")
+            prev_y = None
 
     unique = []
     if discont:
         discont.sort()
         unique.append(discont[0])
         for p in discont[1:]:
-            if p - unique[-1] > 1e-5:
+            if p - unique[-1] > (b-a) / 100:
                 unique.append(p)
     return unique
 
+
 def smart_integral(fun, method, k, a, b, e):
-    print("Поиск разрывов...")
+    print("Анализ интервала на наличие разрывов...")
     points = find_discontinuity(fun, a, b)
-    total_val, total_n = 0, 0
 
     if not points:
+        print("Разрывов не обнаружено")
         return calucale_integral(fun, method, k, a, b, e)
-
     print(f"Обнаружен разрыв в точках: {[round(p, 4) for p in points]}")
+
+    total_val, total_n = 0, 0
     points.sort()
     curr_start = a
     for c in points:
