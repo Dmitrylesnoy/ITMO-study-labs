@@ -1,5 +1,4 @@
 	.data
-
 buffer:				.byte '___________________________________'
 in_port:    		.word 0x80
 out_port:   		.word 0x84

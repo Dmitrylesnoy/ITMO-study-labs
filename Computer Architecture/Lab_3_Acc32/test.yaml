@@ -1,0 +1,29 @@
+name: "reversing c_str"
+limit: 2000
+memory_size: 0x1000
+memory_mapped_io:
+  0x80: [104, 101, 108, 108, 111, 10]
+  0x84: []
+reports:
+  - name: Debug
+    slice: all
+    filter:
+      - state
+    view: |
+      {pc}: {instruction}
+  - name: Check results
+    slice: last
+    filter:
+      - state
+    view: |
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+      symio[0x80]: {io:0x80:sym}
+      symio[0x84]: {io:0x84:sym}
+      {memory:0:31}
+    assert: |
+      numio[0x80]: [] >>> []
+      numio[0x84]: [] >>> [111,108,108,101,104]
+      symio[0x80]: "" >>> ""
+      symio[0x84]: "" >>> "olleh"
+      mem[0..31]:     6f 6c 6c 65 68 00 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f

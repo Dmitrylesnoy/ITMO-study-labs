@@ -1,5 +1,4 @@
 name: "assert reverse_string_cstr('hello\n') == ('olleh', '')
-# and mem[0..31]: 6f 6c 6c 65 68 00 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f"
 limit: 2000
 memory_size: 0x1000
 memory_mapped_io:

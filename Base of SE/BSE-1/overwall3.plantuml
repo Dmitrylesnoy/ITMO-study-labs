@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Гость" as User
+actor "Читатель" as AuthUser
+actor "Администратор" as Admin
+actor "Система" as System
+
+rectangle "Система Fanfics.me" {
+  (UC-01: Поиск и фильтрация фанфиков) as UC1
+  (UC-02: Поиск по рейтингам) as UC2
+  (UC-03: Навигация по энциклопедии) as UC3
+  (UC-04: Фанарты по выборкам) as UC4
+  (UC-05: Создание и настройка страницы) as UC5
+  (UC-06: Сообщение в блоге и взаимодействие) as UC6
+  
+  (Сообщить о жалобе, ошибке) as Support
+  (Применение фильтров и сортировки) as Filters
+  (Регистрация изменений и откат) as Logging
+}
+
+User <|-- AuthUser
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+
+AuthUser --> UC6
+UC6 <.. Support : <<extend>> (Жалоба)
+UC3 <.. Support : <<extend>> (Сообщить об ошибке)
+
+Admin --> UC5
+UC5 ..> Logging : <<include>>
+
+UC1 ..> Filters : <<include>>
+UC2 ..> Filters : <<include>>
+UC4 ..> Filters : <<include>>
+
+Support -- System
+Logging -- System
+@enduml

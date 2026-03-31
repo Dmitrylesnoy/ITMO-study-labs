@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Владелец предмета" as Owner
+actor "Друг" as Friend
+
+rectangle "SmartFind" {
+    usecase "LS-1: Просмотр списка\nдоступных вещей" as UC_List
+    usecase "SH-1: Изменение предмета\nв общем доступе" as UC_Edit
+    usecase "Управление доступом\n(поделиться вещью)" as UC_Access
+    usecase "Синхронизация данных\nс сервером" as UC_Sync
+    usecase "Отображение ошибки\n(сервер недоступен)" as UC_Error
+    
+    UC_List ..> UC_Sync : <<include>>
+    UC_Edit ..> UC_Sync : <<include>>    
+    UC_Sync <.. UC_Error : <<extend>>
+}
+
+Owner -- UC_List
+Owner -- UC_Edit
+Owner -- UC_Access
+
+Friend -- UC_List
+Friend -- UC_Edit
+
+note bottom of UC_Access
+  Только владелец имеет 
+  право управлять доступом
+end note
+
+@enduml

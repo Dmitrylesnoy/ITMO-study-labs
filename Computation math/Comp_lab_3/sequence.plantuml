@@ -1,0 +1,40 @@
+@startuml
+title Sequence: Просмотр местоположения предмета на карте
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+
+actor "Пользователь" as User
+participant "App" as App
+participant "Server" as Server
+participant "3D Engine" as Engine
+
+autoactivate on
+
+User -> App: Обновить главную страницу
+App -> Server: GET /items
+return JSON (предметы[])
+
+User -> App: Выбор карточки предмета
+App -> Server: GET /item/{id}/location
+return JSON (координаты, ID модели)
+
+User -> App: Клик "Показать на карте"
+App -> Engine: Инициализация движка (Scene, Marker, Item)
+Engine -> Engine: Загрузка 3D модели помещения
+Engine -->> App: Сцена готова
+
+App -> Engine: Отобразить метку предмета
+return View обновлен
+
+loop Взаимодействие с моделью
+    User -> Engine: Вращение/зум
+    Engine -> Engine: Пересчет Pivot View
+    Engine -->> User: Обновленный рендеринг
+end
+
+User -> App: Закрыть просмотр
+App -> Engine: Уничтожить инстанс движка
+return OK
+App -->> User: Возврат к списку вещей
+
+@enduml
