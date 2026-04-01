@@ -17,7 +17,6 @@ rectangle "Система Fanfics.me" {
   
   (Сообщить о жалобе, ошибке) as Support
   (Применение фильтров и сортировки) as Filters
-  (Регистрация изменений и откат) as Logging
 }
 
 User <|-- AuthUser
@@ -28,16 +27,16 @@ User --> UC3
 User --> UC4
 
 AuthUser --> UC6
-UC6 <.. Support : <<extend>> (Жалоба)
-UC3 <.. Support : <<extend>> (Сообщить об ошибке)
+' UC6 <.. Support : <<extend>> (Жалоба)
+' UC3 <.. Support : <<extend>> (Сообщить об ошибке)
 
 Admin --> UC5
-UC5 ..> Logging : <<include>>
+UC5 -- System
 
-UC1 ..> Filters : <<include>>
-UC2 ..> Filters : <<include>>
-UC4 ..> Filters : <<include>>
+' UC1 ..> Filters : <<include>>
+' UC2 ..> Filters : <<include>>
+' UC4 ..> Filters : <<include>>
 
 Support -- System
-Logging -- System
+
 @enduml
