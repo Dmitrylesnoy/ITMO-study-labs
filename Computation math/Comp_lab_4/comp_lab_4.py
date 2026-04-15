@@ -2,189 +2,109 @@ import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 import numpy as np
 import json
+import math as m
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # --- МАТЕМАТИЧЕСКИЙ БЛОК  ---
 class MathCore:
-    # функции и их производные 
+    # функции 
     @staticmethod
-    def f1(x): return 2*x**3 + 3.41*x**2 - 23.74*x + 2.95
+    def func_linear(x, a, b):
+        return a*x+b
     @staticmethod
-    def f1_der(x): return 6*x**2 + 6.82*x - 23.74
+    def func_poly2(x, a, b, c):
+        return a*x**2+b*x+c
     @staticmethod
-    def f1_phi(x): return (23.74*x - 2*x**3 - 3.41*x**2) / 23.74 + x
+    def func_poly2(x, a, b, c, d):
+        return a*x**3+b*x**2+c*x+d
+    @staticmethod
+    def func_exp(x, a, b):
+        return a*m.exp(b*x)
+    @staticmethod
+    def func_exp_lin(x, a, b):
+        return m.ln(a)+b*x
+    @staticmethod
+    def func_log(x, a, b):
+        return a*m.ln(x)+b
+    @staticmethod
+    def func_pow(x, a, b):
+        return a*x**b
+    @staticmethod
+    def func_pow_lin(x, a, b):
+        return m.ln(a)+b*m.ln(x)
     
+    # Решение СЛАУ
     @staticmethod
-    def f2(x): return -1.8*x**3 - 2.94*x**2 + 10.37*x + 5.38
+    def transform2diagonal(A, B):
+        """Преобразование матрицы в диагональную"""
+        n = len(A)
+        A_new = A.copy()
+        B_new = B.copy()
+        diagonal_count = 0
+        for i in range(n):
+            max_e = i + np.argmax(np.abs(A_new[i:, i]))
+            if max_e != i:
+                A_new[[max_e, i]] = A_new[[i, max_e]]
+                B_new[max_e], B_new[i] = B_new[i], B_new[max_e]
+                diagonal_count += 1
+            
+        for i in range(len(A)):
+            if abs(A[i,i]) <= np.sum(np.abs(A[i])) - abs(A[i,i]):
+                messagebox.showwarning("Внимание: отсутствует диагональное преобладание")
+                break
+        
+        return A_new, B_new
+
     @staticmethod
-    def f2_der(x): return -5.4*x**2 - 5.88*x +10.37
-    @staticmethod
-    def f2_phi(x): return (1.8*x**3 + 2.94*x**2 - 5.38) / 10.37
-    
-    @staticmethod
-    def f3(x): return x**3-1.89*x**2-2*x+1.76
-    @staticmethod
-    def f3_der(x): return 3*x**2 - 3.78*x-2
-    @staticmethod
-    def f3_phi(x): return (x**3 - 2*x + 1.76) / 1.89
-    
-    @staticmethod
-    def f4(x): return np.sin(x) - 0.1*x**2
-    @staticmethod
-    def f4_der(x): return np.cos(x) - 0.2*x
-    @staticmethod
-    def f4_phi(x): return np.sqrt(10 * np.sin(x)) if np.sin(x) >= 0 else -np.sqrt(-10 * np.sin(x))
-    
-    @staticmethod
-    def f5(x): return np.exp(x) - 2*x - 3
-    @staticmethod
-    def f5_der(x): return np.exp(x) - 2
-    @staticmethod
-    def f5_phi(x): return (np.exp(x) - 3) / 2
-    
-    # системы и их преобразованный вид
-    @staticmethod
-    def sys1(x, y):
-        return np.sin(x) + 2*y - 2, x + np.cos(y) - 1
-    
-    @staticmethod
-    def sys1_jacobian(x, y):
-        return np.array([[np.cos(x), 2], [1, -np.sin(y)]])
-    
-    @staticmethod
-    def sys2(x, y):
-        return x**2 + y**2 - 4, x*y - 1
-    
-    @staticmethod
-    def sys2_jacobian(x, y):
-        return np.array([[2*x, 2*y], [y, x]])
+    def calc_gauss_seidel(A_inp, X, B_inp, m=100, e=1e-8):
+        """Решение СЛАУ Методом Гаусса-Зейделя
+
+        Args:
+            A (float): матрица коэффициентов
+            X (float): матрица решений
+            B (float): матрица свободных членов
+            m (int, optional): макс. колическо итераций приближений. Defaults to 10.
+            e (float, optional): допустимая погрешность. Defaults to 1e-2.
+        """
+        A, B = self.transform2diagonal(A_inp, B_inp)
+        k=1
+        while 1:
+            delta = 0
+            for i in range(n):
+                s=0
+                for j in range(i):
+                    s += A[i, j] * X[j]
+                for j in range(i+1, n):
+                    s += A[i, j] * X[j]
+                    
+                new_x = (B[i] - s) / A[i, i]
+                
+                d = abs(new_x - X[i])
+                if d > delta:
+                    delta = d
+                X[i] = new_x
+
+            for i in range(n):
+                print(f"    x{i+1} = {X.copy()[i]:.10f}")
+
+            if delta < e:
+                print(f"Решение найдено за {k} итераций:")
+                print("Вектор неизвестных:")
+                for i in range(n):
+                    print(f"x{i+1} = {X[i]:.10f}")
+                break
+            else:
+                if k < m:
+                    k = k + 1
+                else:
+                    print("Итерации расходятся")
+                    break
+
     
     # Методы решения уравнений
-    @staticmethod
-    def solve_bisection(f, a, b, eps, max_iter=100):
-        history = []
-        if f(a) * f(b) > 0:
-            raise ValueError("На концах интервала функция должна иметь разные знаки")
-        
-        for i in range(max_iter):
-            c = (a + b) / 2
-            fc = f(c)
-            err = (b - a) / 2
-            
-            history.append({
-                "iter": i+1, 
-                "a": a, 
-                "b": b, 
-                "x": c, 
-                "f(x)": fc, 
-                "error": err
-            })
-            
-            if err < eps or abs(fc) < eps:
-                break
-                
-            if f(a) * fc < 0:
-                b = c
-            else:
-                a = c
-                
-        return c, history
-    
-    @staticmethod
-    def solve_secant(f, x0, x1, eps, max_iter=100):
-        history = []
-        x_prev, x_curr = x0, x1
-        
-        for i in range(max_iter):
-            f_prev = f(x_prev)
-            f_curr = f(x_curr)
-            
-            if abs(f_curr - f_prev) < 1e-15:
-                break
-                
-            x_next = x_curr - f_curr * (x_curr - x_prev) / (f_curr - f_prev)
-            err = abs(x_next - x_curr)
-            
-            history.append({
-                "iter": i+1,
-                "x_prev": x_prev,
-                "x_curr": x_curr,
-                "f(x_prev)": f_prev,
-                "f(x_curr)": f_curr,
-                "x_next": x_next,
-                "error": err
-            })
-            
-            if err < eps or abs(f(x_next)) < eps:
-                x_curr = x_next
-                break
-                
-            x_prev, x_curr = x_curr, x_next
-            
-        return x_curr, history
-    
-    @staticmethod
-    def solve_simple_iteration(phi, x0, eps, max_iter=100):
-        history = []
-        x_curr = x0
-        
-        for i in range(max_iter):
-            x_next = phi(x_curr)
-            err = abs(x_next - x_curr)
-            
-            history.append({
-                "iter": i+1,
-                "x": x_curr,
-                "phi(x)": x_next,
-                "error": err
-            })
-            
-            if err < eps:
-                x_curr = x_next
-                break
-                
-            x_curr = x_next
-            
-        return x_curr, history
-    
-    # Метод решения систем
-    @staticmethod
-    def solve_newton_system(F, J, x0, y0, eps, max_iter=100):
-        history = []
-        x, y = x0, y0
-        
-        for i in range(max_iter):
-            f1, f2 = F(x, y)
-            jac = J(x, y)
-            
-            try:
-                det = jac[0,0] * jac[1,1] - jac[0,1] * jac[1,0]
-                dx = (jac[1,1] * f1 - jac[0,1] * f2) / det
-                dy = (-jac[1,0] * f1 + jac[0,0] * f2) / det
-            except:
-                break
-                
-            x_new, y_new = x - dx, y - dy
-            err = max(abs(x_new - x), abs(y_new - y))
-            
-            history.append({
-                "iter": i+1,
-                "x": x,
-                "y": y,
-                "f1(x,y)": f1,
-                "f2(x,y)": f2,
-                "error": err
-            })
-            
-            if err < eps:
-                x, y = x_new, y_new
-                break
-                
-            x, y = x_new, y_new
-            
-        return (x, y), history
+
 
 
 # --- ГРАФИЧЕСКИЙ МЕНЕДЖЕР ---
@@ -209,22 +129,11 @@ class GraphicsManager:
         if legend:
             self.ax.legend()
 
-    def draw_equation(self, func, func_name, x_range, color='b-', linewidth=2):
+    def draw_function(self, func, func_name, x_range, color='b-', linewidth=2):
         x = np.linspace(x_range[0], x_range[1], 400)
         y = func(x)
         self.ax.plot(x, y, color, linewidth=linewidth, label=f'f(x) = {func_name}')
 
-    def draw_system(self, system_func, x_range, y_range):
-        x = np.linspace(x_range[0], x_range[1], 100)
-        y = np.linspace(y_range[0], y_range[1], 100)
-        X, Y = np.meshgrid(x, y)
-        Z1, Z2 = system_func(X, Y)
-
-        contour1 = self.ax.contour(X, Y, Z1, levels=[0], colors='blue', linewidths=2)
-        contour2 = self.ax.contour(X, Y, Z2, levels=[0], colors='red', linewidths=2)
-        self.ax.clabel(contour1, inline=True, fontsize=10)
-        self.ax.clabel(contour2, inline=True, fontsize=10)
-        self.ax.axis('equal')
 
     def mark_point(self, x, y, color='ro', markersize=8, label=None):
         self.ax.plot(x, y, color, markersize=markersize, label=label)
@@ -243,12 +152,13 @@ class NumericalMethodsApp(tk.Tk):
         self.title("Численные методы решения нелинейных уравнений и систем")
         self.geometry("1300x800")
         
-        self.equations = {
-            "2x³ + 3.41x² - 23.74x + 2.95": {"f": MathCore.f1, "der": MathCore.f1_der, "phi": MathCore.f1_phi},
-            "-1.8x³ - 2.94x² + 10.37x + 5.38": {"f": MathCore.f2, "der": MathCore.f2_der, "phi": MathCore.f2_phi},
-            "x³ - 1.89x² - 2x + 1.76": {"f": MathCore.f3, "der": MathCore.f3_der, "phi": MathCore.f3_phi},
-            "sin(x) - 0.1x²": {"f": MathCore.f4, "der": MathCore.f4_der, "phi": MathCore.f4_phi},
-            "eˣ - 2x - 3": {"f": MathCore.f5, "der": MathCore.f5_der, "phi": MathCore.f5_phi}
+        self.functions = {
+            "Линейная функция": {"f": MathCore.f1, "der": MathCore.f1_der, "phi": MathCore.f1_phi},
+            "Полином 2 степени": {"f": MathCore.f2, "der": MathCore.f2_der, "phi": MathCore.f2_phi},
+            "Полином 3 степени": {"f": MathCore.f3, "der": MathCore.f3_der, "phi": MathCore.f3_phi},
+            "Логарифмическая функция": {"f": MathCore.f4, "der": MathCore.f4_der, "phi": MathCore.f4_phi},
+            "Экспоненциальная функция": {"f": MathCore.f5, "der": MathCore.f5_der, "phi": MathCore.f5_phi}
+
         }
         
         self.systems = {
@@ -263,7 +173,7 @@ class NumericalMethodsApp(tk.Tk):
         }
         
         self.history = []
-        self.create_widgets()    
+        self.create_widgets()
     
     def create_widgets(self):
         left_frame = ttk.Frame(self, padding="10")
@@ -496,41 +406,6 @@ class NumericalMethodsApp(tk.Tk):
         
         messagebox.showinfo("Результат", f"Найден корень: x = {result:.6f}\n"
                             f"Количество итераций: {len(self.history)}")
-    
-    def solve_system(self, eps):
-        sys_name = self.func_combo.get()
-        sys_data = self.systems[sys_name]
-        
-        x0 = float(self.entry_a.get())
-        y0 = float(self.entry_b.get())
-        
-        result, self.history = MathCore.solve_newton_system(
-            sys_data["F"], sys_data["J"], x0, y0, eps
-        )
-        
-        for rec in self.history:
-            self.tree.insert('', 'end', values=(
-                rec['iter'],
-                f"{rec['x']:.6f}",
-                f"{rec['y']:.6f}",
-                f"{rec['f1(x,y)']:.6f}",
-                f"{rec['error']:.6f}"
-            ))
-        
-        # Обновление графика с отмеченным решением
-        self.update_plot()
-        self.graphics.mark_point(result[0], result[1], color='go', markersize=8,
-                                 label=f'Решение: ({result[0]:.4f}, {result[1]:.4f})')
-        self.graphics.setup_plot(
-            title=f'Система: {sys_name}',
-            xlabel='x',
-            ylabel='y',
-            legend=True
-        )
-        self.graphics.refresh()
-        
-        messagebox.showinfo("Результат", f"Найдено решение:\nx = {result[0]:.6f}\n"
-                            f"y = {result[1]:.6f}\nКоличество итераций: {len(self.history)}")
     
     def load_json(self):
         filename = filedialog.askopenfilename(
