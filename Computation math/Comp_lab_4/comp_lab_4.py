@@ -111,7 +111,7 @@ class MathCore:
         return (
             (lambda t: res["a"] * np.log(t) + res["b"]),
             f"y = {res['a']:.4f}ln(x) + {res['b']:.4f}",
-            res,
+            {"coeffs":res},
         )
 
     @staticmethod
