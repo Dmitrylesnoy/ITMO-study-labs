@@ -64,7 +64,7 @@ class MathCore:
         return (
             (lambda t: a * t + b),
             f"y = {a:.4f}x + {b:.4f}",
-            {"a": a, "b": b, "P": p},
+            {"a": a, "b": b, "Pearson": p},
         )
 
     @staticmethod
@@ -76,7 +76,7 @@ class MathCore:
         return (
             (lambda t: c[2] * t**2 + c[1] * t + c[0]),
             f"y = {c[2]:.4f}x² + {c[1]:.4f}x + {c[0]:.4f}",
-            c.tolist(),
+            {"coeffs": c.tolist()},
         )
 
     @staticmethod
@@ -88,7 +88,7 @@ class MathCore:
         return (
             (lambda t: c[3] * t**3 + c[2] * t**2 + c[1] * t + c[0]),
             f"y = {c[3]:.4f}x³ + {c[2]:.4f}x² + {c[1]:.4f}x + {c[0]:.4f}",
-            c.tolist(),
+            {"coeffs": c.tolist()},
         )
 
     @staticmethod
@@ -242,16 +242,22 @@ class NumericalMethodsApp(tk.Tk):
         path = filedialog.asksaveasfilename(defaultextension=".json")
         if path:
             out = {
-                "x": self.x.tolist(),
-                "y": self.y.tolist(),
-                "results": [
+                "input_points": {
+                    "x": self.x.tolist(),
+                    "y": self.y.tolist()
+                },
+                "approximations": [
                     {
-                        "name": r["name"],
-                        "formula": r["formula"],
-                        "metrics": r["metrics"],
-                    }
-                    for r in self.results
-                ],
+                        "name": r['name'],
+                        "formula": r['formula'],
+                        "metrics": {
+                            "S": r['metrics']['S'],
+                            "RMS": r['metrics']['RMS'],
+                            "R2": r['metrics']['R2']
+                        },
+                        "parameters": r['params']  # Сохраняем весь 3-й словарь
+                    } for r in self.results
+                ]
             }
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(out, f, indent=4, ensure_ascii=False)
