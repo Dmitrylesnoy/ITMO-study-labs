@@ -21,19 +21,19 @@ _start:
     movea.l  output_addr, A1
     movea.l  (A1), A1
     movea.l  token_addr, A2
-    move     0, D3                  // strip flag
+    move.l     0, D3
 
 next_token:
-    not      D3
-    cmp      D3, 0
+    not.l      D3
+    cmp.l      D3, 0x0 
     beq      return_err
-    cmp      D3, 0x2B
+    cmp.l      D3, 0x2B
     beq      input_loop
-    cmp      D3, 0x2D
+    cmp.l      D3, 0x2D
     beq      input_loop
-    cmp      D3, 0x2A
+    cmp.l      D3, 0x2A
     beq      input_loop
-    cmp      D3, 0x2F
+    cmp.l      D3, 0x2F
     beq      input_loop
     
     move.l   (A2)+, D2
@@ -43,7 +43,7 @@ input_loop:
     cmp.l    D0, const_space
     beq      next_token
     cmp.l    D0, const_endl
-    beq      main                   // make a Strip str format check
+    beq      main                   ; make a Strip str format check
 
     move.l   (A2), D1
     mul.l    10, D1
@@ -55,9 +55,9 @@ input_loop:
     jmp input_loop
 
 main:
-    movea.l  token_addr, A3         // token iters in tokens
+    movea.l  token_addr, A3         ; token iters in tokens
     move.l   (A2)+, D0
-    movea.l  A2, A6              // stack addr init
+    movea.l  A2, A6              ; stack addr init
 
 main_loop:
     move.l  (A3)+, D0
@@ -69,8 +69,8 @@ main_loop:
     movea.l A6, D4
     sub.l   A2, D4
     ble     return_err
-    move.l  -(A6), D1       // b
-    move.l  -(A6), D2       // a
+    move.l  -(A6), D1       ; b
+    move.l  -(A6), D2       ; a
 
     cmp      D0, 0x2B
     beq      calc_sum
