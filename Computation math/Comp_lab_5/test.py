@@ -242,21 +242,6 @@ class InterpolationApp(tk.Tk):
         tree.pack(side="left", fill="both", expand=True)
         scroll.pack(side="right", fill="y")
 
-    # def show_table(self, x, diffs):
-    #     win = tk.Toplevel(self)
-    #     win.title("Таблица конечных разностей")
-    #     cols = ["X", "Y"] + [f"Δ^{i}" for i in range(1, len(diffs))]
-    #     tree = ttk.Treeview(win, columns=cols, show="headings")
-    #     for c in cols:
-    #         tree.heading(c, text=c)
-    #         tree.column(c, width=80, anchor="center")
-    #     for i in range(len(x)):
-    #         row = [f"{x[i]:.2f}", f"{diffs[0][i]:.4f}"]
-    #         for d in range(1, len(diffs)):
-    #             row.append(f"{diffs[d][i]:.4f}" if i < len(diffs[d]) else "")
-    #         tree.insert("", "end", values=row)
-    #     tree.pack(fill="both", expand=True)
-
     def run(self):
         try:
             if self.input_mode.get() == "manual":
