@@ -50,7 +50,7 @@ class InterpolationMath:
         mid_idx = n // 2
 
         if x_val <= x_pts[mid_idx]:
-            # Вперед
+            # 1-я формула (вперед)
             res = float(coef[0, 0])
             product = 1.0
             for i in range(1, n):
@@ -58,7 +58,7 @@ class InterpolationMath:
                 res += float(coef[0, i]) * product
             return res, "Ньютон (разд. вперед)"
         else:
-            # Назад
+            # 2-я формула (назад)
             res = float(coef[n - 1, 0])
             product = 1.0
             for i in range(1, n):
@@ -71,7 +71,7 @@ class InterpolationMath:
         n = len(x_pts)
         h = x_pts[1] - x_pts[0]
         if x_val <= x_pts[n // 2]:
-            # 1-я формула Ньютона (вперед)
+            # 1-я формула (вперед)
             t = (x_val - x_pts[0]) / h
             res = float(y_pts[0])
             term = 1.0
@@ -80,7 +80,7 @@ class InterpolationMath:
                 res += (term * float(diffs[i][0])) / factorial(i)
             return res, "Ньютон (кон. вперед)"
         else:
-            # 2-я формула Ньютона (назад)
+            # 2-я формула (назад)
             t = (x_val - x_pts[n - 1]) / h
             res = float(y_pts[n - 1])
             term = 1.0
@@ -88,28 +88,6 @@ class InterpolationMath:
                 term *= t + i - 1
                 res += (term * float(diffs[i][-1])) / factorial(i)
             return res, "Ньютон (кон. назад)"
-
-    @staticmethod
-    def gauss_auto(x_pts, y_pts, x_val, diffs):
-        n = len(x_pts)
-        mid = n // 2
-        h = x_pts[1] - x_pts[0]
-        t = (x_val - x_pts[mid]) / h
-        res = float(y_pts[mid])
-        term = 1.0
-        method_name = "Гаусс 1" if t >= 0 else "Гаусс 2"
-        for i in range(1, n):
-            if t >= 0:  # 1-я формула
-                k = i // 2
-                term *= (t - k) if i % 2 != 0 else (t + k)
-                idx = mid - k
-            else:  # 2-я формула
-                k = (i + 1) // 2
-                term *= (t + k - 1) if i % 2 != 0 else (t - k)
-                idx = mid - k
-            if 0 <= idx < len(diffs[i]):
-                res += (term * diffs[i][idx]) / factorial(i)
-        return res, method_name
 
     @staticmethod
     def stirling(x_pts, y_pts, x_val, diffs):
@@ -168,7 +146,9 @@ class InterpolationApp(tk.Tk):
         self.txt.insert("1.0", "0.1 1.25\n0.2 2.38\n0.3 3.79\n0.4 5.44\n0.5 7.14")
         self.txt.pack(pady=5)
 
-        self.func_box = ttk.Combobox(sidebar, values=["sin(x)", "exp(x)", "cos(x)"])
+        self.func_box = ttk.Combobox(
+            sidebar, values=["sin(x)", "exp(x)", "x^4+cos(x)"]
+        )
         self.func_box.set("sin(x)")
         self.func_box.pack(fill="x")
         self.range_in = ttk.Entry(sidebar)
@@ -219,14 +199,12 @@ class InterpolationApp(tk.Tk):
         for i in range(n):
             row = [f"{x[i]:.3f}"]
             if is_finite:
-                # Для конечных разностей (список массивов разной длины)
                 for level in range(len(table)):
                     if i < len(table[level]):
                         row.append(f"{table[level][i]:.4f}")
                     else:
                         row.append("-")
             else:
-                # Для разделенных разностей (матрица n x n)
                 for j in range(table.shape[1]):
                     if i < n - j:
                         row.append(f"{table[i][j]:.4f}")
@@ -243,7 +221,7 @@ class InterpolationApp(tk.Tk):
         try:
             if self.input_mode.get() == "manual":
                 lines = self.txt.get("1.0", tk.END).strip().split("\n")
-                pts = sorted([list(map(float, l.split())) for l in lines if l.strip()])
+                pts = sorted([list(map(float, l.replace(",",".").split())) for l in lines if l.strip()])
                 x, y = np.array([p[0] for p in pts]), np.array([p[1] for p in pts])
             else:
                 a, b, n = map(float, self.range_in.get().split())
@@ -254,7 +232,7 @@ class InterpolationApp(tk.Tk):
                         (
                             sin(xi)
                             if "sin" in f_name
-                            else (exp(xi) if "exp" in f_name else cos(xi))
+                            else (exp(xi) if "exp" in f_name else (xi**4 + cos(xi)))
                         )
                         for xi in x
                     ]
@@ -264,18 +242,16 @@ class InterpolationApp(tk.Tk):
             f_diffs = InterpolationMath.get_finite_diffs(y)
             d_diffs = InterpolationMath.get_divided_diffs(x, y)
 
+            v_lagr = InterpolationMath.lagrange(x, y, tx)
             v_newt_fin, nf_name = InterpolationMath.newton_finite_auto(x, y, tx, f_diffs)
             v_newt_div, nd_name = InterpolationMath.newton_divided_auto(x, y, tx)
-            v_gauss, g_name = InterpolationMath.gauss_auto(x, y, tx, f_diffs)
             v_stir = InterpolationMath.stirling(x, y, tx, f_diffs)
             v_bess = InterpolationMath.bessel(x, y, tx, f_diffs)
-            v_lagr = InterpolationMath.lagrange(x, y, tx)
 
             res = f"X = {tx}\n"
             res += f"Лагранж:        {v_lagr:.5f}\n"
             res += f"{nf_name:<15}: {v_newt_fin:.5f}\n"
             res += f"{nd_name:<15}: {v_newt_div:.5f}\n"
-            res += f"{g_name:<15}: {v_gauss:.5f}\n"
             res += f"Стирлинг:       {v_stir:.5f}\n"
             res += f"Бессель:        {v_bess:.5f}\n"
 
@@ -295,9 +271,8 @@ class InterpolationApp(tk.Tk):
         tabs = ttk.Notebook(win)
         tabs.pack(fill="both", expand=True)
 
-        # Конечные
         f_frame = ttk.Frame(tabs)
-        tabs.add(f_frame, text="Конечные Δ")
+        tabs.add(f_frame, text="Конечные разности")
         cols = ["X", "Y"] + [f"Δ^{i}" for i in range(1, len(f_table))]
         tree = ttk.Treeview(f_frame, columns=cols, show="headings")
         for c in cols:
@@ -310,9 +285,8 @@ class InterpolationApp(tk.Tk):
             tree.insert("", "end", values=row)
         tree.pack(fill="both", expand=True)
 
-        # Разделенные
         d_frame = ttk.Frame(tabs)
-        tabs.add(d_frame, text="Разделенные f[]")
+        tabs.add(d_frame, text="Разделенные разности")
         cols_d = ["X", "Y"] + [f"f{i}" for i in range(1, d_table.shape[1])]
         tree_d = ttk.Treeview(d_frame, columns=cols_d, show="headings")
         for c in cols_d:
@@ -328,8 +302,12 @@ class InterpolationApp(tk.Tk):
     def plot(self, x, y, tx, diffs):
         self.ax.clear()
 
+        using_function = (self.input_mode.get() == "func")
+
         self.ax.scatter(x, y, color="black", s=50, label="Узлы интерполяции", zorder=5)
+
         x_grid = np.linspace(min(x), max(x), 200)
+
         y_newton_grid = [
             InterpolationMath.newton_divided_auto(x, y, xi)[0] for xi in x_grid
         ]
@@ -337,23 +315,11 @@ class InterpolationApp(tk.Tk):
             x_grid,
             y_newton_grid,
             label="Многочлен Ньютона",
-            color="blue",
+            color="lime",
             linewidth=2,
         )
 
-        y_gauss_grid = [
-            InterpolationMath.gauss_auto(x, y, xi, diffs)[0] for xi in x_grid
-        ]
-        self.ax.plot(
-            x_grid,
-            y_gauss_grid,
-            "--",
-            label="Многочлен Гаусса",
-            color="orange",
-            linewidth=2,
-        )
-
-        res_y, _ = InterpolationMath.newton_finite_auto(x, y, tx, diffs)
+        res_y, _ = InterpolationMath.newton_divided_auto(x, y, tx)
         self.ax.scatter(
             [tx],
             [res_y],
@@ -363,6 +329,20 @@ class InterpolationApp(tk.Tk):
             label=f"Точка X={tx}",
             zorder=6,
         )
+
+        if using_function:
+            f_name = self.func_box.get()
+            y_func_grid = []
+            for xi in x_grid:
+                if "sin" in f_name:
+                    y_func_grid.append(sin(xi))
+                elif "exp" in f_name:
+                    y_func_grid.append(exp(xi))
+                else:
+                    y_func_grid.append(xi**4+cos(xi))
+
+            self.ax.plot(x_grid, y_func_grid, label=f_name,
+                        color="darkviolet", linewidth=2, linestyle=":")
 
         self.ax.set_title("Графики интерполяционных многочленов")
         self.ax.set_xlabel("X")
