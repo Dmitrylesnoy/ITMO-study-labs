@@ -1,14 +1,3 @@
-.data
-input_addr:      .word  0x80
-output_addr:     .word  0x84
-stack_top:       .word  0x200
-const_endl:      .byte  10
-const_space:     .byte  32
-const_overflow:  .word  0xCCCCCCCC
-
-    .org 0x300
-token_addr:      .word  0x400  ; Буфер для хранения распарсенных токенов
-
     .text
     .org     0x100
 _start:
@@ -141,3 +130,16 @@ return_err:
 return_overflow:
     move.l   const_overflow, (A1)
     halt
+
+
+    .data
+    .org 0x300
+input_addr:      .word  0x80
+output_addr:     .word  0x84
+stack_top:       .word  0x200
+const_endl:      .byte  10
+const_space:     .byte  32
+const_overflow:  .word  0xCCCCCCCC
+
+token_addr:      .word  0x400  ; Буфер для хранения распарсенных токенов
+

@@ -1,5 +1,5 @@
-limit: 200
-memory_size: 0x200
+limit: 5000
+memory_size: 0x2000
 memory_mapped_io:
   0x80: [5]
   0x84: []
