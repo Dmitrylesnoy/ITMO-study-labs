@@ -98,9 +98,7 @@ class MathCore:
         # xm, ym = np.mean(x), np.mean(y)
         xm, ym = sx/n, sy/n
         s1, s2, s3 = 0, 0, 0
-        # p = np.sum((x - xm) * (y - ym)) / (
-        #     np.sqrt(np.sum((x - xm) ** 2) * np.sum((y - ym) ** 2)) or 1
-        # )
+
         for i in range(n):
             s1 += (x[i]-xm)*(y[i]-ym)
             s2 += (x[i]-xm)**2

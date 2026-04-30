@@ -8,6 +8,14 @@ from math import factorial, sin, exp, cos
 
 # --- МАТЕМАТИЧЕСКИЙ БЛОК ---
 class InterpolationMath:
+    def factorial(num):
+        if num == 0 or num == 1:
+            return 1
+        res = 1
+        for i in range(2, num + 1):
+            res *= i
+        return res
+    
     def get_finite_diffs(y):
         n = len(y)
         table = [[] for _ in range(n)]
@@ -67,10 +75,12 @@ class InterpolationMath:
             return res, "Ньютон (разд. назад)"
 
     @staticmethod
-    def newton_finite_auto(x_pts, y_pts, x_val, diffs):
+    def newton_finite_auto(x_pts, y_pts, x_val):
         n = len(x_pts)
         h = x_pts[1] - x_pts[0]
-        if x_val <= x_pts[n // 2]:
+        diffs = InterpolationMath.get_finite_diffs(y_pts)
+        mid_idx = n // 2
+        if x_val <= x_pts[mid_idx]:
             # 1-я формула (вперед)
             t = (x_val - x_pts[0]) / h
             res = float(y_pts[0])
@@ -243,7 +253,7 @@ class InterpolationApp(tk.Tk):
             d_diffs = InterpolationMath.get_divided_diffs(x, y)
 
             v_lagr = InterpolationMath.lagrange(x, y, tx)
-            v_newt_fin, nf_name = InterpolationMath.newton_finite_auto(x, y, tx, f_diffs)
+            v_newt_fin, nf_name = InterpolationMath.newton_finite_auto(x, y, tx)
             v_newt_div, nd_name = InterpolationMath.newton_divided_auto(x, y, tx)
             v_stir = InterpolationMath.stirling(x, y, tx, f_diffs)
             v_bess = InterpolationMath.bessel(x, y, tx, f_diffs)
