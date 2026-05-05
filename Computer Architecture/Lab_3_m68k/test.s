@@ -58,7 +58,9 @@ start_calc:
     move.l   0, (A2)         ; Маркер конца токенов
     movea.l  token_addr, A3
     movea.l  (A3), A3        ; A3 итерирует по токенам
-    movea.l  A7, A6          ; Используем A6 как указатель стека калькулятора
+    movea.l  stack_top, A7
+    movea.l  (A7), A7        ; Установка SP
+    movea.l  (A7), A6          ; Используем A6 как указатель стека калькулятора
 
 main_loop:
     move.l   (A3)+, D0       ; Берем токен
@@ -71,10 +73,10 @@ main_loop:
 
     ; Это оператор. Нужно минимум 2 числа в стеке.
     ; (A7 - A6) / 4 — количество элементов.
-    move.l   A7, D1
-    sub.l    A6, D1
-    cmp.l    8, D1           ; Меньше 8 байт (2-х лонгов)?
-    blt      return_err
+    ;move.l   A7, D1
+    ;sub.l    A6, D1
+    ;cmp.l    8, D1           ; Меньше 8 байт (2-х лонгов)?
+    ;blt      return_err
 
     move.l   -(A6), D2       ; b
     move.l   -(A6), D1       ; a
@@ -133,10 +135,10 @@ return_overflow:
 
 
     .data
-    .org 0x300
+    .org 0x600
 input_addr:      .word  0x80
 output_addr:     .word  0x84
-stack_top:       .word  0x400
+stack_top:       .word  0x700
 
 const_endl:      .byte  10
 const_space:     .byte  32
@@ -148,4 +150,4 @@ const_minus:     .byte  45
 const_mul:       .byte  42
 const_div:       .byte  47
 
-token_addr:      .word  0x600
+token_addr:      .word  0x1000

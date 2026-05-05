@@ -1,5 +1,5 @@
     .text
-    .org     0x100 
+    .org     0x100
 _start:
     movea.l  stack_top, A7
     movea.l  (A7), A7        ; Установка SP
