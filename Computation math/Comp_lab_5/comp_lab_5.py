@@ -165,7 +165,7 @@ class InterpolationApp(tk.Tk):
         self.range_in.insert(0, "0 1 10")
         self.range_in.pack(fill="x", pady=2)
 
-        ttk.Button(sidebar, text="Загрузить файл", command=self.load_file).pack(
+        ttk.Button(sidebar, text="Загрузить из файла", command=self.load_file).pack(
             fill="x", pady=5
         )
 
