@@ -1,5 +1,5 @@
     .text
-    .org     0x100
+    .org     0x100 
 _start:
     movea.l  stack_top, A7
     movea.l  (A7), A7        ; Установка SP
@@ -15,23 +15,23 @@ _start:
 
 read_char:
     move.b   (A0), D0        ; Читаем 1 байт из ввода
-    cmp.b    const_endl, D0  ; Проверка на конец строки (\n)
+    cmp.b    const_endl, D0  ; Проверка на конец строки
     beq      finalize_and_main
     cmp.b    const_space, D0 ; Проверка на пробел
     beq      handle_space
 
-    ; Проверка, не оператор ли это (+, -, *, /)
-    cmp.b    43, D0          ; '+'
+    ; Если это оператор, то сохраняем его как токен
+    cmp.b    const_plus, D0         ; '+'
     beq      save_op
-    cmp.b    45, D0          ; '-'
+    cmp.b    const_minus, D0        ; '-'
     beq      save_op
-    cmp.b    42, D0          ; '*'
+    cmp.b    const_mul, D0          ; '*'
     beq      save_op
-    cmp.b    47, D0          ; '/'
+    cmp.b    const_div, D0          ; '/'
     beq      save_op
 
-    ; Если цифра (парсинг числа)
-    sub.b    48, D0          ; ASCII '0' = 48. Переводим в цифру 0-9
+    ; Если цифра
+    sub.b    const_num_char, D0     ; Переводим в цифру 0-9
     mul.l    10, D4
     add.l    D0, D4
     move.l   1, D3           ; Ставим флаг "собираем число"
@@ -42,7 +42,7 @@ handle_space:
     bne      read_char
     move.l   D4, (A2)+       ; Сохраняем число в токены
     clr.l    D4              ; Сброс сборщика
-    clr.l    D3
+    clr.l    D3              ; Сброс флага
     jmp      read_char
 
 save_op:
@@ -55,7 +55,7 @@ finalize_and_main:
     move.l   D4, (A2)+
 
 start_calc:
-    move.l   0, (A2)         ; Маркер конца токенов (NULL)
+    move.l   0, (A2)         ; Маркер конца токенов
     movea.l  token_addr, A3
     movea.l  (A3), A3        ; A3 итерирует по токенам
     movea.l  A7, A6          ; Используем A6 как указатель стека калькулятора
@@ -65,8 +65,8 @@ main_loop:
     cmp.l    0, D0           ; Конец?
     beq      main_loop_end
 
-    ; Проверяем, оператор это (ASCII < 48) или число
-    cmp.l    48, D0
+    ; Проверяем, оператор это или число
+    cmp.l    const_num_char, D0
     bge      push_num
 
     ; Это оператор. Нужно минимум 2 числа в стеке.
@@ -79,15 +79,15 @@ main_loop:
     move.l   -(A6), D2       ; b
     move.l   -(A6), D1       ; a
 
-    cmp.l    43, D0          ; '+'
+    cmp.l    const_plus, D0         ; '+'
     beq      do_add
-    cmp.l    45, D0          ; '-'
+    cmp.l    const_minus, D0        ; '-'
     beq      do_sub
-    cmp.l    42, D0          ; '*'
+    cmp.l    const_mul, D0          ; '*'
     beq      do_mul
-    cmp.l    47, D0          ; '/'
+    cmp.l    const_div, D0          ; '/'
     beq      do_div
-    jmp      return_err      ; Неизвестный символ
+    jmp      return_err             ; Неизвестный символ
 
 do_add:
     add.l    D1, D2
@@ -117,7 +117,7 @@ main_loop_end:
     ; В стеке должен остаться ровно один результат
     move.l   A6, D1
     sub.l    A7, D1
-    cmp.l    4, D1           ; Должно быть ровно 4 байта (1 число)
+    cmp.l    4, D1           ; Должно быть ровно 4 байта
     bne      return_err
 
     move.l   -(A6), (A1)     ; Вывод результата
@@ -136,10 +136,16 @@ return_overflow:
     .org 0x300
 input_addr:      .word  0x80
 output_addr:     .word  0x84
-stack_top:       .word  0x200
+stack_top:       .word  0x400
+
 const_endl:      .byte  10
 const_space:     .byte  32
 const_overflow:  .word  0xCCCCCCCC
+const_num_char:  .byte  48
 
-token_addr:      .word  0x400  ; Буфер для хранения распарсенных токенов
+const_plus:      .byte  43
+const_minus:     .byte  45
+const_mul:       .byte  42
+const_div:       .byte  47
 
+token_addr:      .word  0x600
