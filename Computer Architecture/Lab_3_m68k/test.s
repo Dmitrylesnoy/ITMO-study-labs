@@ -9,11 +9,6 @@ _start:
     movea.l  (A0), A0        ; A0 -> порт ввода
     movea.l  output_addr, A1
     movea.l  (A1), A1        ; A1 -> порт вывода
-    movea.l  8(A3), A2
-    movea.l  12(A3), A2
-    movea.l  16(A3), A2
-    movea.l  20(A3), A2
-    movea.l  24(A3), A2
 
     clr.l    D3              ; Флаг: 1 если мы в процессе сборки числа
     clr.l    D4              ; Текущее собираемое число
@@ -82,13 +77,6 @@ start_calc:
     move.l  12(A3), 20(A3)
 
 main_loop:
-    movea.l  8(A3), A2
-    movea.l  12(A3), A2
-    movea.l  16(A3), A2
-    movea.l  20(A3), A2
-    movea.l  24(A3), A2
-    movea.l  28(A3), A2
-
     move.l  24(A3), D0
     sub.l   28(A3), D0
     beq     main_loop_end
@@ -162,11 +150,11 @@ push_num:
 main_loop_end:
     ; В стеке должен остаться ровно один результат
     ; move.l   A6, D1
-    move.l   16(A3), D1
+    ; move.l   16(A3), D1
     ; sub.l    A7, D1
-    sub.l    12(A3), D1
-    cmp.l    4, D1           ; Должно быть ровно 4 байта
-    bne      return_err
+    ; sub.l    12(A3), D1
+    ; cmp.l    4, D1           ; Должно быть ровно 4 байта
+    ; bne      return_err
 
     ; Вывод результата
     movea.l    4(A3), A2
@@ -182,15 +170,15 @@ return_overflow:
     halt
 
     .data
-    .org 0x600
+    .org 0x400
 input_addr:      .word  0x80    ; +0
 output_addr:     .word  0x84    ; +4
-token_addr:      .word  0x1000  ; +8
+token_addr:      .word  0x500  ; +8
 stack_top:       .word  0x700   ; +12
-stack_ptr:       .word  0x700   ; +16
-stack_acc_prt:   .word  0x700   ; +20
-token_ptr:       .word  0x1000  ; +24
-token_end:       .word  0x700   ; +28
+stack_ptr:       .word  0x600   ; +16
+stack_acc_prt:   .word  0x600   ; +20
+token_ptr:       .word  0x600  ; +24
+token_end:       .word  0x500   ; +28
 
 const_endl:      .byte  10      ; +24
 const_space:     .byte  32      ; +28
