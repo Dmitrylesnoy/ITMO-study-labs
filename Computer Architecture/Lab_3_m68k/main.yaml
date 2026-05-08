@@ -1,13 +1,13 @@
-limit: 5000
+limit: 500
 memory_size: 0x2000
 memory_mapped_io:
-  0x80: ['1 1 +\n']
+  0x80: [49, 48, 32, 51, 32, 47, 10]
   0x84: []
 reports:
   - name: step-by-step
     slice: all
     view: |
-      {pc}:	{D0} {A7} {instruction}	{pc:label}
+      {pc}:	{D0} {D1} {D2} {D3} {D4} {A2} {A3} {instruction}	{pc:label}
   - name: result
     slice: last
     view: |
@@ -15,4 +15,4 @@ reports:
       numio[0x84]: {io:0x84:dec}
     assert: |
       numio[0x80]: [] >>> []
-      numio[0x84]: [] >>> [2]
+      numio[0x84]: [] >>> [12]
