@@ -1,19 +1,21 @@
-limit: 5000
-
+name: "assert stack_based_calculator('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n') == ([-858993460], 'A\n')"
+limit: 2000
 memory_size: 0x1000
 memory_mapped_io:
   0x80: [65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 10]
   0x84: []
 reports:
-  - name: step-by-step
-    slice: all
-    view: |
-      {pc}:	{D0} {D1} {D2} {D3} {D4} {A2} {A3} {instruction}	{pc:label}
-  - name: result
+  - name: Check results
     slice: last
+    filter:
+      - state
     view: |
       numio[0x80]: {io:0x80:dec}
       numio[0x84]: {io:0x84:dec}
+      symio[0x80]: {io:0x80:sym}
+      symio[0x84]: {io:0x84:sym}
     assert: |
-      numio[0x80]: [] >>> []
-      numio[0x84]: [] >>> [2]
+      numio[0x80]: [65,10] >>> []
+      numio[0x84]: [] >>> [-858993460]
+      symio[0x80]: "A\n" >>> ""
+      symio[0x84]: "" >>> "?"
