@@ -234,7 +234,7 @@ class InterpolationApp(tk.Tk):
                 pts = sorted([list(map(float, l.replace(",",".").split())) for l in lines if l.strip()])
                 x, y = np.array([p[0] for p in pts]), np.array([p[1] for p in pts])
             else:
-                a, b, n = map(float, self.range_in.get().split())
+                a, b, n = map(float, self.range_in.get().replace(",",".").split())
                 x = np.linspace(a, b, int(n))
                 f_name = self.func_box.get()
                 y = np.array(
@@ -316,20 +316,59 @@ class InterpolationApp(tk.Tk):
 
         self.ax.scatter(x, y, color="black", s=50, label="Узлы интерполяции", zorder=5)
 
-        x_grid = np.linspace(min(x), max(x), 200)
+        x_grid = np.linspace(min(x), max(x), 100)
 
-        y_newton_grid = [
-            InterpolationMath.newton_divided_auto(x, y, xi)[0] for xi in x_grid
-        ]
+        f_diffs = InterpolationMath.get_finite_diffs(y)
+        d_diffs = InterpolationMath.get_divided_diffs(x, y)
+
+        y_lagr_grid = [InterpolationMath.lagrange(x, y, xi) for xi in x_grid]
+        y_newt_fin_grid = [InterpolationMath.newton_finite_auto(x, y, xi)[0] for xi in x_grid]
+        y_newt_div_grid = [InterpolationMath.newton_divided_auto(x, y, xi)[0] for xi in x_grid]
+        y_stir_grid = [InterpolationMath.stirling(x, y, xi, f_diffs) for xi in x_grid]
+        y_bess_grid = [InterpolationMath.bessel(x, y, xi, f_diffs) for xi in x_grid]
+
         self.ax.plot(
             x_grid,
-            y_newton_grid,
-            label="Многочлен Ньютона",
+            y_newt_div_grid,
+            label="Ньютона (р.р.)",
             color="lime",
             linewidth=2,
         )
 
-        res_y, _ = InterpolationMath.newton_divided_auto(x, y, tx)
+        self.ax.plot(
+            x_grid,
+            y_newt_fin_grid,
+            label="Ньютона (к.р.)",
+            color="blue",
+            linewidth=2,
+        )
+
+        self.ax.plot(
+            x_grid,
+            y_lagr_grid,
+            label="Лагранжа",
+            color="yellow",
+            linewidth=2,
+        )
+        
+        self.ax.plot(
+            x_grid,
+            y_stir_grid,
+            label="Стирлинга",
+            color="orange",
+            linewidth=2,
+        )
+        
+        self.ax.plot(
+            x_grid,
+            y_bess_grid,
+            label="Бесселя",
+            color="cyan",
+            linewidth=2,
+        )
+        
+
+        res_y = InterpolationMath.lagrange(x, y, tx)
         self.ax.scatter(
             [tx],
             [res_y],
