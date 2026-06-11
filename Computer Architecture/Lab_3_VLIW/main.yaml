@@ -1,0 +1,16 @@
+name: fnv32_1a_vliw
+limit: 2000
+memory_size: 0x2000
+memory_mapped_io:
+  0x80: [97, 98, 99, 0]
+  0x84: []
+reports:
+  - name: step-by-step
+    slice: all
+    view: |
+      {pc}:	{instruction}	{pc:label}
+  - name: result
+    slice: last
+    view: |
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}

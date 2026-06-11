@@ -75,7 +75,7 @@ class ODEMath:
     @staticmethod
     def solve_adams(f, x0, y0, xn, h):
         steps = int(round((xn - x0) / h))
-        
+
         x_pts = []
         for i in range(steps + 1):
             x_pts.append(x0 + i * h)
@@ -201,19 +201,19 @@ class ODEApp(tk.Tk):
         ).pack(anchor="w")
         ttk.Checkbutton(
             sidebar,
-            text="Метод Эйлера (p=1)",
+            text="Метод Эйлера",
             variable=self.show_euler,
             command=self._update_plot_only,
         ).pack(anchor="w")
         ttk.Checkbutton(
             sidebar,
-            text="Метод Рунге-Кутты 4 (p=4)",
+            text="Метод Рунге-Кутты 4",
             variable=self.show_rk4,
             command=self._update_plot_only,
         ).pack(anchor="w")
         ttk.Checkbutton(
             sidebar,
-            text="Метод Адамса (4-шаговый)",
+            text="Метод Адамса",
             variable=self.show_adams,
             command=self._update_plot_only,
         ).pack(anchor="w")
@@ -240,7 +240,17 @@ class ODEApp(tk.Tk):
         self.canvas.get_tk_widget().pack(fill="both", expand=True)
 
     def _init_results_table(self):
-        columns = ("i", "x", "y_euler", "y_rk4", "y_adams", "y_exact", "err_runge")
+        columns = (
+            "i",
+            "x",
+            "y_euler",
+            "y_rk4",
+            "y_adams",
+            "y_exact",
+            "err_runge_euler",
+            "err_runge_rk4",
+            "err_adams_max",
+        )
         self.tree = ttk.Treeview(self.tab_table, columns=columns, show="headings")
 
         self.tree.heading("i", text="i")
@@ -249,7 +259,9 @@ class ODEApp(tk.Tk):
         self.tree.heading("y_rk4", text="Рунге-Кутта 4")
         self.tree.heading("y_adams", text="Адамс")
         self.tree.heading("y_exact", text="Точное")
-        self.tree.heading("err_runge", text="Погр. (Рунге РK4)")
+        self.tree.heading("err_runge_euler", text="Погр. (Рунге Эйлер)")
+        self.tree.heading("err_runge_rk4", text="Погр. (Рунге RK4)")
+        self.tree.heading("err_adams_max", text="Погр. (Адамс, макс)")
 
         for col in columns:
             self.tree.column(col, width=110, anchor="center")
@@ -327,17 +339,30 @@ class ODEApp(tk.Tk):
         for item in self.tree.get_children():
             self.tree.delete(item)
 
+        adams_errors = [
+            abs(y_adams[i] - exact_sol(x_grid[i], x0, y0)) for i in range(len(x_grid))
+        ]
+        adams_max = max(adams_errors) if adams_errors else 0.0
+        adams_max_str = f"{adams_max:.2e}"
+
         for i in range(len(x_grid)):
             curr_x = x_grid[i]
             y_ex = exact_sol(curr_x, x0, y0)
 
             if i < len(x_grid) - 1:
-                r_err = ODEMath.estimate_runge_error(
+                euler_r_err = ODEMath.estimate_runge_error(
+                    f, ODEMath.euler_step, curr_x, y_euler[i], h, p=1
+                )
+                rk4_r_err = ODEMath.estimate_runge_error(
                     f, ODEMath.runge_kutta_4_step, curr_x, y_rk4[i], h, p=4
                 )
-                r_err_str = f"{r_err:.2e}"
+                euler_r_err_str = f"{euler_r_err:.2e}"
+                rk4_r_err_str = f"{rk4_r_err:.2e}"
             else:
-                r_err_str = "-"
+                euler_r_err_str = "-"
+                rk4_r_err_str = "-"
+
+            adams_display = adams_max_str if i == 0 else "-"
 
             self.tree.insert(
                 "",
@@ -349,7 +374,9 @@ class ODEApp(tk.Tk):
                     f"{y_rk4[i]:.6f}",
                     f"{y_adams[i]:.6f}",
                     f"{y_ex:.6f}",
-                    r_err_str,
+                    euler_r_err_str,
+                    rk4_r_err_str,
+                    adams_display,
                 ),
             )
 
