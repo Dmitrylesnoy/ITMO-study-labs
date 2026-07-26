@@ -54,7 +54,7 @@ public class Response {
             case WARNING:
                 return name + "  " + status.toString() + "\n " + output + "\n=> ";
             default:
-                return name + "  " + status.toString() + "\n " + e.toString() + "\n=> ";
+                return name + "  " + status.toString() + "\n " + e.getMessage() + "\n=> ";
         }
     }
 }

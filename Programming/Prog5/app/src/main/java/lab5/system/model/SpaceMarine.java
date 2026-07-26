@@ -25,7 +25,6 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     private String achievements; // Field cannot be null
     private MeleeWeapon meleeWeapon; // Field can be null
     private Chapter chapter; // Field can be null
-    private StdConsole console = new StdConsole();
 
     /**
      * Default constructor for the SpaceMarine class.
@@ -59,7 +58,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             } else
                 throw new IllegalArgumentException("Argument mustn't be null");
         } catch (Exception e) {
-            console.writeln(e.toString());
+            StdConsole.writeln(e.toString());
         }
     }
 
@@ -85,7 +84,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
             } else
                 throw new IllegalArgumentException("Health must be above 0");
         } catch (Exception e) {
-            console.writeln(e.toString());
+            StdConsole.writeln(e.toString());
         }
     }
 

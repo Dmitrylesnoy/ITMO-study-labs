@@ -5,14 +5,15 @@ import lab5.system.io.console.StdConsole;
 
 public class App {
     /**
-     * The main function creates two SpaceMarine objects and initializes a Handler to run a console-based program indefinitely.
+     * The main function initializes a Handler to run a console-based program.
      */
     public static void main(String[] args) {
         
         Handler handler = new Handler();
         StdConsole.write("=>");
-        handler.getConsole().add("help");
+        StdConsole.add("help");
         while (true) {
+            
             handler.Run();
         }
     }

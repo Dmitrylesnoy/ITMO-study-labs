@@ -1,7 +1,6 @@
 package lab5.system.commands;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 

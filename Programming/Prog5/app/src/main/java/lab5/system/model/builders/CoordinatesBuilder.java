@@ -13,13 +13,14 @@ public class CoordinatesBuilder {
     private Float y; // not null
 
     /**
-     * Default constructor for the CoordinatesBuilder class, initializing the Y coordinate
+     * Default constructor for the CoordinatesBuilder class, initializing the Y
+     * coordinate
      * and optionally the X coordinate based on user input.
      */
     public CoordinatesBuilder() {
         this.y = setY();
         while (true) {
-            String ans = StdConsole.Instance().read("Would you enter the X coordinate? Y/N:");
+            String ans = StdConsole.read("Would you enter the X coordinate? Y/N:");
             if (ans.equals("Y")) {
                 this.x = setX();
                 break;
@@ -50,7 +51,7 @@ public class CoordinatesBuilder {
     public Double setX() {
         while (true) {
             try {
-                return Double.parseDouble(StdConsole.Instance().read("Enter the x coordinate (double): "));
+                return Double.parseDouble(StdConsole.read("Enter the x coordinate (double): "));
             } catch (Exception e) {
                 StdConsole.writeln("Invalid input: Please enter a valid number for x.");
             }
@@ -65,7 +66,7 @@ public class CoordinatesBuilder {
     public Float setY() {
         while (true) {
             try {
-                return Float.parseFloat(StdConsole.Instance().read("Enter the y coordinate (float): "));
+                return Float.parseFloat(StdConsole.read("Enter the y coordinate (float): "));
             } catch (Exception e) {
                 StdConsole.writeln("Invalid input: Please enter a valid number for y.");
             }

@@ -12,12 +12,14 @@ import lab5.system.model.SpaceMarine;
 
 /**
  * Manages a collection of SpaceMarine objects using a stack.
- * This class provides methods for adding to the collection, saving it to an XML file,
- * and loading it from an XML file. It implements the Singleton pattern to ensure
+ * This class provides methods for adding to the collection, saving it to an XML
+ * file,
+ * and loading it from an XML file. It implements the Singleton pattern to
+ * ensure
  * that only one instance of CollectionManager exists.
  */
 public class CollectionManager {
-    private Stack<SpaceMarine> myStack = new Stack<>();
+    private Stack<SpaceMarine> myStack = new Stack<SpaceMarine>();
     private static CollectionManager instance;
 
     /**
@@ -66,12 +68,16 @@ public class CollectionManager {
      * Loads the collection of SpaceMarine objects from an XML file.
      */
     public void load() {
-        this.myStack = (Stack) XMLhandler.readCollection();
-        long id =0;
-        for (SpaceMarine marine : myStack) {
-            if (marine.getId() > id)
-                id = marine.getId();
+        long id = 0;
+        this.myStack = XMLhandler.readCollection();
+
+        if (myStack!=null && !myStack.isEmpty()) {
+            for (SpaceMarine marine : myStack) {
+                if (marine.getId() > id)
+                    id = marine.getId();
+            }
         }
+
         Router.setIndexer(id);
     }
 

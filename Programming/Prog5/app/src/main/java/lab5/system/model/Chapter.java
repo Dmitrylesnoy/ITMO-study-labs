@@ -3,12 +3,13 @@ package lab5.system.model;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-import lab5.system.exceptions.NullArgumetnException;
+import lab5.system.exceptions.NullArgumentException;
 import lab5.system.io.console.StdConsole;
 
 /**
  * Represents a chapter entity with attributes for its name and world.
- * This class provides methods for setting and getting the values of these attributes,
+ * This class provides methods for setting and getting the values of these
+ * attributes,
  * as well as methods for generating hash codes and equality checks.
  */
 @JacksonXmlRootElement(localName = "Chapter")
@@ -27,7 +28,7 @@ public class Chapter {
     /**
      * Constructs a Chapter with the specified name and world.
      *
-     * @param name the name of the chapter
+     * @param name  the name of the chapter
      * @param world the world of the chapter
      */
     public Chapter(String name, String world) {
@@ -39,7 +40,7 @@ public class Chapter {
                 this.world = world;
             }
         } catch (Exception e) {
-            new StdConsole().writeln(e.toString());
+            StdConsole.writeln(e.toString());
         }
     }
 
@@ -62,7 +63,7 @@ public class Chapter {
             if (name != null && name != "") {
                 this.name = name;
             } else
-                throw new NullArgumetnException("Name mustn't be Empty String");
+                throw new NullArgumentException("Name mustn't be Empty String");
         } catch (Exception e) {
             StdConsole.writeln(e.toString());
         }
@@ -87,7 +88,7 @@ public class Chapter {
             if (world != null) {
                 this.world = world;
             } else
-                throw new NullArgumetnException("");
+                throw new NullArgumentException("");
         } catch (Exception e) {
             StdConsole.writeln(e.toString());
         }

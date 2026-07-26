@@ -4,18 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lab5.system.commands.*;
-import lab5.system.io.console.StdConsole;
+import lab5.system.exceptions.NullArgumentException;
 import lab5.system.messages.*;
 import lab5.system.utils.CollectionManager;
 import lab5.system.utils.ScriptController;
 
 /**
- * The Router class is responsible for routing commands to their corresponding command handlers.
- * It maintains a collection of commands and executes them based on user requests.
- * This class implements the Singleton pattern to ensure that only one instance of Router exists.
+ * The Router class is responsible for routing commands to their corresponding
+ * command handlers.
+ * It maintains a collection of commands and executes them based on user
+ * requests.
+ * This class implements the Singleton pattern to ensure that only one instance
+ * of Router exists.
  */
 public class Router {
-    private static long indexer=0;
+    private static long indexer = 0;
     private Response response;
     private CollectionManager cm;
     private ScriptController scriptController;
@@ -69,8 +72,8 @@ public class Router {
                     ((RemoveByID) cmd).setArgs(request.getArgs() != null ? Long.parseLong(request.getArgs()[0]) : null);
                 if (cmd.getClass() == ExecuteScript.class){
                     ((ExecuteScript) cmd).setArgs(request.getArgs()[0]);
-                    scriptController.addScript(request.getArgs()[0]);
                     scriptController.checkExecuting(request.getArgs()[0]);
+                    scriptController.addScript(request.getArgs()[0]);
 
                 }
                 // StdConsole.writeln(request.getArgs()[0]);
@@ -84,15 +87,12 @@ public class Router {
             } catch (ArrayIndexOutOfBoundsException e) {
                 response = new Response(name, Status.FAILED,
                         new ArrayIndexOutOfBoundsException("Missing giving arguments for command"));
+            } catch (NullArgumentException e) {
+                response = new Response(name, Status.FAILED,
+                        new NullArgumentException("Empty arguments for command"));
             } catch (IllegalArgumentException e) {
                 response = new Response(name, Status.FAILED,
                         new IllegalArgumentException("Wrong types for giving arguments"));
-            } catch (NullPointerException e) {
-                response = new Response(name, Status.FAILED,
-                        new NullPointerException("Empty arguments for command"));
-            } catch (RuntimeException e) {
-                response = new Response(name, Status.FAILED,
-                        new RuntimeException("Script already exevcuting"));
             } catch (Exception e) {
                 response = new Response(name, Status.FAILED, e);
             }
@@ -103,8 +103,8 @@ public class Router {
 
         return response;
     }
-    
-    public static long getNextId(){
+
+    public static long getNextId() {
         indexer = indexer + 1;
         return indexer;
     }

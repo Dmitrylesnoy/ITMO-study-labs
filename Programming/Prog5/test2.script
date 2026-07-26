@@ -1,1 +1,2 @@
 show
+execute_script test1.script

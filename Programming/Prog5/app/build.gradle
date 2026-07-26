@@ -14,7 +14,6 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
@@ -30,7 +29,10 @@ dependencies {
     implementation 'org.glassfish.jaxb:jaxb-xjc:4.0.0'
 
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
-    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.18.2'
+    // implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.18.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.2'
+    
 
 }
 
@@ -46,35 +48,23 @@ application {
     mainClass = 'lab5.App'
 }
 
-tasks.register('fatJar', Jar) {
-    archiveBaseName = 'AppFat'
-    // archiveVersion = '1.0.0'
-    manifest {
-        attributes 'Main-Class': 'lab5.App'
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-    with jar
-
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // or DuplicatesStrategy.INCLUDE
-
-}
-
-
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
-tasks.build {
-    dependsOn fatJar
-}
 
 jar {
+    archiveBaseName = 'App' 
+
     manifest {
-        attributes 'Main-Class': 'lab5.App' // Указываем главный класс в манифесте
+        attributes 'Main-Class': 'lab5.App' 
     }
-    archiveBaseName = 'App' // Имя JAR-файла
-    // archiveVersion = '1.0.0'   // Версия JAR-файла
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE 
+
+    // archiveVersion = '1.0.0'
 }
 

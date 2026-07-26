@@ -1,1 +1,4 @@
 execute_script test2.script
+info
+sort
+execute_script test1.script

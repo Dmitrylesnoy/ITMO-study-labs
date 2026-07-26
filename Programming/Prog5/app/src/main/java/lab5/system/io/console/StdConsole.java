@@ -16,16 +16,8 @@ import java.util.Queue;
 public class StdConsole {
     private static final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-    private  Queue<String> data = new LinkedList<String>();
+    private  static Queue<String> data = new LinkedList<String>();
 
-    private static StdConsole instance;
-
-    /**
-     * Default constructor for the StdConsole class, initializing an instance.
-     */
-    public StdConsole() {
-        this.instance = this;
-    }
 
     /**
      * Reads a line of input from the console.
@@ -34,8 +26,8 @@ public class StdConsole {
      */
     public static String read() {
         try {
-            if (StdConsole.Instance().isEmpty() == false)
-                return StdConsole.Instance().poll();
+            if (StdConsole.isEmpty() == false)
+                return StdConsole.poll();
             return consoleReader.readLine();
         } catch (IOException e) {
             return null;
@@ -49,8 +41,8 @@ public class StdConsole {
      * @return the input line, or null if an I/O error occurs
      */
     public static String read(String prompt) {
-        if (StdConsole.Instance().isEmpty() == false)
-            return StdConsole.Instance().poll();
+        if (isEmpty() == false)
+            return poll();
         writeln(prompt);
         return read();
     }
@@ -81,18 +73,18 @@ public class StdConsole {
         }
     }
 
-    public void add(String line) {
+    public static void add(String line) {
         data.add(line);
     }
 
-    public String poll() {
+    public static String poll() {
         if (isEmpty() == false)
             return data.poll();
         else
             return "";
     }
 
-    public boolean isEmpty() {
+    public static boolean isEmpty() {
         return data.isEmpty();
     }
     /**
@@ -100,17 +92,8 @@ public class StdConsole {
      *
      * @throws Exception if an I/O error occurs
      */
-    public void close() throws Exception {
+    public static void close() throws Exception {
         consoleReader.close();
         consoleWriter.close();
-    }
-
-    /**
-     * Retrieves the singleton instance of the StdConsole.
-     *
-     * @return the instance of StdConsole
-     */
-    public static StdConsole Instance() {
-        return instance != null ? instance : new StdConsole();
     }
 }

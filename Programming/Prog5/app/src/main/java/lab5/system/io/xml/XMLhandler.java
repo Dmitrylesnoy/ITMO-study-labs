@@ -1,7 +1,6 @@
 package lab5.system.io.xml;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.Stack;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -36,8 +35,8 @@ public class XMLhandler {
      *
      * @param filename the name of the XML file to read from or write to
      */
-    public XMLhandler(String filename) {
-        this.filename = filename;
+    public XMLhandler(String fname) {
+        filename = fname;
     }
 
     /**

@@ -44,7 +44,7 @@ public class JAXBhandler {
      *
      * @param stack the collection of SpaceMarine objects to write
      */
-    public void writeCollection(Collection stack) {
+    public void writeCollection(Collection<SpaceMarine> stack) {
         try {
             JAXBContext context = JAXBContext.newInstance(Stack.class, SpaceMarine.class, Coordinates.class,
                     Chapter.class, MeleeWeapon.class);
@@ -55,7 +55,7 @@ public class JAXBhandler {
             File file = new File("data.xml");
             marshaller.marshal(stack, file);
         } catch (Exception e) {
-            new StdConsole().writeln("Error while marshalling: " + e.getMessage() + " type: " + e.getClass()
+            StdConsole.writeln("Error while marshalling: " + e.getMessage() + " type: " + e.getClass()
                     + " - Check if the objects are properly annotated.");
         } finally {
             // Handle any cleanup if necessary
@@ -76,7 +76,7 @@ public class JAXBhandler {
             Stack<SpaceMarine> result = (Stack<SpaceMarine>) unmarshaller.unmarshal(file);
             return result;
         } catch (JAXBException e) {
-            new StdConsole().writeln("Error while unmarshalling: " + e.getMessage());
+            StdConsole.writeln("Error while unmarshalling: " + e.getMessage());
             return new Stack<>();
         }
     }

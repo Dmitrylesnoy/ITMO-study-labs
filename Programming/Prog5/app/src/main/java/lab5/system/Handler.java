@@ -32,15 +32,15 @@ public class Handler {
         try {
             String input;
 
-            input = console.read();
+            input = StdConsole.read();
 
             Request request = makeRequest(input);
             Response response = router.runCommand(request);
-            console.write(response.toString());
+            StdConsole.write(response.toString());
         } catch (NullPointerException e) {
-            console.write("");
+            StdConsole.write("");
         } catch (Exception e) {
-            console.write(e.toString());
+            StdConsole.write(e.toString());
         }
     }
 
