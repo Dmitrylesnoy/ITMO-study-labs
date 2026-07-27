@@ -1,10 +1,6 @@
 package lab6.shared.commands;
 
-import java.util.Collection;
-import java.util.Stack;
-
 import lab6.shared.collection.CollectionManager;
-import lab6.shared.collection.IDgenerator;
 import lab6.shared.model.SpaceMarine;
 
 /**

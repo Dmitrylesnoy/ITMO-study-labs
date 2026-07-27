@@ -1,3 +1,4 @@
 {
-    "docwriter.style": "Javadoc"
+  "docwriter.style": "Javadoc",
+  "java.configuration.updateBuildConfiguration": "automatic"
 }

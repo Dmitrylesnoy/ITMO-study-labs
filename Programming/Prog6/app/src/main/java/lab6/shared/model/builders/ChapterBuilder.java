@@ -1,4 +1,4 @@
-package lab6.shared.builders;
+package lab6.shared.model.builders;
 
 import lab6.shared.io.console.StdConsole;
 import lab6.shared.model.Chapter;
@@ -36,9 +36,9 @@ public class ChapterBuilder {
     public void setName() {
         while (true) {
             StdConsole.writeln("Enter the Name of the Chapter: ");
-            name = StdConsole.getInstance().read();
-            if (name != null && !name.isEmpty()) {
-                this.name = name;
+            String inp_name = StdConsole.read();
+            if (inp_name != null && !inp_name.isEmpty()) {
+                this.name = inp_name;
                 break;
             } else {
                 StdConsole.writeln("Invalid input: Name cannot be null or empty. Please try again.");
@@ -51,9 +51,9 @@ public class ChapterBuilder {
      */
     public void setWorld() {
         while (true) {
-            world = StdConsole.getInstance().read("Enter the World of the Chapter: ");
-            if (world != null && !world.isEmpty()) {
-                this.world = world;
+            String inp_world = StdConsole.read("Enter the World of the Chapter: ");
+            if (inp_world != null && !inp_world.isEmpty()) {
+                world = inp_world;
                 break;
             } else {
                 StdConsole.writeln("Invalid input: World cannot be null. Please try again.");

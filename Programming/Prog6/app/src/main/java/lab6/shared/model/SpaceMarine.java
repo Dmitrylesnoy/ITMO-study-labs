@@ -1,27 +1,23 @@
 package lab6.shared.model;
 
-import java.beans.Transient;
-import java.io.Serial;
-import java.io.Serializable;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Getter;
 import lombok.Setter;
-import lab6.shared.collection.IDgenerator;
 import lab6.shared.io.console.StdConsole;
 
 /**
  * Represents a SpaceMarine entity with various attributes such as id, name,
  * coordinates, health, loyalty, achievements, melee weapon, and chapter.
  * This class provides constructors for initializing these attributes and
- * methods for generating hash codes, equality checks, and string representation.
+ * methods for generating hash codes, equality checks, and string
+ * representation.
  */
 @Getter
 @Setter
 @JacksonXmlRootElement(localName = "SpaceMarine")
-public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
-    private Long id; // Field cannot be null, must be greater than 0, unique, and generated automatically
+public class SpaceMarine implements Comparable<SpaceMarine> {
+    private Long id; // Field cannot be null, must be greater than 0, unique, and generated
+                     // automatically
     private String name; // Field cannot be null, cannot be empty
     private Coordinates coordinates; // Field cannot be null
     private java.util.Date creationDate; // Field cannot be null, generated automatically
@@ -30,8 +26,6 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     private String achievements; // Field cannot be null
     private MeleeWeapon meleeWeapon; // Field can be null
     private Chapter chapter; // Field can be null
-    @JsonIgnore
-    private transient StdConsole console = new StdConsole();
 
     /**
      * Default constructor for the SpaceMarine class.
@@ -42,11 +36,11 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     /**
      * Constructs a SpaceMarine with the specified attributes.
      *
-     * @param name the name of the SpaceMarine
-     * @param coordinates the coordinates of the SpaceMarine
+     * @param name         the name of the SpaceMarine
+     * @param coordinates  the coordinates of the SpaceMarine
      * @param achievements the achievements of the SpaceMarine
-     * @param meleeWeapon the melee weapon of the SpaceMarine
-     * @param chapter the chapter of the SpaceMarine
+     * @param meleeWeapon  the melee weapon of the SpaceMarine
+     * @param chapter      the chapter of the SpaceMarine
      */
     public SpaceMarine(String name, Coordinates coordinates, String achievements, MeleeWeapon meleeWeapon,
             Chapter chapter) {
@@ -65,20 +59,21 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
             } else
                 throw new IllegalArgumentException("Argument mustn't be null");
         } catch (Exception e) {
-            console.writeln(e.toString());
+            StdConsole.writeln(e.toString());
         }
     }
 
     /**
-     * Constructs a SpaceMarine with the specified attributes, including health and loyalty.
+     * Constructs a SpaceMarine with the specified attributes, including health and
+     * loyalty.
      *
-     * @param name the name of the SpaceMarine
-     * @param coordinates the coordinates of the SpaceMarine
-     * @param health the health of the SpaceMarine
-     * @param loyal the loyalty status of the SpaceMarine
+     * @param name         the name of the SpaceMarine
+     * @param coordinates  the coordinates of the SpaceMarine
+     * @param health       the health of the SpaceMarine
+     * @param loyal        the loyalty status of the SpaceMarine
      * @param achievements the achievements of the SpaceMarine
-     * @param meleeWeapon the melee weapon of the SpaceMarine
-     * @param chapter the chapter of the SpaceMarine
+     * @param meleeWeapon  the melee weapon of the SpaceMarine
+     * @param chapter      the chapter of the SpaceMarine
      */
     public SpaceMarine(String name, Coordinates coordinates, Double health, Boolean loyal, String achievements,
             MeleeWeapon meleeWeapon, Chapter chapter) {
@@ -91,7 +86,7 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
             } else
                 throw new IllegalArgumentException("Health must be above 0");
         } catch (Exception e) {
-            console.writeln(e.toString());
+            StdConsole.writeln(e.toString());
         }
     }
 

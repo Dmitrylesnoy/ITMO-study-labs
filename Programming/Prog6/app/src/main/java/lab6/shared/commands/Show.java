@@ -1,7 +1,6 @@
 package lab6.shared.commands;
 
 import lab6.shared.collection.CollectionManager;
-import lab6.shared.model.SpaceMarine;
 
 /**
  * Command to display all SpaceMarine objects in the collection.

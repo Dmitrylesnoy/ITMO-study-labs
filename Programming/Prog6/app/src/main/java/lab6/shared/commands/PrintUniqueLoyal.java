@@ -1,14 +1,9 @@
 package lab6.shared.commands;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 import java.util.stream.Collectors;
 
 import lab6.shared.collection.CollectionManager;
-import lab6.shared.model.SpaceMarine;
 
 /**
  * Command to print SpaceMarine objects with unique loyalty values.

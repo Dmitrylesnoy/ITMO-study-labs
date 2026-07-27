@@ -1,6 +1,6 @@
 package lab6.shared.commands;
 
-import lab6.shared.builders.SpaceMarineGenerator;
+import lab6.shared.model.builders.SpaceMarineGenerator;
 
 /**
  * The Add class implements the Command interface and is responsible for adding
@@ -32,7 +32,7 @@ public class AddRandom implements Command {
     @Override
     public void execute() {
         for (int i = 0; i < cnt; i++) {
-            Add addRand = new Add(new SpaceMarineGenerator().generate());
+            Add addRand = new Add(SpaceMarineGenerator.generate());
             addRand.execute();
         }
     }

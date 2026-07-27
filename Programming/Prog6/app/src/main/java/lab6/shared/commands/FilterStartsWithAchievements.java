@@ -1,9 +1,6 @@
 package lab6.shared.commands;
 
-import java.util.stream.Stream;
-
 import lab6.shared.collection.CollectionManager;
-import lab6.shared.model.SpaceMarine;
 
 /**
  * Command to filter SpaceMarine objects based on whether their achievements

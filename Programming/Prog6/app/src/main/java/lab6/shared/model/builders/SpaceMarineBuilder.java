@@ -1,4 +1,6 @@
-package lab6.shared.builders;
+package lab6.shared.model.builders;
+
+import java.util.Date;
 
 import lab6.shared.io.console.StdConsole;
 import lab6.shared.model.Chapter;
@@ -56,10 +58,10 @@ public class SpaceMarineBuilder {
      * Prompts the user to enter the name of the SpaceMarine and validates the
      * input.
      */
-    public void setName() {
+    public SpaceMarineBuilder setName() {
         String name;
         while (true) {
-            name = StdConsole.getInstance().read("Enter the name of the SpaceMarine: ");
+            name = StdConsole.read("Enter the name of the SpaceMarine: ");
             if (name != null && !name.isEmpty()) {
                 this.name = name;
                 break;
@@ -67,34 +69,36 @@ public class SpaceMarineBuilder {
                 StdConsole.writeln("Invalid input: Name cannot be null or empty. Please try again.");
             }
         }
+        return this;
     }
 
     /**
      * Prompts the user to enter the coordinates of the SpaceMarine.
      */
-    public void setCoordinates() {
+    public SpaceMarineBuilder setCoordinates() {
         this.coordinates = new CoordinatesBuilder().build();
+        return this;
     }
 
     /**
      * Prompts the user to enter the health of the SpaceMarine and validates the
      * input.
      */
-    public void setHealth() {
+    public SpaceMarineBuilder setHealth() {
         Double health;
         String ans = "";
         while (ans.equals("Y") == false) {
-            ans = StdConsole.getInstance().read("Would you set the health of the SpaceMarine? (Y/N)");
+            ans = StdConsole.read("Would you set the health of the SpaceMarine? (Y/N)");
             if (ans.equals("N")) {
-                return;
+                return this;
             }
         }
         while (true) {
             try {
-                health = Double.parseDouble(StdConsole.getInstance().read("Enter the health of the SpaceMarine: "));
+                health = Double.parseDouble(StdConsole.read("Enter the health of the SpaceMarine: "));
                 if (health > 0) {
                     this.health = health;
-                    return;
+                    return this;
                 } else {
                     StdConsole.writeln("Invalid input: Health must be greater than 0. Please try again.");
                 }
@@ -109,18 +113,18 @@ public class SpaceMarineBuilder {
     /**
      * Prompts the user to enter the loyalty status of the SpaceMarine.
      */
-    public void setLoyalty() {
+    public SpaceMarineBuilder setLoyalty() {
         String ans = "";
         while (ans.equals("Y") == false) {
-            ans = StdConsole.getInstance().read("Would you set the loyalty of the SpaceMarine? (Y/N)");
+            ans = StdConsole.read("Would you set the loyalty of the SpaceMarine? (Y/N)");
             if (ans.equals("N"))
-                return;
+                return this;
         }
         while (true) {
-            ans = StdConsole.getInstance().read("Is the SpaceMarine loyal? (true/false): ");
+            ans = StdConsole.read("Is the SpaceMarine loyal? (true/false): ");
             if (ans.equalsIgnoreCase("true")) {
                 this.loyal = true;
-                return;
+                return this;
             } else if (ans.equalsIgnoreCase("false")) {
                 this.loyal = false;
                 break;
@@ -128,16 +132,17 @@ public class SpaceMarineBuilder {
                 StdConsole.writeln("Invalid input: Please enter 'true' or 'false'.");
             }
         }
+        return this;
     }
 
     /**
      * Prompts the user to enter the achievements of the SpaceMarine and validates
      * the input.
      */
-    public void setAchievements() {
+    public SpaceMarineBuilder setAchievements() {
         String achievements;
         while (true) {
-            achievements = StdConsole.getInstance().read("Enter the achievements of the SpaceMarine: ");
+            achievements = StdConsole.read("Enter the achievements of the SpaceMarine: ");
             if (achievements != null && !achievements.isEmpty()) {
                 this.achievements = achievements;
                 break;
@@ -145,13 +150,14 @@ public class SpaceMarineBuilder {
                 StdConsole.writeln("Invalid input: Achievements cannot be null or empty. Please try again.");
             }
         }
+        return this;
     }
 
     /**
      * Prompts the user to enter the melee weapon of the SpaceMarine and validates
      * the input.
      */
-    public void setMeleeWeapon() {
+    public SpaceMarineBuilder setMeleeWeapon() {
         String ans;
         while (true) {
             StdConsole.writeln("Enter the MeleeWeapon of the SpaceMarine: ");
@@ -159,7 +165,7 @@ public class SpaceMarineBuilder {
                     "    POWER_SWORD,\r\n" + //
                     "    POWER_BLADE,\r\n" + //
                     "    POWER_FIST; \r\n");
-            ans = StdConsole.getInstance().read();
+            ans = StdConsole.read();
             try {
                 this.meleeWeapon = MeleeWeapon.valueOf(ans.toUpperCase());
                 break;
@@ -167,17 +173,32 @@ public class SpaceMarineBuilder {
                 StdConsole.write("Invalid input: MeleeWeapon does not have this value. Please try again.");
             }
         }
+        return this;
     }
 
     /**
      * Prompts the user to enter the chapter of the SpaceMarine.
      */
-    public void setChapter() {
+    public SpaceMarineBuilder setChapter() {
         this.chapter = new ChapterBuilder().build();
+        return this;
     }
 
-    public SpaceMarineBuilder setID(Long id) {
+    public Long getId() {
+        return id;
+    }
+
+    public SpaceMarineBuilder setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public SpaceMarineBuilder setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
         return this;
     }
 }

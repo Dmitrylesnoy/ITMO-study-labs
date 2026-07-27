@@ -7,7 +7,6 @@ import java.io.IOException;
  * It requires implementing classes to provide an execution method and a description.
  */
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public interface Command extends Serializable {
     /**

@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Stack;
 
-import lab6.server.Router;
 import lab6.server.io.xml.XMLhandler;
 import lab6.shared.io.console.StdConsole;
 import lab6.shared.model.SpaceMarine;
@@ -23,7 +22,10 @@ public class CollectionManager {
     private Stack<SpaceMarine> myStack = new Stack<SpaceMarine>();
     private static CollectionManager instance;
     private IDgenerator idgenerator = new IDgenerator();
-    private XMLhandler xmlHandler = new XMLhandler("data.xml");
+    
+    {
+        XMLhandler.setFilename("data.xml");
+    }
 
     /**
      * Default constructor for the CollectionManager class.
@@ -65,7 +67,7 @@ public class CollectionManager {
      * Saves the current collection of SpaceMarine objects to an XML file.
      */
     public void save() {
-        xmlHandler.writeCollection(this.myStack);
+        XMLhandler.writeCollection(this.myStack);
     }
 
     /**
@@ -73,8 +75,8 @@ public class CollectionManager {
      */
     public void load() {
 
-        this.myStack = (Stack<SpaceMarine>) xmlHandler.readCollection() == null ? new Stack<SpaceMarine>()
-                : (Stack<SpaceMarine>) xmlHandler.readCollection();
+        this.myStack = (Stack<SpaceMarine>) XMLhandler.readCollection() == null ? new Stack<SpaceMarine>()
+                : (Stack<SpaceMarine>) XMLhandler.readCollection();
         StdConsole.writeln("loaded stack, start indexing");
         idgenerator.updateIndexer(myStack);
     }
@@ -86,7 +88,7 @@ public class CollectionManager {
      */
     public String getTime() {
         try {
-            Path file = Paths.get(xmlHandler.getName());
+            Path file = Paths.get(XMLhandler.getFilename());
             BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
             return "Creation time: " + attr.creationTime();
         } catch (Exception e) {

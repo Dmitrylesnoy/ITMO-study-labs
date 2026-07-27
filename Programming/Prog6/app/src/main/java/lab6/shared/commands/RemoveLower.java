@@ -3,9 +3,9 @@ package lab6.shared.commands;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-import lab6.shared.builders.SpaceMarineBuilder;
 import lab6.shared.collection.CollectionManager;
 import lab6.shared.model.SpaceMarine;
+import lab6.shared.model.builders.SpaceMarineBuilder;
 
 /**
  * Command to remove all SpaceMarine objects from the collection that are lower than a specified object.

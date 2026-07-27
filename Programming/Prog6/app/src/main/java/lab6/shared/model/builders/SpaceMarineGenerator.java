@@ -1,4 +1,4 @@
-package lab6.shared.builders;
+package lab6.shared.model.builders;
 
 import java.util.Random;
 

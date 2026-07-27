@@ -1,20 +1,19 @@
 package lab6.shared.model;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-import lab6.shared.exceptions.NullArgumetnException;
+import lab6.shared.exceptions.NullArgumentException;
 import lab6.shared.io.console.StdConsole;
 
 /**
  * Represents a chapter entity with attributes for its name and world.
- * This class provides methods for setting and getting the values of these attributes,
+ * This class provides methods for setting and getting the values of these
+ * attributes,
  * as well as methods for generating hash codes and equality checks.
  */
 @JacksonXmlRootElement(localName = "Chapter")
-public class Chapter implements Serializable{
+public class Chapter {
     @JacksonXmlElementWrapper(localName = "name")
     private String name; // Field cannot be null, cannot be empty
     @JacksonXmlElementWrapper(localName = "world")
@@ -29,7 +28,7 @@ public class Chapter implements Serializable{
     /**
      * Constructs a Chapter with the specified name and world.
      *
-     * @param name the name of the chapter
+     * @param name  the name of the chapter
      * @param world the world of the chapter
      */
     public Chapter(String name, String world) {
@@ -41,7 +40,7 @@ public class Chapter implements Serializable{
                 this.world = world;
             }
         } catch (Exception e) {
-            new StdConsole().writeln(e.toString());
+            StdConsole.writeln(e.toString());
         }
     }
 
@@ -64,7 +63,7 @@ public class Chapter implements Serializable{
             if (name != null && name != "") {
                 this.name = name;
             } else
-                throw new NullArgumetnException("Name mustn't be Empty String");
+                throw new NullArgumentException("Name mustn't be Empty String");
         } catch (Exception e) {
             StdConsole.writeln(e.toString());
         }
@@ -89,7 +88,7 @@ public class Chapter implements Serializable{
             if (world != null) {
                 this.world = world;
             } else
-                throw new NullArgumetnException("");
+                throw new NullArgumentException("");
         } catch (Exception e) {
             StdConsole.writeln(e.toString());
         }

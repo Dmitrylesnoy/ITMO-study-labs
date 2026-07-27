@@ -37,8 +37,8 @@ public class XMLhandler {
      *
      * @param filename the name of the XML file to read from or write to
      */
-    public XMLhandler(String filename) {
-        this.filename = filename;
+    public static void setFilename(String filename) {
+        XMLhandler.filename = filename;
     }
 
     /**
@@ -56,7 +56,7 @@ public class XMLhandler {
         }
     }
 
-    public static String getName() {
+    public static String getFilename() {
         return filename;
     }
 

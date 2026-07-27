@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import lab6.server.utils.ScriptController;
 import lab6.shared.collection.CollectionManager;
 import lab6.shared.commands.*;
-import lab6.shared.io.console.StdConsole;
 import lab6.shared.messages.Request;
 import lab6.shared.messages.Response;
 import lab6.shared.messages.Status;
@@ -17,8 +16,9 @@ public class Worker {
     private CollectionManager cm = CollectionManager.getInstance();
 
     public Worker() {
-        scriptCtrl = new ScriptController();
         logger.info("[INIT] Initialized Collection Manager");
+        scriptCtrl = new ScriptController();
+        logger.info("[INIT] Initialized Script controller");
         Load load = new Load();
         logger.info("[INIT] Initialized load command");
         load.execute();
@@ -34,10 +34,17 @@ public class Worker {
             // logger.info("[PROCESSING] Empty arguments");
         Response response = null;
         try {
+            if (cmd.getClass() == ExecuteScript.class) {
+                scriptCtrl.checkExecuting((String) request.args());
+                scriptCtrl.addScript((String) request.args());
+            }
+
             cmd.execute();
-            logger.info(String.format("[PROCESSING] %s command executiong finished",cmd.getName()));
+            logger.info(String.format("[PROCESSING] %s command executiong finished", cmd.getName()));
+            
             Save save = new Save();
             save.execute();
+
             if (cmd.getClass() == ExecuteScript.class)
                 scriptCtrl.endScript();
             if (cmd.getClass() == Exit.class) {

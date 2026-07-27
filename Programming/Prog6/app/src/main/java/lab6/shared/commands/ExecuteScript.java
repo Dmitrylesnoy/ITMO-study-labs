@@ -5,12 +5,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import lab6.client.Handler;
 import lab6.shared.io.console.StdConsole;
 
 /**
- * The ExecuteScript class implements the Command interface and is responsible for executing
- * a script file that contains a series of commands. Each command in the script is processed
+ * The ExecuteScript class implements the Command interface and is responsible
+ * for executing
+ * a script file that contains a series of commands. Each command in the script
+ * is processed
  * sequentially, allowing for batch execution of commands.
  */
 public class ExecuteScript implements Command {
@@ -31,10 +32,10 @@ public class ExecuteScript implements Command {
         this.scriptFilePath = scriptFilePath;
     }
 
-    public <T> Command setArgs(T scriptFilePath) {
-        this.scriptFilePath = (String)scriptFilePath;
-        return this;
+    public void setArgs(String scriptFilePath) {
+        this.scriptFilePath = scriptFilePath;
     }
+
     /**
      * Executes the script by reading commands from the specified script file.
      * Each line in the script file is treated as a command and is processed
@@ -46,16 +47,18 @@ public class ExecuteScript implements Command {
     @Override
     public void execute() throws IOException {
         try {
-            StdConsole console = StdConsole.getInstance();
             File scriptFile = new File(scriptFilePath);
+            // console.writeln(scriptFilePath);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile));
-            bufferedReader.lines().peek(l -> console.writeln("added  " + l))
-                .forEach(l -> console.add(l));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                StdConsole.add(line);
+                StdConsole.writeln("added  " + line);
+            }
             bufferedReader.close();
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("Script file not found: " + scriptFilePath);
         }
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -67,7 +70,7 @@ public class ExecuteScript implements Command {
     public String describe() {
         return "Execute script with program commands";
     }
-    
+
     public String getName() {
         return "Execute script";
     }

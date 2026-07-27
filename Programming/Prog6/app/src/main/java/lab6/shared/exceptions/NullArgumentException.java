@@ -5,13 +5,13 @@ package lab6.shared.exceptions;
  * This class extends IllegalArgumentException to indicate that
  * an invalid argument has been provided.
  */
-public class NullArgumetnException extends IllegalArgumentException {
+public class NullArgumentException extends IllegalArgumentException {
     /**
      * Constructs a new NullArgumetnException with the specified detail message.
      *
      * @param message the detail message
      */
-    public NullArgumetnException(String message) {
+    public NullArgumentException(String message) {
         super(message);
     }
 

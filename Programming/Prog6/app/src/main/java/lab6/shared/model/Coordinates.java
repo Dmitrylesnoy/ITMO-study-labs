@@ -1,17 +1,16 @@
 package lab6.shared.model;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 /**
  * Represents a set of coordinates with X and Y values.
  * This class provides constructors for initializing the coordinates,
- * methods for generating hash codes, equality checks, and string representation.
+ * methods for generating hash codes, equality checks, and string
+ * representation.
  */
 @JacksonXmlRootElement(localName = "Coordinates")
-public class Coordinates implements Serializable{
+public class Coordinates {
     @JacksonXmlElementWrapper(localName = "x")
     private double x;
     @JacksonXmlElementWrapper(localName = "y")

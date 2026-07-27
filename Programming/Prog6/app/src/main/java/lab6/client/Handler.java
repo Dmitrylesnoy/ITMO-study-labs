@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import lab6.shared.builders.SpaceMarineBuilder;
 import lab6.shared.commands.Add;
 import lab6.shared.commands.AddRandom;
 import lab6.shared.commands.Clear;
@@ -28,6 +27,7 @@ import lab6.shared.io.console.StdConsole;
 import lab6.shared.messages.Request;
 import lab6.shared.messages.Response;
 import lab6.shared.messages.Status;
+import lab6.shared.model.builders.SpaceMarineBuilder;
 
 /**
  * The Handler class is responsible for processing user input commands.
@@ -37,7 +37,6 @@ import lab6.shared.messages.Status;
  * managing the console interface.
  */
 public class Handler {
-    private StdConsole console;
     Map<String, Command> cmds = new HashMap<>();
     private NetworkClient network = new NetworkClient();
 
@@ -46,9 +45,8 @@ public class Handler {
      */
     public Handler() {
         // router = new Router();
-        console = new StdConsole();
-        console.write("=>");
-        console.add("help");
+        StdConsole.writeln("=>help");
+        StdConsole.add("help");
 
         cmds.put("add", new Add());
         cmds.put("add_random", new AddRandom());
@@ -71,27 +69,24 @@ public class Handler {
     }
 
     /**
-     * Runs the command based on user input read from the console.
+     * Runs the command based on user input read from the StdConsole.
      */
     public void run() {
-        // Request request = makeRequest(console.read());
+        // Request request = makeRequest(StdConsole.read());
         try {
-            Request request = makeRequest(console.read());
+            Request request = makeRequest(StdConsole.read());
   
             Response response = network.sendRequest(request);
-            console.write(response.toString());
+            StdConsole.write(response.toString());
             if (response.status() == Status.CLOSE) {
                 request.command().execute();
                 System.exit(0);
             }
         } catch (NullPointerException e) {
-            console.write("=>");
-        } catch (UnsupportedOperationException e) {
-            console.writeln("Recursion detected, unsopported opetarion. Execution canceled");
-            console.write("=>");
+            StdConsole.write("=>");
         } catch (Exception e) {
-            console.writeln(e.toString());
-            console.write("=>");
+            StdConsole.writeln(e.getMessage());
+            StdConsole.write("=>");
         }
 
     }
@@ -107,7 +102,8 @@ public class Handler {
         String[] inp_split = null;
         String[] inp_args = null;
         try {
-         } catch (Exception e) {
+            inp_split = input.strip().split("\\s+");
+        } catch (Exception e) {
             inp_split = new String[] {};
         }
 
@@ -135,7 +131,7 @@ public class Handler {
             if (cmd.getClass().equals(RemoveByID.class))
                 cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
             if (cmd.getClass().equals(UpdateId.class))
-                cmdArgs = new SpaceMarineBuilder().setID(Long.parseLong(inp_args[0])).build();
+                cmdArgs = new SpaceMarineBuilder().setId(Long.parseLong(inp_args[0])).build();
             if (cmd.getClass().equals(ExecuteScript.class)) {
                 cmdArgs = inp_args != null ? inp_args[0] : null;
                 cmd.setArgs(cmdArgs).execute();

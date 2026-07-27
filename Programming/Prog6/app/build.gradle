@@ -40,7 +40,7 @@ tasks.register('clientJar', Jar) {
     }
     from(sourceSets.main.output) {
         include 'lab6/client/**'
-        include 'lab6/system/**'
+        include 'lab6/shared/**'
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
@@ -56,7 +56,7 @@ tasks.register('serverJar', Jar) {
     }
     from(sourceSets.main.output) {
         include 'lab6/server/**'
-        include 'lab6/system/**'
+        include 'lab6/shared/**'
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
