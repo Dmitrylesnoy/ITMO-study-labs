@@ -1,5 +1,7 @@
 package lab6.shared.model;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
@@ -10,7 +12,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
  * representation.
  */
 @JacksonXmlRootElement(localName = "Coordinates")
-public class Coordinates {
+public class Coordinates implements Serializable {
     @JacksonXmlElementWrapper(localName = "x")
     private double x;
     @JacksonXmlElementWrapper(localName = "y")

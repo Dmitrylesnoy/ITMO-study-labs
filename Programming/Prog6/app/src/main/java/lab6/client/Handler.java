@@ -1,28 +1,12 @@
 package lab6.client;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import lab6.shared.commands.Add;
-import lab6.shared.commands.AddRandom;
-import lab6.shared.commands.Clear;
-import lab6.shared.commands.Command;
-import lab6.shared.commands.ExecuteScript;
-import lab6.shared.commands.Exit;
-import lab6.shared.commands.FilterStartsWithAchievements;
-import lab6.shared.commands.Help;
-import lab6.shared.commands.Info;
-import lab6.shared.commands.Load;
-import lab6.shared.commands.MinByMeleeWeapon;
-import lab6.shared.commands.PrintUniqueLoyal;
-import lab6.shared.commands.RemoveByID;
-import lab6.shared.commands.RemoveGreater;
-import lab6.shared.commands.RemoveLower;
-import lab6.shared.commands.Show;
-import lab6.shared.commands.Sort;
-import lab6.shared.commands.UpdateId;
+import java.util.List;
+import lab6.client.script.ExecuteScript;
+import lab6.client.script.ScriptController;
+import lab6.shared.exceptions.ScriptRecursionException;
 import lab6.shared.io.console.StdConsole;
 import lab6.shared.messages.Request;
 import lab6.shared.messages.Response;
@@ -37,7 +21,7 @@ import lab6.shared.model.builders.SpaceMarineBuilder;
  * managing the console interface.
  */
 public class Handler {
-    Map<String, Command> cmds = new HashMap<>();
+    List<String> cmds = new ArrayList<String>();
     private NetworkClient network = new NetworkClient();
 
     /**
@@ -45,27 +29,15 @@ public class Handler {
      */
     public Handler() {
         // router = new Router();
-        StdConsole.writeln("=>help");
-        StdConsole.add("help");
-
-        cmds.put("add", new Add());
-        cmds.put("add_random", new AddRandom());
-        cmds.put("clear", new Clear());
-        cmds.put("exit", new Exit());
-        cmds.put("load", new Load());
-        // cmds.put("save", new Save());
-        cmds.put("info", new Info());
-        cmds.put("show", new Show());
-        cmds.put("sort", new Sort());
-        cmds.put("filter_starts_with_achievements", new FilterStartsWithAchievements());
-        cmds.put("min_by_meleeweapon", new MinByMeleeWeapon());
-        cmds.put("remove_by_id", new RemoveByID());
-        cmds.put("remove_greater", new RemoveGreater());
-        cmds.put("remove_lower", new RemoveLower());
-        cmds.put("update_id", new UpdateId());
-        cmds.put("print_unique_loyal", new PrintUniqueLoyal());
-        cmds.put("execute_script", new ExecuteScript());
-        cmds.put("help", new Help(cmds));
+        try {
+            cmds.add("cmds_list");
+            cmds = Arrays.asList(network.sendRequest(makeRequest("cmds_list")).output().split("\\s+"));
+            StdConsole.write("=>");
+        } catch (Exception e) {
+            StdConsole.writeln("System error");
+            StdConsole.writeln(e.toString());
+            System.exit(0);
+        }
     }
 
     /**
@@ -75,17 +47,25 @@ public class Handler {
         // Request request = makeRequest(StdConsole.read());
         try {
             Request request = makeRequest(StdConsole.read());
-  
+
+            if (request.command().equals("execute_script".toLowerCase())) {
+                ExecuteScript execScript = new ExecuteScript((String) request.args());
+                execScript.execute();
+                ScriptController.getInstance().addScript((String) request.args());
+                return;
+            }
+
             Response response = network.sendRequest(request);
             StdConsole.write(response.toString());
             if (response.status() == Status.CLOSE) {
-                request.command().execute();
                 System.exit(0);
             }
-        } catch (NullPointerException e) {
+        } catch (ScriptRecursionException e) {
+            StdConsole.writeln(e.toString());
+            ScriptController.getInstance().clear();
             StdConsole.write("=>");
         } catch (Exception e) {
-            StdConsole.writeln(e.getMessage());
+            StdConsole.writeln(e.toString());
             StdConsole.write("=>");
         }
 
@@ -114,31 +94,27 @@ public class Handler {
         }
 
         String name = inp_split[0].toLowerCase();
-        Command cmd;
+        String cmd;
         Object cmdArgs = null;
 
-        if (cmds.containsKey(name)) {
-            cmd = cmds.get(name);
+        if (cmds.contains(name)) {
+            cmd = name;
 
-            if (cmd.getClass().equals(Add.class) ||
-                    cmd.getClass().equals(RemoveGreater.class) ||
-                    cmd.getClass().equals(RemoveLower.class))
+            if (cmd.equals("add".toLowerCase()) ||
+                    cmd.equals("remove_greater".toLowerCase()) ||
+                    cmd.equals("remove_lower".toLowerCase()))
                 cmdArgs = new SpaceMarineBuilder().build();
-            if (cmd.getClass().equals(AddRandom.class))
+            if (cmd.equals("add_random".toLowerCase()))
                 cmdArgs = inp_args != null ? Integer.parseInt(inp_args[0]) : 1;
-            if (cmd.getClass().equals(FilterStartsWithAchievements.class))
+            if (cmd.equals("filter_starts_with_achievements".toLowerCase()) || cmd.equals("execute_script".toLowerCase()))
                 cmdArgs = inp_args != null ? inp_args[0] : null;
-            if (cmd.getClass().equals(RemoveByID.class))
+            if (cmd.equals("remove_by_id".toLowerCase()))
                 cmdArgs = inp_args != null ? Long.parseLong(inp_args[0]) : null;
-            if (cmd.getClass().equals(UpdateId.class))
+            if (cmd.equals("update_id".toLowerCase()))
                 cmdArgs = new SpaceMarineBuilder().setId(Long.parseLong(inp_args[0])).build();
-            if (cmd.getClass().equals(ExecuteScript.class)) {
-                cmdArgs = inp_args != null ? inp_args[0] : null;
-                cmd.setArgs(cmdArgs).execute();
-            }
+
         } else
             throw new UnsupportedOperationException("Unknown command");
-
         return new Request(cmd, cmdArgs);
     }
 }

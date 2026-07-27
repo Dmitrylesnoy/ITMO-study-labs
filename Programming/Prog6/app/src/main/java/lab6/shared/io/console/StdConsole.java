@@ -89,6 +89,10 @@ public class StdConsole {
         return data.isEmpty();
     }
 
+    public static void clear() {
+        data.clear();
+    }
+
     /**
      * Closes the console reader and writer.
      *

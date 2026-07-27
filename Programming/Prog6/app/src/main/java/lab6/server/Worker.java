@@ -3,9 +3,9 @@ package lab6.server;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import lab6.server.utils.ScriptController;
-import lab6.shared.collection.CollectionManager;
-import lab6.shared.commands.*;
+import lab6.client.script.ScriptController;
+import lab6.server.collection.CollectionManager;
+import lab6.server.commands.*;
 import lab6.shared.messages.Request;
 import lab6.shared.messages.Response;
 import lab6.shared.messages.Status;
@@ -17,8 +17,8 @@ public class Worker {
 
     public Worker() {
         logger.info("[INIT] Initialized Collection Manager");
-        scriptCtrl = new ScriptController();
-        logger.info("[INIT] Initialized Script controller");
+        // scriptCtrl = new ScriptController();
+        // logger.info("[INIT] Initialized Script controller");
         Load load = new Load();
         logger.info("[INIT] Initialized load command");
         load.execute();
@@ -26,7 +26,7 @@ public class Worker {
     }
 
     public Response processCommand(Request request) {
-        Command cmd = request.command();
+        Command cmd = CmdsList.getAllowedCmds().get(request.command());
         // if (args != null) {
         cmd.setArgs(request.args());
         logger.info(String.format("[PROCESSING] Arguments set: %s, %s", request.args().toString(),request.args().getClass()));
@@ -34,19 +34,14 @@ public class Worker {
             // logger.info("[PROCESSING] Empty arguments");
         Response response = null;
         try {
-            if (cmd.getClass() == ExecuteScript.class) {
-                scriptCtrl.checkExecuting((String) request.args());
-                scriptCtrl.addScript((String) request.args());
-            }
-
             cmd.execute();
             logger.info(String.format("[PROCESSING] %s command executiong finished", cmd.getName()));
             
             Save save = new Save();
             save.execute();
 
-            if (cmd.getClass() == ExecuteScript.class)
-                scriptCtrl.endScript();
+            // if (cmd.getClass() == ExecuteScript.class)
+            //     scriptCtrl.endScript();
             if (cmd.getClass() == Exit.class) {
                 response = new Response(cmd.getName(), Status.CLOSE, "", null);
             } else

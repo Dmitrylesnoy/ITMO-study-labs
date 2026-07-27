@@ -1,5 +1,7 @@
 package lab6.shared.model;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +17,7 @@ import lab6.shared.io.console.StdConsole;
 @Getter
 @Setter
 @JacksonXmlRootElement(localName = "SpaceMarine")
-public class SpaceMarine implements Comparable<SpaceMarine> {
+public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     private Long id; // Field cannot be null, must be greater than 0, unique, and generated
                      // automatically
     private String name; // Field cannot be null, cannot be empty
@@ -98,7 +100,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     @Override
     public String toString() {
         String description = this.getClass().toString() + ": " + name.toString();
-        description += "\n  id: " + id.toString();
+        description += "\n  id: " + (id == null ? "null" : id.toString());
         description += "\n  coordinates: " + coordinates.toString();
         description += "\n  creationDate: " + creationDate.toString();
         description += "\n  achievements: " + achievements;
@@ -163,7 +165,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         return this.name.compareTo(other.name);
     }
 
-    public Long getId(){
+    public Long getId() {
         return this.id;
     }
 }

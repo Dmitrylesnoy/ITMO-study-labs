@@ -9,9 +9,7 @@ package lab6.shared.messages;
 // @Setter
 import java.io.Serializable;
 
-import lab6.shared.commands.Command;
-
-public record Request(Command command, Object args) implements Serializable {
+public record Request(String command, Object args) implements Serializable {
     // public class Request {
     // private String command;
     // private String[] args;
@@ -31,7 +29,7 @@ public record Request(Command command, Object args) implements Serializable {
      * @param command the name of the command
      * @param args    the arguments associated with the command
      */
-    public Request(Command command, Object args) {
+    public Request(String command, Object args) {
         this.command = command;
         this.args = args==null? "":args;
     }

@@ -115,7 +115,7 @@ public class Router {
             request = (Request) objectInput.readObject();
 
             logger.info(String.format("[PROCESSING] Executing request: %s", request.toString()));
-            Response response = worker1.processCommand(request);
+            Response response = runCommand(request);
 
             logger.info("[PROCESSING] Serializing response");
             byte[] responseData;

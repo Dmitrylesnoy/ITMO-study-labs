@@ -1,5 +1,7 @@
 package lab6.shared.model;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
@@ -13,7 +15,7 @@ import lab6.shared.io.console.StdConsole;
  * as well as methods for generating hash codes and equality checks.
  */
 @JacksonXmlRootElement(localName = "Chapter")
-public class Chapter {
+public class Chapter implements Serializable {
     @JacksonXmlElementWrapper(localName = "name")
     private String name; // Field cannot be null, cannot be empty
     @JacksonXmlElementWrapper(localName = "world")

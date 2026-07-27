@@ -8,52 +8,54 @@ import java.io.Serializable;
  * constructors for initializing the response and formats the output based
  * on the command's status.
  */
-public record Response(String name, Status status, String output, Exception e) implements Serializable{
-// }class Response {
+public record Response(String name, Status status, String output, Exception e) implements Serializable {
+    // }class Response {
     // private String name;
     // private Status status;
     // private String output;
     // private Exception e;
 
     // /**
-    //  * Constructs a Response with the specified command name, status, and output.
-    //  *
-    //  * @param name   the name of the command
-    //  * @param status the status of the response
-    //  * @param output the output of the command
-    //  */
+    // * Constructs a Response with the specified command name, status, and output.
+    // *
+    // * @param name the name of the command
+    // * @param status the status of the response
+    // * @param output the output of the command
+    // */
     // public Response(String name, Status status, String output) {
-    //     this.name = name;
-    //     this.output = output;
-    //     this.status = status;
+    // this.name = name;
+    // this.output = output;
+    // this.status = status;
     // }
 
     // /**
-    //  * Constructs a Response with the specified command name, status, and exception.
-    //  *
-    //  * @param name   the name of the command
-    //  * @param status the status of the response
-    //  * @param e      the exception that occurred
-    //  */
+    // * Constructs a Response with the specified command name, status, and
+    // exception.
+    // *
+    // * @param name the name of the command
+    // * @param status the status of the response
+    // * @param e the exception that occurred
+    // */
     // public Response(String name, Status status, Exception e) {
-    //     this.name = name;
-    //     this.status = status;
-    //     this.e = e;
+    // this.name = name;
+    // this.status = status;
+    // this.e = e;
     // }
 
     // /**
-    //  * Constructs a Response with the specified status, and output for the Console IO.
-    //  *
-    //  * @param status the status of the response (IO)
-    //  * @param output the output text
-    //  */
+    // * Constructs a Response with the specified status, and output for the Console
+    // IO.
+    // *
+    // * @param status the status of the response (IO)
+    // * @param output the output text
+    // */
     // public Response(Status status, String output) {
-    //     this.status = status;
-    //     this.output = output;
+    // this.status = status;
+    // this.output = output;
     // }
 
     // public Status getStatus() {
-    //     return status;
+    // return status;
     // }
 
     /**
@@ -64,20 +66,23 @@ public record Response(String name, Status status, String output, Exception e) i
      */
     @Override
     public String toString() {
+        String safeOutput = output == null ? "" : output;
+        String safeError = e == null ? "Unknown error" : e.toString();
+
         switch (status) {
             case COMPLETE:
-                if (output.isEmpty()) {
+                if (safeOutput.isEmpty()) {
                     return name + "  " + status.toString() + "\n=> ";
                 }
-                return output + "\n=>";
+                return safeOutput + "\n=>";
             case WARNING:
-                return name + "  " + status.toString() + "\n " + output + "\n=> ";
+                return name + "  " + status.toString() + "\n " + safeOutput + "\n=> ";
             case FAILED:
-                return name + "  " + status.toString() + "\n " + e.toString() + "\n=> ";
+                return name + "  " + status.toString() + "\n " + safeError + "\n=> ";
             case CLOSE:
                 return name + "  " + status.toString() + "\n=> ";
             default:
-                return status.toString() + "\n" + output + "\n=> ";
+                return status.toString() + "\n" + safeOutput + "\n=> ";
         }
     }
 }
