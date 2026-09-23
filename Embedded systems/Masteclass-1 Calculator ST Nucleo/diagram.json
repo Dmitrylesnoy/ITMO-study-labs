@@ -36,8 +36,9 @@
       "type": "wokwi-membrane-keypad",
       "id": "keypad1",
       "top": -453.2,
-      "left": 163.5,
-      "attrs": { "columns": "3" }
+      "left": 159.2,
+      "attrs": { "columns": "4" ,
+      "keys":["1","2","3","+","4","5","6","-","7","8","9","*","C","0","=","/"]}
     }
   ],
   "connections": [
@@ -56,7 +57,8 @@
     [ "keypad1:R4", "nucleo:PB3", "green", [ "v0" ] ],
     [ "keypad1:C1", "nucleo:PB10", "green", [ "v326.4", "h-237.45" ] ],
     [ "keypad1:C2", "nucleo:PB4", "green", [ "v0" ] ],
-    [ "keypad1:C3", "nucleo:PB5", "green", [ "v0" ] ]
+    [ "keypad1:C3", "nucleo:PB5", "green", [ "v0" ] ],
+    [ "keypad1:C4", "nucleo:PA15", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }

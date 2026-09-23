@@ -1,107 +1,14 @@
 #include "tm1637.h"
-#include <stdio.h>
 
-// Функция задержки
-void delay_us(uint32_t us) {
-  // При 48 MHz, 1 цикл ≈ 20.83 нс
-  volatile uint32_t cycles = us * 24;
-  while (cycles-- > 0) {
-    asm("nop");
-  }
-}
+/*
+ * Драйвер TM1637 для STM32 Nucleo.
+ * CLK = PA6, DIO = PA7.
+ *
+ * В калькуляторе дисплей обновляется по событию ввода, поэтому
+ * периодический tm1637_update() и counter драйверу не нужны.
+ */
 
-// Инициализация пинов TM1637
-void tm1637_init(void) {
-  // Настраиваем PA6 и PA7 как выходы с открытым стоком
-  GPIOA->MODER = (GPIOA->MODER & ~(0xF << (TM1637_CLK_PIN * 2))) | (0x5 << (TM1637_CLK_PIN * 2));
-  GPIOA->OTYPER |= (1 << TM1637_CLK_PIN) | (1 << TM1637_DIO_PIN);
-  GPIOA->OSPEEDR |= (0x3 << (TM1637_CLK_PIN * 2)) | (0x3 << (TM1637_DIO_PIN * 2));
-
-  // Устанавливаем высокий уровень на обоих пинах
-  GPIOA->BSRR = (1 << TM1637_CLK_PIN) | (1 << TM1637_DIO_PIN);
-
-  // Инициализация дисплея
-  tm1637_start();
-  tm1637_write_byte(TM1637_CMD1);
-  tm1637_stop();
-
-  tm1637_start();
-  tm1637_write_byte(TM1637_CMD3);
-  tm1637_stop();
-
-  tm1637_clear();
-  tm1637_display_number(0);
-
-  last_display_update = 0;
-  uint16_t counter = 0;
-}
-
-// Начало передачи
-void tm1637_start(void) {
-  GPIOA->BSRR = (1 << TM1637_DIO_PIN) | (1 << TM1637_CLK_PIN);  // DIO=1, CLK=1
-  delay_us(2);
-  GPIOA->BRR = (1 << TM1637_DIO_PIN);  // DIO=0
-  delay_us(2);
-  GPIOA->BRR = (1 << TM1637_CLK_PIN);  // CLK=0
-  delay_us(2);
-}
-
-// Конец передачи
-void tm1637_stop(void) {
-  GPIOA->BRR = (1 << TM1637_CLK_PIN);  // CLK=0
-  delay_us(2);
-  GPIOA->BRR = (1 << TM1637_DIO_PIN);  // DIO=0
-  delay_us(2);
-  GPIOA->BSRR = (1 << TM1637_CLK_PIN);  // CLK=1
-  delay_us(2);
-  GPIOA->BSRR = (1 << TM1637_DIO_PIN);  // DIO=1
-  delay_us(2);
-}
-
-// Запись байта
-void tm1637_write_byte(uint8_t byte) {
-  for (uint8_t i = 0; i < 8; i++) {
-    GPIOA->BRR = (1 << TM1637_CLK_PIN);  // CLK=0
-    delay_us(2);
-
-    if (byte & 0x01) {
-      GPIOA->BSRR = (1 << TM1637_DIO_PIN);  // DIO=1
-    } else {
-      GPIOA->BRR = (1 << TM1637_DIO_PIN);  // DIO=0
-    }
-    delay_us(2);
-
-    GPIOA->BSRR = (1 << TM1637_CLK_PIN);  // CLK=1
-    delay_us(2);
-
-    byte >>= 1;
-  }
-
-  // Ожидание подтверждения (ACK)
-  GPIOA->BRR = (1 << TM1637_CLK_PIN);  // CLK=0
-  GPIOA->BSRR = (1 << TM1637_DIO_PIN);  // DIO=1 (отпускаем линию)
-  delay_us(2);
-  GPIOA->BSRR = (1 << TM1637_CLK_PIN);  // CLK=1
-  delay_us(2);
-
-  GPIOA->BRR = (1 << TM1637_CLK_PIN);  // CLK=0
-  delay_us(2);
-}
-
-// Отображение цифры на указанной позиции
-void tm1637_display_digit(uint8_t digit, uint8_t data) {
-  tm1637_start();
-  tm1637_write_byte(TM1637_CMD2 | digit);  // Установка адреса
-  tm1637_write_byte(data);                 // Отправка данных
-  tm1637_stop();
-
-  tm1637_start();
-  tm1637_write_byte(TM1637_CMD3);
-  tm1637_stop();
-}
-
-// Таблица кодов для 7-сегментного индикатора (0-9, A-F)
-const uint8_t digit_codes[] = {
+static const uint8_t digit_codes[10] = {
   0x3F, // 0
   0x06, // 1
   0x5B, // 2
@@ -111,56 +18,178 @@ const uint8_t digit_codes[] = {
   0x7D, // 6
   0x07, // 7
   0x7F, // 8
-  0x6F, // 9
-  0x77, // A
-  0x7C, // b
-  0x39, // C
-  0x5E, // d
-  0x79, // E
-  0x71  // F
+  0x6F  // 9
 };
 
-// Отображение числа на дисплее
-void tm1637_display_number(int number) {
-  uint8_t digits[4];
-
-  digits[0] = digit_codes[number % 10];
-  digits[1] = (number >= 10) ? digit_codes[(number / 10) % 10] : 0;
-  digits[2] = (number >= 100) ? digit_codes[(number / 100) % 10] : 0;
-  digits[3] = (number >= 1000) ? digit_codes[(number / 1000) % 10] : 0;
-
-  tm1637_start();
-  tm1637_write_byte(0x40);  // Автоинкремент адреса
-  tm1637_stop();
-
-  tm1637_start();
-  tm1637_write_byte(0xC0);  // Начальный адрес
-
-  for (int i = 3; i >= 0; i--) {
-    tm1637_write_byte(digits[i]);
+void delay_us(uint32_t us) {
+  // При 48 МГц. Для Wokwi достаточно программной задержки.
+  volatile uint32_t cycles = us * 24U;
+  while (cycles-- > 0U) {
+    __asm__("nop");
   }
-
-  tm1637_stop();
-
-  tm1637_start();
-  tm1637_write_byte(0x8F); // Максимальная яркость
-  tm1637_stop();
 }
 
-// Очистка дисплея
-void tm1637_clear(void) {
+void tm1637_start(void) {
+  // START: при CLK=1 перевести DIO 1 -> 0
+  GPIOA->BSRR = (1U << TM1637_DIO_PIN) | (1U << TM1637_CLK_PIN);
+  delay_us(2);
+
+  GPIOA->BRR = (1U << TM1637_DIO_PIN);
+  delay_us(2);
+
+  GPIOA->BRR = (1U << TM1637_CLK_PIN);
+  delay_us(2);
+}
+
+void tm1637_stop(void) {
+  // STOP: при CLK=1 перевести DIO 0 -> 1
+  GPIOA->BRR = (1U << TM1637_CLK_PIN);
+  GPIOA->BRR = (1U << TM1637_DIO_PIN);
+  delay_us(2);
+
+  GPIOA->BSRR = (1U << TM1637_CLK_PIN);
+  delay_us(2);
+
+  GPIOA->BSRR = (1U << TM1637_DIO_PIN);
+  delay_us(2);
+}
+
+void tm1637_write_byte(uint8_t byte) {
+  // TM1637 принимает младший бит первым.
+  for (uint8_t i = 0; i < 8; i++) {
+    GPIOA->BRR = (1U << TM1637_CLK_PIN);
+
+    if (byte & 0x01U) {
+      GPIOA->BSRR = (1U << TM1637_DIO_PIN);
+    } else {
+      GPIOA->BRR = (1U << TM1637_DIO_PIN);
+    }
+
+    delay_us(2);
+
+    GPIOA->BSRR = (1U << TM1637_CLK_PIN);
+    delay_us(2);
+
+    byte >>= 1;
+  }
+
+  /*
+   * Так как DIO настроен как open-drain, запись 1 отпускает линию.
+   * На девятом такте TM1637 формирует ACK.
+   * Для данного проекта ACK не считывается.
+   */
+  GPIOA->BRR = (1U << TM1637_CLK_PIN);
+  GPIOA->BSRR = (1U << TM1637_DIO_PIN);
+  delay_us(2);
+
+  GPIOA->BSRR = (1U << TM1637_CLK_PIN);
+  delay_us(2);
+
+  GPIOA->BRR = (1U << TM1637_CLK_PIN);
+  delay_us(2);
+}
+
+static void tm1637_write_segments(const uint8_t segments[4]) {
+  // Режим автоматического увеличения адреса
+  tm1637_start();
+  tm1637_write_byte(TM1637_CMD_DATA_AUTO);
+  tm1637_stop();
+
+  // Запись четырёх разрядов начиная с адреса 0
+  tm1637_start();
+  tm1637_write_byte(TM1637_CMD_ADDR);
+
   for (uint8_t i = 0; i < 4; i++) {
-    tm1637_display_digit(i, 0x00);
+    tm1637_write_byte(segments[i]);
   }
+
+  tm1637_stop();
+
+  // Включить дисплей, максимальная яркость
+  tm1637_start();
+  tm1637_write_byte(TM1637_CMD_DISPLAY);
+  tm1637_stop();
 }
 
-// Функция обновления экрана
-void tm1637_update(void) {
-  static int last_rendered_val = -1;
+void tm1637_clear(void) {
+  const uint8_t empty[4] = {0, 0, 0, 0};
+  tm1637_write_segments(empty);
+}
 
-  // Перерисовываем экран только тогда, когда значение counter реально изменилось
-  if (counter != last_rendered_val) {
-    tm1637_display_number(counter);
-    last_rendered_val = counter;
+void tm1637_init(void) {
+  /*
+   * PA6 и PA7: general-purpose output, open-drain.
+   * Тактирование GPIOA включается в initGPIO() до вызова этой функции.
+   */
+  GPIOA->MODER &= ~((3U << (TM1637_CLK_PIN * 2)) |
+                    (3U << (TM1637_DIO_PIN * 2)));
+  GPIOA->MODER |=  ((1U << (TM1637_CLK_PIN * 2)) |
+                    (1U << (TM1637_DIO_PIN * 2)));
+
+  GPIOA->OTYPER |= (1U << TM1637_CLK_PIN) |
+                    (1U << TM1637_DIO_PIN);
+
+  GPIOA->OSPEEDR |= (3U << (TM1637_CLK_PIN * 2)) |
+                     (3U << (TM1637_DIO_PIN * 2));
+
+  // Отпускаем обе линии.
+  GPIOA->BSRR = (1U << TM1637_CLK_PIN) |
+                (1U << TM1637_DIO_PIN);
+
+  tm1637_clear();
+  tm1637_display_number(0);
+}
+
+void tm1637_display_number(int number) {
+  uint8_t segments[4] = {0, 0, 0, 0};
+  uint32_t value;
+  uint8_t pos = 0;
+  uint8_t used_digits = 1;
+
+  /*
+   * На четырёх разрядах:
+   *  0 ... 9999
+   * -1 ... -999
+   */
+  if (number > 9999 || number < -999) {
+    tm1637_display_error();
+    return;
   }
+
+  if (number < 0) {
+    value = (uint32_t)(-number);
+  } else {
+    value = (uint32_t)number;
+  }
+
+  // TM1637 address 0 соответствует левому разряду.
+  // Сначала формируем число справа налево в segments[].
+  segments[3] = digit_codes[value % 10U];
+  value /= 10U;
+
+  while (value > 0U && used_digits < 4U) {
+    segments[3U - used_digits] = digit_codes[value % 10U];
+    value /= 10U;
+    used_digits++;
+  }
+
+  if (number < 0) {
+    pos = (uint8_t)(3U - used_digits);
+    segments[pos] = 0x40; // '-'
+  }
+
+  tm1637_write_segments(segments);
+}
+
+void tm1637_display_error(void) {
+  /*
+   * Приближённая надпись "Err":
+   * E = 0x79, r = 0x50.
+   * Первый разряд оставляем пустым.
+   */
+  const uint8_t error_segments[4] = {
+    0x00, 0x79, 0x50, 0x50
+  };
+
+  tm1637_write_segments(error_segments);
 }
