@@ -1,0 +1,9 @@
+../Src/main.c:142:13:ShowKeyboardLegend	1
+../Src/main.c:216:13:ShowAlarmScreen	1
+../Src/main.c:86:13:ReadKeyboard	7
+../Src/main.c:192:13:ShowTimerScreen	1
+../Src/main.c:168:13:ShowInputScreen	1
+../Src/main.c:230:13:ProcessKeyboard	8
+../Src/main.c:416:6:Error_Handler	1
+../Src/main.c:370:6:SystemClock_Config	1
+../Src/main.c:271:5:main	8
