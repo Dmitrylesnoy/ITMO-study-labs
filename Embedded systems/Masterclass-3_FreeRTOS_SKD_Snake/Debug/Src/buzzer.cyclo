@@ -1,0 +1,4 @@
+../Src/buzzer.c:5:6:Buzzer_Init	1
+../Src/buzzer.c:10:6:Buzzer_Set_Freq	1
+../Src/buzzer.c:14:6:Buzzer_Set_Volume	2
+../Src/buzzer.c:20:6:Buzzer_Play	3
