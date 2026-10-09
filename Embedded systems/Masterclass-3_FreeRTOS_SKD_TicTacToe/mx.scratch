@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScratchFile FileVersion="3.0">
+  <FileVersion>3.0</FileVersion>
+  <Workspace>
+    <WorkspaceType>Single-project</WorkspaceType>
+    <WorkspacePath>C:\Users\Vasy\Downloads\SDK-1.1M\SDK_Keyboard\</WorkspacePath>
+    <underRoot>true</underRoot>
+    <TrustZone>0</TrustZone>
+    <HAL_Driver>C:\Users\Vasy\STM32Cube\Repository\STM32Cube_FW_F4_V1.28.0</HAL_Driver>
+    <CMSIS>Drivers/CMSIS</CMSIS>
+    <Toolchain>STM32CubeIDE</Toolchain>
+    <IocFile>SDK_Keyboard.ioc</IocFile>
+    <Project>
+      <ProjectName>SDK_Keyboard</ProjectName>
+      <ProjectNature>C</ProjectNature>
+      <Secure />
+      <filestoremove>
+        <file>
+          <name>gpio.h</name>
+        </file>
+        <file>
+          <name>..\Src\custom.c</name>
+        </file>
+        <file>
+          <name>FreeRTOSConfig.h</name>
+        </file>
+        <file>
+          <name>i2c.h</name>
+        </file>
+        <file>
+          <name>usart.h</name>
+        </file>
+        <file>
+          <name>stm32f4xx_it.h</name>
+        </file>
+        <file>
+          <name>stm32f4xx_hal_conf.h</name>
+        </file>
+        <file>
+          <name>main.h</name>
+        </file>
+      </filestoremove>
+      <sourceEntriesToRemove>
+        <sourceEntry />
+      </sourceEntriesToRemove>
+      <configs>
+        <config>
+          <name>SDK_Keyboard</name>
+          <mainSourceRepo>Src</mainSourceRepo>
+          <sourceStructure>Basic</sourceStructure>
+          <device>STM32F407VGTx</device>
+          <cpucore>Arm Cortex-M4</cpucore>
+          <fpu>SP</fpu>
+          <memories>
+            <memory access="xrw" name="RAM" size="131072" start="0x20000000" />
+            <memory access="xrw" name="CCMRAM" size="65536" start="0x10000000" />
+            <memory access="rx" name="FLASH" size="1048576" start="0x8000000" />
+          </memories>
+          <startup>C:\Users\Vasy\STM32Cube\Repository\STM32Cube_FW_F4_V1.28.0\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\gcc\startup_stm32f407xx.s</startup>
+          <LinkSettings>
+            <LinkAdditionalLibs />
+          </LinkSettings>
+          <heapSize>0x200</heapSize>
+          <stackSize>0x400</stackSize>
+          <cpuclock>168</cpuclock>
+          <board>custom</board>
+          <debugprobe>jtag</debugprobe>
+          <optimization />
+          <Aincludes>
+            <include>Inc</include>
+            <include>Drivers\STM32F4xx_HAL_Driver\Inc</include>
+            <include>Drivers\STM32F4xx_HAL_Driver\Inc\Legacy</include>
+            <include>Middlewares\Third_Party\FreeRTOS\Source\include</include>
+            <include>Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2</include>
+            <include>Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F</include>
+            <include>Drivers\CMSIS\Device\ST\STM32F4xx\Include</include>
+            <include>Drivers\CMSIS\Include</include>
+          </Aincludes>
+          <Adefines />
+          <Cdefines>
+            <define>USE_HAL_DRIVER</define>
+            <define>STM32F407xx</define>
+          </Cdefines>
+          <Ldefines />
+          <Cincludes>
+            <include>Inc</include>
+            <include>Drivers\STM32F4xx_HAL_Driver\Inc</include>
+            <include>Drivers\STM32F4xx_HAL_Driver\Inc\Legacy</include>
+            <include>Middlewares\Third_Party\FreeRTOS\Source\include</include>
+            <include>Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2</include>
+            <include>Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F</include>
+            <include>Drivers\CMSIS\Device\ST\STM32F4xx\Include</include>
+            <include>Drivers\CMSIS\Include</include>
+          </Cincludes>
+          <definestoremove>
+            <Adefines />
+            <Cdefines>
+              <define>USE_FULL_LL_DRIVER</define>
+              <define>USE_FULL_ASSERT=1U</define>
+            </Cdefines>
+            <Ldefines />
+          </definestoremove>
+          <inctoremove>
+            <Aincludes>
+              <include />
+            </Aincludes>
+            <Cincludes />
+          </inctoremove>
+        </config>
+      </configs>
+      <copyAsReference>false</copyAsReference>
+      <sourceEntries>
+        <sourceEntry>
+          <name>Src</name>
+        </sourceEntry>
+        <sourceEntry>
+          <name>Drivers</name>
+        </sourceEntry>
+        <sourceEntry>
+          <name>Middlewares</name>
+        </sourceEntry>
+      </sourceEntries>
+      <Groups />
+    </Project>
+  </Workspace>
+</ScratchFile>
+

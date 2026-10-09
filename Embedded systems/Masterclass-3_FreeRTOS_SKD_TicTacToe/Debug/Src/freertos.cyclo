@@ -1,0 +1,13 @@
+../Src/freertos.c:268:13:Game_Reset	2
+../Src/freertos.c:275:18:Game_Evaluate	11
+../Src/freertos.c:298:13:Game_ProcessKey	9
+../Src/freertos.c:382:13:RenderSplash	2
+../Src/freertos.c:314:13:DrawX	2
+../Src/freertos.c:330:13:DrawCirclePoint	1
+../Src/freertos.c:342:13:DrawO	3
+../Src/freertos.c:357:13:DrawBoard	4
+../Src/freertos.c:398:13:RenderGame	6
+../Src/freertos.c:174:6:StartDefaultTask	2
+../Src/freertos.c:234:13:ReadKeyboard	7
+../Src/freertos.c:205:6:StartTask02	3
+../Src/freertos.c:113:6:MX_FREERTOS_Init	5
