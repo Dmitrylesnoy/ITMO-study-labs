@@ -4,14 +4,13 @@
 Flow      EQU 1
 Gap       EQU 1
 MeanS     EQU 2
-CapTwo    EQU 3
 Mode      EQU 1
-BufferTwo STORAGE (CapTwo+1)
+BufferTwo STORAGE 4
 WaitSmo   TABLE MP1,1,1,500
 SojSmo    TABLE M1,1,1,500
 IntExp    VARIABLE (Exponential(2,0,Gap))
-IntHypo   VARIABLE (Exponential(2,0,Gap*107.337420/169.573210)+Exponential(2,0,Gap*31.117895/169.573210)+Exponential(2,0,Gap*31.117895/169.573210))
-IntUnif   VARIABLE (Uniform(2,0,2*Gap))
+IntHypo   VARIABLE (Exponential(2,0,Gap#107.337420/169.573210)+Exponential(2,0,Gap#31.117895/169.573210)+Exponential(2,0,Gap#31.117895/169.573210))
+IntUnif   VARIABLE (Uniform(2,0,2#Gap))
 TraceSeq  FUNCTION P2,D300
 1,170.024/2,79.539/3,130.762/4,90.089/5,163.334
 6,136.418/7,200.392/8,293.442/9,219.744/10,380.663
@@ -127,7 +126,7 @@ FreeTwo   RELEASE ServerTwo
 DropJob   SAVEVALUE Lost+,1
           TERMINATE 1
           RMULT 4201,4202,4203
-          START 5000,NP
+          START 20000,NP
           RESET
           INITIAL X$Lost,0
-          START 150000
+          START 200000

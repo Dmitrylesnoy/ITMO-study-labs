@@ -1,0 +1,247 @@
+GapLaw VARIABLE (Exponential(2,0,X$Gap))
+* Closed M2 network. X$Npop is the circulating population.
+* X$Mode = 1 exponential, 2 Erlang-2, 3 hyperexponential CV=2.
+Node1     STORAGE 1
+Node2     STORAGE 1
+Node3     STORAGE 2
+Node4     STORAGE 2
+Sojourn   TABLE M1,10,10,100
+WaitNet   TABLE P3,10,10,100
+SojOne    TABLE MP1,2,2,100
+WaitOne   TABLE MP1,2,2,100
+          GENERATE 0,,,1
+          OPEN (PolyCatenate("C:/Users/Vasy/LEARNING/ITMO/ITMO-study-labs/Modelling/lab-3/gpss/results/",String(X$Case),"_samples.csv")),2
+          TEST E X$NetKind,1,ClosedInit
+OpenLoop  TEST E X$Det,1,ExpGap
+          ADVANCE X$Gap
+          TRANSFER ,SendOpen
+ExpGap    ADVANCE V$GapLaw
+SendOpen  BUFFER
+          SPLIT 1,Cycle
+          TRANSFER ,OpenLoop
+ClosedInit TEST G X$Npop,1,Cycle
+          SPLIT (X$Npop-1),Cycle
+Cycle     MARK
+          ASSIGN 3,0
+AtOne     MARK 1
+          QUEUE Line1
+          ENTER Node1
+          DEPART Line1
+          ASSIGN 3+,MP1
+          ASSIGN 5,MP1
+          TABULATE WaitOne
+          TEST E X$Mode,1,TryErl
+          ADVANCE (Exponential(3,0,2))
+          TRANSFER ,EndOne
+TryErl    TEST E X$Mode,2,TryHyp
+          ADVANCE (Exponential(3,0,1)+Exponential(3,0,1))
+          TRANSFER ,EndOne
+TryHyp    TRANSFER 0.112701665,Fast,Slow
+Fast      ADVANCE (Exponential(3,0,1.127016654))
+          TRANSFER ,EndOne
+Slow      ADVANCE (Exponential(3,0,8.872983346))
+EndOne    LEAVE Node1
+          TEST E X$Hist,1,NoNodeOut
+          TEST GE AC1,X$Warm,NoNodeOut
+          WRITE (PolyCatenate("node,",String(P5),",",String(MP1))),2
+NoNodeOut BUFFER
+          TABULATE SojOne
+          TRANSFER .25,,ExitNet
+          TRANSFER (2/3),AtThree,AtTwo
+AtTwo     MARK 1
+          QUEUE Line2
+          ENTER Node2
+          DEPART Line2
+          ASSIGN 3+,MP1
+          ADVANCE (Exponential(4,0,4.5))
+          LEAVE Node2
+          TRANSFER ,AtFour
+AtThree   MARK 1
+          QUEUE Line3
+          ENTER Node3
+          DEPART Line3
+          ASSIGN 3+,MP1
+          ADVANCE (Exponential(5,0,5))
+          LEAVE Node3
+AtFour    MARK 1
+          QUEUE Line4
+          ENTER Node4
+          DEPART Line4
+          ASSIGN 3+,MP1
+          ADVANCE (Exponential(6,0,X$Mean4))
+          LEAVE Node4
+          TRANSFER ,AtOne
+ExitNet   TEST E X$Hist,1,NoNetOut
+          TEST GE AC1,X$Warm,NoNetOut
+          WRITE (PolyCatenate("net,",String(P3),",",String(M1))),2
+NoNetOut  TABULATE Sojourn
+          TABULATE WaitNet
+          SAVEVALUE Exits+,1
+          TEST E X$NetKind,0,LeaveNet
+          TRANSFER ,Cycle
+LeaveNet    TERMINATE 0
+          GENERATE X$Warm,,,1
+          TERMINATE 1
+          GENERATE (X$Warm+X$Dur),,,1
+          CLOSE 98,2
+OutFile   OPEN (PolyCatenate("C:/Users/Vasy/LEARNING/ITMO/ITMO-study-labs/Modelling/lab-3/gpss/results/",String(X$Case),"_",String(X$Stage),".txt")),1
+          WRITE (Catenate("case=",String(X$Case))),1
+          WRITE (Catenate("stage=",String(X$Stage))),1
+          WRITE (Catenate("elapsed=",String(C1))),1
+          WRITE (Catenate("exits=",String(X$Exits))),1
+          WRITE (Catenate("w=",String(TB$WaitNet))),1
+          WRITE (Catenate("t=",String(TB$Sojourn))),1
+          WRITE (Catenate("sdw=",String(TD$WaitNet))),1
+          WRITE (Catenate("sdt=",String(TD$Sojourn))),1
+          WRITE (Catenate("rho1=",String(SR$Node1/1000))),1
+          WRITE (Catenate("lq1=",String(QA$Line1))),1
+          WRITE (Catenate("wn1=",String(QT$Line1))),1
+          WRITE (Catenate("rho2=",String(SR$Node2/1000))),1
+          WRITE (Catenate("lq2=",String(QA$Line2))),1
+          WRITE (Catenate("wn2=",String(QT$Line2))),1
+          WRITE (Catenate("rho3=",String(SR$Node3/1000))),1
+          WRITE (Catenate("lq3=",String(QA$Line3))),1
+          WRITE (Catenate("wn3=",String(QT$Line3))),1
+          WRITE (Catenate("rho4=",String(SR$Node4/1000))),1
+          WRITE (Catenate("lq4=",String(QA$Line4))),1
+          WRITE (Catenate("wn4=",String(QT$Line4))),1
+          WRITE (Catenate("soj1=",String(TB$SojOne))),1
+          WRITE (Catenate("sdsoj1=",String(TD$SojOne))),1
+          WRITE (Catenate("wait1=",String(TB$WaitOne))),1
+          WRITE (Catenate("sdwait1=",String(TD$WaitOne))),1
+          WRITE (Catenate("litt_w=",String((QA$Line1+QA$Line2+QA$Line3+QA$Line4)#C1/X$Exits))),1
+          WRITE (Catenate("ln1=",String(QA$Line1+SA$Node1))),1
+          WRITE (Catenate("ln2=",String(QA$Line2+SA$Node2))),1
+          WRITE (Catenate("ln3=",String(QA$Line3+SA$Node3))),1
+          WRITE (Catenate("ln4=",String(QA$Line4+SA$Node4))),1
+          CLOSE 99,1,IOError
+          TEST E P99,0,IOError
+          TERMINATE 1
+IOError   TERMINATE 1
+          CLEAR
+Node4 STORAGE 2
+          INITIAL X$Case,7000
+          INITIAL X$Stage,1
+          INITIAL X$Hist,0
+          INITIAL X$Npop,6
+          INITIAL X$Mode,1
+          INITIAL X$Mean4,15
+          INITIAL X$NetKind,1
+          INITIAL X$Gap,22.95763169
+          INITIAL X$Warm,1000000
+          INITIAL X$Dur,12000000
+          INITIAL X$Det,0
+          RMULT 7701,7702,7703,7704,7705,7706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1,NP
+          CLEAR
+Node4 STORAGE 2
+          INITIAL X$Case,7001
+          INITIAL X$Stage,1
+          INITIAL X$Hist,0
+          INITIAL X$Npop,6
+          INITIAL X$Mode,1
+          INITIAL X$Mean4,15
+          INITIAL X$NetKind,1
+          INITIAL X$Gap,22.95763169
+          INITIAL X$Warm,1000000
+          INITIAL X$Dur,12000000
+          INITIAL X$Det,1
+          RMULT 7701,7702,7703,7704,7705,7706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1,NP
+          CLEAR
+Node4 STORAGE 2
+          INITIAL X$Case,7002
+          INITIAL X$Stage,1
+          INITIAL X$Hist,0
+          INITIAL X$Npop,6
+          INITIAL X$Mode,2
+          INITIAL X$Mean4,15
+          INITIAL X$NetKind,1
+          INITIAL X$Gap,22.9087202
+          INITIAL X$Warm,1000000
+          INITIAL X$Dur,12000000
+          INITIAL X$Det,0
+          RMULT 7701,7702,7703,7704,7705,7706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1,NP
+          CLEAR
+Node4 STORAGE 2
+          INITIAL X$Case,7003
+          INITIAL X$Stage,1
+          INITIAL X$Hist,0
+          INITIAL X$Npop,6
+          INITIAL X$Mode,2
+          INITIAL X$Mean4,15
+          INITIAL X$NetKind,1
+          INITIAL X$Gap,22.9087202
+          INITIAL X$Warm,1000000
+          INITIAL X$Dur,12000000
+          INITIAL X$Det,1
+          RMULT 7701,7702,7703,7704,7705,7706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1,NP
+          CLEAR
+Node4 STORAGE 2
+          INITIAL X$Case,7004
+          INITIAL X$Stage,1
+          INITIAL X$Hist,1
+          INITIAL X$Npop,6
+          INITIAL X$Mode,3
+          INITIAL X$Mean4,15
+          INITIAL X$NetKind,1
+          INITIAL X$Gap,23.37049242
+          INITIAL X$Warm,1000000
+          INITIAL X$Dur,12000000
+          INITIAL X$Det,0
+          RMULT 7701,7702,7703,7704,7705,7706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1,NP
+          CLEAR
+Node4 STORAGE 2
+          INITIAL X$Case,7005
+          INITIAL X$Stage,1
+          INITIAL X$Hist,0
+          INITIAL X$Npop,6
+          INITIAL X$Mode,3
+          INITIAL X$Mean4,15
+          INITIAL X$NetKind,1
+          INITIAL X$Gap,23.37049242
+          INITIAL X$Warm,1000000
+          INITIAL X$Dur,12000000
+          INITIAL X$Det,1
+          RMULT 7701,7702,7703,7704,7705,7706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1,NP
+          CLEAR
+Node4 STORAGE 2
+          INITIAL X$Case,7006
+          INITIAL X$Stage,1
+          INITIAL X$Hist,0
+          INITIAL X$Npop,6
+          INITIAL X$Mode,1
+          INITIAL X$Mean4,15
+          INITIAL X$NetKind,1
+          INITIAL X$Gap,27.20940357
+          INITIAL X$Warm,400000
+          INITIAL X$Dur,4000000
+          INITIAL X$Det,0
+          RMULT 7701,7702,7703,7704,7705,7706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1,NP
+          REPORT

@@ -1,0 +1,73 @@
+* Closed M2 network. Npop is the circulating population.
+Npop      EQU 6
+* Mode = 1 exponential, 2 Erlang-2, 3 hyperexponential CV=2.
+Mode      EQU 3
+Mean4     EQU 15
+Node1     STORAGE 1
+Node2     STORAGE 1
+Node3     STORAGE 2
+Node4     STORAGE 2
+Sojourn   TABLE M1,10,10,100
+WaitNet   TABLE P3,10,10,100
+SojOne    TABLE MP1,2,2,100
+WaitOne   TABLE MP1,2,2,100
+          GENERATE 0,0,0,Npop
+Cycle     MARK
+          ASSIGN 3,0
+AtOne     MARK 1
+          QUEUE Line1
+          ENTER Node1
+          DEPART Line1
+          ASSIGN 3+,MP1
+          TABULATE WaitOne
+          TEST E Mode,1,TryErl
+          ADVANCE (Exponential(3,0,2))
+          TRANSFER ,EndOne
+TryErl    TEST E Mode,2,TryHyp
+          ADVANCE (Exponential(3,0,1)+Exponential(3,0,1))
+          TRANSFER ,EndOne
+TryHyp    TRANSFER 0.112701665,Fast,Slow
+Fast      ADVANCE (Exponential(3,0,1.127016654))
+          TRANSFER ,EndOne
+Slow      ADVANCE (Exponential(3,0,8.872983346))
+EndOne    LEAVE Node1
+          TABULATE SojOne
+          TRANSFER .25,,ExitNet
+          TRANSFER (2/3),AtThree,AtTwo
+AtTwo     MARK 1
+          QUEUE Line2
+          ENTER Node2
+          DEPART Line2
+          ASSIGN 3+,MP1
+          ADVANCE (Exponential(4,0,4.5))
+          LEAVE Node2
+          TRANSFER ,AtFour
+AtThree   MARK 1
+          QUEUE Line3
+          ENTER Node3
+          DEPART Line3
+          ASSIGN 3+,MP1
+          ADVANCE (Exponential(5,0,5))
+          LEAVE Node3
+AtFour    MARK 1
+          QUEUE Line4
+          ENTER Node4
+          DEPART Line4
+          ASSIGN 3+,MP1
+          ADVANCE (Exponential(6,0,Mean4))
+          LEAVE Node4
+          TRANSFER ,AtOne
+ExitNet   TABULATE Sojourn
+          TABULATE WaitNet
+          SAVEVALUE Exits+,1
+          TRANSFER ,Cycle
+* Warm-up and observation. X = Exits / 600000 after RESET.
+          GENERATE 200000,,,1
+          TERMINATE 1
+          GENERATE 2200000,,,1
+          TERMINATE 1
+          RMULT 4701,4702,4703,4704,4705,4706
+          START 1,NP
+          RESET
+          INITIAL X$Exits,0
+          START 1

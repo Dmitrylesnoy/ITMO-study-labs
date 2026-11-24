@@ -1,0 +1,2385 @@
+* System 1 from UIR2. X$Flow 1=exp, 2=hypoexp, 3=uniform, 4=trace.
+* For UIR2 use X$Flow=1, X$Gap=1 and X$MeanS=2.
+* For trace use X$Gap=169.573210 and X$MeanS=load*X$Gap/0.6.
+BufferTwo STORAGE 4
+WaitSmo   TABLE MP1,1,1,500
+SojSmo    TABLE M1,1,1,500
+IntExp    VARIABLE (Exponential(2,0,X$Gap))
+IntHypo   VARIABLE (Exponential(2,0,X$Gap#107.337420/169.573210)+Exponential(2,0,X$Gap#31.117895/169.573210)+Exponential(2,0,X$Gap#31.117895/169.573210))
+IntUnif   VARIABLE (Uniform(2,0,2#X$Gap))
+TraceSeq  FUNCTION P2,D300
+1,170.024/2,79.539/3,130.762/4,90.089/5,163.334
+6,136.418/7,200.392/8,293.442/9,219.744/10,380.663
+11,195.666/12,322.105/13,490.399/14,364.577/15,58.487
+16,72.014/17,177.088/18,183.206/19,22.328/20,98.121
+21,140.249/22,221.596/23,86.552/24,90.440/25,233.314
+26,16.709/27,169.271/28,47.460/29,275.898/30,40.941
+31,313.818/32,60.952/33,34.950/34,54.336/35,329.629
+36,192.693/37,192.847/38,194.905/39,110.372/40,209.361
+41,180.888/42,288.685/43,130.890/44,584.312/45,380.720
+46,165.779/47,236.191/48,94.679/49,111.330/50,248.540
+51,361.398/52,98.416/53,63.981/54,303.634/55,86.800
+56,208.942/57,263.589/58,88.757/59,43.298/60,131.125
+61,214.791/62,208.163/63,223.119/64,179.650/65,40.163
+66,189.742/67,243.522/68,112.035/69,340.319/70,404.583
+71,294.998/72,72.711/73,251.290/74,20.030/75,146.130
+76,100.434/77,150.415/78,199.821/79,87.417/80,257.168
+81,15.892/82,14.836/83,51.800/84,418.550/85,7.929
+86,62.499/87,174.340/88,18.645/89,159.722/90,46.789
+91,96.408/92,116.752/93,96.128/94,164.833/95,68.306
+96,420.383/97,118.449/98,42.489/99,222.866/100,141.328
+101,115.424/102,58.955/103,38.136/104,126.614/105,103.409
+106,116.393/107,74.402/108,22.548/109,92.365/110,82.353
+111,126.877/112,39.683/113,179.549/114,170.339/115,92.796
+116,292.580/117,35.073/118,35.910/119,365.053/120,99.318
+121,170.044/122,439.059/123,470.488/124,357.771/125,430.030
+126,73.933/127,83.735/128,52.641/129,93.914/130,38.858
+131,80.181/132,49.148/133,323.159/134,195.029/135,129.108
+136,98.240/137,441.188/138,153.093/139,199.637/140,79.140
+141,120.930/142,83.837/143,89.329/144,239.461/145,160.427
+146,262.283/147,155.024/148,11.625/149,241.299/150,22.612
+151,58.050/152,39.053/153,243.639/154,218.856/155,76.824
+156,327.907/157,136.962/158,371.455/159,101.572/160,329.667
+161,115.963/162,161.151/163,296.856/164,119.736/165,109.337
+166,117.836/167,176.364/168,117.964/169,190.672/170,62.132
+171,171.453/172,330.865/173,405.409/174,223.720/175,239.713
+176,199.497/177,49.795/178,61.673/179,52.205/180,72.039
+181,99.700/182,233.580/183,150.956/184,198.003/185,201.332
+186,108.135/187,80.208/188,173.854/189,144.678/190,175.169
+191,129.944/192,142.436/193,79.915/194,86.711/195,56.352
+196,43.214/197,140.616/198,206.702/199,168.478/200,137.919
+201,51.298/202,244.433/203,207.864/204,97.953/205,32.952
+206,255.189/207,133.041/208,100.125/209,140.072/210,196.401
+211,119.388/212,175.919/213,266.864/214,199.475/215,101.431
+216,365.202/217,270.031/218,177.405/219,175.620/220,140.164
+221,289.649/222,139.261/223,205.318/224,132.671/225,253.934
+226,172.386/227,119.386/228,90.815/229,94.161/230,301.453
+231,40.729/232,237.380/233,52.348/234,13.091/235,270.564
+236,637.907/237,99.353/238,96.998/239,214.060/240,215.158
+241,166.624/242,128.606/243,173.574/244,143.082/245,478.023
+246,322.467/247,284.337/248,46.326/249,141.568/250,202.882
+251,18.524/252,49.681/253,138.104/254,334.007/255,43.652
+256,650.381/257,116.376/258,53.596/259,436.236/260,158.582
+261,192.722/262,205.115/263,70.249/264,138.277/265,42.582
+266,264.834/267,151.359/268,125.369/269,266.426/270,364.757
+271,61.749/272,10.127/273,65.263/274,40.274/275,55.823
+276,153.138/277,218.336/278,220.224/279,376.028/280,89.408
+281,97.385/282,112.528/283,25.728/284,109.802/285,413.923
+286,204.841/287,142.826/288,265.614/289,48.349/290,348.667
+291,257.964/292,186.919/293,132.503/294,486.858/295,219.577
+296,123.580/297,151.368/298,109.114/299,288.021/300,138.902
+
+* One source transaction creates arrivals by SPLIT.
+          GENERATE 0,0,0,1
+          ASSIGN 2,1
+NextGap   TEST E X$Flow,4,NotTrace
+          ADVANCE FN$TraceSeq
+          ASSIGN 2+,1
+          TEST LE P2,300,Wrap
+          TRANSFER ,SendJob
+Wrap      ASSIGN 2,1
+          TRANSFER ,SendJob
+NotTrace  TEST E X$Flow,1,TryHypo
+          ADVANCE V$IntExp
+          TRANSFER ,SendJob
+TryHypo   TEST E X$Flow,2,UseUniform
+          ADVANCE V$IntHypo
+          TRANSFER ,SendJob
+UseUniform ADVANCE V$IntUnif
+SendJob   SPLIT 1,Arrival
+          TRANSFER ,NextGap
+Arrival   MARK
+          MARK 1
+          TRANSFER .4,,LaneTwo
+          GATE NU ServerOne,DropJob
+          SEIZE ServerOne
+          ASSIGN 4,1
+          TRANSFER ,BeginSvc
+LaneTwo   GATE SNF BufferTwo,DropJob
+          ENTER BufferTwo
+          QUEUE LineTwo
+          SEIZE ServerTwo
+          DEPART LineTwo
+          ASSIGN 4,2
+BeginSvc  TABULATE WaitSmo
+          TEST E X$Mode,1,TryErl
+          ADVANCE (Exponential(3,0,X$MeanS))
+          TRANSFER ,FinishSvc
+TryErl    TEST E X$Mode,2,TryHyp
+          ADVANCE (Exponential(3,0,X$MeanS/2)+Exponential(3,0,X$MeanS/2))
+          TRANSFER ,FinishSvc
+TryHyp    TRANSFER 0.112701665,Fast,Slow
+Fast      ADVANCE (Exponential(3,0,X$MeanS/1.774596669))
+          TRANSFER ,FinishSvc
+Slow      ADVANCE (Exponential(3,0,X$MeanS/0.225403331))
+FinishSvc TABULATE SojSmo
+          TEST E P4,1,FreeTwo
+          RELEASE ServerOne
+          TRANSFER ,CountEnd
+FreeTwo   RELEASE ServerTwo
+          LEAVE BufferTwo
+          TRANSFER ,CountEnd
+DropJob   SAVEVALUE Lost+,1
+          TRANSFER ,CountEnd
+CountEnd  SAVEVALUE Done+,1
+          TEST GE X$Done,X$Limit,GoAway
+          TRANSFER ,OutFile
+GoAway    TERMINATE 0
+OutFile   OPEN (PolyCatenate("C:/Users/Vasy/LEARNING/ITMO/ITMO-study-labs/Modelling/lab-3/gpss/results/",String(X$Case),"_",String(X$Stage),".txt")),1
+          WRITE (Catenate("case=",String(X$Case))),1
+          WRITE (Catenate("stage=",String(X$Stage))),1
+          WRITE (Catenate("clock=",String(AC1))),1
+          WRITE (Catenate("elapsed=",String(C1))),1
+          WRITE (Catenate("lost=",String(X$Lost))),1
+          WRITE (Catenate("done=",String(X$Done))),1
+          WRITE (Catenate("w=",String(TB$WaitSmo))),1
+          WRITE (Catenate("t=",String(TB$SojSmo))),1
+          WRITE (Catenate("sdw=",String(TD$WaitSmo))),1
+          WRITE (Catenate("sdt=",String(TD$SojSmo))),1
+          WRITE (Catenate("rho1=",String(FR$ServerOne/1000))),1
+          WRITE (Catenate("rho2=",String(FR$ServerTwo/1000))),1
+          WRITE (Catenate("lq2=",String(QA$LineTwo))),1
+          WRITE (Catenate("served=",String(TC$SojSmo))),1
+          CLOSE 99,1,IOError
+          TEST E P99,0,IOError
+          TERMINATE 1
+IOError   TERMINATE 1
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,100
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,1
+          INITIAL X$MeanS,2
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,101
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,102
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,211.9665125
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,103
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,268.4909158
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,104
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,279.7957965
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,105
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,106
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,211.9665125
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,107
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,268.4909158
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,108
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,279.7957965
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,109
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,110
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,211.9665125
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,111
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,268.4909158
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,112
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,279.7957965
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,113
+          INITIAL X$Flow,3
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,114
+          INITIAL X$Flow,3
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,211.9665125
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,115
+          INITIAL X$Flow,3
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,268.4909158
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,116
+          INITIAL X$Flow,3
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,279.7957965
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,117
+          INITIAL X$Flow,1
+          INITIAL X$Mode,2
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,118
+          INITIAL X$Flow,1
+          INITIAL X$Mode,2
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,211.9665125
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,119
+          INITIAL X$Flow,1
+          INITIAL X$Mode,2
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,268.4909158
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,120
+          INITIAL X$Flow,1
+          INITIAL X$Mode,2
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,279.7957965
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,121
+          INITIAL X$Flow,1
+          INITIAL X$Mode,3
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,122
+          INITIAL X$Flow,1
+          INITIAL X$Mode,3
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,211.9665125
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,123
+          INITIAL X$Flow,1
+          INITIAL X$Mode,3
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,268.4909158
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,124
+          INITIAL X$Flow,1
+          INITIAL X$Mode,3
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,279.7957965
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 1
+          INITIAL X$Case,125
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 2
+          INITIAL X$Case,126
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,127
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 7
+          INITIAL X$Case,128
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 13
+          INITIAL X$Case,129
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 25
+          INITIAL X$Case,130
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 1001
+          INITIAL X$Case,131
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 1
+          INITIAL X$Case,132
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 2
+          INITIAL X$Case,133
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,134
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 7
+          INITIAL X$Case,135
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 13
+          INITIAL X$Case,136
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 25
+          INITIAL X$Case,137
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 1001
+          INITIAL X$Case,138
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,5000
+          INITIAL X$Stage,0
+          RMULT 4201,4202,4203
+          START 1,NP
+          RESET
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,139
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,140
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,141
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,142
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,143
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,144
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,145
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,146
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,147
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,148
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,149
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,150
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,151
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,152
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,153
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,154
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,155
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,156
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,157
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,158
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,159
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,160
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,161
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,162
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,163
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,164
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,165
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,166
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,167
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,168
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,169
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,170
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,171
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,172
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,173
+          INITIAL X$Flow,1
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,174
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,175
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,176
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,177
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,178
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,179
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,180
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,181
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,182
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,183
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,184
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,185
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,186
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,187
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,188
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,189
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,190
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,191
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,192
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,193
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,194
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,195
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,196
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,197
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,198
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,199
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,200
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,201
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,202
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,203
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,204
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,205
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,206
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,207
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,208
+          INITIAL X$Flow,2
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,209
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,210
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,211
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,212
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,213
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,214
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,215
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,28.26220167
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,216
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,217
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,218
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,219
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,220
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,221
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,222
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,84.786605
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,223
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,224
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,225
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,226
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,227
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,228
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,229
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,141.3110083
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,230
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,231
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,232
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,233
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,234
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,235
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,236
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,197.8354117
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,237
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,10
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,238
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,50
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,239
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,100
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,240
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,300
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,241
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,1000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,242
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,5000
+          START 1,NP
+          CLEAR
+BufferTwo STORAGE 4
+          INITIAL X$Case,243
+          INITIAL X$Flow,4
+          INITIAL X$Mode,1
+          INITIAL X$Gap,169.57321
+          INITIAL X$MeanS,254.359815
+          INITIAL X$Limit,1
+          INITIAL X$Stage,0
+          RMULT 4411,4412,4413
+          INITIAL X$Done,0
+          INITIAL X$Lost,0
+          INITIAL X$Stage,1
+          INITIAL X$Limit,20000
+          START 1,NP
+          REPORT
